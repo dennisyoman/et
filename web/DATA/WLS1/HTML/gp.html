@@ -1,0 +1,85 @@
+<div id="module_wrapper" class="WLS1_gp_wrapper">
+  <div class="tabs"></div>
+  <div id="submain" class="submain"></div>
+
+  <div class="assetsPreload"></div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    $(gpXML)
+      .find("section")
+      .each(function (i) {
+        let name = $(this).attr("name");
+        $(".tabs").append(`<span>part ${i + 1}<span>${name}</span></span>`);
+      });
+
+    console.log("333");
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              gpObj.gpid = $(this).index() + 1;
+              gpObj.sid = $(gpXML).find("lesson:eq(0)").attr("sid");
+              gpObj.bid = $(gpXML).find("lesson:eq(0)").attr("bid");
+              gpObj.lid = $(gpXML).find("lesson:eq(0)").attr("lid");
+              var htmlPath = $(gpXML)
+                .find("section:eq(" + (gpObj.gpid - 1) + ")")
+                .attr("swf")
+                .replace("SWF/", "HTML/GP_");
+
+              htmlPath = htmlPath.replace("GP_GEO", "GEO");
+              htmlPath = htmlPath.replace(".swf", ".html");
+              loadContent(htmlPath);
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+        $("#module_wrapper").unbind();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var loadContent = function (url) {
+    resetAudio();
+    console.log("load:");
+    console.log(url);
+    let script_arr = [
+      /*jsPath*/
+    ];
+    let style_arr = [
+      /*cssPath*/
+    ];
+    $.getComponent(
+      "./DATA/" + url,
+      "#submain",
+      style_arr,
+      "./DATA/",
+      script_arr,
+      "./DATA/"
+    );
+  };
+</script>

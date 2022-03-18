@@ -1,0 +1,281 @@
+<div id="module_wrapper" class="WLS1_bp_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="scene"></div>
+    <div class="btn_book"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_book.png" />
+    <img src="./images/common/btn_scene.png" />
+    <img src="./images/common/chimes.gif" />
+    <img src="./images/common/wb_star.png" />
+    <img src="./images/common/wb_eye.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    ////background image
+    let bgImg = `./DATA/${sid}/BOOK${bid}/IMAGES/${sid}-${bid}-${lid}-1-1.jpg`;
+    $("#rbg").append("<img src='" + bgImg + "'/>");
+    $("#module_wrapper .assetsPreload").append(`<img src='${bgImg}'/>`);
+
+    // create content
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+
+    ////questions
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        var tempQ = $(this).text();
+        if (!isitEmpty(tempQ)) {
+          qArray.push(tempQ);
+        }
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.btn_book")
+          .unbind()
+          .bind("click", function () {
+            //要連到哪裡去?????
+            var codeArr = qArray[0].split("|");
+            codeArr = codeArr[3].split("?");
+            var code = codeArr[1];
+            $.get(
+              "/eTeaching/Encrypt.aspx?key=GIRF&text=" + userID + "^" + code,
+              function (data) {
+                var redirectURL =
+                  "http://get.giraffe.com.tw/redirect/redirect.htm?data=" +
+                  $(data).find("code").text();
+                openNewWindow(redirectURL);
+              }
+            );
+          });
+        $(".sideTool > div.scene")
+          .unbind()
+          .bind("click", function () {
+            var videoArr = qArray[0].split("|");
+            var videoURL = videoArr[2];
+          });
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showQ();
+            showTool();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadW1Axml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+  var qArray = [];
+  var mode = 1;
+  var bubbleArray = [];
+  var autoplayID = 999;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("module_wrapper");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging) {
+      isDragging = true;
+      $elem = elem;
+      lastPosX = elem.offsetLeft;
+      lastPosY = elem.offsetTop;
+    }
+    if (elem == $elem && $(elem).hasClass("card")) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+      elem.style.left = posX + "px";
+      elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+
+  var showQ = function () {
+    $("#contents").empty();
+
+    var qItemHtml = "<div class='q_wrapper'>";
+    for (var i = 0; i < qArray.length; i++) {
+      var tempA = qArray[i].split("|");
+      qItemHtml += `<div class='q wow fadeInUp' data-wow-delay="${i * 0.2}s">${
+        tempA[0]
+      }</div>`;
+    }
+    qItemHtml += "</div>";
+    $("#contents").append(qItemHtml);
+
+    $(".q_wrapper")
+      .find(".q")
+      .unbind()
+      .bind("click", function () {
+        $(this).addClass("active");
+        //make chimes
+        var uniq = new Date().getTime();
+        $(".q_wrapper").find("img").remove();
+        $(this)
+          .addClass("active")
+          .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+        rootSoundEffect($chimes);
+      });
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = bubbleArray.length >= 10 ? 5 : 6;
+    var startTop = bubbleArray.length >= 10 ? 2 : 5;
+    var startLeft = 413;
+
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var releaseCard = function () {
+    $(".card").each(function (i) {
+      var endleft = bubbleArray.length >= 7 ? 310 : 330;
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: endleft,
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this)
+            .removeClass("autoMoving disable")
+            .bind("mousedown", function (ev) {
+              click.x = ev.clientX;
+              click.y = ev.clientY;
+              getHighestDepth($(this));
+            })
+            .bind("mouseup", function (ev) {
+              if (
+                Math.abs(click.x - ev.clientX) <
+                  click.threshold * stageRatioReal &&
+                Math.abs(click.y - ev.clientY) <
+                  click.threshold * stageRatioReal &&
+                !$(ev.target).hasClass("mode")
+              ) {
+                $("#rbg").find(".anim").eq($(this).index()).click();
+              }
+            });
+          $(this)
+            .find(".mode")
+            .unbind()
+            .bind("click", function (e) {
+              e.stopPropagation();
+              $(this).parent().toggleClass("showQQ");
+            });
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var loadW1Axml = function () {
+    gpath = "./wls2_anim.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        checkCompLoading("#module_wrapper");
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+    var videoArr = qArray[0].split("|");
+    var videoURL = videoArr[2];
+    if (isitEmpty(videoURL)) {
+      $(".sideTool > .scene").hide();
+    } else {
+      //prepare video
+      var videoElem = `<a style="width:100%;height:100%;display:block;" data-fancybox data-width="800" data-height="450" href="${videoURL}"></a>`;
+      $(".sideTool > .scene").append(videoElem);
+    }
+  };
+</script>

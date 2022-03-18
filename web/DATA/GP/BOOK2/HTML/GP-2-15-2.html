@@ -1,0 +1,245 @@
+<div id="module_wrapper" class="WS_daily_wrapper GP-2-15-2">
+  <div class="tabs">
+    <span>part 1</span>
+  </div>
+  <div id="contents" class="contents">
+    <div>
+      <div class="puzzle"></div>
+      <div id="bingo" class="bingo wow bounceInDown">CONGRATULATIONS!</div>
+      <span> <img src="./DATA/GP/BOOK2/IMAGES/GP-2-15-2-1.jpg" /></span>
+    </div>
+  </div>
+  <div class="sideTool">
+    <div class="eye"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_eye.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //create cards
+        shuffle(theCords);
+        shuffle(theWords);
+        $("#module_wrapper .puzzle").empty();
+        for (var i = 0; i < theCords.length; i++) {
+          $("#module_wrapper .puzzle").append(
+            `<span pid="${i}" class="piece wow bounceIn" style="top:${theCords[i][0]}px;left:${theCords[i][1]}px;" ans="${theWords[i][1]}">${theWords[i][0]}</span>`
+          );
+        }
+
+        //hammer
+        trigHammer();
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            var bingo = true;
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $("#module_wrapper .puzzle")
+                .find(".piece")
+                .each(function () {
+                  //do
+                  if ($(this).attr("ans") != $(this).attr("guess")) {
+                    bingo = false;
+                    var ppid = parseInt($(this).attr("pid"));
+                    $(this)
+                      .attr("guess", -1)
+                      .addClass("autoMoving")
+                      .css("top", theCords[ppid][0])
+                      .css("left", theCords[ppid][1])
+                      .attr("guess", -1)
+                      .delay(800)
+                      .queue(function () {
+                        $(".sideTool > div.eye").removeClass("active");
+                        $(this).removeClass("autoMoving").dequeue();
+                      });
+                  }
+                });
+            }
+            if (bingo) {
+              $(".sideTool > div.eye").removeClass("active");
+              $("#bingo").show();
+              rootSoundEffect($chimes);
+            } else {
+              $("#bingo").hide();
+              rootSoundEffect($stupid);
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    $("#module_wrapper #contents")
+      .find("img")
+      .each(function (i) {
+        $(this).clone().appendTo("#module_wrapper .assetsPreload");
+      });
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+  var theBoundary = [
+    [17, 67, 150, 265],
+    [116, 166, 150, 265],
+    [215, 265, 150, 265],
+    [313, 363, 150, 265],
+    [412, 462, 150, 265],
+  ];
+  var theWords = [
+    ["day", 0],
+    ["cake", 0],
+    ["eve", 1],
+    ["she", 1],
+    ["pie", 2],
+    ["kite", 2],
+    ["bow", 3],
+    ["bone", 3],
+    ["mule", 4],
+    ["cute", 4],
+  ];
+  var theCords = [
+    [17, 89],
+    [17, 164],
+    [17, 239],
+    [17, 314],
+    [17, 389],
+    [54, 89],
+    [54, 164],
+    [54, 239],
+    [54, 314],
+    [54, 389],
+  ];
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $(elem).hasClass("piece")) {
+      isDragging = true;
+      $elem = elem;
+      lastPosX = elem.offsetLeft;
+      lastPosY = elem.offsetTop;
+      $("#bingo").hide();
+    }
+
+    if (elem == $elem && $(elem).hasClass("piece")) {
+      var posX = ev.deltaX / stageRatio + lastPosX;
+      var posY = ev.deltaY / stageRatio + lastPosY;
+
+      elem.style.left = posX + "px";
+      elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      if ($(elem).hasClass("piece")) {
+        //check
+        var fitin = -1;
+        for (var j = 0; j < theBoundary.length; j++) {
+          var myTop = parseInt($(elem).css("top"));
+          var myLeft = parseInt($(elem).css("left"));
+          if (
+            myTop < theBoundary[j][3] &&
+            myTop > theBoundary[j][2] &&
+            myLeft < theBoundary[j][1] &&
+            myLeft > theBoundary[j][0]
+          ) {
+            //do
+            fitin = j;
+          }
+        }
+        if (fitin < 0) {
+          var ppid = parseInt($(elem).attr("pid"));
+          $(elem)
+            .addClass("autoMoving")
+            .css("top", theCords[ppid][0])
+            .css("left", theCords[ppid][1])
+            .attr("guess", -1)
+            .delay(800)
+            .queue(function () {
+              $(this).removeClass("autoMoving").dequeue();
+            });
+        } else {
+          $(elem)
+            .addClass("autoMoving")
+            .css("left", theBoundary[fitin][0] + 25)
+            .attr("guess", fitin)
+            .delay(600)
+            .queue(function () {
+              $(this).removeClass("autoMoving").dequeue();
+            });
+        }
+      }
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    resetElem($(".contents > div.selected"));
+  };
+
+  var resetElem = function (elem) {
+    var styles = {
+      transform: "none",
+      top: 10,
+      left: 0,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").show();
+  };
+</script>

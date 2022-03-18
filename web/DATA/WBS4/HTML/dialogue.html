@@ -1,0 +1,381 @@
+<div id="module_wrapper" class="WBS3_dialogue_wrapper">
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="dia_leadin"></div>
+    <div class="dia_dia"></div>
+    <div class="dia_audio"></div>
+    <div class="dia_q"></div>
+    <div class="dia_check"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/dia_leadin.png" />
+    <img src="./images/common/dia_dia.png" />
+    <img src="./images/common/dia_audio.png" />
+    <img src="./images/common/dia_q.png" />
+    <img src="./images/common/dia_check.png" />
+    <img src="./images/common/btn_prev3.png" />
+    <img src="./images/common/btn_next3.png" />
+    <img src="./images/common/btn_prev4.png" />
+    <img src="./images/common/btn_next4.png" />
+    <img src="./images/common/wb_star.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create bg
+    var dialogueBg = `./DATA/${sid}/BOOK${bid}/IMAGES/${sid}-${bid}-${lid}-1-1.jpg`;
+    $("#contents").append(
+      `<img style="width:auto;height:100%;display:block;margin:0 auto;" src="${dialogueBg}"/>`
+    );
+    //create contents
+    var html = "";
+    $(gpXML)
+      .find("section")
+      .each(function (k) {
+        if (k == 0) {
+          //leadin
+          if (!isitEmpty($(this).text())) {
+            html += `<div class="wow slideInUp d0">
+                          <div class="qlist" qid="0">
+                            <ul>`;
+            $(this)
+              .find("item")
+              .each(function (i) {
+                let leadinArray = $(this).text().split("^");
+                html += "<li>" + leadinArray[0] + "</li>";
+              });
+            html += `</ul>
+                    <span class="prev" />
+                    <span class="next" />
+                  </div>
+                </div>`;
+          } else {
+            $(".sideTool .dia_leadin").remove();
+          }
+        }
+        if (k == 1) {
+          //dialogue
+          if (!isitEmpty($(this).text())) {
+            html += `<div class="wow slideInUp d1" style="z-index: 1">
+                          <div class="dblock"><ul>`;
+            $(this)
+              .find("item")
+              .each(function (i) {
+                let leadinArray = $(this).text().split("^");
+                html += "<li>";
+                if (!isitEmpty(leadinArray[2])) {
+                  html += "<h3>" + leadinArray[2] + "</h3>";
+                }
+                html += "<p>" + leadinArray[0] + "</p></li>";
+              });
+            html += `</ul>
+                  </div>
+                </div>`;
+          } else {
+            $(".sideTool .dia_dia").remove();
+          }
+        }
+        if (k == 2) {
+          //audio
+          if (!isitEmpty($(this).text())) {
+            html += `<div class="d2">`;
+            $(this)
+              .find("item")
+              .each(function (i) {
+                let audioArray = $(this).text().split("^");
+
+                html += `<audio preload="auto" class="a1" src="./DATA/${sid}/BOOK${bid}/AUDIO/${audioArray[1]}" />`;
+              });
+            html += `</div>`;
+          } else {
+            $(".sideTool .dia_audio").remove();
+          }
+        }
+        if (k == 3) {
+          //question
+          if (!isitEmpty($(this).text())) {
+            html += `<div class="wow slideInUp d3">
+                          <div class="qlist" qid="0">
+                            <ul>`;
+            $(this)
+              .find("item")
+              .each(function (i) {
+                let qArray = $(this).text().split("^");
+                html += "<li>" + qArray[0] + "</li>";
+              });
+            html += `</ul>
+                    <span class="prev green" />
+                    <span class="next green" />
+                  </div>
+                </div>`;
+          } else {
+            $(".sideTool .dia_q").remove();
+          }
+        }
+        if (k == 4) {
+          //check
+          if (!isitEmpty($(this).text())) {
+            html += `<div class="d4">`;
+            $(this)
+              .find("item")
+              .each(function (i) {
+                let checkArray = $(this).text().split("^");
+
+                html += `<audio preload="auto" class="a2" src="./DATA/${sid}/BOOK${bid}/AUDIO/${checkArray[1]}" />`;
+              });
+            html += `</div>`;
+          } else {
+            $(".sideTool .dia_check").remove();
+          }
+        }
+      });
+    $("#contents").append(html);
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+        if ($(".d0").length == 0) {
+          $(".sideTool .dia_leadin").remove();
+        }
+        if ($(".d1").length == 0) {
+          $(".sideTool .dia_dia").remove();
+        }
+        if ($(".d2").length == 0) {
+          $(".sideTool .dia_audio").remove();
+        }
+        if ($(".d3").length == 0) {
+          $(".sideTool .dia_q").remove();
+        }
+        if ($(".d4").length == 0) {
+          $(".sideTool .dia_check").remove();
+        }
+
+        //hammer
+        trigHammer();
+
+        //
+        $(".qlist").each(function (i) {
+          var tar = $(this);
+          var items = tar.find("li");
+          var amount = items.length;
+          items.unbind().bind("click", function () {
+            $(this).addClass("answered");
+          });
+          $(this)
+            .find(".prev")
+            .unbind()
+            .bind("click", function () {
+              var curid = parseInt(tar.attr("qid"));
+              curid--;
+              if (curid < 0) {
+                curid = amount - 1;
+              }
+              tar.attr("qid", curid);
+              items
+                .eq(curid)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+            });
+          $(this)
+            .find(".next")
+            .unbind()
+            .bind("click", function () {
+              var curid = parseInt(tar.attr("qid"));
+              curid++;
+              if (curid > amount - 1) {
+                curid = 0;
+              }
+              tar.attr("qid", curid);
+              items
+                .eq(curid)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+            });
+        });
+
+        //dblock
+        $(".dblock > ul > li")
+          .unbind()
+          .bind("mousedown", function (ev) {
+            click.x = ev.clientX;
+            click.y = ev.clientY;
+          })
+          .bind("mouseup", function (ev) {
+            if (
+              Math.abs(click.x - ev.clientX) <
+                click.threshold * stageRatioReal &&
+              Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+            ) {
+              $(this).toggleClass("transparent");
+            }
+          });
+
+        //sidetool
+        $(".sideTool > .dia_leadin")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            //
+            if ($(this).hasClass("active")) {
+              $(this).siblings(".dia_q").removeClass("active");
+              openContent("d0");
+              closeContent("d3");
+            } else {
+              closeContent("d0");
+            }
+          });
+        $(".sideTool > .dia_dia")
+          .unbind()
+          .bind("click", function () {
+            //
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              openContent("d1");
+            } else {
+              closeContent("d1");
+            }
+          });
+        $(".sideTool > .dia_audio")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents").find("audio.a1").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > .dia_q")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            //
+            if ($(this).hasClass("active")) {
+              $(this).siblings(".dia_leadin").removeClass("active");
+              openContent("d3");
+              closeContent("d0");
+            } else {
+              closeContent("d3");
+            }
+          });
+        $(".sideTool > .dia_check")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents").find("audio.a2").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging) {
+      isDragging = true;
+
+      if ($(elem).parent().hasClass("dblock")) {
+        $elem = elem;
+      } else if ($(elem).parent().parent().hasClass("dblock")) {
+        $elem = elem.parentElement;
+      } else {
+        $elem = new Object();
+      }
+      lastPosY = $elem.offsetTop;
+    }
+
+    if (isDragging && $($elem).parent().hasClass("dblock")) {
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+      if ($elem) {
+        $elem.style.top = posY + "px";
+      }
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+
+  var openContent = function (id) {
+    //resetAudio();
+
+    $(".contents")
+      .find("." + id)
+      .addClass("selected");
+    resetElem($(".contents").find("." + id));
+  };
+  var closeContent = function (id) {
+    //resetAudio();
+    $(".contents")
+      .find("." + id)
+      .removeClass("selected");
+  };
+
+  var resetElem = function (elem) {
+    elem
+      .find(".qlist")
+      .attr("qid", 0)
+      .find("li")
+      .removeClass("selected")
+      .eq(0)
+      .addClass("selected");
+    elem.find(".dblock > ul").css("top", "50px");
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

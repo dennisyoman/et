@@ -1,0 +1,568 @@
+<div id="module_wrapper" class="WRYG_grammar_wrapper">
+  <div class="mascot">
+    <img
+      class="wow bounceIn"
+      data-wow-delay="1.3s"
+      src="./images/common/giraffe_peep.png"
+    />
+    <span class="wow fadeInDownBig" data-wow-delay=".3s"></span>
+    <span id="gt" class="wow fadeInDownBig" data-wow-delay=".2s"></span>
+    <span class="wow fadeInDownBig" data-wow-delay=".1s"></span>
+    <span class="wow fadeInDownBig"></span>
+  </div>
+  <div class="tabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="grammar"></div>
+    <div class="fit"></div>
+    <div class="master"></div>
+    <div class="switch"></div>
+    <div class="eye"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_master.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/btn_grammar.png" />
+    <img src="./images/common/btn_switch.png" />
+    <img src="./images/common/btn_next3.png" />
+    <img src="./images/common/btn_prev3.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //grammar xmlloader parameter
+    if (lid.length <= 2) {
+      if (lid.slice(-1) == "R") {
+        Range = "G";
+      } else if (lid.slice(-1) == "C") {
+        Range = "O";
+      }
+
+      Unit = lid.substr(0, 1);
+    } else {
+      if (lid.slice(-1) == "R") {
+        Range = "G";
+      } else if (lid.slice(-1) == "C") {
+        Range = "O";
+      }
+      Unit = lid.substr(0, 2);
+    }
+
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        //文法類型
+        if (i == 0) {
+          var grammarType = comboArray[1];
+          $("#gt").text(grammarType);
+        }
+        //文法圖片
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+          $("#module_wrapper .assetsPreload").append(
+            `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`
+          );
+        }
+
+        //qa
+        itemHTML += `<div class="qa" curID="0"><ul>`;
+        itemHTML += `</ul>
+                    <div class="pagination wow bounceInUp"><span class="prev" /><span class="page" /><span class="next"/></div>
+                  </div>`;
+
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+        QArray.push([[], [], []]);
+      });
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //hammer
+        trigHammer();
+        //qa
+        $(".qa .next")
+          .unbind()
+          .bind("click", function () {
+            $(".sideTool > div.eye").removeClass("active");
+            $(".contents .showAns").removeClass("showAns");
+            //
+            var tar = $(".contents > div.selected .qa");
+            var total = tar.find("li").length;
+            var curID = parseInt(tar.attr("curID"));
+            if (curID < total - 1) {
+              curID += 1;
+            } else {
+              curID = 0;
+            }
+            tar
+              .attr("curID", curID)
+              .find("li")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected .qa")
+              .find(".page")
+              .text(curID + 1 + "/" + total);
+          });
+        $(".qa .prev")
+          .unbind()
+          .bind("click", function () {
+            $(".sideTool > div.eye").removeClass("active");
+            $(".contents .showAns").removeClass("showAns");
+            //
+            var tar = $(".contents > div.selected .qa");
+            var total = tar.find("li").length;
+            var curID = parseInt(tar.attr("curID"));
+            if (curID > 0) {
+              curID -= 1;
+            } else {
+              curID = total - 1;
+            }
+            tar
+              .attr("curID", curID)
+              .find("li")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected .qa")
+              .find(".page")
+              .text(curID + 1 + "/" + total);
+          });
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+
+        $(".sideTool > div.grammar")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+              $(".sideTool > div.master").removeClass("active");
+              $(".sideTool > div.eye").removeClass("active").hide();
+              $(".sideTool > div.switch").removeClass("active").hide();
+              $(".contents > div.selected").removeClass("mastered");
+              resetElem($(".contents > div.selected"));
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+            }
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 170,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        $(".sideTool > div.master")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+              $(".sideTool > div.grammar").removeClass("active");
+              $(".sideTool > div.fit").removeClass("active").hide();
+              $(".sideTool > div.switch").removeClass("active").fadeIn();
+              $(".sideTool > div.eye").removeClass("active").fadeIn();
+              //
+              $(".contents > div.selected").addClass("mastered");
+              resetElem($(".contents > div.selected"));
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".contents > div.selected .qa li.selected").addClass("showAns");
+            } else {
+              $(".contents > div.selected .qa li.selected").removeClass(
+                "showAns"
+              );
+            }
+          });
+
+        $(".sideTool > div.switch")
+          .unbind()
+          .bind("click", function () {
+            appendQ();
+            $(".sideTool > div.eye").removeClass("active");
+          });
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            console.log("start");
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+    loadCHxml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var masterArray = [];
+  //
+  var Range, Unit;
+  var titleWd = [
+    "Choose the correct answer.",
+    "Write the correct answer. ",
+    "Choose the correct answer.",
+  ];
+  var CHxml, Fxml, Txml;
+  var QArray = [];
+
+  var gpath = "/ws/ws_get.asmx/Info_AfterSchool";
+  var loadCHxml = function () {
+    if (testmode) {
+      gpath = "./CHxml.xml";
+    }
+
+    //選擇題 聽音拼字 (聽)
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {
+        token: uToken,
+        table: "M",
+        testtype: "G",
+        bid: bid,
+        lid: sid,
+        uid: Unit,
+        range: Range,
+      },
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        let code = $(data).find("code").first().text();
+        let msg = $(data).find("msg").first().text();
+        if (code == "0" || code == 0) {
+          console.log("content:CHxml");
+          CHxml = data;
+          loadFxml();
+        } else {
+          showError(msg);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var loadFxml = function () {
+    if (testmode) {
+      gpath = "./Fxml.xml";
+    }
+    //填充題 聽音拼字 (聽)
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {
+        token: uToken,
+        table: "F",
+        testtype: "G",
+        bid: bid,
+        lid: sid,
+        uid: Unit,
+        range: Range,
+      },
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        let code = $(data).find("code").first().text();
+        let msg = $(data).find("msg").first().text();
+        if (code == "0" || code == 0) {
+          console.log("content:Fxml");
+          Fxml = data;
+          loadTxml();
+        } else {
+          showError(msg);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var loadTxml = function () {
+    if (testmode) {
+      gpath = "./Txml.xml";
+    }
+    //是非題 聽音拼字 (聽)
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {
+        token: uToken,
+        table: "T",
+        testtype: "G",
+        bid: bid,
+        lid: sid,
+        uid: Unit,
+        range: Range,
+      },
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        let code = $(data).find("code").first().text();
+        let msg = $(data).find("msg").first().text();
+        if (code == "0" || code == 0) {
+          console.log("content:Txml");
+          Txml = data;
+
+          //create questions array
+          createQ();
+          //check loading
+
+          checkCompLoading("#module_wrapper");
+        } else {
+          showError(msg);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createQ = function () {
+    $(CHxml)
+      .find("item")
+      .each(function (i) {
+        var arraySeq = parseInt($(this).find("etSection").text());
+        var Question = $(this).find("Question").text();
+        var OptionA = $(this).find("OptionA").text();
+        var OptionB = $(this).find("OptionB").text();
+        var OptionC = $(this).find("OptionC").text();
+        var Ans = $(this).find("Ans").text();
+        var tempHTML = `<h3>${titleWd[0]}</h3>
+        <p>${Question}</p>
+        <br />
+        <p class="green option">${OptionA}／${OptionB}／${OptionC}</p>
+        <p class="green ans">Answer：${Ans}</p>`;
+        QArray[arraySeq - 1][0].push(tempHTML);
+      });
+    $(Fxml)
+      .find("item")
+      .each(function (i) {
+        var arraySeq = parseInt($(this).find("etSection").text());
+        var QuestionCombo = $(this).find("Question").text().split("^");
+        var Ans = QuestionCombo[1];
+        QuestionCombo[1] = "_____";
+        var Question = QuestionCombo.join("");
+
+        var tempHTML = `<h3>${titleWd[1]}</h3>
+        <p>${Question}</p>
+        <br />
+        <p class="green ans">Answer：${Ans}</p>`;
+        QArray[arraySeq - 1][1].push(tempHTML);
+      });
+    $(Txml)
+      .find("item")
+      .each(function (i) {
+        var arraySeq = parseInt($(this).find("etSection").text());
+        var Question = $(this).find("Question").text();
+        var Remark = $(this).find("Remark").text();
+        var Ans = $(this).find("Ans").text();
+        if (Ans == "T") {
+          Ans = "True";
+        } else {
+          Ans = "False";
+        }
+        var tempHTML = `<h3>${titleWd[2]}</h3>
+        <p>${Question}</p>
+        <br />
+        <p class="green option">True／False</p>
+        <p class="green ans">Answer：${Ans}</p>`;
+        if (!isitEmpty(Remark)) {
+          tempHTML += `<p class="green ans">（${Remark}）</p>`;
+        }
+        QArray[arraySeq - 1][2].push(tempHTML);
+      });
+  };
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var appendQ = function () {
+    var seq = $(".tabs > span.selected").index();
+
+    var tempHTML = "";
+    for (var k = 0; k < QArray[seq].length; k++) {
+      tempHTML += "<li>";
+      //
+      var tempArray = QArray[seq][k];
+      shuffle(tempArray);
+      tempHTML += tempArray[0];
+      tempHTML += "</li>";
+    }
+    $(".contents > div.selected .qa").attr("curID", 0);
+    $(".contents > div.selected .qa ul").empty().append(tempHTML);
+    //
+    resetElem($(".contents > div.selected"));
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected mastered");
+
+    //show side tool btn
+    $(".sideTool > div.grammar").fadeIn().click();
+    $(".sideTool > div.master").fadeIn();
+    //
+    appendQ();
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 170,
+    };
+    elem.css(styles);
+    //qa
+    elem.find(".showAns").removeClass("showAns");
+    elem
+      .find(".qa")
+      .attr("curID", 0)
+      .find("li")
+      .eq(0)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    elem.find(".qa .page").text("1/" + elem.find(".qa > ul > li").length);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

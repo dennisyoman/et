@@ -1,0 +1,410 @@
+<div id="reader_module_wrapper" class="READER_leadin_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="covers" class="covers wow slideInUp"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="reader_a2"></div>
+    <div class="reader_eye"></div>
+    <div class="speaker"></div>
+    <div class="eye"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/reader_a2.png" />
+    <img src="./images/common/reader_eye.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/reader_review.png" />
+    <img src="./images/common/detective.png" />
+    <img src="./images/common/wood.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //
+    var readerNode = $(gpXML).find("lesson:eq(0)");
+    gpObj.sid = readerNode.attr("sid");
+    gpObj.bid = readerNode.attr("bid");
+    gpObj.lid = readerNode.attr("lid");
+
+    //background image
+    var bgNode = $(gpXML).find("section:eq(0)");
+    let bgImg = `./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${$(bgNode)
+      .find("item:eq(0)")
+      .text()}`;
+    $("#rbg").append("<img src='" + bgImg + "'/>");
+    $("#reader_module_wrapper .assetsPreload").append(`<img src='${bgImg}'/>`);
+
+    //create contents
+    ////type
+    let targetNode = $(gpXML).find("section:eq(2)");
+    let type = $(targetNode).find("item:eq(14)").text();
+
+    ////basic - a2
+    for (var i = 6; i <= 9; i++) {
+      var tempQ = $(targetNode)
+        .find("item:eq(" + i + ")")
+        .text();
+      if (!isitEmpty(tempQ)) {
+        qArray.push(tempQ);
+      }
+    }
+
+    ////basic - sightword
+    var tempSW = $(targetNode).find("item:eq(13)").text();
+    if (!isitEmpty(tempSW)) {
+      sightwordArray = tempSW.split("^");
+      for (var i = 0; i < sightwordArray.length; i++) {
+        $("#reader_module_wrapper .assetsPreload").append(
+          `<audio preload="auto" class="sw_${sightwordArray[i]}" src="./DATA/READER/sightWords/${sightwordArray[i]}.mp3" />`
+        );
+      }
+    }
+
+    ////review
+    var reviewImgArray = $(targetNode).find("item:eq(1)").text().split("^");
+    var reviewAnsArray = $(targetNode).find("item:eq(2)").text().split("^");
+    var reviewAudioArray = $(targetNode).find("item:eq(5)").text().split("^");
+
+    for (var i = 0; i < reviewImgArray.length; i++) {
+      var itemHTML = "<div class='review card2'>";
+      if (
+        reviewImgArray[i] != "" &&
+        reviewImgArray[i] != undefined &&
+        reviewImgArray[i] != null
+      ) {
+        itemHTML += `<span><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${reviewImgArray[i]}" /></span>`;
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${reviewImgArray[i]}"/>`
+        );
+      }
+      if (
+        reviewAnsArray[i] != "" &&
+        reviewAnsArray[i] != undefined &&
+        reviewAnsArray[i] != null &&
+        reviewAnsArray[i] != "empty"
+      ) {
+        itemHTML += `<span class="ans"><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${reviewAnsArray[i]}" /></span>`;
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${reviewAnsArray[i]}"/>`
+        );
+      }
+      if (
+        reviewAudioArray[i] != "" &&
+        reviewAudioArray[i] != undefined &&
+        reviewAudioArray[i] != null &&
+        reviewAudioArray[i] != "empty"
+      ) {
+        itemHTML += `
+                  <audio preload="auto" src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/AUDIO/${reviewAudioArray[i]}" />`;
+      }
+      itemHTML += "</div>";
+
+      $("#contents").append(itemHTML);
+      if (i == 0) {
+        $("#reader_module_wrapper .sideTool").append(
+          "<div style='margin-top:30px;' rrid='" +
+            i +
+            "' class='reader_review'>" +
+            (i + 1) +
+            "</div>"
+        );
+      } else {
+        $("#reader_module_wrapper .sideTool").append(
+          "<div rrid='" + i + "' class='reader_review'>" + (i + 1) + "</div>"
+        );
+      }
+    }
+    //載入完成要執行init
+    $("#reader_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.reader_a2")
+          .unbind()
+          .bind("click", function () {
+            $(this).addClass("active");
+            $(".sideTool > div.reader_eye").removeClass("active");
+            playReaderA2();
+          });
+        $(".sideTool > div.reader_eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).addClass("active");
+            $(".sideTool > div.reader_a2").removeClass("active");
+            playSightword();
+          });
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+
+        $(".sideTool > div.reader_review")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("active")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("active")
+                .siblings(".reader_review")
+                .removeClass("active");
+              openContent($(this).attr("rrid"));
+            }
+          });
+
+        //init
+        if (type == "a") {
+          //review
+          $(".sideTool > div.reader_review").eq(0).click();
+          $("#rbg").remove();
+          $(".sideTool .reader_a2").remove();
+          $(".sideTool .reader_eye").remove();
+        } else {
+          //basic
+          $(".sideTool .speaker").remove();
+          $(".sideTool .eye").remove();
+          $(".sideTool > div.reader_review").remove();
+        }
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#reader_module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var qArray = [];
+  var sightwordArray = [];
+  var customClass = "";
+  //
+  if (gpObj.bid == 5 && (gpObj.lid == 6 || gpObj.lid == 16)) {
+    customClass = "long";
+  } else if (gpObj.bid == 6 && gpObj.lid == 16) {
+    customClass = "long";
+  }
+  //
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (
+      !isDragging &&
+      $elem != null &&
+      ($($elem).hasClass("card") || $($elem).hasClass("card2"))
+    ) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var playReaderA2 = function () {
+    $("#contents").empty().attr("zindex", 2);
+    shuffle(qArray);
+
+    var qItemHtml = "";
+    for (var i = 0; i < qArray.length; i++) {
+      var randomTP = Math.floor((i * 100) / qArray.length) + "%";
+      qItemHtml += `<div class='card ${customClass}' style='top:${randomTP};left:700px;' >${qArray[i]}</div>`;
+    }
+    $("#contents")
+      .append(qItemHtml)
+      .delay(500)
+      .queue(function () {
+        inOrderCard();
+        $(this).dequeue();
+      });
+  };
+
+  var playSightword = function () {
+    var answerSrt = $(gpXML).find("section:eq(2)").find("item:eq(12)").text();
+
+    $("#contents")
+      .empty()
+      .append(
+        `<div class="a2a ${customClass} card2 wow flipInX">${answerSrt}</div>`
+      );
+    shuffle(sightwordArray);
+
+    var sw = "<div class='sw'>";
+    for (var j = 0; j < sightwordArray.length; j++) {
+      sw += `<div class="wow bounceInUp" data-wow-delay="${
+        0.1 * j
+      }s"><span/><span><p>${sightwordArray[j]}</p></span><span/><span/></div>`;
+    }
+    sw += "</div>";
+    $("#contents").append(sw);
+    //
+    $("#contents .sw > div")
+      .bind("mousedown", function (ev) {
+        if (!isMobile()) {
+          $(this).addClass("active");
+          rootSoundEffectName(
+            `./DATA/READER/sightWords/${$(this).find("p").text()}.mp3`
+          );
+        }
+      })
+      .bind("mouseup", function (ev) {
+        if (!isMobile()) {
+          $(this).removeClass("active");
+        }
+      })
+      .bind("click", function (ev) {
+        if (isMobile()) {
+          $(this).toggleClass("active");
+        }
+      });
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 10;
+    var startTop = 50;
+    var startLeft = 330;
+    if ($(".card").hasClass("long")) {
+      startLeft = 280;
+    }
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+  var openContent = function (id) {
+    resetAudio();
+    $(".sideTool > div.speaker").removeClass("active").hide();
+    $(".sideTool > div.eye").removeClass("active").hide();
+    //
+    $(".contents > div")
+      .removeClass("showANS")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+      $(".sideTool > div.eye").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio").length > 0) {
+      $(".sideTool > div.speaker").fadeIn();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var styles = {
+      transform: "none",
+      top: 0,
+      left: 50,
+    };
+    elem.css(styles);
+  };
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+</script>

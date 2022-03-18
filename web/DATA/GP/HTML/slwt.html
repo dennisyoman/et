@@ -1,0 +1,443 @@
+<div id="module_wrapper" class="GP_slwt_wrapper">
+  <div id="contents" class="contents" zindex="2"></div>
+  <div class="sideTool">
+    <div class="gp_fan"></div>
+    <div class="gp_random"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/gp_fan.png" />
+    <img src="./images/common/gp_random.png" />
+    <img src="./images/common/wb_star.png" />
+    <img src="./images/common/gp.jpg" />
+    <img src="./images/common/chimes.gif" />
+    <img src="./images/common/smoke.gif" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    var imgArray = $(targetNode).find("item:eq(0)").text().split("^");
+    var audioArray = $(targetNode).find("item:eq(1)").text().split("^");
+
+    for (var i = 0; i < imgArray.length; i++) {
+      var randomLP = Math.floor((i * 100) / imgArray.length) + "%";
+      let itemHTML = `<div class='card' style='left:${randomLP};'><div>`;
+
+      itemHTML += `<span class="img"><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${imgArray[i]}" /></span>`;
+
+      itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${audioArray[i]}" />`;
+
+      itemHTML += `<span class="visible"></span>`;
+      itemHTML += "</div></div>";
+
+      $("#contents").append(itemHTML);
+      $("#module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${imgArray[i]}"/>`
+      );
+    }
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //card
+        $(".card")
+          .unbind()
+          .bind("mousedown", function (ev) {
+            click.x = ev.clientX;
+            click.y = ev.clientY;
+            getHighestDepth($(this));
+          })
+          .bind("mouseup", function (ev) {
+            if (
+              Math.abs(click.x - ev.clientX) <
+                click.threshold * stageRatioReal &&
+              Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+            ) {
+              if ($(ev.target).hasClass("voc")) {
+                $(this).toggleClass("voced");
+                updateVOC($(this));
+              } else {
+                if (!$(this).hasClass("active")) {
+                  $(this).addClass("active");
+                } else {
+                  if ($(this).hasClass("flipback")) {
+                    $(this).removeClass("flipback");
+                  } else {
+                    if ($(".ans").length > 0) {
+                      //play listen
+                      checkListeningAnswer($(this));
+                    } else {
+                      //normal
+                      $(this).addClass("visibled").removeClass("mode2");
+                      playWBAudio($(this));
+                      //make chimes
+                      var uniq = new Date().getTime();
+                      $(this)
+                        .find(".visible")
+                        .empty()
+                        .append(
+                          `<img src="./images/common/chimes.gif?uniq=${uniq}"/>`
+                        );
+                      rootSoundEffect($chimes);
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.gp_fan")
+          .unbind()
+          .bind("click", function () {
+            playFan();
+          });
+        $(".sideTool > div.gp_random")
+          .unbind()
+          .bind("click", function () {
+            playRandom();
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            initWB();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var cardShuffleTime = 1600;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (
+      !isDragging &&
+      $elem != null &&
+      $($elem).hasClass("card") &&
+      $(".ans").length < 1
+    ) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+
+  var playWBAudio = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio").attr("src"));
+  };
+  var initWB = function () {
+    inOrderCard();
+    //
+    $(".contents")
+      .delay(1100)
+      .queue(function () {
+        $(".card").addClass("active").removeClass("flipback");
+        showTool();
+        $(this).dequeue();
+      });
+  };
+
+  var playRandom = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.gp_random").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        moveAsideCard();
+        ttar.removeClass("flipback");
+        //
+        showTool();
+        $(this).dequeue();
+      });
+  };
+
+  var playFan = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.gp_fan").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        inOrderCard();
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var inOrderCard = function () {
+    coverCards();
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = -4.5 * amount;
+    var cw = 123;
+    var ch = 200;
+    var mid = (amount - 1) / 2;
+    var diffA = 40 / amount;
+    var diffY = 60 / amount;
+
+    var padding = (600 - (cw + margin * 2) * amount) / 2;
+    for (var k = 0; k < amount; k++) {
+      var fdy = Math.abs(k - mid) * diffY;
+      orderArray.push([
+        padding + k * (cw + margin * 2),
+        "calc(50% - " + (100 - fdy) + "px)",
+      ]);
+    }
+    console.log(orderArray);
+
+    $(".card").each(function (i) {
+      var fr = (i - mid) * diffA;
+
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + fr + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var getRandomCardID = function () {
+    var amount = $(".card").length;
+    return Math.floor(Math.random() * amount);
+  };
+
+  var gatheringCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 20) - 10;
+      var randomDiffY = Math.floor(Math.random() * 20) - 10;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(50% - " + (61 + randomDiffX) + "px)",
+          top: "calc(50% - " + (100 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+    //card shuffle effect
+    cardShuffleEffect();
+  };
+
+  var cardShuffleEffect = function () {
+    $("#module_wrapper")
+      .delay(cardShuffleTime / 4)
+      .queue(function () {
+        $(".card").removeClass("shiftLeft shiftRight");
+        var cid = getRandomCardID();
+        var ttar = $(".card").eq(cid);
+        ttar.addClass("shiftLeft");
+        //
+        var randomRotate = 0;
+        var uniq = new Date().getTime();
+        $("#module_wrapper").append(
+          `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+        );
+        $(".smokeEffect").css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+        rootSoundEffect($show);
+        $(this)
+          .dequeue()
+          .delay(cardShuffleTime / 4)
+          .queue(function () {
+            $(".smokeEffect").remove();
+            $(".card").removeClass("shiftLeft shiftRight");
+            var cid = getRandomCardID();
+            var ttar = $(".card").eq(cid);
+            ttar.addClass("shiftRight");
+            //
+            var randomRotate = 180;
+            var uniq = new Date().getTime();
+            $("#module_wrapper").append(
+              `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+            );
+            $(".smokeEffect").css({
+              transform: "rotate(" + randomRotate + "deg)",
+            });
+            rootSoundEffect($show);
+            $(this)
+              .dequeue()
+              .delay(cardShuffleTime / 4)
+              .queue(function () {
+                $(".smokeEffect").remove();
+                $(".card").removeClass("shiftLeft shiftRight");
+                var cid = getRandomCardID();
+                var ttar = $(".card").eq(cid);
+                ttar.addClass("shiftLeft");
+                //
+                var randomRotate = 90;
+                var uniq = new Date().getTime();
+                $("#module_wrapper").append(
+                  `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+                );
+                $(".smokeEffect").css({
+                  transform: "rotate(" + randomRotate + "deg)",
+                });
+                rootSoundEffect($show);
+                $(this)
+                  .dequeue()
+                  .delay(cardShuffleTime / 3)
+                  .queue(function () {
+                    $(".smokeEffect").remove();
+                    $(".card").removeClass("shiftLeft shiftRight");
+                    $(this).dequeue();
+                  });
+              });
+          });
+      });
+  };
+
+  var moveAsideCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 120) - 60;
+      var randomDiffY = Math.floor(Math.random() * 40) - 20;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(50% - " + (61 + randomDiffX) + "px)",
+          top: "calc(50% - " + (100 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var coverCards = function () {
+    $(".card").addClass("flipback").removeClass("visibled autoMoving");
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+
+  var showTool = function () {
+    //show side tool btn
+    $(".sideTool > div").fadeIn();
+  };
+</script>

@@ -1,0 +1,1079 @@
+<div id="module_wrapper" class="WRYG_wb_wrapper">
+  <div id="contents" class="contents" zindex="2"></div>
+  <div id="wb_ad" class="wb_ad"></div>
+  <div id="wb_definition" class="wb_definition">
+    <div class="extend wow fadeInUp">
+      <div class="subtab">
+        <span>Definition</span>
+        <span>Example Sentence</span>
+      </div>
+      <div class="cont">
+        <div class="def"></div>
+        <div class="exam"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sideTool">
+    <div class="btn_definition wbmode1"></div>
+    <div class="wb_listen wbmode1"></div>
+    <div class="wb_speak wbmode1"></div>
+    <div class="wb_read wbmode1"></div>
+    <div class="wb_write wbmode1"></div>
+    <div class="wb_dn wbmode1 wow bounceInUp"></div>
+    <div class="wb_up wbmode2 wow bounceInDown"></div>
+    <div class="wb_listen_ad wbmode2"></div>
+    <div class="wb_speak_ad wbmode2"></div>
+    <div class="wb_read_ad wbmode2"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_definition.png" />
+    <img src="./images/common/sentence_speaker.png" />
+    <img src="./images/common/wb_listen.png" />
+    <img src="./images/common/wb_listen_speaker.png" />
+    <img src="./images/common/wb_read.png" />
+    <img src="./images/common/wb_speak.png" />
+    <img src="./images/common/wb_star.png" />
+    <img src="./images/common/wb_write.png" />
+    <img src="./images/common/wb_eye.png" />
+    <img src="./images/common/wb.jpg" />
+    <img src="./images/common/smoke.gif" />
+    <img src="./images/common/icon_stupid.png" />
+    <img src="./images/common/icon_right.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //grammar xmlloader parameter
+    if (lid.length <= 2) {
+      Range = lid.slice(-1);
+      Unit = lid.substr(0, 1);
+    } else {
+      Range = lid.slice(-1);
+      Unit = lid.substr(0, 2);
+    }
+    //create contents
+
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        var comboArray = $(this).text().split("|");
+        var word = comboArray[0];
+        var sfx = comboArray[2];
+        var type = comboArray[1];
+        var exampleArray = comboArray[3].split("^");
+        var exampleSfxArray = comboArray[4].split("^");
+        var Definition = comboArray[5];
+        var lm = comboArray[6];
+
+        wbArray.push([
+          word,
+          type,
+          sfx,
+          exampleArray,
+          exampleSfxArray,
+          Definition,
+          lm,
+        ]);
+
+        //
+        if (!isitEmpty(sfx)) {
+          $("#module_wrapper .assetsPreload").append(
+            `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${sfx}" />`
+          );
+        }
+
+        for (var k = 0; k < exampleSfxArray.length; k++) {
+          if (!isitEmpty(exampleSfxArray[k])) {
+            $("#module_wrapper .assetsPreload").append(
+              `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${exampleSfxArray[k]}" />`
+            );
+          }
+        }
+      });
+
+    // create definition
+    for (var i = 0; i < wbArray.length; i++) {
+      var word = wbArray[i][0];
+      var itemHTML = `<div class='word'><div>`;
+
+      if (word.length < 12) {
+        itemHTML += `<p>${word}</p>`;
+      } else {
+        itemHTML += `<p class="multi">${word}</p>`;
+      }
+
+      if (wbArray[i][1].length < 10) {
+        itemHTML += `<h3>${wbArray[i][1]}</h3>`;
+      } else {
+        itemHTML += `<h3 class="multi">${wbArray[i][1]}</h3>`;
+      }
+      itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${wbArray[i][2]}" />`;
+
+      if (wbArray[i][6] == "Y") {
+        itemHTML += `<span class="lm"></span>`;
+      }
+      itemHTML += "</div></div>";
+      $("#wb_definition").append(itemHTML);
+    }
+
+    var amount = $("#wb_definition .word").length;
+    var orderArray = [];
+    var margin = 5;
+    var cw = 80;
+    var ch = 48;
+
+    var row = 4;
+    var column = 3;
+    var padding = (600 - (cw + margin * 2) * row) / 2;
+    var paddingTop = 10;
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([
+        padding + (k % row) * (cw + margin * 4),
+        paddingTop + Math.floor(k / row) * (ch + margin * 1),
+      ]);
+    }
+
+    $(".word").each(function (i) {
+      $(this)
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .unbind()
+        .bind("click", function (ev) {
+          $(this).addClass("active").siblings(".active").removeClass("active");
+          createSentence(i);
+          $(".extend").show();
+          playWBAudio($(this));
+        });
+    });
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        applyWB(wbArray);
+
+        //W1Array
+        $(W1xml)
+          .find("item")
+          .each(function (i) {
+            var Question = $(this).find("Question").text();
+            var ExtraPractice1 = $(this).find("ExtraPractice1").text();
+            var ExtraPractice2 = $(this).find("ExtraPractice2").text();
+            var ExtraPractice3 = $(this).find("ExtraPractice3").text();
+            var Syllable = $(this).find("Syllable").text();
+
+            for (var n = 0; n < wbArray.length; n++) {
+              if (wbArray[n][0] == Question) {
+                var sfx = wbArray[n][2];
+                var exampleArray = wbArray[n][3];
+              }
+            }
+
+            W1Array.push([
+              Question,
+              [ExtraPractice1, ExtraPractice2, ExtraPractice3],
+              Syllable,
+              sfx,
+              exampleArray,
+            ]);
+          });
+        //W2Array
+        $(W2xml)
+          .find("item")
+          .each(function (i) {
+            var Question = $(this).find("Question").text();
+            var OptionA = $(this).find("OptionA").text();
+            var OptionB = $(this).find("OptionB").text();
+            var OptionC = $(this).find("OptionC").text();
+            var Ans = $(this).find("Ans").text();
+
+            W2Array.push([Question, [OptionA, OptionB, OptionC], Ans]);
+          });
+
+        console.log(W1Array);
+        console.log(W2Array);
+
+        //subtab
+        $(".subtab")
+          .find(">span")
+          .unbind()
+          .bind("click", function () {
+            $(this)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".cont > div")
+              .eq($(this).index())
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+          });
+
+        //sidetool
+        $(".sideTool > div.btn_definition")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            WBMode = 1;
+            $(".sub").removeClass("sub");
+            if ($(this).hasClass("active")) {
+              $("#contents").hide();
+              $("#wb_ad").hide();
+              $("#wb_definition").fadeIn();
+              playDefinition();
+            } else {
+              $("#contents").show();
+              $("#wb_ad").hide();
+              $("#wb_definition").hide();
+            }
+          });
+        $(".sideTool > div.wb_listen")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            $("#wb_definition").hide();
+            if (!$(this).hasClass("sub")) {
+              $(this).addClass("sub");
+              playListening();
+            } else {
+              playWBAudio($(".ans"));
+            }
+          });
+        $(".sideTool > div.wb_speak")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            $("#wb_definition").hide();
+            playSpeaking();
+          });
+        $(".sideTool > div.wb_read")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            $("#wb_definition").hide();
+            playReading();
+          });
+        $(".sideTool > div.wb_write")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            $("#wb_definition").hide();
+            playWriting();
+          });
+
+        $(".sideTool > div.wb_listen_ad")
+          .unbind()
+          .bind("click", function (e) {
+            WBMode = 2;
+            $("#contents").hide();
+            $("#wb_definition").hide();
+            $("#wb_ad").css("display", "flex");
+            if (!$(this).hasClass("sub")) {
+              $(this).addClass("sub");
+              playListeningAD(true);
+            } else {
+              //判斷是否按在喇叭
+              var pl = $("#root").offset().left / stageRatioReal;
+              if (e.pageX / stageRatioReal - pl < 600) {
+                playListeningAD(false);
+              } else {
+                playListeningAD(true);
+              }
+            }
+          });
+        $(".sideTool > div.wb_speak_ad")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            $("#contents").hide();
+            $("#wb_definition").hide();
+            $("#wb_ad").css("display", "flex");
+            playSpeakingAD();
+          });
+        $(".sideTool > div.wb_read_ad")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            $("#contents").hide();
+            $("#wb_definition").hide();
+            $("#wb_ad").css("display", "flex");
+            playReadingAD();
+          });
+
+        $(".sideTool > div.wb_up")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $(".sub").removeClass("sub");
+            resetTool();
+            showTool();
+          });
+        $(".sideTool > div.wb_dn")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            resetTool();
+            showTool();
+          });
+        //hammer
+        trigHammer();
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            initWB();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadW1xml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+  var cardShuffleTime = 1600;
+  var wbArray = [];
+  var WBMode = 1;
+  var W1Array = [];
+  var W2Array = [];
+  //
+  var Range, Unit;
+  var W1xml, W2xml;
+  var gpath = "/ws/ws_get.asmx/Info_AfterSchool";
+  var loadW1xml = function () {
+    if (testmode) {
+      gpath = "./W1xml.xml";
+    }
+    //聽音拼字 (聽)
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {
+        token: uToken,
+        table: "L",
+        testtype: "V",
+        bid: bid,
+        lid: sid,
+        uid: Unit,
+        range: Range,
+      },
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        let code = $(data).find("code").first().text();
+        let msg = $(data).find("msg").first().text();
+        if (code == "0" || code == 0) {
+          console.log("content:W1xml");
+          W1xml = data;
+          loadW2xml();
+        } else {
+          showError(msg);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createSentence = function (wid) {
+    $(".def").empty();
+    var ds = wbArray[wid][5].split("^");
+    for (var k = 0; k < ds.length; k++) {
+      $(".def").append(`<p>${ds[k]}</p>`);
+    }
+    $(".exam").empty();
+    for (var k = 0; k < wbArray[wid][3].length; k++) {
+      $(".exam").append(`<p>${wbArray[wid][3][k]}
+        <audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${wbArray[wid][4][k]}" />
+        </p>`);
+    }
+    //
+    $(".subtab >span").eq(0).click();
+    $(".exam >p")
+      .unbind()
+      .bind("click", function () {
+        playWBAudio($(this));
+      });
+  };
+
+  var loadW2xml = function () {
+    if (testmode) {
+      gpath = "./W2xml.xml";
+    }
+    //填充題 聽音拼字 (聽)
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {
+        token: uToken,
+        table: "M",
+        testtype: "V2",
+        bid: bid,
+        lid: sid,
+        uid: Unit,
+        range: Range,
+      },
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        let code = $(data).find("code").first().text();
+        let msg = $(data).find("msg").first().text();
+        if (code == "0" || code == 0) {
+          console.log("content:W2xml");
+          W2xml = data;
+          checkCompLoading("#module_wrapper");
+        } else {
+          showError(msg);
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  //
+  var toggleWBL = function () {
+    resetTool();
+
+    $("#contents").empty();
+    applyWB(wbArray);
+
+    $("#module_wrapper")
+      .delay(1000)
+      .queue(function () {
+        initWB();
+        $(this).dequeue();
+      });
+  };
+
+  var applyWB = function (tarAy) {
+    for (var i = 0; i < tarAy.length; i++) {
+      var randomLP = Math.floor((i * 100) / tarAy.length) + "%";
+      var word = tarAy[i][0];
+      let itemHTML = `<div class='card' style='left:${randomLP};' voc='${word}'><div>`;
+
+      if (word.length < 11) {
+        itemHTML += `<p><span>${word}</span></p>`;
+      } else {
+        itemHTML += `<p class="small"><span>${word}</span></p>`;
+      }
+      if (tarAy[i][1].length < 10) {
+        itemHTML += `<h3>${tarAy[i][1]}</h3>`;
+      } else {
+        itemHTML += `<h3 class="multi">${tarAy[i][1]}</h3>`;
+      }
+
+      itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${tarAy[i][2]}" />`;
+
+      if (tarAy[i][6] == "Y") {
+        itemHTML += `<span class="lm"></span>`;
+      }
+
+      itemHTML += `<span class="visible"></span><span class="voc"></span>`;
+      itemHTML += "</div></div>";
+
+      $("#contents").append(itemHTML);
+    }
+
+    //card
+    $(".card")
+      .unbind()
+      .bind("mousedown", function (ev) {
+        click.x = ev.clientX;
+        click.y = ev.clientY;
+        getHighestDepth($(this));
+      })
+      .bind("mouseup", function (ev) {
+        if (
+          Math.abs(click.x - ev.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+        ) {
+          if ($(ev.target).hasClass("voc")) {
+            $(this).toggleClass("voced");
+            updateVOC($(this));
+          } else {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+            } else {
+              if ($(this).hasClass("flipback")) {
+                $(this).removeClass("flipback");
+              } else {
+                if ($(".ans").length > 0) {
+                  //play listen
+                  checkListeningAnswer($(this));
+                } else {
+                  //normal
+                  $(this).addClass("visibled");
+                  playWBAudio($(this));
+                }
+              }
+            }
+          }
+        }
+      });
+
+    //lowlag audios
+    var tempSound = $("#module_wrapper").find("audio");
+    if (tempSound.length > 0) {
+      tempSound.each(function () {
+        if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+          $SFXNameAr.push($(this).attr("src"));
+          $SFXAr.push(new Audio($(this).attr("src")));
+        }
+      });
+    }
+  };
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $(elem).hasClass("card") && $(".ans").length < 1) {
+      isDragging = true;
+      $elem = elem;
+      lastPosX = elem.offsetLeft;
+      lastPosY = elem.offsetTop;
+    }
+    if (elem == $elem) {
+      var posX = ev.deltaX / stageRatio + lastPosX;
+      var posY = ev.deltaY / stageRatio + lastPosY;
+
+      elem.style.left = posX + "px";
+      elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+  var updateVOC = function (tar) {
+    var voc = tar.attr("voc");
+    if (tar.hasClass("voced")) {
+      var keepAy = new Array();
+      var swapAy = new Array();
+      //紀錄要留下的
+      for (var i = 0; i < keepString.length; i++) {
+        var counter = 0;
+        var tempA = voc.split(keepString[i]);
+        for (var k = 0; k < tempA.length - 1; k++) {
+          counter += tempA[k].length;
+          keepAy.push([counter, keepString[i]]);
+          counter += keepString[i].length;
+        }
+      }
+      //替換
+      var finalStr = "";
+      for (var i = 0; i < voc.length; i++) {
+        finalStr += "_";
+      }
+      for (var i = 0; i < keepAy.length; i++) {
+        finalStr =
+          finalStr.substring(0, keepAy[i][0]) +
+          keepAy[i][1] +
+          finalStr.substring(
+            keepAy[i][0] + keepAy[i][1].length,
+            finalStr.length
+          );
+      }
+      tar.find("p").text(finalStr);
+    } else {
+      tar.find("p").text(voc);
+    }
+  };
+  var playWBAudio = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio").attr("src"));
+  };
+  var initWB = function () {
+    inOrderCard();
+    //
+    $(".contents")
+      .delay(1100)
+      .queue(function () {
+        $(".card").addClass("active").removeClass("flipback");
+        showTool();
+        $(this).dequeue();
+      });
+  };
+
+  var checkListeningAnswer = function (tar) {
+    if (tar.hasClass("ans")) {
+      playWBAudio(tar);
+      //make chimes
+      var uniq = new Date().getTime();
+      tar
+        .addClass("visibled")
+        .find(".visible")
+        .empty()
+        .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+      rootSoundEffect($chimes);
+      //
+      $(".card").removeClass("flashing ans");
+      $(".sub").removeClass("sub");
+      if ($(".wb_right").length < 1) {
+        tar.append(`<span class="wb_right wow bounceOut" />`);
+        tar.delay(800).queue(function () {
+          showTool();
+          $(".wb_right").remove();
+          $(this).dequeue();
+        });
+      }
+    } else {
+      if ($(".wb_stupid").length < 1) {
+        tar.append(`<span class="wb_stupid wow bounceOut" />`);
+        rootSoundEffect($stupid);
+        tar.delay(600).queue(function () {
+          rootSoundEffect($tryagain);
+          $(".wb_stupid").remove();
+          $(this).dequeue();
+        });
+      }
+    }
+  };
+
+  var playListening = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_listen").addClass("active sub");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        inOrderCard();
+        $(".card").each(function () {
+          $(this).removeClass("flipback").addClass("flashing");
+        });
+        //
+        ttar.addClass("ans");
+        playWBAudio(ttar);
+        //
+        //showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playWriting = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_write").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        moveAsideCard();
+        $(".card").each(function () {
+          $(this).addClass("voced");
+          updateVOC($(this));
+        });
+        //
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playReading = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_read").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        inOrderCard();
+        $(".card").each(function () {
+          $(this).addClass("mode2");
+        });
+        //
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playSpeaking = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_speak").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+  //
+  var playDefinition = function () {
+    resetTool();
+    $(".sideTool > div.btn_definition").addClass("active");
+    //
+    showTool();
+  };
+  //
+  var randomID = 0;
+  var randomID2 = 0;
+
+  var playListeningAD = function (update) {
+    var tarAy;
+    tarAy = W1Array;
+
+    //
+    if (update) {
+      resetTool();
+      showTool();
+      $(".sideTool > div.wb_listen_ad").addClass("active sub");
+      //
+      randomID = Math.floor(Math.random() * tarAy.length);
+    }
+    var listenArray = tarAy[randomID][1];
+
+    if (update) {
+      randomID2 = Math.floor(Math.random() * listenArray.length);
+    }
+    var listenAudioPath = tarAy[randomID][3];
+    listenAudioPath = `./DATA/${sid}/BOOK${bid}/AUDIO/` + listenAudioPath;
+
+    //show word
+
+    if (update) {
+      $("#wb_ad").dequeue();
+      $("#wb_ad")
+        .empty()
+        .append("<p class='wow bounceIn'>" + listenArray[randomID2] + "</p>");
+    }
+    //play audio
+    rootSoundEffectName(listenAudioPath);
+  };
+
+  var playReadingAD = function () {
+    resetTool();
+    showTool();
+    $(".sideTool > div.wb_read_ad").addClass("active");
+    //
+    var tarAy;
+    tarAy = W2Array;
+
+    //
+    randomID = Math.floor(Math.random() * tarAy.length);
+    //show word
+
+    var tempOptionAy = tarAy[randomID][1];
+    var tempOption = "(<b>" + tempOptionAy.join("</b> / <b>") + "</b>)";
+    var tempStr = tarAy[randomID][0];
+    tempStr = tempStr.replace("_____", tempOption);
+    var html = `<p class="wow fadeInUp">${tempStr}</p>`;
+    $("#wb_ad").empty().append(html);
+  };
+
+  var playSpeakingAD = function () {
+    resetTool();
+    showTool();
+    $(".sideTool > div.wb_speak_ad").addClass("active");
+    //
+    var tarAy;
+
+    tarAy = W1Array;
+
+    //
+    randomID = Math.floor(Math.random() * tarAy.length);
+    var speakArray = tarAy[randomID][2].split("^");
+
+    var speakAudioPath = tarAy[randomID][3];
+    speakAudioPath = `./DATA/${sid}/BOOK${bid}/AUDIO/` + speakAudioPath;
+
+    //show word
+    var html = "<div class='voc'>";
+    for (var k = 0; k < speakArray.length; k++) {
+      html += `<span class="wow flipInX" data-wow-delay="${0.3 * k}s">${
+        speakArray[k]
+      }</span>`;
+    }
+    html += "</div>";
+    randomID2 = Math.floor(Math.random() * tarAy[randomID][4].length);
+    html += `<p>${tarAy[randomID][4][randomID2]}</p>`;
+    $("#wb_ad").empty().append(html);
+
+    //play audio
+    $("#wb_ad .voc")
+      .unbind()
+      .bind("click", function () {
+        rootSoundEffectName(speakAudioPath);
+      });
+    //rootSoundEffectName(speakAudioPath);
+  };
+
+  var inOrderCard = function () {
+    coverCards();
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 5;
+    var cw = 96;
+    var ch = 90;
+
+    var row = 4;
+    var column = 3;
+    var padding = (600 - (cw + margin * 2) * row) / 2;
+    var paddingTop = (320 - (ch + margin * 2) * column) / 2;
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([
+        padding + (k % row) * (cw + margin * 2),
+        paddingTop + Math.floor(k / row) * (ch + margin * 2),
+      ]);
+    }
+
+    shuffle(orderArray);
+
+    $(".card").each(function (i) {
+      $(this).find(">div").css({
+        transform: "rotate(0deg)",
+      });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var getRandomCardID = function () {
+    var amount = $(".card").length;
+    return Math.floor(Math.random() * amount);
+  };
+
+  var gatheringCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 20) - 10;
+      var randomDiffY = Math.floor(Math.random() * 20) - 10;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(50% - " + (48 + randomDiffX) + "px)",
+          top: "calc(50% - " + (45 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+    //card shuffle effect
+    cardShuffleEffect();
+  };
+
+  var cardShuffleEffect = function () {
+    $("#module_wrapper")
+      .delay(cardShuffleTime / 4)
+      .queue(function () {
+        $(".card").removeClass("shiftLeft shiftRight");
+        var cid = getRandomCardID();
+        var ttar = $(".card").eq(cid);
+        ttar.addClass("shiftLeft");
+        //
+        var randomRotate = 0;
+        var uniq = new Date().getTime();
+        $("#module_wrapper").append(
+          `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+        );
+        $(".smokeEffect").css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+        rootSoundEffect($show);
+        $(this)
+          .dequeue()
+          .delay(cardShuffleTime / 4)
+          .queue(function () {
+            $(".smokeEffect").remove();
+            $(".card").removeClass("shiftLeft shiftRight");
+            var cid = getRandomCardID();
+            var ttar = $(".card").eq(cid);
+            ttar.addClass("shiftRight");
+            //
+            var randomRotate = 180;
+            var uniq = new Date().getTime();
+            $("#module_wrapper").append(
+              `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+            );
+            $(".smokeEffect").css({
+              transform: "rotate(" + randomRotate + "deg)",
+            });
+            rootSoundEffect($show);
+            $(this)
+              .dequeue()
+              .delay(cardShuffleTime / 4)
+              .queue(function () {
+                $(".smokeEffect").remove();
+                $(".card").removeClass("shiftLeft shiftRight");
+                var cid = getRandomCardID();
+                var ttar = $(".card").eq(cid);
+                ttar.addClass("shiftLeft");
+                //
+                var randomRotate = 90;
+                var uniq = new Date().getTime();
+                $("#module_wrapper").append(
+                  `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+                );
+                $(".smokeEffect").css({
+                  transform: "rotate(" + randomRotate + "deg)",
+                });
+                rootSoundEffect($show);
+                $(this)
+                  .dequeue()
+                  .delay(cardShuffleTime / 3)
+                  .queue(function () {
+                    $(".smokeEffect").remove();
+                    $(".card").removeClass("shiftLeft shiftRight");
+                    $(this).dequeue();
+                  });
+              });
+          });
+      });
+  };
+
+  var moveAsideCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 100) - 50;
+      var randomDiffY = Math.floor(Math.random() * 40) - 20;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(20% - " + (61 + randomDiffX) + "px)",
+          top: "calc(50% - " + (75 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var coverCards = function () {
+    $(".card")
+      .addClass("flipback")
+      .removeClass("visibled voced autoMoving flashing ans mode2");
+    $(".card").each(function (i) {
+      var voc = $(this).attr("voc");
+      $(this).find("p").text(voc);
+    });
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active sub").hide();
+  };
+
+  var showTool = function () {
+    //show side tool btn
+    if (WBMode == 1) {
+      $(".sideTool > div.wbmode1").fadeIn();
+    } else {
+      $(".sideTool > div.wbmode2").fadeIn();
+    }
+  };
+</script>

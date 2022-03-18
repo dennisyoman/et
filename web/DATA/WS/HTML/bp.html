@@ -1,0 +1,509 @@
+<div id="module_wrapper" class="WLS1_bp_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="btn_play"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/chimes.gif" />
+    <img src="./images/common/wb_star.png" />
+    <img src="./images/common/wb_eye.png" />
+    <img src="./images/common/btn_play.png" />
+    <img src="./images/common/btn_check.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    ////background image
+    let bgImg = `./DATA/${sid}/HTML/IMAGES/${sid}-${bid}-${lid}-bg.jpg`;
+    $("#rbg").append("<img src='" + bgImg + "'/>");
+    $("#module_wrapper .assetsPreload").append(`<img src='${bgImg}'/>`);
+
+    // create content
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    if (targetNode.attr("swf").indexOf("mode") == -1) {
+      //bp
+      mode = 1;
+    } else {
+      //dialogue
+      mode = 2;
+    }
+
+    ////questions
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        var tempQ = $(this).text();
+        if (!isitEmpty(tempQ)) {
+          qArray.push(tempQ);
+        }
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+
+        $(".sideTool > div.btn_play")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+              autoplayID = 0;
+              $("#rbg .anim")
+                .removeClass("active animated")
+                .eq(autoplayID)
+                .addClass("active")
+                .click();
+
+              //全部同時啟動
+              for (var i = 0; i < $("#rbg .anim").length; i++) {
+                playQuestion(i + 1);
+              }
+              curID = 999;
+              $("#rbg").attr("curID", curID);
+              releaseCard();
+            } else {
+              $(this).removeClass("active");
+              autoplayID = 999;
+              $("#rbg .anim").addClass("active").removeClass("animated");
+              resetAudio();
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            if (mode == 1) {
+              $(".sideTool .btn_play").remove();
+              //bp
+              showQ();
+              //隨機動畫一個
+              $("#rbg .anim")
+                .eq(Math.floor(Math.random() * $("#rbg .anim").length))
+                .addClass("animated");
+            } else {
+              //dialogue
+              playBubble();
+            }
+            //
+            showTool();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadWSAxml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var qArray = [];
+  var mode = 1;
+  var bubbleArray = [];
+  var autoplayID = 999;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("module_wrapper");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null && $($elem).hasClass("card")) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+    if (isDragging) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+      if ($elem) {
+        $elem.style.left = posX + "px";
+        $elem.style.top = posY + "px";
+      }
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var playBubble = function () {
+    $("#contents").empty().attr("zindex", 2);
+    //
+    var animationAmount = $("#rbg .anim").length;
+    var curID = parseInt($("#rbg").attr("curID"));
+    if (curID != 999) {
+      $("#rbg .anim").eq(curID).addClass("active");
+    } else {
+      $("#rbg .anim").addClass("active");
+    }
+  };
+
+  var bubbleSoundEffect = function (tar) {
+    tar
+      .addClass("active animated")
+      .siblings(".anim")
+      .removeClass("active animated");
+
+    resetAudio();
+    //
+    for (let k = 0; k < $SFXNameAr.length; k++) {
+      if (tar.find("audio").attr("src") == $SFXNameAr[k]) {
+        currentAudio = $SFXAr[k];
+      }
+    }
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio.play();
+    $(currentAudio)
+      .unbind()
+      .on("ended", function () {
+        console.log("s1");
+        $("#rbg .anim").removeClass("active animated");
+        if (autoplayID == 999) {
+          var curID = parseInt($("#rbg").attr("curID")) + 1;
+          if (curID < $("#rbg .anim").length) {
+            $("#rbg .anim").eq(curID).addClass("active");
+            $("#rbg").attr("curID", curID);
+          } else if (parseInt($("#rbg").attr("curID")) != 999) {
+            curID = 999;
+            //啟動card
+            releaseCard();
+            $("#rbg").attr("curID", curID);
+            //reset all bubble
+            $("#rbg .anim").addClass("active");
+          } else {
+            //reset all bubble
+            $("#rbg .anim").addClass("active");
+          }
+        } else {
+          var curID = autoplayID + 1;
+          if (curID < $("#rbg .anim").length) {
+            $("#rbg .anim").eq(curID).addClass("active").click();
+            autoplayID = curID;
+          } else if (parseInt($("#rbg").attr("curID")) != 999) {
+            curID = 999;
+            autoplayID = 999;
+            $(".sideTool > div.btn_play").removeClass("active");
+            //啟動card
+            releaseCard();
+            $("#rbg").attr("curID", curID);
+            //reset all bubble
+            $("#rbg .anim").addClass("active");
+          } else {
+            autoplayID = 999;
+            $(".sideTool > div.btn_play").removeClass("active");
+            //reset all bubble
+            $("#rbg .anim").addClass("active");
+          }
+          //$("#rbg .anim").addClass("active");
+        }
+      });
+    //
+    playQuestion(tar.index());
+  };
+
+  var stopBubble = function () {
+    if ($("#rbg .anim").length > 0) {
+      resetAudio();
+      $("#rbg .anim").removeClass("active animated");
+    }
+  };
+
+  var showQ = function () {
+    $("#contents").empty();
+
+    var qItemHtml = "<div class='q_wrapper'>";
+    for (var i = 0; i < qArray.length; i++) {
+      qItemHtml += `<div class='q wow fadeInUp' data-wow-delay="${i * 0.2}s">${
+        qArray[i]
+      }</div>`;
+    }
+    qItemHtml += "</div>";
+    $("#contents").append(qItemHtml);
+
+    $(".q_wrapper")
+      .find(".q")
+      .unbind()
+      .bind("click", function () {
+        $(this).addClass("active");
+        //make chimes
+        var uniq = new Date().getTime();
+        $(".q_wrapper").find("img").remove();
+        $(this)
+          .addClass("active")
+          .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+        rootSoundEffect($chimes);
+      });
+  };
+
+  var playQuestion = function (index) {
+    var curID = parseInt($("#rbg").attr("curID"));
+    console.log(index + ":" + curID);
+    if (curID != 999 && $("#contents .card").length == index - 1) {
+      var randomTP = Math.floor((curID * 100) / qArray.length) + "%";
+      var longclass = bubbleArray.length >= 7 ? "long" : undefined;
+      var qItemHtml = `<div class='card ${longclass} disable' style='top:${randomTP};left:700px;' >
+        <p>${bubbleArray[index - 1][0]}</p>`;
+      if (!isitEmpty(bubbleArray[index - 1][1])) {
+        qItemHtml += `<p>${bubbleArray[index - 1][1]}</p>
+        <span class="mode"/>`;
+      }
+      qItemHtml += `</div>`;
+      $("#contents").append(qItemHtml);
+      //
+      inOrderCard();
+    } else {
+      //make chimes
+      var uniq = new Date().getTime();
+      $("#contents .card img").remove();
+      if (autoplayID == 999) {
+        $("#contents .card")
+          .eq(index - 1)
+          .addClass("active")
+          .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+        rootSoundEffect($chimes);
+      }
+    }
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = bubbleArray.length >= 10 ? 5 : 6;
+    var startTop = bubbleArray.length >= 10 ? 2 : 5;
+    var startLeft = bubbleArray.length >= 7 ? 323 : 373;
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var releaseCard = function () {
+    $(".card").each(function (i) {
+      var endleft = bubbleArray.length >= 7 ? 310 : 330;
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: endleft,
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this)
+            .removeClass("autoMoving disable")
+            .bind("mousedown", function (ev) {
+              click.x = ev.clientX;
+              click.y = ev.clientY;
+              getHighestDepth($(this));
+            })
+            .bind("mouseup", function (ev) {
+              if (
+                Math.abs(click.x - ev.clientX) <
+                  click.threshold * stageRatioReal &&
+                Math.abs(click.y - ev.clientY) <
+                  click.threshold * stageRatioReal &&
+                !$(ev.target).hasClass("mode")
+              ) {
+                $("#rbg").find(".anim").eq($(this).index()).click();
+              }
+            });
+          $(this)
+            .find(".mode")
+            .unbind()
+            .bind("click", function (e) {
+              e.stopPropagation();
+              $(this).parent().toggleClass("showQQ");
+            });
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var loadWSAxml = function () {
+    gpath = "./ws_anim.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        createBubble(data);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createBubble = function (xml) {
+    //create contents
+    $(dialogueXML)
+      .find("item")
+      .each(function (k) {
+        var ssid = $(this).find("sid").text();
+        var bbid = $(this).find("bid").text();
+        var llid = $(this).find("lid").text();
+        if (ssid == sid && bbid == bid && llid == lid) {
+          var word1 = $(this).find("word1").text();
+          var word2 = $(this).find("word2").text();
+          var sfx = $(this).find("sfx").text();
+          var LetsCheck = $(this).find("LetsCheck").text();
+          bubbleArray.push([word1, word2, sfx, LetsCheck]);
+        }
+      });
+
+    $(xml)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("ra") == "WS_" + bid + "_" + lid) {
+          $("#rbg")
+            .addClass("WS_" + bid + "_" + lid)
+            .attr("curID", 0);
+
+          var audioSeq = 0;
+
+          for (var i = 0; i < $(this).find("item").length; i++) {
+            var ll = $(this).find("item").eq(i).attr("left");
+            var tt = $(this).find("item").eq(i).attr("top");
+            var img = $(this).find("item").eq(i).attr("img");
+            var ww = $(this).find("item").eq(i).attr("ww");
+            var hh = $(this).find("item").eq(i).attr("hh");
+            var bl = parseInt($(this).find("item").eq(i).attr("bleft")) - 128;
+            var bt = $(this).find("item").eq(i).attr("btop");
+            var bs = $(this).find("item").eq(i).attr("bscalex");
+            var bsy = $(this).find("item").eq(i).attr("bscaley");
+            var zindex = $(this).find("item").eq(i).attr("zindex");
+            var autoplay = $(this).find("item").eq(i).attr("autoplay");
+
+            if (autoplay == "1") {
+              //no bubble
+              var tempAnim = `<div class="anim_autoplay animated" style="top:${tt}px;left:${ll}px;z-index:${zindex};">`;
+            } else {
+              var tempAnim = `<div class="anim a${i}" style="top:${tt}px;left:${ll}px;z-index:${zindex};">`;
+              if (bsy == "-1") {
+                tempAnim += `<span class="bubble" style="top:${
+                  bt / 2 / 0.32
+                }px;left:${
+                  bl / 2 / 0.32
+                }px;transform: scaleX(${bs}) scaleY(${bsy});"><img src="./images/common/bubble.gif"/></span>`;
+              } else {
+                tempAnim += `<span class="bubble" style="top:${
+                  bt / 2 / 0.32
+                }px;left:${
+                  bl / 2 / 0.32
+                }px;transform: scaleX(${bs});"><img src="./images/common/bubble.gif"/></span>`;
+              }
+            }
+
+            if (img != "") {
+              tempAnim += `<span class="bg"><img src="./DATA/${sid}/HTML/IMAGES/${img}"/></span>`;
+            }
+            if (autoplay != "1") {
+              //need audio
+              tempAnim += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${bubbleArray[audioSeq][2]}" /></div>`;
+
+              audioSeq++;
+            }
+            $("#rbg").append(tempAnim);
+          }
+        }
+      });
+
+    $("#rbg .anim")
+      .unbind()
+      .bind("click", function () {
+        if (
+          $(this).hasClass("animated") &&
+          $(".sideTool > div.btn_play").hasClass("active")
+        ) {
+          $(".sideTool > div.btn_play").click();
+        } else {
+          bubbleSoundEffect($(this));
+        }
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+</script>

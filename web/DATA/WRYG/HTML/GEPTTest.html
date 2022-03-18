@@ -1,0 +1,439 @@
+<div id="module_wrapper" class="WRYG_GEPTTest_wrapper">
+  <div class="tabs"></div>
+  <div id="submain" class="submain"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="btn_cp"></div>
+    <div class="eye"></div>
+    <div class="fit"></div>
+    <div class="speaker a1"></div>
+    <div class="speaker a2"></div>
+    <br />
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_cp.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/btn_next.png" />
+    <img src="./images/common/btn_prev.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          comboArray[0] = comboArray[0].split("^");
+          itemHTML += `<span>`;
+          for (var k = 0; k < comboArray[0].length; k++) {
+            itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0][k]}" />`;
+            $("#module_wrapper .assetsPreload").append(
+              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0][k]}" />`
+            );
+          }
+          itemHTML += `</span>`;
+        }
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          comboArray[1] = comboArray[1].split("^");
+          itemHTML += `<span class="ans">`;
+          for (var k = 0; k < comboArray[0].length; k++) {
+            itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1][k]}" />`;
+            $("#module_wrapper .assetsPreload").append(
+              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1][k]}" />`
+            );
+          }
+          itemHTML += `</span>`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          comboArray[2] = comboArray[2].split("^");
+          for (var k = 0; k < comboArray[2].length; k++) {
+            itemHTML += `
+                  <audio class="a${
+                    k + 1
+                  }" preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${
+              comboArray[2][k]
+            }" />`;
+          }
+        }
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+      });
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker.a1")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.a1").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.speaker.a2")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.a2").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 0,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        $(".sideTool > div.next")
+          .unbind()
+          .bind("click", function () {
+            var amount = $(".contents > div.selected")
+              .find("span")
+              .eq(0)
+              .find("img").length;
+            if (subseq < amount - 1) {
+              $(".sideTool > div.prev").addClass("active");
+              $(".sideTool > div.eye").removeClass("active");
+              subseq = subseq + 1;
+              $(".contents > div.selected")
+                .removeClass("showANS")
+                .find("span")
+                .each(function (i) {
+                  $(this)
+                    .find("img")
+                    .eq(subseq)
+                    .addClass("selected")
+                    .siblings()
+                    .removeClass("selected");
+                });
+            }
+            if (subseq == amount - 1) {
+              $(".sideTool > div.next").removeClass("active");
+            }
+          });
+
+        $(".sideTool > div.prev")
+          .unbind()
+          .bind("click", function () {
+            var amount = $(".contents > div.selected")
+              .find("span")
+              .eq(0)
+              .find("img").length;
+            if (subseq > 0) {
+              $(".sideTool > div.next").addClass("active");
+              $(".sideTool > div.eye").removeClass("active");
+              subseq = subseq - 1;
+              $(".contents > div.selected")
+                .removeClass("showANS")
+                .find("span")
+                .each(function (i) {
+                  $(this)
+                    .find("img")
+                    .eq(subseq)
+                    .addClass("selected")
+                    .siblings()
+                    .removeClass("selected");
+                });
+            }
+            if (subseq == 0) {
+              $(".sideTool > div.prev").removeClass("active");
+            }
+          });
+
+        $(".sideTool > div.btn_cp")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              console.log(
+                "./DATA/" +
+                  sid +
+                  "/BOOK" +
+                  bid +
+                  "/SWF/WRYG-" +
+                  bid +
+                  "-" +
+                  lid +
+                  "-6-CM.html"
+              );
+              $.getComponent(
+                "./DATA/HTML/CM2.html",
+                "#submain",
+                [],
+                "",
+                [],
+                ""
+              );
+              //
+              $("#contents").hide();
+              $(".sideTool > div.speaker").hide();
+              $(".sideTool > div.eye").hide();
+              $(".sideTool > div.fit").hide();
+            } else {
+              $("#submain").empty();
+              $("#contents").show();
+              //show side tool btn
+              if (
+                $(".contents > div.selected").find(".ans").find("img").length >
+                0
+              ) {
+                $(".sideTool > div.eye").fadeIn();
+              }
+              if ($(".contents > div.selected").find("audio.a1").length > 0) {
+                $(".sideTool > div.speaker.a1").fadeIn();
+              }
+              if ($(".contents > div.selected").find("audio.a2").length > 0) {
+                $(".sideTool > div.speaker.a2").fadeIn();
+              }
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+            }
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var subseq = 0;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .removeClass("showANS")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    //reset all sub
+    subseq = 0;
+    $(".contents > div.selected")
+      .find("span")
+      .each(function (i) {
+        $(this)
+          .find("img")
+          .eq(subseq)
+          .addClass("selected")
+          .siblings()
+          .removeClass("selected");
+      });
+    //
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+      $(".sideTool > div.eye").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio.a1").length > 0) {
+      $(".sideTool > div.speaker.a1").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio.a2").length > 0) {
+      $(".sideTool > div.speaker.a2").fadeIn();
+    }
+    if (
+      $(".contents > div.selected").height() >
+      $("#root").height() * 0.9 - 50
+    ) {
+      $(".sideTool > div.fit").fadeIn();
+    }
+
+    //prev next
+    if (
+      $(".contents > div.selected").find("span").eq(0).find("img").length > 1
+    ) {
+      $(".sideTool > div.next").addClass("active").fadeIn();
+      $(".sideTool > div.prev").removeClass("active").fadeIn();
+    }
+
+    //Concept map
+
+    if (id == 1 && sectionID == 3 && lid == "T") {
+      $(".sideTool > div.btn_cp").fadeIn();
+    }
+    $("#contents").show();
+    $("#submain").empty();
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 0,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

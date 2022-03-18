@@ -1,0 +1,498 @@
+<div id="GLD_module_wrapper" class="GLD_story_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="covers" class="covers wow slideInUp"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="speaker"></div>
+    <div class="eye"></div>
+    <div class="reader_question"></div>
+    <div class="reader_bookcontent"></div>
+    <div class="reader_all"></div>
+    <br />
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/reader_question.png" />
+    <img src="./images/common/reader_bookcontent.png" />
+    <img src="./images/common/reader_all.png" />
+    <img src="./images/common/btn_next.png" />
+    <img src="./images/common/btn_prev.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //
+    var targetNode;
+    var tempNodes;
+    var motherNodes = $(dialogueXML).find("lesson");
+    $(motherNodes).each(function (i) {
+      var ssid = $(this).attr("sid");
+      var bbid = $(this).attr("bid");
+      var llid = $(this).attr("lid");
+      if (ssid == sid && bbid == bid && llid == lid) {
+        tempNodes = $(this).find("section");
+      }
+    });
+    $(tempNodes).each(function (k) {
+      if ($(this).attr("name") == "Story") {
+        targetNode = $(this);
+      }
+    });
+
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let Content = $(this).find("Content:eq(0)").text();
+        let Image = $(this).find("Image:eq(0)").text();
+        let Sound = $(this).find("Sound:eq(0)").text();
+        let Fill = $(this).find("FillIn:eq(0)").text();
+        let Question1 = $(this).find("Question1:eq(0)").text();
+        let Question2 = $(this).find("Question2:eq(0)").text();
+        let Question3 = $(this).find("Question3:eq(0)").text();
+        let Question4 = $(this).find("Question4:eq(0)").text();
+        let Question5 = $(this).find("Question5:eq(0)").text();
+        //
+        SAll.push([
+          Content,
+          Image,
+          Sound,
+          Fill,
+          Question1,
+          Question2,
+          Question3,
+          Question4,
+          Question5,
+        ]);
+
+        //
+        $("#GLD_module_wrapper .assetsPreload").append(
+          `<img src='./DATA/${sid}/BOOK${bid}/IMAGES/${Image}'/>`
+        );
+        var soundArr = Sound.split("^");
+        for (var k = 0; k < soundArr.length; k++) {
+          $("#GLD_module_wrapper .assetsPreload").append(
+            `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${soundArr[k]}" />`
+          );
+        }
+        if (i == $(targetNode).find("item").length - 1 && soundArr.length > 1) {
+          soundAll = soundArr[soundArr.length - 1];
+        }
+      });
+
+    //append covers
+    var tempCover = "<ul>";
+    for (var n = 0; n < SAll.length; n++) {
+      tempCover += `<li onclick="openContent(${n})">
+          <img src="./DATA/${sid}/BOOK${bid}/IMAGES/${SAll[n][1]}" />
+          </li>`;
+    }
+    tempCover += "</ul>";
+    $("#covers").append(tempCover);
+
+    //載入完成要執行init
+    $("#GLD_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                `./DATA/${sid}/BOOK${bid}/AUDIO/${soundAll}`,
+                true
+              );
+            } else {
+              closePlayer();
+            }
+            $(".sideTool > div.reader_all.active").click();
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(".sideTool > div.reader_bookcontent").removeClass("active");
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              playBookContentGuess(true);
+            } else {
+              playBookContentGuess(false);
+            }
+            $(".sideTool > div.reader_all.active").click();
+          });
+
+        $(".sideTool > div.reader_question")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(this).addClass("active");
+              playReaderQuestion();
+              $(".sideTool > div.reader_all.active").click();
+            } else {
+              $("#contents").empty().attr("zindex", 2);
+            }
+          });
+        $(".sideTool > div.reader_bookcontent")
+          .unbind()
+          .bind("click", function () {
+            $(".sideTool > div.eye").removeClass("active");
+
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              playBookContent(true);
+            } else {
+              playBookContent(false);
+            }
+            $(".sideTool > div.reader_all.active").click();
+          });
+
+        $(".sideTool > div.reader_all")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $("#covers").show();
+            } else {
+              $("#covers").hide();
+            }
+          });
+
+        $(".sideTool > div.next")
+          .addClass("active")
+          .unbind()
+          .bind("click", function () {
+            var amount = SAll.length;
+            if (currSID < amount - 1) {
+              $(".sideTool > div.prev").addClass("active");
+              $(".sideTool > div.eye").removeClass("active");
+              currSID = currSID + 1;
+              openContent(currSID);
+            }
+            //
+            if (currSID == amount - 1) {
+              $(".sideTool > div.next").removeClass("active");
+            }
+          });
+        $(".sideTool > div.prev")
+          .unbind()
+          .bind("click", function () {
+            var amount = SAll.length;
+            if (currSID > 0) {
+              $(".sideTool > div.next").addClass("active");
+              $(".sideTool > div.eye").removeClass("active");
+              currSID = currSID - 1;
+              openContent(currSID);
+            }
+            //
+            if (currSID == 0) {
+              $(".sideTool > div.prev").removeClass("active");
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            openContent(currSID);
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadGLDAxml();
+  });
+
+  var ContentXML;
+  var SAll = [];
+  var currSID = 0;
+  var qArray = [];
+  var bcp = [];
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var soundAll;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("GLD_module_wrapper");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (
+      !isDragging &&
+      ($($elem).hasClass("card") || $($elem).hasClass("card2"))
+    ) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+    if (isDragging && $elem) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var playReaderQuestion = function () {
+    $("#contents").empty().attr("zindex", 2);
+
+    var qItemHtml = "";
+    for (var i = 0; i < qArray.length; i++) {
+      var longclass = qArray.length >= 7 ? "long" : undefined;
+      var randomTP = Math.floor((i * 100) / qArray.length) + "%";
+      qItemHtml += `<div class='card ${longclass}' style='top:${randomTP};left:700px;' >${qArray[i]}</div>`;
+    }
+    $("#contents").append(qItemHtml);
+    //
+    inOrderCard();
+  };
+
+  var bcRatio = 1;
+  var bcbg = "";
+  var playBookContentGuess = function (boolean) {
+    if (boolean) {
+      var srtArr = SAll[currSID][3].split("^");
+      var soundArr = SAll[currSID][2].split("^");
+      $("#rbg .bc").remove();
+      for (i = 0; i < srtArr.length; i++) {
+        var str = removeBR(srtArr[i]);
+        $("#rbg").append(
+          `<p sound="${soundArr[i]}" class="bc wow fadeIn ${
+            bcp[i][3] == "1" ? "wbg" : ""
+          } ${bcp[i][4] == "1" ? "small" : ""}" style="width:${
+            bcp[i][0] * bcRatio
+          }px;top:${bcp[i][1] * bcRatio}px;left:${
+            bcp[i][2] * bcRatio
+          }px;" data-wow-delay=".6s">${str}</p>`
+        );
+      }
+      //
+      $("#rbg")
+        .find("p")
+        .each(function (index) {
+          var soundStr = $(this).attr("sound");
+          $(this)
+            .unbind()
+            .bind("click", function () {
+              rootSoundEffectName(
+                `./DATA/${sid}/BOOK${bid}/AUDIO/${soundStr}`,
+                true
+              );
+            });
+        });
+    } else {
+      $("#rbg .bc").remove();
+    }
+  };
+  var playBookContent = function (boolean) {
+    if (boolean) {
+      var srtArr = SAll[currSID][0].split("^");
+      var soundArr = SAll[currSID][2].split("^");
+      $("#rbg .bc").remove();
+      for (i = 0; i < srtArr.length; i++) {
+        var str = removeBR(srtArr[i]);
+        $("#rbg").append(
+          `<p sound="${soundArr[i]}" class="bc wow fadeIn ${
+            bcp[i][3] == "1" ? "wbg" : ""
+          } ${bcp[i][4] == "1" ? "small" : ""}" style="width:${
+            bcp[i][0] * bcRatio
+          }px;top:${bcp[i][1] * bcRatio}px;left:${
+            bcp[i][2] * bcRatio
+          }px;" data-wow-delay=".6s">${str}</p>`
+        );
+      }
+      //
+      $("#rbg")
+        .find("p")
+        .each(function (index) {
+          var soundStr = $(this).attr("sound");
+          $(this)
+            .unbind()
+            .bind("click", function () {
+              rootSoundEffectName(
+                `./DATA/${sid}/BOOK${bid}/AUDIO/${soundStr}`,
+                true
+              );
+            });
+        });
+    } else {
+      $("#rbg .bc").remove();
+    }
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 10;
+    var startTop = 50;
+    var startLeft = 330;
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var loadGLDAxml = function () {
+    gpath = "./GLD_anim.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        ContentXML = data;
+        checkCompLoading("#GLD_module_wrapper");
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+
+  var openContent = function (id) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    $("#contents").empty().attr("zindex", 2);
+    $(".sideTool > div:not(.reader_all,.prev,.next)").removeClass("active");
+
+    currSID = id;
+    resetAudio();
+
+    //background image
+    $("#rbg").html(
+      `<img src='./DATA/${sid}/BOOK${bid}/IMAGES/${SAll[currSID][1]}'/>`
+    );
+
+    ////basic - a2
+    qArray = [];
+    for (var i = 4; i <= 8; i++) {
+      var tempQ = SAll[0][i];
+      if (!isitEmpty(tempQ)) {
+        qArray.push(tempQ);
+      }
+    }
+    //
+    var ra = "GLD_" + bid + "_" + lid;
+    bcp = [];
+    //create contents
+    $(ContentXML)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("ra") == ra) {
+          var bcs = $(this)
+            .find("item:eq(" + currSID + ")")
+            .find("bc");
+          for (j = 0; j < bcs.length; j++) {
+            bcp.push([
+              bcs.eq(j).attr("bcw"),
+              bcs.eq(j).attr("bct"),
+              bcs.eq(j).attr("bcl"),
+              bcs.eq(j).attr("bcbg"),
+              bcs.eq(j).attr("small"),
+            ]);
+          }
+        }
+      });
+    $(".sideTool > div.reader_bookcontent").removeClass("active").click();
+
+    //
+    if (soundAll == undefined || isitEmpty(soundAll)) {
+      $(".sideTool > div.speaker").hide();
+    } else {
+      $(".sideTool > div.speaker").show();
+    }
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+    if (SAll.length < 2) {
+      $(".sideTool > div.next").remove();
+      $(".sideTool > div.prev").remove();
+    }
+  };
+</script>

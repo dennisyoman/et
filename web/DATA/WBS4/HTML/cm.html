@@ -1,0 +1,197 @@
+<div id="module_wrapper" class="WBS3_cm_wrapper">
+  <div id="submain" class="submain"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="btn_qa"></div>
+    <div class="btn_target"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_qa.png" />
+    <img src="./images/common/btn_target.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    var html = `<div class="wow slideInUp d1" style="z-index: 1">
+                          <div class="dblock"><ul>`;
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (k) {
+        if (!isitEmpty($(this).text())) {
+          if (k == 0) {
+            //target code
+            code_target = $(this).text().split("|")[3];
+          }
+
+          let leadinArray = $(this).text().split("|");
+          html += "<li>";
+          html += "<p><span>" + (k + 1) + ".</span>" + leadinArray[1] + "</p>";
+          html += "<p class='ans'>" + leadinArray[2] + "</p>";
+          html += "<p class='dots'>...</p></li>";
+        }
+      });
+    html += `</ul></div></div>`;
+    $("#contents").append(html);
+
+    $(".dblock")
+      .find("li")
+      .unbind()
+      .bind("mousedown", function (ev) {
+        click.x = ev.clientX;
+        click.y = ev.clientY;
+      })
+      .bind("mouseup", function (ev) {
+        if (
+          Math.abs(click.x - ev.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+        ) {
+          $(this).toggleClass("showAns");
+        }
+      });
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //hammer
+        trigHammer();
+
+        //sidetool
+
+        $(".sideTool > .btn_qa")
+          .unbind()
+          .bind("click", function () {
+            //
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              openContent("d1");
+              $("#submain").css("opacity", 0.3);
+            } else {
+              closeContent("d1");
+              $("#submain").css("opacity", 1);
+              $(".showAns").removeClass("showAns");
+            }
+          });
+        $(".sideTool > .btn_target")
+          .unbind()
+          .bind("click", function () {
+            $.get(
+              "/eTeaching/Encrypt.aspx?key=GIRF&text=" +
+                userID +
+                "^" +
+                code_target,
+              function (data) {
+                var redirectURL =
+                  "http://get.giraffe.com.tw/redirect/redirect.htm?data=" +
+                  $(data).find("code").text();
+                openNewWindow(redirectURL);
+              }
+            );
+          });
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            loadContent("HTML/CM1.html");
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var code_target = "";
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging) {
+      isDragging = true;
+      $elem = elem;
+      lastPosY = $(".dblock > ul").get(0).offsetTop;
+    }
+
+    if (elem == $elem) {
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+      $(".dblock > ul").get(0).style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+
+  var openContent = function (id) {
+    //resetAudio();
+    $(".contents")
+      .find("." + id)
+      .addClass("selected");
+    resetElem($(".contents").find("." + id));
+  };
+  var closeContent = function (id) {
+    //resetAudio();
+    $(".contents")
+      .find("." + id)
+      .removeClass("selected");
+  };
+
+  var loadContent = function (url) {
+    console.log("load:");
+    console.log(url);
+    let script_arr = [
+      /*jsPath*/
+    ];
+    let style_arr = [
+      /*cssPath*/
+    ];
+    $.getComponent(
+      "./DATA/" + url,
+      "#submain",
+      style_arr,
+      "./DATA/",
+      script_arr,
+      "./DATA/"
+    );
+  };
+
+  var resetElem = function (elem) {
+    elem
+      .find(".qlist")
+      .attr("qid", 0)
+      .find("li")
+      .removeClass("selected")
+      .eq(0)
+      .addClass("selected");
+    elem.find(".dblock > ul").css("top", "50px");
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

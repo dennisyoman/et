@@ -1,0 +1,230 @@
+<div id="module_wrapper" class="WS_apl_wrapper">
+  <div id="contents" class="contents"></div>
+  <div class="assetsPreload">
+    <img src="./images/common/chimes.gif" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    var strArray = $(targetNode).attr("swf").split("?");
+    var partArray = strArray[1].split("=");
+    var alpArray = partArray[1].split("");
+
+    for (var i = 0; i < alpArray.length; i++) {
+      var randomLP = Math.floor((i * 100) / alpArray.length) + "%";
+      let itemHTML = `<div class='card alp-${alpArray[i]}' alp='${alpArray[
+        i
+      ].toLowerCase()}' style='left:${randomLP};'><div>`;
+      itemHTML += `
+                      <div class="action">
+                        <span class="close"></span>
+                        <span class="pa"></span>
+                      </div>
+                      <div class="chimes">
+
+                      </div>
+                      <div class="obj">
+                        <span class="uc"></span>
+                        <span class="lc"></span>
+                        <span class="ah"></span>
+                        <img src="./DATA/${sid}/HTML/IMAGES/ALP-${alpArray[i]}.jpg" />
+                      </div>`;
+      itemHTML += `<audio class="a1" preload="auto" src="./DATA/${sid}/HTML/AUDIO/${alpArray[
+        i
+      ].toLowerCase()}.mp3" />`;
+      itemHTML += `<audio class="a2" preload="auto" src="./DATA/${sid}/HTML/AUDIO/${
+        alpArray[i].toLowerCase() + alpArray[i].toLowerCase()
+      }.mp3" />`;
+      itemHTML += "</div></div>";
+
+      $("#contents").append(itemHTML);
+      $("#module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${sid}/HTML/IMAGES/ALP-${alpArray[i]}.jpg" />
+            <img src="./DATA/${sid}/HTML/IMAGES/${
+          alpArray[i].toLowerCase() + alpArray[i].toLowerCase()
+        }.gif" />
+            <img src="./DATA/${sid}/HTML/IMAGES/${alpArray[
+          i
+        ].toLowerCase()}.gif" />`
+      );
+    }
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //card
+        $(".card").each(function () {
+          var tar = $(this);
+          tar.unbind().bind("click", function () {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+            } else {
+              //normal
+              if (!$(this).hasClass("zoomin")) {
+                $(".uc").empty();
+                $(".lc").empty();
+                $(".chimes").empty();
+                $(this)
+                  .addClass("zoomin")
+                  .siblings(".zoomin")
+                  .removeClass("zoomin");
+                $("#contents").addClass("zoomin");
+              }
+            }
+          });
+          tar
+            .find(".close")
+            .unbind()
+            .bind("click", function () {
+              $(this)
+                .delay(100)
+                .queue(function () {
+                  tar.removeClass("zoomin");
+                  $("#contents").removeClass("zoomin");
+                  $(this).dequeue();
+                  $(".uc").empty();
+                  $(".lc").empty();
+                  $(".chimes").empty();
+                });
+            });
+          tar
+            .find(".pa")
+            .unbind()
+            .bind("click", function () {
+              playWBAudioA1(tar);
+            });
+          tar
+            .find(".uc")
+            .unbind()
+            .bind("click", function () {
+              var uniq = new Date().getTime();
+              $(this)
+                .empty()
+                .append(
+                  `<img src="./DATA/${sid}/HTML/IMAGES/${tar.attr(
+                    "alp"
+                  )}.gif?uniq=${uniq}" />`
+                );
+            });
+          tar
+            .find(".lc")
+            .unbind()
+            .bind("click", function () {
+              var uniq = new Date().getTime();
+              $(this)
+                .empty()
+                .append(
+                  `<img src="./DATA/${sid}/HTML/IMAGES/${
+                    tar.attr("alp") + tar.attr("alp")
+                  }.gif?uniq=${uniq}" />`
+                );
+            });
+          tar
+            .find(".ah")
+            .unbind()
+            .bind("click", function () {
+              playWBAudioA2(tar);
+              //make chimes
+              var uniq = new Date().getTime();
+              tar
+                .find(".chimes")
+                .empty()
+                .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+            });
+        });
+
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            initALP();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+
+  var playWBAudioA1 = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio.a1").attr("src"));
+  };
+  var playWBAudioA2 = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio.a2").attr("src"));
+  };
+  var initALP = function () {
+    inOrderCard();
+    //
+    $(".contents")
+      .delay(1100)
+      .queue(function () {
+        $(".card").addClass("active").removeClass("flipback");
+        $(this).dequeue();
+      });
+  };
+
+  var inOrderCard = function () {
+    coverCards();
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 2;
+    var cw = 100;
+    var ch = 100;
+
+    var padding = (640 - (cw + margin * 2) * amount) / 2;
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([padding + k * (cw + margin * 2), "calc(50% - 50px)"]);
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var coverCards = function () {
+    $(".card").addClass("flipback").removeClass("autoMoving");
+    $(".card").each(function (i) {
+      var voc = $(this).attr("voc");
+      $(this).find("p").text(voc);
+    });
+  };
+</script>

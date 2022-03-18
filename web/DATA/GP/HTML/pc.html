@@ -1,0 +1,169 @@
+<div id="module_wrapper" class="GP_pc_wrapper">
+  <div id="contents" class="contents"></div>
+  <div class="assetsPreload">
+    <img src="./images/common/pc.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    var imgArray = $(targetNode).find("item:eq(2)").text().split("^");
+    var audioArray = $(targetNode).find("item:eq(1)").text().split("^");
+
+    for (var i = 0; i < imgArray.length; i++) {
+      var randomLP = Math.floor((i * 100) / imgArray.length) + "%";
+      var pc = imgArray[i].replace(".swf", "").replace("PC-", "");
+      var imgPath = imgArray[i].replace(".swf", ".png");
+      let itemHTML = "<div class='card' style='left:${randomLP};'>";
+
+      itemHTML += `<span class="wow bounceIn face">${pc}<img src="./images/common/pc.png" /></span>
+          <span class="wow bounceIn hid face">${pc}<img src="./images/common/pc.png" /></span>
+          <span class="wow bounceIn hid alp">${pc.toUpperCase() + pc}</span>
+          <span class="wow bounceIn hid face">${pc}<img src="./images/common/pc.png" /></span>
+          <span class="wow bounceIn hid face">${pc}<img src="./images/common/pc.png" /></span>
+          <span class="wow bounceIn hid"><img src="./DATA/${sid}/HTML/IMAGES/${imgPath}" /></span>`;
+      $("#module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${sid}/HTML/IMAGES/${imgPath}" />`
+      );
+      itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${audioArray[i]}" />`;
+      itemHTML += "</div>";
+
+      $("#contents").append(itemHTML);
+    }
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //card
+        $(".card").each(function () {
+          var tar = $(this);
+          tar.unbind().bind("click", function () {
+            if (!$(this).hasClass("zoomin")) {
+              resetElem($(".card.zoomin"));
+              $(this)
+                .addClass("zoomin")
+                .siblings(".zoomin")
+                .removeClass("zoomin");
+              $("#contents").addClass("zoomin");
+              //
+              if (currentAudio != null) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+              }
+              //
+              $(this)
+                .delay(1000)
+                .queue(function () {
+                  playPC();
+                  $(this).dequeue();
+                });
+            } else {
+              playPC();
+            }
+          });
+        });
+
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            inOrderCard();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+
+  var playPC = function () {
+    resetElem($(".card.zoomin"));
+    pcSoundEffectName($(".card.zoomin").find("audio").attr("src"));
+  };
+
+  function pcSoundEffectName($name) {
+    for (let k = 0; k < $SFXNameAr.length; k++) {
+      if ($name == $SFXNameAr[k]) {
+        currentAudio = $SFXAr[k];
+      }
+    }
+
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio.play();
+    $(currentAudio)
+      .unbind()
+      .on("timeupdate", function () {
+        console.log(currentAudio.currentTime);
+        if (currentAudio.currentTime > 0.5) {
+          $(".card.zoomin").find("span").eq(1).removeClass("hid");
+        }
+        if (currentAudio.currentTime > 1) {
+          $(".card.zoomin").find("span").eq(2).removeClass("hid");
+        }
+        if (currentAudio.currentTime > 2) {
+          $(".card.zoomin").find("span").eq(3).removeClass("hid");
+        }
+        if (currentAudio.currentTime > 2.5) {
+          $(".card.zoomin").find("span").eq(4).removeClass("hid");
+        }
+        if (currentAudio.currentTime > 3) {
+          $(".card.zoomin").find("span").eq(5).removeClass("hid");
+        }
+      })
+      .on("ended", function () {
+        console.log("end");
+      });
+  }
+
+  var resetElem = function (tar) {
+    resetAudio();
+    tar.find("span").eq(1).addClass("hid");
+    tar.find("span").eq(2).addClass("hid");
+    tar.find("span").eq(3).addClass("hid");
+    tar.find("span").eq(4).addClass("hid");
+    tar.find("span").eq(5).addClass("hid");
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 2;
+    var cw = 60;
+    var ch = 60;
+
+    var padding = (640 - (cw + margin * 2) * amount) / 2;
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([padding + k * (cw + margin * 2), "calc(50% - 30px)"]);
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).dequeue();
+        });
+    });
+  };
+</script>

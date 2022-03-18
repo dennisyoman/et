@@ -1,0 +1,291 @@
+<div id="module_wrapper" class="WS_workbook_wrapper">
+  <div class="mascot wow fadeInDown">
+    <img
+      class="wow rubberBand"
+      data-wow-iteration="infinite"
+      src="./images/common/giraffe_read.png"
+    />
+    <span>Open your book, please.</span>
+  </div>
+  <div class="tabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="eye"></div>
+    <div class="fit"></div>
+    <div class="speaker a1"><span>I</span></div>
+    <div class="speaker a2"><span>II</span></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/giraffe_read.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+        }
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          itemHTML += `<span class="ans"><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1]}" /></span>`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          let audioArray = comboArray[2].split("^");
+          for (var k = 0; k < audioArray.length; k++) {
+            itemHTML += `
+                  <audio class="a${
+                    k + 1
+                  }" preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${
+              audioArray[k]
+            }" />`;
+          }
+        }
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>
+              <img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1]}"/>`
+        );
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker.a1")
+          .unbind()
+          .bind("click", function () {
+            $(this)
+              .toggleClass("active")
+              .siblings(".speaker.active")
+              .removeClass("active");
+
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.a1").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.speaker.a2")
+          .unbind()
+          .bind("click", function () {
+            $(this)
+              .toggleClass("active")
+              .siblings(".speaker.active")
+              .removeClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.a2").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft = ($("#root").height() - currentH) / 2 / stageRatio - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 200,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .removeClass("showANS")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+      $(".sideTool > div.eye").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio.a1").length > 0) {
+      $(".sideTool > div.speaker.a1").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio.a2").length > 0) {
+      $(".sideTool > div.speaker.a2").fadeIn();
+    }
+    if (
+      $(".contents > div.selected").height() >
+      $("#root").height() * 0.9 - 50
+    ) {
+      $(".sideTool > div.fit").fadeIn();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatio - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 200,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

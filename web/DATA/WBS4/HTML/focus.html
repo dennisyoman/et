@@ -1,0 +1,615 @@
+<div id="module_wrapper" class="WS_focus_wrapper">
+  <div class="tabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="scene"></div>
+    <div class="speaker"></div>
+    <div class="fit"></div>
+    <div class="ag"></div>
+    <div class="master"></div>
+    <div class="eye"></div>
+    <div class="yourturn"></div>
+    <div class="eye_yt"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_scene.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/btn_master.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_ag.png" />
+    <img src="./images/common/btn_yourturn.png" />
+    <img src="./images/common/detective.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        //ag
+        let itemHTML = "";
+        if (comboArray[11] == "Y") {
+          itemHTML += "<div ag='1'>";
+        } else {
+          itemHTML += "<div>";
+        }
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+          $("#module_wrapper .assetsPreload").append(
+            `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`
+          );
+        }
+
+        if (
+          comboArray[3] != "" &&
+          comboArray[3] != undefined &&
+          comboArray[3] != null
+        ) {
+          itemHTML += `<span class="yt">
+                <img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[3]}" />`;
+          if (
+            comboArray[4] != "" &&
+            comboArray[4] != undefined &&
+            comboArray[4] != null
+          ) {
+            itemHTML += `<img class="ytans" src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[4]}" />`;
+          }
+          itemHTML += `</span>`;
+        }
+
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${comboArray[1]}" />`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          itemHTML += `<div class="ppt wow bounceInDown">`;
+          itemHTML += `<div class="screen"><span/><span/><span/><span/><span/><span/><span/><span/><span/><span/></div>`;
+          itemHTML += `<div class="imgs" curID="0">`;
+          var pptArray = comboArray[2].split("^");
+          for (var k = 0; k < pptArray.length; k++) {
+            itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`;
+            $("#module_wrapper .assetsPreload").append(
+              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`
+            );
+          }
+          itemHTML += `</div><div class="pagination"></div></div>`;
+        }
+        //WLS1
+        itemHTML += `<div class="qa" curID="0"><ul>`;
+        //qa1
+        for (var num = 5; num <= 10; num++) {
+          if (
+            comboArray[num] != "" &&
+            comboArray[num] != undefined &&
+            comboArray[num] != null
+          ) {
+            var source = comboArray[num].split("^");
+            itemHTML += `<li><h3>${source[0]}</h3>`;
+            if (
+              source[3] != "" &&
+              source[3] != " " &&
+              source[3] != undefined &&
+              source[3] != null
+            ) {
+              itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${source[3]}"/>`;
+              $("#module_wrapper .assetsPreload").append(
+                `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${source[3]}"/>`
+              );
+            }
+            itemHTML += `<p>${source[1]}</p><p class="green">${source[2]}</p>`;
+            if (
+              source[4] != "" &&
+              source[4] != undefined &&
+              source[4] != null
+            ) {
+              itemHTML += `<div class="ans wow fadeIn">${source[4]}</div>`;
+            }
+
+            itemHTML += `</li>`;
+          }
+        }
+        itemHTML += `</ul>
+                <div class="pagination wow bounceInUp"><span class="prev" /><span class="page" /><span class="next"/></div>
+              </div>`;
+
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+        //qa
+        $(".qa .next")
+          .unbind()
+          .bind("click", function () {
+            var tar = $(".contents > div.selected .qa");
+            var total = tar.find("li").length;
+            var curID = parseInt(tar.attr("curID"));
+            if (curID < total - 1) {
+              curID += 1;
+            } else {
+              curID = 0;
+            }
+            tar
+              .attr("curID", curID)
+              .find("li")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected .qa")
+              .find(".page")
+              .text("Practice " + (curID + 1) + "/" + total);
+            //
+            $("#module_wrapper").find(".showAns").removeClass("showAns");
+            $("#module_wrapper").find(".ans").css({ left: 0, top: 180 });
+            $(".sideTool > div.eye").removeClass("active");
+            //
+            if (tar.find("li.selected").find(".ans").length < 1) {
+              $(".sideTool > div.eye").hide();
+            } else {
+              $(".sideTool > div.eye").show();
+            }
+            //adjust font size
+            if (tar.find("li.selected").height() / stageRatioReal > 190) {
+              tar.find("li.selected").addClass("tiny");
+            }
+          });
+        $(".qa .prev")
+          .unbind()
+          .bind("click", function () {
+            var tar = $(".contents > div.selected .qa");
+            var total = tar.find("li").length;
+            var curID = parseInt(tar.attr("curID"));
+            if (curID > 0) {
+              curID -= 1;
+            } else {
+              curID = total - 1;
+            }
+            tar
+              .attr("curID", curID)
+              .find("li")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected .qa")
+              .find(".page")
+              .text("Practice " + (curID + 1) + "/" + total);
+            //
+            $("#module_wrapper").find(".showAns").removeClass("showAns");
+            $("#module_wrapper").find(".ans").css({ left: 0, top: 180 });
+            $(".sideTool > div.eye").removeClass("active");
+            //
+            if (tar.find("li.selected").find(".ans").length < 1) {
+              $(".sideTool > div.eye").hide();
+            } else {
+              $(".sideTool > div.eye").show();
+            }
+            //adjust font size
+            if (tar.find("li.selected").height() / stageRatioReal > 190) {
+              tar.find("li.selected").addClass("tiny");
+            }
+          });
+        //ppt
+        $(".imgs")
+          .unbind()
+          .bind("click", function () {
+            var total = $(this).find(">img").length;
+            var curID = parseInt($(this).attr("curID"));
+            if (curID < total - 1) {
+              curID += 1;
+            } else {
+              curID = 0;
+            }
+            $(this)
+              .attr("curID", curID)
+              .find(">img")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected .ppt")
+              .find(".pagination")
+              .text(curID + 1 + "/" + total);
+          });
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+
+        $(".sideTool > div.ag")
+          .unbind()
+          .bind("click", function () {
+            //連到AG
+            $("#icon-wrapper li").each(function () {
+              var nam = $(this).find("h3").text();
+              if (nam == "Action Grammar") {
+                $(this).click();
+              }
+            });
+          });
+        $(".sideTool > div.scene")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".contents > div.selected")
+                .removeClass("mastered yourturned")
+                .addClass("scened");
+              $(".sideTool > div.speaker").removeClass("active").hide();
+              $(".sideTool > div.master").removeClass("active").hide();
+              $(".sideTool > div.yourturn").removeClass("active").hide();
+              $(".sideTool > div.eye").removeClass("active").hide();
+              $(".sideTool > div.ag").removeClass("active").hide();
+              $(".sideTool > div.eye_yt").removeClass("active").hide();
+              $(".sideTool > div.fit").removeClass("active").hide();
+              $(".contents > div.selected")
+                .find(".screen")
+                .delay(400)
+                .queue(function () {
+                  $(this).addClass("active").dequeue();
+                });
+            } else {
+              $(".contents > div.selected")
+                .find(".screen")
+                .removeClass("active");
+              $(".contents > div.selected").removeClass(
+                "scened mastered yourturned"
+              );
+              resetElem($(".contents > div.selected"));
+              if ($(".contents > div.selected").find("audio").length > 0) {
+                $(".sideTool > div.speaker").fadeIn();
+              }
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+              $(".sideTool > div.master").fadeIn();
+              if ($(".contents > div.selected .yt").length > 0) {
+                $(".sideTool > div.yourturn").fadeIn();
+              }
+              if ($(".contents > div.selected").attr("ag")) {
+                $(".sideTool > div.ag").fadeIn();
+              }
+            }
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 120,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        $(".sideTool > div.master")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".sideTool > div.speaker").removeClass("active").hide();
+              $(".sideTool > div.fit").removeClass("active").hide();
+              $(".sideTool > div.eye").removeClass("active").fadeIn();
+              $(".sideTool > div.yourturn").removeClass("active");
+              $(".sideTool > div.eye_yt").removeClass("active").hide();
+              //
+              $(".contents > div.selected")
+                .removeClass("yourturned")
+                .addClass("mastered");
+              var styles = {
+                transform: "none",
+                top: 0,
+                left: 0,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              $(".contents > div.selected").removeClass("mastered");
+              $(".sideTool > div.eye").hide();
+
+              if ($(".contents > div.selected").find("audio").length > 0) {
+                $(".sideTool > div.speaker").fadeIn();
+              }
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+              resetElem($(".contents > div.selected"));
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".contents > div.selected .qa li.selected").addClass("showAns");
+            } else {
+              $(".contents > div.selected .qa li.selected").removeClass(
+                "showAns"
+              );
+            }
+          });
+
+        $(".sideTool > div.yourturn")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".sideTool > div.speaker").removeClass("active").hide();
+              $(".sideTool > div.fit").removeClass("active").hide();
+              $(".sideTool > div.eye").removeClass("active").hide();
+              $(".sideTool > div.master").removeClass("active");
+              if ($(".contents > div.selected .ytans").length > 0) {
+                $(".sideTool > div.eye_yt").removeClass("active").fadeIn();
+              }
+              //
+              $(".contents > div.selected")
+                .removeClass("mastered")
+                .addClass("yourturned");
+              resetElem($(".contents > div.selected"));
+            } else {
+              $(".contents > div.selected").removeClass("yourturned");
+              $(".sideTool > div.eye_yt").hide();
+              resetElem($(".contents > div.selected"));
+              if ($(".contents > div.selected").find("audio").length > 0) {
+                $(".sideTool > div.speaker").fadeIn();
+              }
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+              resetElem($(".contents > div.selected"));
+            }
+          });
+
+        $(".sideTool > div.eye_yt")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".contents > div.selected .yt").addClass("showAns");
+            } else {
+              $(".contents > div.selected .yt").removeClass("showAns");
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null && !$($elem).hasClass("imgs")) {
+      isDragging = true;
+
+      if ($($elem).hasClass("ans")) {
+        lastPosX = parseInt($($elem).css("left"));
+        lastPosY = parseInt($($elem).css("top"));
+      } else {
+        lastPosX = $elem.offsetLeft;
+        lastPosY = $elem.offsetTop;
+      }
+    }
+    if (isDragging) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+      if ($elem) {
+        if ($(elem).hasClass("ans")) {
+          $($elem).css("left", posX + "px");
+          $($elem).css("top", posY + "px");
+        } else {
+          $elem.style.left = posX + "px";
+          $elem.style.top = posY + "px";
+        }
+      }
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    $(".contents > div.selected").find(".screen").removeClass("active");
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected scened")
+      .siblings(".selected")
+      .removeClass("selected scened mastered yourturned");
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    $(".sideTool > div.scene").fadeIn().addClass("active");
+    //
+    $(".contents > div.selected")
+      .find(".screen")
+      .delay(800)
+      .queue(function () {
+        $(this).addClass("active").dequeue();
+      });
+    //
+    if ($(".contents > div.selected").find(".ppt").length < 1) {
+      $(".sideTool > div.scene").click().hide();
+    } else {
+      $(".sideTool > div.scene").show();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 120,
+    };
+    elem.css(styles);
+    //
+    //open
+    elem
+      .find(".imgs")
+      .attr("curID", 0)
+      .find(">img:eq(0)")
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    elem.find(".ppt .pagination").text("1/" + elem.find(".imgs > img").length);
+    //qa
+    elem.find(".showAns").removeClass("showAns");
+    elem.find(".ans").css({ left: 0, top: 180 });
+    elem
+      .find(".qa")
+      .attr("curID", 0)
+      .find("li")
+      .eq(0)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    elem
+      .find(".qa .page")
+      .text("Practice 1/" + elem.find(".qa > ul > li").length);
+    //adjust font size
+    if (elem.find("li.selected").height() / stageRatioReal > 190) {
+      elem.find("li.selected").addClass("tiny");
+    }
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

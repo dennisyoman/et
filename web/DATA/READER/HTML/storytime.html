@@ -1,0 +1,538 @@
+<div id="reader_module_wrapper" class="READER_leadin_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="covers" class="covers wow slideInUp"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="speaker"></div>
+    <div class="eye"></div>
+    <div class="reader_bubble"></div>
+    <div class="reader_question"></div>
+    <div class="reader_bookcontent"></div>
+    <div class="reader_all"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/reader_bubble.png" />
+    <img src="./images/common/reader_question.png" />
+    <img src="./images/common/reader_bookcontent.png" />
+    <img src="./images/common/reader_all.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //
+    var readerNode = $(gpXML).find("lesson:eq(0)");
+    gpObj.sid = readerNode.attr("sid");
+    gpObj.bid = readerNode.attr("bid");
+    gpObj.lid = readerNode.attr("lid");
+
+    //append covers
+    var coverNode = $(gpXML).find("section:eq(3)");
+    var coverArray = [];
+    var tempCover = "<ul>";
+    $(coverNode)
+      .find("item")
+      .each(function (i) {
+        if (!isitEmpty($(this).text())) {
+          if (i == 0) {
+            coverArray = $(this).text().split("^");
+          } else {
+            tempCover += `
+              <li onclick="pasteCover(${i - 1})">
+                <img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${
+              coverArray[i - 1]
+            }" />
+                <h3 class="card2 wow flipInX">${$(this).text()}</h3>
+              </li>`;
+          }
+        }
+      });
+    tempCover += "</ul>";
+    $("#covers").append(tempCover);
+
+    ////background image
+    var bgNode = $(gpXML).find("section:eq(0)");
+    let bgImg = `./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${$(bgNode)
+      .find("item:eq(0)")
+      .text()}`;
+    $("#rbg").append("<img src='" + bgImg + "'/>");
+    $("#reader_module_wrapper .assetsPreload").append(`<img src='${bgImg}'/>`);
+
+    //create contents
+    var targetNode = $(gpXML).find("section:eq(1)");
+
+    ////type = a
+    if (targetNode.find("item:eq(27)").text() == "a") {
+      $(".sideTool > div.eye").remove();
+      $(".sideTool > div.reader_bubble").remove();
+      $(".sideTool > div.reader_bookcontent").remove();
+    }
+    ////speaker
+    $("#reader_module_wrapper .assetsPreload").append(
+      `<audio preload="auto" class="a1" src="./DATA/${gpObj.sid}/BOOK${
+        gpObj.bid
+      }/AUDIO/${$(targetNode).find("item:eq(1)").text()}" />`
+    );
+
+    ////questions
+    for (var i = 24; i <= 26; i++) {
+      var tempQ = $(targetNode)
+        .find("item:eq(" + i + ")")
+        .text();
+      if (!isitEmpty(tempQ)) {
+        qArray.push(tempQ);
+      }
+    }
+    //載入完成要執行init
+    $("#reader_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            stopBubble();
+            //
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $("#reader_module_wrapper").find("audio.a1").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+            toggleCovers(false);
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            //stopBubble();
+
+            //
+            $(".sideTool > div.reader_bookcontent").removeClass("active");
+
+            //$(".sideTool > div.reader_question").removeClass("active");
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              playBookContentGuess(true);
+            } else {
+              playBookContentGuess(false);
+            }
+            toggleCovers(false);
+          });
+
+        $(".sideTool > div.reader_bubble")
+          .unbind()
+          .bind("click", function () {
+            $(this).addClass("active");
+            $(".sideTool > div.reader_question").removeClass("active");
+            $(".sideTool > div.speaker").removeClass("active");
+            resetAudio();
+            playBubble();
+            toggleCovers(false);
+          });
+        $(".sideTool > div.reader_question")
+          .unbind()
+          .bind("click", function () {
+            //stopBubble();
+            //
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //$(".sideTool > div.reader_bubble").removeClass("active");
+              $(this).addClass("active");
+              playReaderQuestion();
+              toggleCovers(false);
+            } else {
+              $("#contents").empty().attr("zindex", 2);
+            }
+          });
+        $(".sideTool > div.reader_bookcontent")
+          .unbind()
+          .bind("click", function () {
+            //stopBubble();
+            //
+            $(".sideTool > div.eye").removeClass("active");
+            //$(".sideTool > div.reader_bubble").removeClass("active");
+            //$(".sideTool > div.reader_question").removeClass("active");
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              playBookContent(true);
+            } else {
+              playBookContent(false);
+            }
+            toggleCovers(false);
+          });
+
+        $(".sideTool > div.reader_all")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              toggleCovers(true);
+            } else {
+              $("#covers").hide();
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            $(".sideTool > div.reader_bookcontent").click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadRAxml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var qArray = [];
+  var bcp = [];
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("reader_module_wrapper");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (
+      !isDragging &&
+      $elem != null &&
+      ($($elem).hasClass("card") || $($elem).hasClass("card2"))
+    ) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var toggleCovers = function (boolean) {
+    if (boolean) {
+      $("#covers").show();
+      //$("#fbg").show();
+    } else {
+      $("#rbg").fadeIn();
+      $("#covers").hide();
+      $("#fbg").remove();
+      $(".sideTool > div.reader_all").removeClass("active");
+    }
+  };
+
+  var pasteCover = function (id) {
+    $("#rbg").hide();
+    var tempCover = `<div id="fbg" class="fbg">${$("#covers")
+      .find("li")
+      .eq(id)
+      .html()}</div>`;
+    $("#contents").empty().append(tempCover);
+    $(".sideTool > div.eye").removeClass("active");
+    $(".sideTool > div.reader_bubble").removeClass("active");
+    $(".sideTool > div.reader_question").removeClass("active");
+    $(".sideTool > div.reader_bookcontent").removeClass("active");
+  };
+
+  var playBubble = function () {
+    $("#contents").empty();
+    //
+    var animationAmount = $("#rbg .anim").length;
+    var curID = parseInt($("#rbg").attr("curID"));
+    if (curID != 999) {
+      $("#rbg .anim").eq(curID).addClass("active");
+    } else {
+      $("#rbg .anim").addClass("active");
+    }
+  };
+
+  var bubbleSoundEffect = function (tar) {
+    tar
+      .addClass("active animated")
+      .siblings(".anim")
+      .removeClass("active animated");
+    resetAudio();
+    //
+    for (let k = 0; k < $SFXNameAr.length; k++) {
+      if (tar.find("audio").attr("src") == $SFXNameAr[k]) {
+        currentAudio = $SFXAr[k];
+      }
+    }
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio.play();
+    $(currentAudio)
+      .unbind()
+      .on("ended", function () {
+        $("#rbg .anim").removeClass("active animated");
+        var curID = parseInt($("#rbg").attr("curID")) + 1;
+        if (curID < $("#rbg .anim").length) {
+          $("#rbg .anim").eq(curID).addClass("active");
+        } else {
+          curID = 999;
+          $("#rbg .anim").addClass("active");
+        }
+        $("#rbg").attr("curID", curID);
+      });
+  };
+
+  var stopBubble = function () {
+    //if ($(".sideTool > div.reader_bubble").hasClass("active")) {
+    if ($("#rbg .anim").length > 0) {
+      resetAudio();
+      $("#rbg .anim").removeClass("active animated");
+    }
+    $(".sideTool > div.reader_bubble").removeClass("active");
+    //}
+  };
+
+  var playReaderQuestion = function () {
+    $("#contents").empty().attr("zindex", 2);
+
+    var qItemHtml = "";
+    for (var i = 0; i < qArray.length; i++) {
+      var randomTP = Math.floor((i * 100) / qArray.length) + "%";
+      qItemHtml += `<div class='card' style='top:${randomTP};left:700px;' >${qArray[i]}</div>`;
+    }
+    $("#contents").append(qItemHtml);
+    //
+    inOrderCard();
+  };
+
+  var bcRatio = 1.56;
+  var bcbg = "";
+  var playBookContentGuess = function (boolean) {
+    if (boolean) {
+      var srt = $(gpXML).find("section:eq(1)").find("item:eq(2)").text();
+      $("#rbg .bc").remove();
+      $("#rbg").append(
+        `<p class="bc wow fadeIn ${bcbg}" style="width:${
+          bcp[0] * bcRatio
+        }px;top:${bcp[1] * bcRatio}px;left:${bcp[2] * bcRatio}px;">${srt}</p>`
+      );
+    } else {
+      $("#rbg .bc").remove();
+    }
+  };
+  var playBookContent = function (boolean) {
+    if (boolean) {
+      var srt = $(gpXML).find("section:eq(1)").find("item:eq(0)").text();
+      $("#rbg .bc").remove();
+      $("#rbg").append(
+        `<p class="bc wow fadeIn ${bcbg}" style="width:${
+          bcp[0] * bcRatio
+        }px;top:${bcp[1] * bcRatio}px;left:${bcp[2] * bcRatio}px;">${srt}</p>`
+      );
+    } else {
+      $("#rbg .bc").remove();
+    }
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 10;
+    var startTop = 50;
+    var startLeft = 330;
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var loadRAxml = function () {
+    gpath = "./reader_anim.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        createBubble(data);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createBubble = function (xml) {
+    var ra = "READER_" + gpObj.bid + "_" + gpObj.lid;
+    var bubbleArray = [];
+    var targetNode2 = $(gpXML).find("section:eq(1)");
+    for (var i = 4; i <= 23; i++) {
+      var tempQ = $(targetNode2)
+        .find("item:eq(" + i + ")")
+        .text();
+      if (!isitEmpty(tempQ)) {
+        bubbleArray.push(tempQ);
+      }
+    }
+    //create contents
+    $(xml)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("ra") == ra) {
+          var hasBG = $(this).attr("bcbg");
+          if (hasBG == "1") {
+            bcbg = "wbg";
+          }
+          //
+          bcp = [
+            $(this).attr("bcw"),
+            $(this).attr("bct"),
+            parseInt($(this).attr("bcl")) - 128,
+          ];
+          $("#rbg").addClass(ra).attr("curID", 0);
+
+          var audioSeq = 0;
+
+          for (var i = 0; i < $(this).find("item").length; i++) {
+            var ll = $(this).find("item").eq(i).attr("left");
+            var tt = $(this).find("item").eq(i).attr("top");
+            var img = $(this).find("item").eq(i).attr("img");
+            var ww = $(this).find("item").eq(i).attr("ww");
+            var hh = $(this).find("item").eq(i).attr("hh");
+            var bl = parseInt($(this).find("item").eq(i).attr("bleft")) - 128;
+            var bt = $(this).find("item").eq(i).attr("btop");
+            var bs = $(this).find("item").eq(i).attr("bscalex");
+            var bsy = $(this).find("item").eq(i).attr("bscaley");
+            var zindex = $(this).find("item").eq(i).attr("zindex");
+            var autoplay = $(this).find("item").eq(i).attr("autoplay");
+            if (autoplay == "1") {
+              //no bubble
+              var tempAnim = `<div class="anim_autoplay animated" style="top:${tt}px;left:${ll}px;z-index:${zindex};">`;
+            } else {
+              var tempAnim = `<div class="anim a${i}" style="top:${tt}px;left:${ll}px;z-index:${zindex};">`;
+              //needs bubble
+              if (bsy == "-1") {
+                tempAnim += `<span class="bubble" style="top:${
+                  bt / 2 / 0.32
+                }px;left:${
+                  bl / 2 / 0.32
+                }px;transform: scaleX(${bs}) scaleY(${bsy});"><img src="./images/common/bubble.gif"/></span>`;
+              } else {
+                tempAnim += `<span class="bubble" style="top:${
+                  bt / 2 / 0.32
+                }px;left:${
+                  bl / 2 / 0.32
+                }px;transform: scaleX(${bs});"><img src="./images/common/bubble.gif"/></span>`;
+              }
+            }
+
+            if (img != "") {
+              tempAnim += `<span class="bg"><img src="./DATA/READER/HTML/IMAGES/${img}"/></span>`;
+            }
+
+            if (autoplay != "1") {
+              //need audio
+              tempAnim += `<audio preload="auto" src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/AUDIO/${bubbleArray[audioSeq]}" /></div>`;
+
+              audioSeq++;
+            }
+            $("#rbg").append(tempAnim);
+          }
+        }
+      });
+
+    $("#rbg .anim")
+      .unbind()
+      .bind("click", function () {
+        bubbleSoundEffect($(this));
+      });
+
+    //check loading
+    checkCompLoading("#reader_module_wrapper");
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+</script>

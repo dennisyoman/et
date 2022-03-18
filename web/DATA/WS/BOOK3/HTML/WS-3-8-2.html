@@ -1,0 +1,100 @@
+<div id="module_wrapper" class="WS_funtime_wrapper">
+  <div class="tabs"><span>part 1</span></div>
+  <div id="contents" class="contents">
+    <div>
+      <div class="dynamic_wb"></div>
+      <span><img src="./DATA/WS/BOOK3/IMAGES/WS-3-8-2-1.jpg" /></span>
+    </div>
+  </div>
+  <div class="sideTool"></div>
+  <div class="assetsPreload">
+    <img src="./DATA/WS/BOOK3/IMAGES/WS-3-8-2-1.jpg" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create content
+    var vocab = [
+      "my",
+      "eraser",
+      "mother",
+      "father",
+      "she",
+      "an",
+      "he",
+      "her",
+      "pen",
+      "turtle",
+      "boy",
+      "spider",
+      "brother",
+      "crayon",
+      "that",
+      "your",
+      "girl",
+      "tiger",
+      "name",
+      "sister",
+      "mouse",
+      "pencil",
+      "this",
+      "a",
+      "you",
+      "his",
+      "frog",
+      "I",
+      "ant",
+    ];
+    shuffle(vocab);
+    for (var i = 0; i < 29; i++) {
+      let itemHTML = `<p>${vocab[i]}</p>`;
+      $(".dynamic_wb").append(itemHTML);
+    }
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var wbbArray = [];
+
+  var openContent = function (id) {
+    resetAudio();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+  };
+</script>

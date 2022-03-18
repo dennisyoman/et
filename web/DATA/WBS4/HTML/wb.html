@@ -1,0 +1,1000 @@
+<div id="module_wrapper" class="WS_wb_wrapper">
+  <div id="contents" class="contents" zindex="2"></div>
+  <div id="wb_ad" class="wb_ad"></div>
+  <div class="sideTool">
+    <div class="wb_listen wbmode1"></div>
+    <div class="wb_speak wbmode1"></div>
+    <div class="wb_read wbmode1"></div>
+    <div class="wb_write wbmode1"></div>
+    <div class="wb_tryit wbmode1"></div>
+    <div class="wb_tryit_ans"></div>
+    <div class="wb_dn wbmode1 wow bounceInUp"></div>
+    <div class="wb_up wbmode2 wow bounceInDown"></div>
+    <div class="wb_listen_ad wbmode2"></div>
+    <div class="wb_speak_ad wbmode2"></div>
+    <div class="wb_read_ad wbmode2"></div>
+    <div class="wb_write_ad wbmode2"></div>
+    <div class="wb_wl"><span /></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/wb_listen.png" />
+    <img src="./images/common/wb_listen_speaker.png" />
+    <img src="./images/common/wb_read.png" />
+    <img src="./images/common/wb_speak.png" />
+    <img src="./images/common/wb_star.png" />
+    <img src="./images/common/wb_write.png" />
+    <img src="./images/common/wb_wl.png" />
+    <img src="./images/common/confirm_wl.png" />
+    <img src="./images/common/wb_eye.png" />
+    <img src="./images/common/wb_tryit.png" />
+    <img src="./images/common/wb_tryit_speaker.png" />
+    <img src="./images/common/wb_tryit_ans.png" />
+    <img src="./images/common/wb.jpg" />
+    <img src="./images/common/chimes.gif" />
+    <img src="./images/common/smoke.gif" />
+    <img src="./images/common/icon_stupid.png" />
+    <img src="./images/common/icon_right.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+
+    let targetNode = $(wbXML);
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        var ssid = $(this).find("sid").text();
+        var bbid = $(this).find("bid").text();
+        var llid = $(this).find("lid").text();
+        var secid = $(this).find("section").text();
+        var word = $(this).find("word").text();
+        var img = $(this).find("img").text();
+        var sfx = $(this).find("sfx").text();
+        var Listen = $(this).find("Listen").text();
+        var Speak = $(this).find("Speak").text();
+        var SpeakSentence = $(this).find("SpeakSentence").text();
+        var SpeakSound = $(this).find("SpeakSound").text();
+        var Read = $(this).find("Read").text();
+        var Write = $(this).find("Write").text();
+        var PhonicsImage = $(this).find("PhonicsImage").text();
+        var TryItAudio = $(this).find("TryItAudio").text();
+        var TryItImg = $(this).find("TryItImg").text();
+        var TryItAnswerKey = $(this).find("TryItAnswerKey").text();
+        if (ssid == sid && bbid == bid && llid == lid && secid == sectionID) {
+          wbArray.push([
+            word,
+            img,
+            sfx,
+            PhonicsImage,
+            Listen,
+            Speak,
+            SpeakSound,
+            SpeakSentence,
+            Read,
+            Write,
+            TryItAudio,
+            TryItImg,
+            TryItAnswerKey,
+          ]);
+        }
+        if (ssid == sid && bbid == bid && llid == lid) {
+          wblArray.push([
+            word,
+            img,
+            sfx,
+            PhonicsImage,
+            Listen,
+            Speak,
+            SpeakSound,
+            SpeakSentence,
+            Read,
+            Write,
+            TryItAudio,
+            TryItImg,
+            TryItAnswerKey,
+          ]);
+          //
+          if (!isitEmpty(SpeakSound)) {
+            $("#module_wrapper .assetsPreload").append(
+              `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${SpeakSound}" />`
+            );
+          }
+          if (!isitEmpty(TryItAudio)) {
+            $("#module_wrapper .assetsPreload").append(
+              `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${TryItAudio}" />`
+            );
+            WBTryitArray.push([
+              `./DATA/${sid}/BOOK${bid}/IMAGES/${TryItImg}`,
+              `./DATA/${sid}/BOOK${bid}/IMAGES/${TryItAnswerKey}`,
+              `./DATA/${sid}/BOOK${bid}/AUDIO/${TryItAudio}`,
+            ]);
+          }
+        }
+      });
+
+    if (wbArray.length == wblArray.length) {
+      $(".wb_wl").remove();
+    }
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        applyWB(wbArray);
+
+        //sidetool
+        $(".sideTool > div.wb_listen")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            if (!$(this).hasClass("sub")) {
+              $(this).addClass("sub");
+              playListening();
+            } else {
+              playWBAudio($(".ans"));
+            }
+          });
+        $(".sideTool > div.wb_speak")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            playSpeaking();
+          });
+        $(".sideTool > div.wb_read")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            playReading();
+          });
+        $(".sideTool > div.wb_write")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            playWriting();
+          });
+        $(".sideTool > div.wb_tryit")
+          .unbind()
+          .bind("click", function (e) {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            if (!$(this).hasClass("sub")) {
+              $(this).addClass("sub");
+              playTryit(1);
+            } else {
+              //判斷是否按在喇叭
+              var pl = $("#root").offset().left / stageRatioReal;
+              if (e.pageX / stageRatioReal - pl < 600) {
+                playTryit(2);
+              } else {
+                playTryit(0);
+              }
+            }
+          });
+        $(".sideTool > div.wb_listen_ad")
+          .unbind()
+          .bind("click", function (e) {
+            WBMode = 2;
+            $("#contents").hide();
+            $("#wb_ad").css("display", "flex");
+            if (!$(this).hasClass("sub")) {
+              $(this).addClass("sub");
+              playListeningAD(true);
+            } else {
+              //判斷是否按在喇叭
+              var pl = $("#root").offset().left / stageRatioReal;
+              if (e.pageX / stageRatioReal - pl < 600) {
+                playListeningAD(false);
+              } else {
+                playListeningAD(true);
+              }
+            }
+          });
+        $(".sideTool > div.wb_speak_ad")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            $("#contents").hide();
+            $("#wb_ad").css("display", "flex");
+            playSpeakingAD();
+          });
+        $(".sideTool > div.wb_read_ad")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            $("#contents").hide();
+            $("#wb_ad").css("display", "flex");
+            playReadingAD();
+          });
+        $(".sideTool > div.wb_write_ad")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            $("#contents").hide();
+            $("#wb_ad").css("display", "flex");
+            playWritingAD();
+          });
+        $(".sideTool > div.wb_wl")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $("#contents").show();
+            $("#wb_ad").hide();
+            toggleWBL();
+          });
+        $(".sideTool > div.wb_up")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 1;
+            $(".sub").removeClass("sub");
+            resetTool();
+            showTool();
+          });
+        $(".sideTool > div.wb_dn")
+          .unbind()
+          .bind("click", function () {
+            WBMode = 2;
+            $(".sub").removeClass("sub");
+            resetTool();
+            showTool();
+          });
+        //hammer
+        trigHammer();
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            initWB();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+  var cardShuffleTime = 1600;
+  var wbArray = [];
+  var wblArray = [];
+  var isWBL = false;
+  var WBMode = 1;
+  var WBTryitArray = [];
+
+  var toggleWBL = function () {
+    resetTool();
+    isWBL = !isWBL;
+    if (isWBL) {
+      $("#contents").empty();
+      applyWB(wblArray);
+    } else {
+      $("#contents").empty();
+      applyWB(wbArray);
+    }
+    $("#module_wrapper")
+      .delay(1000)
+      .queue(function () {
+        initWB();
+        $(this).dequeue();
+      });
+  };
+
+  var applyWB = function (tarAy) {
+    for (var i = 0; i < tarAy.length; i++) {
+      var randomLP = Math.floor((i * 100) / tarAy.length) + "%";
+      var word = tarAy[i][0].split("^");
+      let itemHTML = `<div class='card noImg' style='left:${randomLP};' voc='${word[0]}'><div>`;
+      if (!isitEmpty(tarAy[i][1])) {
+        itemHTML = `<div class='card' style='left:${randomLP};' voc='${word[0]}'><div>`;
+      }
+      itemHTML += `<span class="img"><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${tarAy[i][1]}" /></span>`;
+
+      if (word[0].length < 12) {
+        itemHTML += `<p>${word[0]}</p>`;
+      } else {
+        itemHTML += `<p class="multi">${word[0]}</p>`;
+      }
+
+      itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${tarAy[i][2]}" />`;
+
+      if (word[1]) {
+        itemHTML += `<span class="lm"></span>`;
+      }
+
+      if (!isitEmpty(tarAy[i][3])) {
+        itemHTML += `<span class="pi" path="./DATA/${sid}/BOOK${bid}/IMAGES/${tarAy[i][3]}"></span>`;
+      }
+
+      itemHTML += `<span class="visible"></span>
+                            <span class="voc"></span>`;
+      itemHTML += "</div></div>";
+
+      $("#contents").append(itemHTML);
+      $("#module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${tarAy[i][1]}"/>`
+      );
+    }
+
+    //card
+    $(".card")
+      .unbind()
+      .bind("mousedown", function (ev) {
+        click.x = ev.clientX;
+        click.y = ev.clientY;
+        getHighestDepth($(this));
+      })
+      .bind("mouseup", function (ev) {
+        if (
+          Math.abs(click.x - ev.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+        ) {
+          if ($(ev.target).hasClass("voc")) {
+            $(this).toggleClass("voced");
+            updateVOC($(this));
+          } else if ($(ev.target).hasClass("pi")) {
+            $("#contents").append(`<span id="pimg" class="pimg wow flipInX">
+                <img src="${$(ev.target).attr("path")}"/>
+                </span>`);
+            makeDraggable($("#pimg"));
+          } else {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+            } else {
+              if ($(this).hasClass("flipback")) {
+                $(this).removeClass("flipback");
+              } else {
+                if ($(".ans").length > 0) {
+                  //play listen
+                  checkListeningAnswer($(this));
+                } else {
+                  //normal
+                  $(this).addClass("visibled").removeClass("mode2");
+                  playWBAudio($(this));
+                  //make chimes
+                  var uniq = new Date().getTime();
+                  $(this)
+                    .find(".visible")
+                    .empty()
+                    .append(
+                      `<img src="./images/common/chimes.gif?uniq=${uniq}"/>`
+                    );
+                  rootSoundEffect($chimes);
+                }
+              }
+            }
+          }
+        }
+      });
+
+    //lowlag audios
+    var tempSound = $("#module_wrapper").find("audio");
+    if (tempSound.length > 0) {
+      tempSound.each(function () {
+        if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+          $SFXNameAr.push($(this).attr("src"));
+          $SFXAr.push(new Audio($(this).attr("src")));
+        }
+      });
+    }
+  };
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $(elem).hasClass("card") && $(".ans").length < 1) {
+      isDragging = true;
+      $elem = elem;
+      lastPosX = elem.offsetLeft;
+      lastPosY = elem.offsetTop;
+    }
+    if (elem == $elem) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+      elem.style.left = posX + "px";
+      elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+  var updateVOC = function (tar) {
+    var voc = tar.attr("voc");
+    if (tar.hasClass("voced")) {
+      var keepAy = new Array();
+      var swapAy = new Array();
+      //紀錄要留下的
+      for (var i = 0; i < keepString.length; i++) {
+        var counter = 0;
+        var tempA = voc.split(keepString[i]);
+        for (var k = 0; k < tempA.length - 1; k++) {
+          counter += tempA[k].length;
+          keepAy.push([counter, keepString[i]]);
+          counter += keepString[i].length;
+        }
+      }
+      //替換
+      var finalStr = "";
+      for (var i = 0; i < voc.length; i++) {
+        finalStr += "_";
+      }
+      for (var i = 0; i < keepAy.length; i++) {
+        finalStr =
+          finalStr.substring(0, keepAy[i][0]) +
+          keepAy[i][1] +
+          finalStr.substring(
+            keepAy[i][0] + keepAy[i][1].length,
+            finalStr.length
+          );
+      }
+      tar.find("p").text(finalStr);
+    } else {
+      tar.find("p").text(voc);
+    }
+  };
+  var playWBAudio = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio").attr("src"));
+  };
+  var initWB = function () {
+    inOrderCard();
+    //
+    $(".contents")
+      .delay(1100)
+      .queue(function () {
+        $(".card").addClass("active").removeClass("flipback");
+        showTool();
+        $(this).dequeue();
+      });
+  };
+
+  var checkListeningAnswer = function (tar) {
+    if (tar.hasClass("ans")) {
+      playWBAudio(tar);
+      //make chimes
+      var uniq = new Date().getTime();
+      tar
+        .addClass("visibled")
+        .find(".visible")
+        .empty()
+        .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+      rootSoundEffect($chimes);
+      //
+      $(".card").removeClass("flashing ans");
+      $(".sub").removeClass("sub");
+      if ($(".wb_right").length < 1) {
+        tar.append(`<span class="wb_right wow bounceOut" />`);
+        tar.delay(800).queue(function () {
+          showTool();
+          $(".wb_right").remove();
+          $(this).dequeue();
+        });
+      }
+      $(".sideTool > div.wb_listen").removeClass("active");
+    } else {
+      if ($(".wb_stupid").length < 1) {
+        tar.append(`<span class="wb_stupid wow bounceOut" />`);
+        rootSoundEffect($stupid);
+        tar.delay(600).queue(function () {
+          rootSoundEffect($tryagain);
+          $(".wb_stupid").remove();
+          $(this).dequeue();
+        });
+      }
+    }
+  };
+
+  var playListening = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    //gatheringCard();
+    $(".sideTool > div.wb_listen").addClass("active sub");
+
+    //
+    $(".contents")
+      .delay(10)
+      .queue(function () {
+        inOrderCard();
+        $(".card").each(function () {
+          $(this).removeClass("flipback").addClass("flashing");
+        });
+        //
+        ttar.addClass("ans");
+        playWBAudio(ttar);
+        //
+        //showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playWriting = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_write").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        moveAsideCard();
+        $(".card").each(function () {
+          $(this).addClass("voced");
+          updateVOC($(this));
+        });
+        //
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playReading = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_read").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        inOrderCard();
+        $(".card").each(function () {
+          $(this).addClass("mode2");
+        });
+        //
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+
+  var playSpeaking = function () {
+    var cid = getRandomCardID();
+    var ttar = $(".card").eq(cid);
+    getHighestDepth(ttar);
+    //
+    resetTool();
+    gatheringCard();
+    $(".sideTool > div.wb_speak").addClass("active");
+
+    //
+    $(".contents")
+      .delay(cardShuffleTime)
+      .queue(function () {
+        ttar.removeClass("flipback");
+        //
+        showTool();
+
+        $(this).dequeue();
+      });
+  };
+  //
+  var randomID = 0;
+  var randomID2 = 0;
+  var playTryit = function (mode) {
+    console.log(mode);
+    //
+    switch (mode) {
+      case 1:
+        // 啟動
+        resetTool();
+        showTool();
+        $(".sideTool > div.wb_tryit").addClass("active sub");
+        $(".sideTool > div.wb_tryit_ans")
+          .show()
+          .unbind()
+          .bind("click", function () {
+            if ($(".timg").length == 0) {
+              $("#contents").append(`<span id="timg" class="timg wow flipInX">
+                <img src="${WBTryitArray[randomID][0]}"/>
+                <img class="ans" src="${WBTryitArray[randomID][1]}"/>
+                </span>`);
+              makeDraggable($("#timg"));
+              $(this).removeClass("active");
+            } else {
+              $(this).toggleClass("active");
+              $(".timg").toggleClass("showAns");
+            }
+          });
+        //
+        randomID = Math.floor(Math.random() * WBTryitArray.length);
+        //create timg
+        $(".timg").remove();
+        $("#contents").append(`<span id="timg" class="timg wow flipInX">
+                <img src="${WBTryitArray[randomID][0]}"/>
+                <img class="ans" src="${WBTryitArray[randomID][1]}"/>
+                </span>`);
+        makeDraggable($("#timg"));
+        break;
+      case 2:
+        // play audio
+        rootSoundEffectName(WBTryitArray[randomID][2], true);
+        break;
+      default:
+        // 關閉
+        $(".timg").remove();
+        resetTool();
+        showTool();
+    }
+  };
+
+  var playListeningAD = function (update) {
+    var tarAy;
+    if (isWBL) {
+      tarAy = wblArray;
+    } else {
+      tarAy = wbArray;
+    }
+    //
+    if (update) {
+      resetTool();
+      showTool();
+      $(".sideTool > div.wb_listen_ad").addClass("active sub");
+      //
+      randomID = Math.floor(Math.random() * tarAy.length);
+    }
+    var listenArray = tarAy[randomID][4].split("^");
+
+    if (update) {
+      randomID2 = Math.floor(Math.random() * listenArray.length);
+    }
+    var listenAudioPath = tarAy[randomID][2];
+    if (!isitEmpty(tarAy[randomID][6])) {
+      listenAudioPath = tarAy[randomID][6];
+    }
+    listenAudioPath = `./DATA/${sid}/BOOK${bid}/AUDIO/` + listenAudioPath;
+
+    //show word
+
+    if (update) {
+      $("#wb_ad").dequeue();
+      $("#wb_ad")
+        .empty()
+        .append("<p class='wow bounceIn'>" + listenArray[randomID2] + "</p>");
+    }
+    //play audio
+    rootSoundEffectName(listenAudioPath);
+  };
+
+  var playWritingAD = function () {
+    resetTool();
+    showTool();
+    $(".sideTool > div.wb_write_ad").addClass("active");
+    //
+    var tarAy;
+    if (isWBL) {
+      tarAy = wblArray;
+    } else {
+      tarAy = wbArray;
+    }
+    //
+    randomID = Math.floor(Math.random() * tarAy.length);
+    //show word
+    var html = `<p class="wow fadeInUp">${tarAy[randomID][9]}</p>`;
+    $("#wb_ad").empty().append(html);
+  };
+
+  var playReadingAD = function () {
+    resetTool();
+    showTool();
+    $(".sideTool > div.wb_read_ad").addClass("active");
+    //
+    var tarAy;
+    if (isWBL) {
+      tarAy = wblArray;
+    } else {
+      tarAy = wbArray;
+    }
+    //
+    randomID = Math.floor(Math.random() * tarAy.length);
+    //show word
+    var html = `<p class="wow fadeInUp">${tarAy[randomID][8]}</p>`;
+    $("#wb_ad").empty().append(html);
+  };
+
+  var playSpeakingAD = function () {
+    resetTool();
+    showTool();
+    $(".sideTool > div.wb_speak_ad").addClass("active");
+    //
+    var tarAy;
+    if (isWBL) {
+      tarAy = wblArray;
+    } else {
+      tarAy = wbArray;
+    }
+    //
+    randomID = Math.floor(Math.random() * tarAy.length);
+    var speakArray = tarAy[randomID][5].split("^");
+
+    var speakAudioPath = tarAy[randomID][2];
+    if (!isitEmpty(tarAy[randomID][6])) {
+      speakAudioPath = tarAy[randomID][6];
+    }
+    speakAudioPath = `./DATA/${sid}/BOOK${bid}/AUDIO/` + speakAudioPath;
+
+    //show word
+    var html = "<div class='voc'>";
+    for (var k = 0; k < speakArray.length; k++) {
+      html += `<span class="wow flipInX" data-wow-delay="${0.3 * k}s">${
+        speakArray[k]
+      }</span>`;
+    }
+    html += "</div>";
+    html += `<p>${tarAy[randomID][7]}</p>`;
+    $("#wb_ad").empty().append(html);
+
+    //play audio
+    $("#wb_ad .voc")
+      .unbind()
+      .bind("click", function () {
+        rootSoundEffectName(speakAudioPath);
+      });
+    //rootSoundEffectName(speakAudioPath);
+  };
+
+  var inOrderCard = function () {
+    coverCards();
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 5;
+    var cw = 123;
+    var ch = 150;
+    if (amount <= 4) {
+      var padding = (600 - (cw + margin * 2) * amount) / 2;
+      for (var k = 0; k < amount; k++) {
+        orderArray.push([padding + k * (cw + margin * 2), "calc(50% - 75px)"]);
+      }
+    } else {
+      if (amount > 8) {
+        margin = -7;
+      }
+      var mid = Math.ceil(amount / 2);
+      var padding = (600 - (cw + margin * 2) * mid) / 2;
+      for (var k = 0; k < amount; k++) {
+        if (k < mid) {
+          orderArray.push([
+            padding + k * (cw + margin * 2),
+            "calc(50% - 150px)",
+          ]);
+        } else {
+          orderArray.push([
+            padding + (k - mid) * (cw + margin * 2),
+            "calc(50% + 10px)",
+          ]);
+        }
+      }
+    }
+    shuffle(orderArray);
+    $(".card").each(function (i) {
+      $(this).find(">div").css({
+        transform: "rotate(0deg)",
+      });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var getRandomCardID = function () {
+    var amount = $(".card").length;
+    return Math.floor(Math.random() * amount);
+  };
+
+  var gatheringCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 20) - 10;
+      var randomDiffY = Math.floor(Math.random() * 20) - 10;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(50% - " + (61 + randomDiffX) + "px)",
+          top: "calc(50% - " + (75 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+    //card shuffle effect
+    cardShuffleEffect();
+  };
+
+  var cardShuffleEffect = function () {
+    $("#module_wrapper")
+      .delay(cardShuffleTime / 4)
+      .queue(function () {
+        $(".card").removeClass("shiftLeft shiftRight");
+        var cid = getRandomCardID();
+        var ttar = $(".card").eq(cid);
+        ttar.addClass("shiftLeft");
+        //
+        var randomRotate = 0;
+        var uniq = new Date().getTime();
+        $("#module_wrapper").append(
+          `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+        );
+        $(".smokeEffect").css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+        rootSoundEffect($show);
+        $(this)
+          .dequeue()
+          .delay(cardShuffleTime / 4)
+          .queue(function () {
+            $(".smokeEffect").remove();
+            $(".card").removeClass("shiftLeft shiftRight");
+            var cid = getRandomCardID();
+            var ttar = $(".card").eq(cid);
+            ttar.addClass("shiftRight");
+            //
+            var randomRotate = 180;
+            var uniq = new Date().getTime();
+            $("#module_wrapper").append(
+              `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+            );
+            $(".smokeEffect").css({
+              transform: "rotate(" + randomRotate + "deg)",
+            });
+            rootSoundEffect($show);
+            $(this)
+              .dequeue()
+              .delay(cardShuffleTime / 4)
+              .queue(function () {
+                $(".smokeEffect").remove();
+                $(".card").removeClass("shiftLeft shiftRight");
+                var cid = getRandomCardID();
+                var ttar = $(".card").eq(cid);
+                ttar.addClass("shiftLeft");
+                //
+                var randomRotate = 90;
+                var uniq = new Date().getTime();
+                $("#module_wrapper").append(
+                  `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+                );
+                $(".smokeEffect").css({
+                  transform: "rotate(" + randomRotate + "deg)",
+                });
+                rootSoundEffect($show);
+                $(this)
+                  .dequeue()
+                  .delay(cardShuffleTime / 3)
+                  .queue(function () {
+                    $(".smokeEffect").remove();
+                    $(".card").removeClass("shiftLeft shiftRight");
+                    $(this).dequeue();
+                  });
+              });
+          });
+      });
+  };
+
+  var moveAsideCard = function () {
+    coverCards();
+    $(".card").each(function (i) {
+      var randomRotate = Math.floor(Math.random() * 20) - 10;
+      var randomDiffX = Math.floor(Math.random() * 100) - 50;
+      var randomDiffY = Math.floor(Math.random() * 40) - 20;
+      $(this)
+        .find(">div")
+        .css({
+          transform: "rotate(" + randomRotate + "deg)",
+        });
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: "calc(20% - " + (61 + randomDiffX) + "px)",
+          top: "calc(50% - " + (75 + randomDiffY) + "px)",
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var coverCards = function () {
+    $(".card")
+      .addClass("flipback")
+      .removeClass("visibled voced autoMoving flashing ans mode2");
+    $(".card").each(function (i) {
+      var voc = $(this).attr("voc");
+      $(this).find("p").text(voc);
+    });
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active sub").hide();
+  };
+
+  var showTool = function () {
+    //show side tool btn
+    if (WBMode == 1) {
+      $(".sideTool > div.wbmode1").fadeIn();
+    } else {
+      $(".sideTool > div.wbmode2").fadeIn();
+    }
+
+    if (isWBL) {
+      $(".sideTool > div.wb_wl").fadeIn().addClass("active");
+    } else {
+      $(".sideTool > div.wb_wl").fadeIn().removeClass("active");
+    }
+  };
+</script>

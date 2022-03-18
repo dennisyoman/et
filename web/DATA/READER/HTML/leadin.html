@@ -1,0 +1,348 @@
+<div id="reader_module_wrapper" class="READER_leadin_wrapper">
+  <div id="rbg" class="rbg"></div>
+  <div id="covers" class="covers wow slideInUp"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="reader_question"></div>
+    <div class="reader_getready"></div>
+    <div class="reader_all"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/reader_question.png" />
+    <img src="./images/common/reader_getready.png" />
+    <img src="./images/common/reader_all.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //
+    var readerNode = $(gpXML).find("lesson:eq(0)");
+    gpObj.sid = readerNode.attr("sid");
+    gpObj.bid = readerNode.attr("bid");
+    gpObj.lid = readerNode.attr("lid");
+
+    //append covers
+    var coverNode = $(gpXML).find("section:eq(3)");
+    var coverArray = [];
+    var tempCover = "<ul>";
+    $(coverNode)
+      .find("item")
+      .each(function (i) {
+        if (!isitEmpty($(this).text())) {
+          if (i == 0) {
+            coverArray = $(this).text().split("^");
+          } else {
+            tempCover += `
+              <li onclick="pasteCover(${i - 1})">
+                <img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${
+              coverArray[i - 1]
+            }" />
+                <h3 class="card2 wow flipInX">${$(this).text()}</h3>
+              </li>`;
+          }
+        }
+      });
+    tempCover += "</ul>";
+    $("#covers").append(tempCover);
+
+    //background image
+    var bgNode = $(gpXML).find("section:eq(0)");
+    let bgImg = `./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${$(bgNode)
+      .find("item:eq(0)")
+      .text()}`;
+    $("#rbg").append("<img src='" + bgImg + "'/>");
+    $("#reader_module_wrapper .assetsPreload").append(`<img src='${bgImg}'/>`);
+
+    //create contents
+    var targetNode = $(gpXML).find("section:eq(0)");
+
+    ////questions
+    for (var i = 1; i <= 5; i++) {
+      var tempQ = $(targetNode)
+        .find("item:eq(" + i + ")")
+        .text();
+      if (!isitEmpty(tempQ)) {
+        qArray.push(tempQ);
+      }
+    }
+    //get ready
+    grArray = $(targetNode).find("item:eq(6)").text().split("^");
+    //載入完成要執行init
+    $("#reader_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //隨機動畫一個
+        $("#rbg .anim")
+          .eq(Math.floor(Math.random() * $("#rbg .anim").length))
+          .addClass("animated");
+
+        //hammer
+        trigHammer();
+
+        //sidetool
+        $(".sideTool > div.reader_question")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".sideTool > div.reader_getready").removeClass("active");
+              playReaderQuestion();
+              toggleCovers(false);
+            } else {
+              $("#contents").empty().attr("zindex", 2);
+            }
+          });
+        $(".sideTool > div.reader_getready")
+          .unbind()
+          .bind("click", function () {
+            $(this).addClass("active");
+            $(".sideTool > div.reader_question").removeClass("active");
+            playReaderGetReady();
+            toggleCovers(false);
+          });
+        $(".sideTool > div.reader_all")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              toggleCovers(true);
+            } else {
+              $("#covers").hide();
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    loadRAxml();
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+  var qArray = [];
+  var grArray = [];
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (
+      !isDragging &&
+      $elem != null &&
+      ($($elem).hasClass("card") ||
+        $($elem).hasClass("card2") ||
+        $($elem).hasClass("anim"))
+    ) {
+      getHighestDepth($($elem));
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var toggleCovers = function (boolean) {
+    if (boolean) {
+      $("#covers").show();
+      //$("#fbg").show();
+    } else {
+      $("#rbg").fadeIn();
+      $("#covers").hide();
+      $("#fbg").remove();
+      $(".sideTool > div.reader_all").removeClass("active");
+    }
+  };
+
+  var pasteCover = function (id) {
+    $("#rbg").hide();
+    var tempCover = `<div id="fbg" class="fbg">${$("#covers")
+      .find("li")
+      .eq(id)
+      .html()}</div>`;
+    $("#contents").empty().append(tempCover);
+    $(".sideTool > div.reader_getready").removeClass("active");
+    $(".sideTool > div.reader_question").removeClass("active");
+  };
+
+  var playReaderQuestion = function () {
+    $("#contents").empty().attr("zindex", 2);
+
+    var qItemHtml = "";
+    for (var i = 0; i < qArray.length; i++) {
+      var randomTP = Math.floor((i * 100) / qArray.length) + "%";
+      qItemHtml += `<div class='card' style='top:${randomTP};left:700px;' >${qArray[i]}</div>`;
+    }
+    $("#contents").append(qItemHtml);
+    //
+    inOrderCard();
+  };
+
+  var playReaderGetReady = function () {
+    $("#contents").empty().attr("zindex", 2);
+
+    var grItemHtml = "";
+    for (var i = 0; i < grArray.length; i++) {
+      var randomTP = Math.floor((i * 100) / grArray.length) + "%";
+      grItemHtml += `<div class='card small' style='top:${randomTP};left:700px;' >${grArray[i]}</div>`;
+    }
+    $("#contents").append(grItemHtml);
+    //
+    inOrderCard();
+  };
+
+  var inOrderCard = function () {
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 10;
+    var startTop = 50;
+    var startLeft = 330;
+    var dh = 0;
+
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([startTop + dh, startLeft]);
+      dh += $(".card").eq(k).height() / stageRatioReal + margin;
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          top: orderArray[i][0],
+          left: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var loadRAxml = function () {
+    gpath = "./reader_anim.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        createBubble(data);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createBubble = function (xml) {
+    var ra = "READER_" + gpObj.bid + "_" + gpObj.lid;
+    var bubbleArray = [];
+    var targetNode2 = $(gpXML).find("section:eq(1)");
+    for (var i = 4; i <= 23; i++) {
+      var tempQ = $(targetNode2)
+        .find("item:eq(" + i + ")")
+        .text();
+      if (!isitEmpty(tempQ)) {
+        bubbleArray.push(tempQ);
+      }
+    }
+    //create contents
+    $(xml)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("ra") == ra) {
+          $("#rbg").addClass(ra).attr("curID", 0);
+
+          for (var i = 0; i < bubbleArray.length; i++) {
+            var ll = $(this).find("item").eq(i).attr("left");
+            var tt = $(this).find("item").eq(i).attr("top");
+            var img = $(this).find("item").eq(i).attr("img");
+            var ww = $(this).find("item").eq(i).attr("ww");
+            var hh = $(this).find("item").eq(i).attr("hh");
+            var bl = $(this).find("item").eq(i).attr("bleft");
+            var bt = $(this).find("item").eq(i).attr("btop");
+            var bs = $(this).find("item").eq(i).attr("bscalex");
+            var zindex = $(this).find("item").eq(i).attr("zindex");
+            var tempAnim = `<div class="anim a${i}" style="top:${tt}px;left:${ll}px;z-index:${zindex};">
+            <span class="bubble" style="top:${bt / 2 / 0.32}px;left:${
+              bl / 2 / 0.32
+            }px;transform: scaleX(${bs});"><img src="./images/common/bubble.gif"/></span>`;
+            if (img != "") {
+              tempAnim += `<span class="bg" style="width:${ww}px;height:${hh}px;"><img src="./DATA/READER/HTML/IMAGES/${img}"/></span>`;
+            }
+            tempAnim += `<audio preload="auto" src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/AUDIO/${bubbleArray[i]}" />
+            </div>`;
+            $("#rbg").append(tempAnim);
+          }
+        }
+      });
+
+    //check loading
+    checkCompLoading("#reader_module_wrapper");
+  };
+
+  var getHighestDepth = function (tar) {
+    var nextZIndex = parseInt($("#contents").attr("zindex"));
+    var curZIndex = parseInt(tar.css("z-index"));
+    if (curZIndex != nextZIndex) {
+      nextZIndex += 1;
+      tar.css("z-index", nextZIndex);
+      $("#contents").attr("zindex", nextZIndex);
+    }
+  };
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+</script>

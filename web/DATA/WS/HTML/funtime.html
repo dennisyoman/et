@@ -1,0 +1,165 @@
+<div id="module_wrapper" class="WS_funtime_wrapper">
+  <div class="tabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="song"></div>
+    <div class="kala"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_song.png" />
+    <img src="./images/common/btn_kala.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+        }
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          itemHTML += `<audio class="song" preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${comboArray[1]}" />`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          itemHTML += `<audio class="kala" preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${comboArray[2]}" />`;
+        }
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`
+        );
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.song")
+          .unbind()
+          .bind("click", function () {
+            $(this)
+              .toggleClass("active")
+              .siblings(".active")
+              .removeClass("active");
+
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.song").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.kala")
+          .unbind()
+          .bind("click", function () {
+            $(this)
+              .toggleClass("active")
+              .siblings(".active")
+              .removeClass("active");
+
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio.song").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    //show side tool btn
+    if ($(".contents > div.selected").find("audio.song").length > 0) {
+      $(".sideTool > div.song").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio.kala").length > 0) {
+      $(".sideTool > div.kala").fadeIn();
+    }
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

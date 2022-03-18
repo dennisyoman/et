@@ -1,0 +1,321 @@
+<div id="module_wrapper" class="WS_focus_wrapper">
+  <div class="tabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="scene"></div>
+    <div class="speaker"></div>
+    <div class="fit"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_scene.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/detective.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+        }
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          itemHTML += `<audio class="fffff" preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${comboArray[1]}" />`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          itemHTML += `<div class="ppt wow bounceInDown">`;
+          itemHTML += `<div class="screen"><span/><span/><span/><span/><span/><span/><span/><span/><span/><span/></div>`;
+          itemHTML += `<div class="imgs" curID="0">`;
+          var pptArray = comboArray[2].split("^");
+          for (var k = 0; k < pptArray.length; k++) {
+            itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`;
+            $("#module_wrapper .assetsPreload").append(
+              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`
+            );
+          }
+          itemHTML += `</div><div class="pagination"></div></div>`;
+        }
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`
+        );
+        $(".tabs").append("<span>part " + (i + 1) + "</span>");
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //ppt
+        $(".imgs")
+          .unbind()
+          .bind("click", function () {
+            var total = $(this).find(">img").length;
+            var curID = parseInt($(this).attr("curID"));
+            if (curID < total - 1) {
+              curID += 1;
+            } else {
+              curID = 0;
+            }
+            $(this)
+              .attr("curID", curID)
+              .find(">img")
+              .eq(curID)
+              .addClass("selected")
+              .siblings(".selected")
+              .removeClass("selected");
+            $(".contents > div.selected")
+              .find(".pagination")
+              .text(curID + 1 + "/" + total);
+          });
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.scene")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(".contents > div.selected").addClass("scened");
+              $(".sideTool > div.speaker").removeClass("active").hide();
+              $(".sideTool > div.fit").removeClass("active").hide();
+              $(".contents > div.selected")
+                .find(".screen")
+                .delay(400)
+                .queue(function () {
+                  $(this).addClass("active").dequeue();
+                });
+            } else {
+              $(".contents > div.selected")
+                .find(".screen")
+                .removeClass("active");
+              $(".contents > div.selected").removeClass("scened");
+              resetElem($(".contents > div.selected"));
+              if ($(".contents > div.selected").find("audio").length > 0) {
+                $(".sideTool > div.speaker").fadeIn();
+              }
+              if (
+                $(".contents > div.selected").height() >
+                $("#root").height() * 0.9 - 50
+              ) {
+                $(".sideTool > div.fit").fadeIn();
+              }
+            }
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 120,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null && !$($elem).hasClass("imgs")) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+    if (isDragging) {
+      var posX = ev.deltaX / stageRatioReal + lastPosX;
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+      if ($elem) {
+        $elem.style.left = posX + "px";
+        $elem.style.top = posY + "px";
+      }
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    $(".contents > div.selected").find(".screen").removeClass("active");
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected scened")
+      .siblings(".selected")
+      .removeClass("selected scened");
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    $(".sideTool > div.scene").fadeIn().addClass("active");
+    //
+    $(".contents > div.selected")
+      .find(".screen")
+      .delay(800)
+      .queue(function () {
+        $(this).addClass("active").dequeue();
+      });
+    //
+    if ($(".contents > div.selected").find(".ppt").length < 1) {
+      $(".sideTool > div.scene").click().hide();
+    } else {
+      $(".sideTool > div.scene").show();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 120,
+    };
+    elem.css(styles);
+    //
+    //open
+    elem
+      .find(".imgs")
+      .attr("curID", 0)
+      .find(">img:eq(0)")
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    elem.find(".pagination").text("1/" + elem.find(".imgs > img").length);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

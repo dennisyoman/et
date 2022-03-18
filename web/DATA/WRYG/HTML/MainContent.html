@@ -1,0 +1,366 @@
+<div id="module_wrapper" class="WRYG_maincontent_wrapper">
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="dia_leadin"></div>
+    <div class="dia_dia"></div>
+    <div class="dia_audio"></div>
+    <div class="wryg_learnmore"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/dia_leadin.png" />
+    <img src="./images/common/dia_dia.png" />
+    <img src="./images/common/dia_audio.png" />
+    <img src="./images/common/wryg_learnmore.png" />
+    <img src="./images/common/btn_prev3.png" />
+    <img src="./images/common/btn_next3.png" />
+    <img src="./images/common/btn_prev4.png" />
+    <img src="./images/common/btn_next4.png" />
+    <img src="./images/common/wb_star.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create bg
+    var dialogueBg = `./DATA/${sid}/BOOK${bid}/IMAGES/${sid}-B${bid}-U${lid}.jpg`;
+    $("#contents").append(
+      `<img style="width:auto;height:100%;display:block;margin:0 auto;" src="${dialogueBg}"/>`
+    );
+    //create contents
+
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        switch (comboArray[1]) {
+          case "1":
+            p1.push(combo);
+            break;
+          case "2":
+            p2.push(combo);
+            break;
+          case "3":
+            p3.push(combo);
+            break;
+          case "4":
+            p4.push(combo);
+            break;
+          default:
+        }
+      });
+    var html = "";
+
+    if (p1.length > 0) {
+      //leadin
+
+      html += `<div class="wow slideInUp d0">
+                          <div class="qlist" qid="0">
+                            <ul>`;
+      for (var i = 0; i < p1.length; i++) {
+        let leadinArray = p1[i].split("|");
+        html += "<li>" + leadinArray[2] + "</li>";
+      }
+      html += `</ul>
+                    <span class="prev" />
+                    <span class="next" />
+                  </div>
+                </div>`;
+    } else {
+      $(".sideTool .dia_leadin").remove();
+    }
+    if (p2.length > 0) {
+      //dialogue
+
+      html += `<div class="wow slideInUp d1" style="z-index: 1">
+                          <div class="dblock"><ul>`;
+      for (var i = 0; i < p2.length; i++) {
+        let leadinArray = p2[i].split("|");
+        html += "<li>";
+        if (!isitEmpty(leadinArray[5])) {
+          html += `<span class='showbtn'/><span class='thumb'><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${leadinArray[5]}"/></span>`;
+        }
+        if (!isitEmpty(leadinArray[4])) {
+          html += "<h3>" + leadinArray[4] + "</h3>";
+        }
+        html += "<p>" + leadinArray[2] + "</p></li>";
+      }
+      html += `</ul>
+                  </div>
+                </div>`;
+    } else {
+      $(".sideTool .dia_dia").remove();
+    }
+    if (p3.length > 0) {
+      //audio
+
+      html += `<div class="d2">`;
+      for (var i = 0; i < p3.length; i++) {
+        let audioArray = p3[i].split("|");
+        html += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${audioArray[3]}" />`;
+      }
+      html += `</div>`;
+    } else {
+      $(".sideTool .dia_audio").remove();
+    }
+    if (p4.length > 0) {
+      //learn more
+      let lmArray = p4[0].split("|");
+      var img = "";
+      if (!isitEmpty(lmArray[5])) {
+        img += `<span style="margin-top:6px;display:block;text-align:center;"><img style="max-width:100%;" src="./DATA/${sid}/BOOK${bid}/IMAGES/${lmArray[5]}"/></span>`;
+      }
+      html += `<div class="d3">
+                    <div class="learnmore">
+                      <div class=" wow fadeIn">
+                        <h3>Learn More</h3>
+                        <p>${lmArray[2]}${img}</p>
+                        
+                      </div>
+                    </div>
+                  </div>`;
+    } else {
+      $(".sideTool .wryg_learnmore").remove();
+    }
+
+    $("#contents").append(html);
+
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //qlist
+
+        $(".qlist").each(function (i) {
+          if ($(this).find("li").length <= 1) {
+            $(this).find(".prev").hide();
+            $(this).find(".next").hide();
+          }
+        });
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //
+        $(".qlist").each(function (i) {
+          var tar = $(this);
+          var items = tar.find("li");
+          var amount = items.length;
+          items.unbind().bind("click", function () {
+            $(this).addClass("answered");
+          });
+          $(this)
+            .find(".prev")
+            .unbind()
+            .bind("click", function () {
+              var curid = parseInt(tar.attr("qid"));
+              curid--;
+              if (curid < 0) {
+                curid = amount - 1;
+              }
+              tar.attr("qid", curid);
+              items
+                .eq(curid)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+            });
+          $(this)
+            .find(".next")
+            .unbind()
+            .bind("click", function () {
+              var curid = parseInt(tar.attr("qid"));
+              curid++;
+              if (curid > amount - 1) {
+                curid = 0;
+              }
+              tar.attr("qid", curid);
+              items
+                .eq(curid)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+            });
+        });
+        //dblock
+        $(".dblock > ul > li")
+          .unbind()
+          .bind("mousedown", function (ev) {
+            click.x = ev.clientX;
+            click.y = ev.clientY;
+          })
+          .bind("mouseup", function (ev) {
+            if (
+              Math.abs(click.x - ev.clientX) <
+                click.threshold * stageRatioReal &&
+              Math.abs(click.y - ev.clientY) < click.threshold * stageRatioReal
+            ) {
+              if ($(ev.target).hasClass("showbtn")) {
+                $(ev.target).parent().toggleClass("showPic");
+              } else {
+                $(this).toggleClass("transparent");
+              }
+            }
+          });
+
+        //sidetool
+        $(".sideTool > .dia_leadin")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            //
+            if ($(this).hasClass("active")) {
+              openContent("d0");
+            } else {
+              closeContent("d0");
+            }
+          });
+        $(".sideTool > .dia_dia")
+          .unbind()
+          .bind("click", function () {
+            //
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              $(this).siblings(".wryg_learnmore").removeClass("active");
+              openContent("d1");
+              closeContent("d3");
+            } else {
+              closeContent("d1");
+            }
+          });
+        $(".sideTool > .dia_audio")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > .wryg_learnmore")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            //
+            if ($(this).hasClass("active")) {
+              $(this).siblings(".dia_dia").removeClass("active");
+              openContent("d3");
+              closeContent("d1");
+            } else {
+              closeContent("d3");
+            }
+          });
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            showTool();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = new Object();
+  var p1 = [];
+  var p2 = [];
+  var p3 = [];
+  var p4 = [];
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.on("pan", function (ev) {
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging) {
+      isDragging = true;
+
+      if ($(elem).parent().hasClass("dblock")) {
+        $elem = elem;
+      } else if ($(elem).parent().parent().hasClass("dblock")) {
+        $elem = elem.parentElement;
+      } else {
+        $elem = new Object();
+      }
+      lastPosY = $elem.offsetTop;
+    }
+
+    if (isDragging && $($elem).parent().hasClass("dblock")) {
+      var posY = ev.deltaY / stageRatioReal + lastPosY;
+      if ($elem) {
+        $elem.style.top = posY + "px";
+      }
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = new Object();
+    }
+  };
+
+  var openContent = function (id) {
+    //resetAudio();
+
+    $(".contents")
+      .find("." + id)
+      .addClass("selected");
+    resetElem($(".contents").find("." + id));
+  };
+  var closeContent = function (id) {
+    //resetAudio();
+    $(".contents")
+      .find("." + id)
+      .removeClass("selected");
+  };
+
+  var resetElem = function (elem) {
+    elem
+      .find(".qlist")
+      .attr("qid", 0)
+      .find("li")
+      .removeClass("selected")
+      .eq(0)
+      .addClass("selected");
+    elem.find(".dblock > ul").css("top", "50px");
+    elem.find(".showPic").removeClass("showPic");
+  };
+
+  var showTool = function () {
+    $(".sideTool > div").fadeIn();
+  };
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

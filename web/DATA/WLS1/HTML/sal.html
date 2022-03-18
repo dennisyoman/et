@@ -1,0 +1,516 @@
+<div id="module_wrapper" class="WLS1_sal_wrapper">
+  <div class="mascot wow fadeInDown">
+    <img
+      class="wow rubberBand"
+      data-wow-iteration="infinite"
+      src="./images/common/giraffe_read.png"
+    />
+    <span>Open your book, please.</span>
+  </div>
+  <div class="tabs"></div>
+  <div id="contents" class="contents">
+    <div id="cardHolder" class="cardHolder selected" />
+  </div>
+  <div class="sideTool">
+    <div class="speaker"></div>
+    <div class="eye"></div>
+    <div class="fit"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/giraffe_read.png" />
+    <img src="./images/common/chimes.gif" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    createCard();
+    $(".tabs").append("<span>part 1</span>");
+    //create contents
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (i) {
+        let combo = $(this).text();
+        let comboArray = combo.split("|");
+        let itemHTML = "<div>";
+        if (
+          comboArray[0] != "" &&
+          comboArray[0] != undefined &&
+          comboArray[0] != null
+        ) {
+          itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
+        }
+        if (
+          comboArray[1] != "" &&
+          comboArray[1] != undefined &&
+          comboArray[1] != null
+        ) {
+          itemHTML += `<span class="ans"><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1]}" /></span>`;
+        }
+        if (
+          comboArray[2] != "" &&
+          comboArray[2] != undefined &&
+          comboArray[2] != null
+        ) {
+          itemHTML += `<audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${comboArray[2]}" />`;
+        }
+        itemHTML += "</div>";
+
+        $("#contents").append(itemHTML);
+        $("#module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>
+              <img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[1]}"/>`
+        );
+        $(".tabs").append("<span>part " + (i + 2) + "</span>");
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            $("#cardHolder").empty();
+            $("#contents").removeClass("zoomin");
+
+            //
+            if (!$(this).hasClass("selected")) {
+              if ($(this).index() == 0) {
+                $(".mascot").hide();
+                createCard();
+                $("#module_wrapper")
+                  .delay(500)
+                  .queue(function () {
+                    initALP();
+                    $(this).dequeue();
+                  });
+              } else {
+                $(".mascot").css("display", "flex");
+              }
+              //
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 260,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var createCard = function () {
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    var strArray = $(targetNode).attr("swf").split("?");
+    var partArray = strArray[1].split("=");
+    var alpArray = partArray[1].split("");
+
+    for (var i = 0; i < alpArray.length; i++) {
+      var randomLP = Math.floor((i * 100) / alpArray.length) + "%";
+      let itemHTML = `<div class='card alp-${alpArray[i]}' alp='${alpArray[
+        i
+      ].toLowerCase()}' style='left:${randomLP};'><div>`;
+      itemHTML += `
+                      <div class="action">
+                        <span class="close"></span>
+                        <span class="pa"></span>
+                      </div>
+                      <div class="chimes">
+
+                      </div>
+                      <div class="obj">
+                        <span class="uc"></span>
+                        <span class="lc"></span>
+                        <span class="ah"></span>
+                        <span class="ah2"></span>
+                        <img src="./DATA/${sid}/HTML/IMAGES/SAL-${alpArray[i]}.jpg" />
+                      </div>`;
+      itemHTML += `<audio class="a1" preload="auto" src="./DATA/${sid}/HTML/AUDIO/${alpArray[
+        i
+      ].toLowerCase()}.mp3" />`;
+      itemHTML += `<audio class="a2" preload="auto" src="./DATA/${sid}/HTML/AUDIO/${
+        alpArray[i].toLowerCase() + alpArray[i].toLowerCase()
+      }.mp3" />`;
+      itemHTML += `<audio class="a3" preload="auto" src="./DATA/${sid}/HTML/AUDIO/${
+        alpArray[i].toLowerCase() +
+        alpArray[i].toLowerCase() +
+        alpArray[i].toLowerCase()
+      }.mp3" />`;
+      itemHTML += "</div></div>";
+
+      $("#cardHolder").append(itemHTML);
+      $("#module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${sid}/HTML/IMAGES/SAL-${alpArray[i]}.jpg" />
+            <img src="./DATA/${sid}/HTML/IMAGES/${
+          alpArray[i].toLowerCase() + alpArray[i].toLowerCase()
+        }.gif" />
+            <img src="./DATA/${sid}/HTML/IMAGES/${alpArray[
+          i
+        ].toLowerCase()}.gif" />`
+      );
+    }
+
+    //card
+    $(".card").each(function () {
+      var tar = $(this);
+      tar.unbind().bind("click", function () {
+        if (!$(this).hasClass("active")) {
+          $(this).addClass("active");
+        } else {
+          //normal
+          if (!$(this).hasClass("zoomin")) {
+            $(".uc").empty();
+            $(".lc").empty();
+            $(".chimes").empty();
+            $(this)
+              .addClass("zoomin")
+              .siblings(".zoomin")
+              .removeClass("zoomin");
+            $("#contents").addClass("zoomin");
+          }
+        }
+      });
+      tar
+        .find(".close")
+        .unbind()
+        .bind("click", function () {
+          $(this)
+            .delay(100)
+            .queue(function () {
+              tar.removeClass("zoomin");
+              $("#contents").removeClass("zoomin");
+              $(this).dequeue();
+              $(".uc").empty();
+              $(".lc").empty();
+              $(".chimes").empty();
+            });
+        });
+      tar
+        .find(".pa")
+        .unbind()
+        .bind("click", function () {
+          playWBAudioA1(tar);
+        });
+      tar
+        .find(".uc")
+        .unbind()
+        .bind("click", function () {
+          var uniq = new Date().getTime();
+          $(this)
+            .empty()
+            .append(
+              `<img src="./DATA/${sid}/HTML/IMAGES/${tar.attr(
+                "alp"
+              )}.gif?uniq=${uniq}" />`
+            );
+        });
+      tar
+        .find(".lc")
+        .unbind()
+        .bind("click", function () {
+          var uniq = new Date().getTime();
+          $(this)
+            .empty()
+            .append(
+              `<img src="./DATA/${sid}/HTML/IMAGES/${
+                tar.attr("alp") + tar.attr("alp")
+              }.gif?uniq=${uniq}" />`
+            );
+        });
+      tar
+        .find(".ah")
+        .unbind()
+        .bind("click", function () {
+          playWBAudioA2(tar);
+          //make chimes
+          var uniq = new Date().getTime();
+          tar
+            .find(".chimes")
+            .removeClass("rr")
+            .addClass("ll")
+            .empty()
+            .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+        });
+      tar
+        .find(".ah2")
+        .unbind()
+        .bind("click", function () {
+          playWBAudioA3(tar);
+          //make chimes
+          var uniq = new Date().getTime();
+          tar
+            .find(".chimes")
+            .removeClass("ll")
+            .addClass("rr")
+            .empty()
+            .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+        });
+    });
+
+    //lowlag audios
+    var tempSound = $("#module_wrapper").find("audio");
+    if (tempSound.length > 0) {
+      tempSound.each(function () {
+        if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+          $SFXNameAr.push($(this).attr("src"));
+          $SFXAr.push(new Audio($(this).attr("src")));
+        }
+      });
+    }
+  };
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null && $($elem).hasClass("selected")) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .removeClass("showANS")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    resetElem($(".contents > div.selected"));
+
+    if (id != 0) {
+      //show side tool btn
+      if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+        $(".sideTool > div.eye").fadeIn();
+      }
+      if ($(".contents > div.selected").find("audio").length > 0) {
+        $(".sideTool > div.speaker").fadeIn();
+      }
+      if (
+        $(".contents > div.selected").height() >
+        $("#root").height() * 0.9 - 50
+      ) {
+        $(".sideTool > div.fit").fadeIn();
+      }
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 260,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+
+  var playWBAudioA1 = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio.a1").attr("src"));
+  };
+  var playWBAudioA2 = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio.a2").attr("src"));
+  };
+  var playWBAudioA3 = function (tar) {
+    if (!lowlaged) {
+      lowlaged = true;
+      lowlagSFX();
+      activeSFX();
+    }
+    rootSoundEffectName(tar.find("audio.a3").attr("src"));
+  };
+  var initALP = function () {
+    inOrderCard();
+    //
+    $(".contents")
+      .delay(1100)
+      .queue(function () {
+        $(".card").addClass("active").removeClass("flipback");
+        $(this).dequeue();
+      });
+  };
+
+  var inOrderCard = function () {
+    coverCards();
+    var amount = $(".card").length;
+    var orderArray = [];
+    var margin = 2;
+    var cw = 100;
+    var ch = 100;
+
+    var padding = (640 - (cw + margin * 2) * amount) / 2;
+    for (var k = 0; k < amount; k++) {
+      orderArray.push([padding + k * (cw + margin * 2), "calc(50% - 50px)"]);
+    }
+
+    $(".card").each(function (i) {
+      $(this)
+        .addClass("autoMoving")
+        .css({
+          left: orderArray[i][0],
+          top: orderArray[i][1],
+        })
+        .delay(1000)
+        .queue(function () {
+          $(this).removeClass("autoMoving");
+          $(this).dequeue();
+        });
+    });
+  };
+
+  var coverCards = function () {
+    $(".card").addClass("flipback").removeClass("autoMoving");
+    $(".card").each(function (i) {
+      var voc = $(this).attr("voc");
+      $(this).find("p").text(voc);
+    });
+  };
+</script>

@@ -1,0 +1,182 @@
+<div id="module_wrapper" class="WS_daily_wrapper WS-2-7-2">
+  <div class="tabs">
+    <span>part 1</span>
+  </div>
+  <div id="contents" class="contents">
+    <div>
+      <span id="pen" class="pen">
+        <img src="./DATA/WS/BOOK2/IMAGES/pen.png"
+      /></span>
+      <span> <img src="./DATA/WS/BOOK2/IMAGES/WS-2-7-2-1.jpg" /></span>
+    </div>
+  </div>
+  <div class="sideTool">
+    <div class="speaker"></div>
+    <div class="fit"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_fit.png" />
+    <img src="./images/common/btn_speaker.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $("#pen")
+      .unbind()
+      .bind("click", function (e) {
+        //spin
+        rootSoundEffect($help);
+        var angles = [
+          15, 39, 62, 80, 97, 115, 134, 164, 198, 230, 255, 274, 295, 318, 347,
+        ];
+        var result = angles[Math.floor(Math.random() * angles.length)];
+        $(this)
+          .addClass("disabled")
+          .css("transform", "rotate(" + (1080 + result) + "deg)")
+          .delay(1600)
+          .queue(function () {
+            $(this)
+              .removeClass("disabled")
+              .css("transform", "rotate(" + result + "deg)")
+              .dequeue();
+          });
+        //
+      });
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        makeDraggable($("#contents > div"), true);
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //tabs
+        $(".tabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".tabs > span").length < 2) {
+          $(".tabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("> audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft = ($("#root").height() - currentH) / 2 / stageRatio;
+              var styles = {
+                top: ft,
+                transform: "scale(" + scaleTo + ")",
+                left: 0,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".tabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    $("#module_wrapper #contents")
+      .find("img")
+      .each(function (i) {
+        $(this).clone().appendTo("#module_wrapper .assetsPreload");
+      });
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+
+  var lowlaged = false;
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    if ($(".contents > div.selected").find("audio").length > 0) {
+      $(".sideTool > div.speaker").fadeIn();
+    }
+    if (
+      $(".contents > div.selected").height() >
+      $("#root").height() * 0.9 - 50
+    ) {
+      //$(".sideTool > div.fit").fadeIn();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatio - 25;
+    if (ft < 50) {
+      ft = 10;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 0,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>

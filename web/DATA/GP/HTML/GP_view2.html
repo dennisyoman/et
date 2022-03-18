@@ -1,0 +1,260 @@
+<div id="gp_module_wrapper" class="GP_view_wrapper">
+  <div class="subtabs"></div>
+  <div id="contents" class="contents"></div>
+  <div class="sideTool">
+    <div class="eye"></div>
+    <div class="speaker"></div>
+    <div class="fit"></div>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/btn_eye.png" />
+    <img src="./images/common/btn_speaker.png" />
+    <img src="./images/common/btn_fit.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+    let targetNode = $(gpXML).find("section:eq(" + (gpObj.gpid - 1) + ")");
+    var imgArray = $(targetNode).find("item:eq(0)").text().split("^");
+    var ansArray = $(targetNode).find("item:eq(3)").text().split("^");
+    if (isitEmpty($(targetNode).find("item:eq(3)").text())) {
+      ansArray = [];
+    }
+    var audioArray = $(targetNode).find("item:eq(1)").text().split("^");
+    if (isitEmpty($(targetNode).find("item:eq(1)").text())) {
+      audioArray = [];
+    }
+    for (var i = 0; i < imgArray.length; i++) {
+      let itemHTML = "<div>";
+
+      itemHTML += `<span><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${imgArray[i]}" /></span>`;
+      $("#gp_module_wrapper .assetsPreload").append(
+        `<img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${imgArray[i]}"/>`
+      );
+
+      if (
+        ansArray[i] != "" &&
+        ansArray[i] != undefined &&
+        ansArray[i] != null
+      ) {
+        itemHTML += `<span class="ans"><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${ansArray[i]}" /></span>`;
+        $("#gp_module_wrapper .assetsPreload").append(
+          `<img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${ansArray[i]}"/>`
+        );
+      }
+      if (
+        audioArray[i] != "" &&
+        audioArray[i] != undefined &&
+        audioArray[i] != null
+      ) {
+        itemHTML += `<audio preload="auto" src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/AUDIO/${audioArray[i]}" />`;
+      }
+      itemHTML += "</div>";
+
+      $("#contents").append(itemHTML);
+
+      $(".subtabs").append("<span>" + (i + 1) + "</span>");
+    }
+    //載入完成要執行init
+    $("#gp_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $(this).find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+
+        //hammer
+        trigHammer();
+
+        //tabs
+        $(".subtabs > span")
+          .unbind()
+          .bind("click", function () {
+            if (!$(this).hasClass("selected")) {
+              if (!lowlaged) {
+                lowlaged = true;
+                lowlagSFX();
+                activeSFX();
+              }
+              //init
+              $(this)
+                .addClass("selected")
+                .siblings(".selected")
+                .removeClass("selected");
+              openContent($(this).index());
+            }
+          });
+        if ($(".subtabs > span").length < 2) {
+          $(".subtabs").hide();
+        }
+
+        //sidetool
+        $(".sideTool > div.speaker")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              rootSoundEffectName(
+                $(".contents > div.selected").find("audio").attr("src"),
+                true
+              );
+            } else {
+              closePlayer();
+            }
+          });
+        $(".sideTool > div.eye")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            $(".contents > div.selected").toggleClass("showANS");
+          });
+        $(".sideTool > div.fit")
+          .unbind()
+          .bind("click", function () {
+            $(this).toggleClass("active");
+            if ($(this).hasClass("active")) {
+              //fit height
+              var currentH = $(".contents > div.selected").height();
+              var fitH = $("#root").height() * 0.9 - 50;
+              var scaleTo = fitH / currentH;
+              var ft =
+                ($("#root").height() - currentH) / 2 / stageRatioReal - 25;
+              var styles = {
+                transform: "scale(" + scaleTo + ")",
+                top: ft,
+                left: 50,
+              };
+              $(".contents > div.selected").css(styles);
+            } else {
+              //origin
+              var styles = {
+                transform: "none",
+              };
+              $(".contents > div.selected").css(styles);
+            }
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(".subtabs > span").eq(0).click();
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#gp_module_wrapper");
+  });
+
+  var lowlaged = false;
+  var lastPosX = 0;
+  var lastPosY = 0;
+  var isDragging = false;
+  var $elem = null;
+
+  var trigHammer = function () {
+    //hammer
+    var myElement = document.getElementById("contents");
+    var mc = new Hammer(myElement);
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+    mc.get("press").set({ time: 1 });
+    mc.on("press", function (ev) {
+      define$Elem(ev);
+    });
+    mc.on("pressup", function (ev) {
+      isDragging = false;
+      $elem = null;
+    });
+    mc.on("pan", function (ev) {
+      if ($elem == null) {
+        define$Elem(ev);
+      }
+      handleDrag(ev);
+    });
+  };
+
+  var handleDrag = function (ev) {
+    var elem = ev.target;
+
+    if (!isDragging && $elem != null) {
+      isDragging = true;
+      lastPosX = $elem.offsetLeft;
+      lastPosY = $elem.offsetTop;
+    }
+
+    var posX = ev.deltaX / stageRatioReal + lastPosX;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
+
+    if (isDragging && $elem) {
+      $elem.style.left = posX + "px";
+      $elem.style.top = posY + "px";
+    }
+
+    if (ev.isFinal) {
+      isDragging = false;
+      $elem = null;
+    }
+  };
+
+  var openContent = function (id) {
+    resetAudio();
+    resetTool();
+    $(".contents > div")
+      .removeClass("showANS")
+      .eq(id)
+      .addClass("selected")
+      .siblings(".selected")
+      .removeClass("selected");
+    if (
+      $(".contents > div.selected").find("img").height() <=
+      101 * stageRatioReal
+    ) {
+      $(".contents > div.selected").find("img").addClass("small");
+    } else {
+      $(".contents > div.selected").find("img").addClass("fit");
+    }
+    resetElem($(".contents > div.selected"));
+    //show side tool btn
+    if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+      $(".sideTool > div.eye").fadeIn();
+    }
+    if ($(".contents > div.selected").find("audio").length > 0) {
+      $(".sideTool > div.speaker").fadeIn();
+    }
+    if (
+      $(".contents > div.selected").height() >
+      $("#root").height() * 0.9 - 50
+    ) {
+      $(".sideTool > div.fit").fadeIn();
+    }
+  };
+
+  var resetElem = function (elem) {
+    var ft = ($("#root").height() - elem.height()) / 2 / stageRatioReal - 25;
+    if (ft < 50) {
+      ft = 50;
+    }
+    var styles = {
+      transform: "none",
+      top: ft,
+      left: 50,
+    };
+    elem.css(styles);
+  };
+
+  var resetTool = function () {
+    $(".sideTool > div").removeClass("active").hide();
+  };
+</script>
