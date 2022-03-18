@@ -1,0 +1,37 @@
+<div class="finger_wrapper wow bounceIn">
+  <div class="pin"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#finger")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          //spin
+          rootSoundEffect($help);
+          var result = Math.floor(Math.random() * 360);
+          $(this)
+            .addClass("disabled")
+            .css("transform", "rotate(" + (1080 + result) + "deg)")
+            .delay(1600)
+            .queue(function () {
+              $(this).removeClass("disabled");
+              $(this).css("transform", "rotate(" + result + "deg)");
+              $(this).dequeue();
+            });
+          //
+        }
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#finger"));
+    makeDraggable($("#finger"));
+  });
+</script>

@@ -1,0 +1,30 @@
+<root>
+  <item>
+    <sid>GLD</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>2</section>
+    <seq>1</seq>
+    Content|Parts of speech|Image|Sound|ExampleSentence|ExampleSound
+    <Content>Content</Content>
+    <POS>Parts of speech</POS>
+    <img>Image</img>
+    <sfx>Sound</sfx>
+    <ExampleSentence>ExampleSentence</ExampleSentence>
+    <ExampleSound>ExampleSound</ExampleSound>
+  </item>
+  <item>
+    <sid>GLD</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>2</section>
+    <seq>2</seq>
+    Content|Parts of speech|Image|Sound|ExampleSentence|ExampleSound
+    <Content>Content</Content>
+    <POS>Parts of speech</POS>
+    <img>Image</img>
+    <sfx>Sound</sfx>
+    <ExampleSentence>ExampleSentence</ExampleSentence>
+    <ExampleSound>ExampleSound</ExampleSound>
+  </item>
+</root>

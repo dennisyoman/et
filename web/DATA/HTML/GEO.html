@@ -1,0 +1,80 @@
+<div id="module_wrapper" class="GEO_wrapper">
+  <div id="contents" class="contents"></div>
+
+  <div class="assetsPreload">
+    <img src="./images/common/GEO_1.jpg" />
+    <img src="./images/common/GEO_2.jpg" />
+    <img src="./images/common/GEO_3.jpg" />
+    <img src="./images/common/GEO_4.jpg" />
+    <img src="./images/common/GEO_14.jpg" />
+    <img src="./images/common/GEO_15.jpg" />
+    <img src="./images/common/GEO_16.jpg" />
+    <img src="./images/common/GEO_17.jpg" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //create contents
+
+    if (gpObj.sid == "GP") {
+      var targetNode = $(gpXML).find(
+        "section:eq(" + (parseInt(gpObj.gpid) - 1) + ")"
+      );
+    } else {
+      var targetNode = $(contentXML).find(
+        "section:eq(" + (parseInt(uid) - 1) + ")"
+      );
+    }
+    var strArray = $(targetNode).attr("swf").split("?");
+    var partArray = strArray[1].split("&");
+    $("#contents").append("<ul>");
+    let amount = partArray.length;
+    for (var i = 0; i < amount; i++) {
+      var code = partArray[i].split("=")[1];
+      var imgID = code.split("^")[0];
+      $("#contents ul").append(
+        `<li class="wow flipInX" code="${code}"><img src="./images/common/GEO_${imgID}.jpg" /></li>`
+      );
+      if (amount > 5 && i == Math.ceil(amount / 2) - 1) {
+        $("#contents ul").append("<br />");
+      }
+    }
+    $("#contents").append("</ul>");
+    //載入完成要執行init
+    $("#module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //
+        $("#contents li")
+          .unbind()
+          .on("click", function () {
+            $(this).addClass("visited");
+            var code = $(this).attr("code");
+            console.log("dennis" + "^" + code);
+            $.get(
+              "/eTeaching/Encrypt.aspx?key=GIRF&text=" + userID + "^" + code,
+              function (data) {
+                var redirectURL =
+                  "http://get.giraffe.com.tw/redirect/redirect.htm?data=" +
+                  $(data).find("code").text();
+                openNewWindow(redirectURL);
+              }
+            );
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(this).dequeue().unbind();
+          })
+          .unbind();
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#module_wrapper");
+  });
+</script>

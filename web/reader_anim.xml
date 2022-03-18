@@ -1,0 +1,704 @@
+<root>
+  <!--
+  ra:對應課數代號
+  大圖命名方式: ra.jpg
+  bcw:對應fla文字框main_txt寬度
+  bcl:對應fla文字框main_txt x座標 - 128px
+  bct:對應fla文字框main_txt y座標
+
+  -焦點要在左上角 -
+  left:動畫圖片x座標
+  top:動畫圖片y座標
+  img:動畫圖片檔名
+  bleft:泡泡x軸 - 128
+  btop:泡泡y軸
+  bscaleX:泡泡方向 1尖尖朝左 / -1尖尖朝右
+  bscaley:-1 泡泡上下顛倒
+  zindex:深度設定
+  -->
+  <section ra="READER_1_1" bcw="490" bcl="140" bct="80.8">
+    <item left="86.35" top="544" img="r1-1-1.jpg" bleft="300" btop="331" bscalex="1" zindex="1" />
+    <item left="446" top="454" img="r1-1-2.jpg" bleft="462" btop="273" bscalex="-1" zindex="1" />
+    <item left="424.65" top="303" img="r1-1-3.jpg" bleft="357" btop="139" bscalex="-1" zindex="2" />
+  </section>
+  <section ra="READER_1_2" bcw="299" bcl="138" bct="523">
+    <item left="307.6" top="407.65" img="r1-2-2.jpg" bleft="377" btop="230" bscalex="1" zindex="1" />
+    <item left="115.85" top="482.45" img="r1-2-3.jpg" bleft="224" btop="245" bscalex="1" zindex="1" />
+    <item left="519.9" top="409.7" img="r1-2-4.jpg" bleft="416" btop="296" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_3" bcw="344" bcl="288" bct="543">
+    <item left="179.45" top="651.60" img="r1-3-1.jpg" bleft="201.55" btop="368.55" bscalex="-1" zindex="1" />
+    <item left="256.3" top="535.65" img="r1-3-2.jpg" bleft="335" btop="333.15" bscalex="1" zindex="2" />
+  </section>
+  <section ra="READER_1_4" bcw="343.15" bcl="138" bct="530">
+    <item left="236" top="485" img="r1-4-1.jpg" bleft="207.5" btop="255" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="312" btop="85.65" bscalex="-1" zindex="1" />
+    <item left="522" top="244" img="r1-4-2.jpg" bleft="384.5" btop="75.7" bscalex="-1" zindex="2" />
+    <item left="483" top="300" img="r1-4-3.jpg" bleft="494" btop="120.95" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_5" bcw="430" bcl="160" bct="17">
+    <item left="365" top="386" img="r1-5-1.jpg" bleft="368" btop="172" bscalex="1" zindex="1" />
+    <item left="163.15" top="212.3" img="r1-5-2.jpg" bleft="250" btop="90.95" bscalex="-1" zindex="2" />
+    <item left="458.45" top="199.8" img="r1-5-3.jpg" bleft="374" btop="95.95" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_6" bcw="320" bcl="140" bct="550">
+    <item left="" top="" img="" bleft="280" btop="117" bscalex="-1" zindex="1" />
+    <item left="549.15" top="450.5" img="r1-6-2.jpg" bleft="550" btop="260.95" bscalex="1" zindex="2" />
+    <item left="247.75" top="506.05" img="r1-6-3.jpg" bleft="270" btop="295.95" bscalex="-1" zindex="1" />
+    <item left="578" top="130" img="r1-6-4.jpg" bleft="415" btop="30" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_7" bcw="200" bcl="259.05" bct="135.15">
+    <item left="878" top="244" img="r1-7-1.jpg" bleft="787" btop="158" bscalex="-1" zindex="1" />
+    <item left="338" top="574" img="r1-7-2.jpg" bleft="440" btop="290" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_8" bcw="612.15" bcl="274.10" bct="555.10" bcbg="1">
+    <item left="1200" top="414" img="r1-8-1.jpg" bleft="907" btop="178" bscalex="-1" zindex="1" />
+    <item left="914" top="58" img="r1-8-2.jpg" bleft="640" btop="52" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_9" bcw="406.1" bcl="219.05" bct="495.15" bcbg="1">
+    <item left="1155.7" top="425.6" img="r1-9-1.jpg" bleft="955.9" btop="224.55" bscalex="1" zindex="1" />
+    <item left="424.1" top="221.7" img="r1-9-2.jpg" bleft="377.3" btop="111.9" bscalex="-1" zindex="1" />
+    <item left="200" top="206" img="r1-9-3.jpg" bleft="340" btop="145.9" bscalex="1" zindex="1" />
+    <item left="74.4" top="151.6" img="r1-9-4.jpg" bleft="261.25" btop="86" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_11" bcw="830.85" bcl="224.6" bct="559.15" bcbg="1">
+    <item left="" top="" img="" bleft="542.15" btop="366.15" bscalex="1" zindex="1" />
+    <item left="412.05" top="343.95" img="r1-11-2.jpg" bleft="497.55" btop="172.5" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="842.45" btop="261.5" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="715.45" btop="35.6" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="933.45" btop="30.6" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_12" bcw="450" bcl="175" bct="557" bcbg="1">
+    <item left="" top="" img="" bleft="516.15" btop="258.15" bscalex="1" zindex="1" />
+    <item left="292" top="420.55" img="r1-12-2.jpg" bleft="361.55" btop="202.5" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_13" bcw="430" bcl="170" bct="543" bcbg="1">
+    <item left="" top="" img="" bleft="302.05" btop="91.15" bscalex="1" zindex="1" />
+    <item left="391.2" top="104" img="r1-13-2.jpg" bleft="449.55" btop="67.5" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_14" bcw="430" bcl="170" bct="543" bcbg="1">
+    <item left="" top="" img="" bleft="424.05" btop="357.15" bscalex="-1" zindex="1" />
+    <item left="298" top="439" img="r1-14-2.jpg" bleft="364.55" btop="255.5" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_15" bcw="208.9" bcl="174" bct="510" bcbg="1">
+    <item left="" top="" img="" bleft="518.05" btop="198.15" bscalex="1" zindex="1" />
+    <item left="182" top="228.1" img="r1-15-2.jpg" bleft="370.55" btop="135.8" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_16" bcw="469.15" bcl="189.1" bct="439.05" bcbg="1">
+    <item left="947.55" top="450.05" img="r1-16-1.jpg" bleft="691.05" btop="240.1" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_1_17" bcw="365.85" bcl="184.1" bct="56">
+    <item left="536" top="423.2" img="r1-17-1.jpg" bleft="528.05" btop="235.1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_18" bcw="365.85" bcl="184.1" bct="56">
+    <item left="536" top="423.2" img="r1-17-1.jpg" bleft="528.05" btop="235.1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_1_19" bcw="231" bcl="175.95" bct="385.2" bcbg="1">
+    <item left="272" top="212" img="r1-19-1.jpg" bleft="668.1" btop="176.05" bscalex="-1" zindex="1" />
+    <item left="272" top="212" img="r1-19-1.jpg" bleft="493.05" btop="181.05" bscalex="1" zindex="1" />
+  </section>
+
+  <section ra="READER_2_1" bcw="327" bcl="670.95" bct="479.95" bcbg="1">
+    <item left="1101" top="432" img="r2-1-1.jpg" bleft="920.25" btop="184.7" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="994.3" btop="463.8" bscalex="-1" zindex="1" />
+    <item left="655.85" top="614" img="r2-1-3.jpg" bleft="641.2" btop="370.75" bscalex="1" zindex="1" />
+    <item left="282" top="712" img="r2-1-4.jpg" bleft="411.65" btop="447.8" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="471.15" btop="308.75" bscalex="1" zindex="1" />
+    <item left="650" top="433.35" img="r2-1-6.jpg" bleft="560.15" btop="136.75" bscalex="1" zindex="1" />
+    <item left="138.95" top="424.1" img="r2-1-7.jpg" bleft="227.1" btop="221.75" bscalex="-1" zindex="1" />
+  </section>
+
+  <section ra="READER_2_2" bcw="358" bcl="243" bct="132.15" bcbg="1">
+    <item left="329.55" top="479.75" img="r2-2-1.jpg" bleft="454.45" btop="304.5" bscalex="1" zindex="1" />
+    <item left="788" top="351.95" img="r2-2-2.jpg" bleft="630" btop="203.65" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="227.45" btop="72.1" bscaley="-1" zindex="1" />
+  </section>
+
+  <section ra="READER_2_3" bcw="438" bcl="438.95" bct="519.2" bcbg="1">
+    <item left="271" top="452.1" img="r2-4-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="547" top="417.8" img="r2-3-1.jpg" bleft="589.45" btop="233.9" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="524.4" btop="66.7" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="325.4" btop="127.05" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="636" btop="74.05" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_4" bcw="438" bcl="438.95" bct="519.2" bcbg="1">
+    <item left="547" top="417.8" img="r2-3-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="271" top="452.1" img="r2-4-1.jpg" bleft="388.45" btop="278.95" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="889.9" btop="40.75" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="993.9" btop="40.75" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="1038.5" btop="90.05" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_2_5" bcw="259.95" bcl="259" bct="410" bcbg="1">
+    <item left="872" top="332" img="r2-5-1.jpg" bleft="899.7" btop="207.5" bscalex="1" zindex="1" />
+    <item left="1214" top="455.2" img="r2-5-2.jpg" bleft="887.7" btop="306.65" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_6" bcw="361.45" bcl="743.15" bct="31.6" bcbg="1">
+    <item left="1044" top="386" img="r2-6-1.jpg" bleft="766.7" btop="346" bscalex="-1" zindex="1" />
+    <item left="592" top="571.75" img="r2-6-2.jpg" bleft="594.7" btop="400" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_2_7" bcw="361.45" bcl="743.15" bct="31.6" bcbg="1">
+    <item left="40" top="-0.05" img="r2-7-1.jpg" bleft="443.7" btop="63.75" bscalex="1" zindex="1"/>
+    <item left="312.1" top="786" img="r2-7-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="1044" top="386" img="r2-6-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="592" top="571.75" img="r2-6-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_2_8" bcw="370.35" bcl="150" bct="492.95" bcbg="1">
+    <item left="253" top="57.5" img="r2-8-1.jpg" bleft="500.7" btop="100" bscalex="1" zindex="1" />
+    <item left="882.5" top="418.2" img="r2-9-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="917" top="671.4" img="r2-9-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_2_9" bcw="370.35" bcl="150" bct="492.95" bcbg="1">
+    <item left="882.5" top="418.2" img="r2-9-1.jpg" bleft="700" btop="188" bscalex="-1" zindex="1" />
+    <item left="917" top="671.4" img="r2-9-2.jpg" bleft="664.7" btop="418" bscalex="-1" zindex="1" />
+    <item left="253" top="57.5" img="r2-8-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+
+  <section ra="READER_2_11" bcw="185.55" bcl="412.1" bct="99" bcbg="1">
+    <item left="90" top="564.2" img="r2-11-1.jpg" bleft="236.75" btop="333.3" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_2_12" bcw="236.5" bcl="191.45" bct="86" bcbg="1">
+    <item left="510" top="569" img="r2-12-1.jpg" bleft="376.7" btop="377.3" bscalex="-1" zindex="1" />
+    <item left="202.2" top="627" img="r2-12-2.jpg" bleft="224.7" btop="373.3" bscalex="-1" zindex="1" />
+    <item left="306.35" top="626.35" img="r2-12-3.jpg" bleft="291.7" btop="363.3" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_13" bcw="270.85" bcl="316.9" bct="530">
+    <item left="202" top="453.65" img="r2-13-1.jpg" bleft="291.7" btop="247.8" bscalex="1" zindex="1" />
+    <item left="498.15" top="483.6" img="r2-13-2.jpg" bleft="396.65" btop="282.8" bscalex="-1" zindex="1" />
+    <item left="580" top="522.35" img="r2-13-3.jpg" bleft="499.7" btop="300.8" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_14" bcw="442.95" bcl="160" bct="450" bcbg="1">
+    <item left="640.05" top="174" img="r2-14-1.jpg" bleft="490.95" btop="83.8" bscalex="-1" zindex="1" />
+    <item left="292.05" top="237.95" img="r2-14-2.jpg" bleft="346.9" btop="111.8" bscalex="1" zindex="1" />
+    <item left="236.8" top="230.2" img="r2-14-3.jpg" bleft="224.95" btop="104.85" bscalex="-1" zindex="1" />
+    <item left="126.9" top="251.9" img="r2-14-4.jpg" bleft="170.95" btop="135.85" bscalex="-1" zindex="1" />
+    <item left="106.3" top="565.35" img="r2-14-5.jpg" bleft="150" btop="310.45" bscalex="-1" zindex="1" />
+    <item left="482.1" top="799.15" img="r2-14-6.jpg" bleft="348.95" btop="356.8" bscalex="1" zindex="1" />
+    <item left="28.25" top="611" img="r2-14-7.jpg" bleft="177" btop="430" bscalex="1" bscaley="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_15" bcw="291" bcl="331.95" bct="465.6" bcbg="1">
+    <item left="190.65" top="16" img="r2-15-1.jpg" bleft="300" btop="10" bscalex="1" zindex="1" />
+    <item left="390" top="470" img="r2-15-2.jpg" bleft="429.65" btop="235.6" bscalex="-1" zindex="1" />
+    <item left="0.25" top="402.95" img="r2-15-3.jpg" bleft="312.65" btop="202.25" bscalex="1" zindex="1" />
+    <item left="-0.3" top="557" img="r2-15-4.jpg" bleft="274.7" btop="367.6" bscalex="1" zindex="1" />
+    <item left="1006" top="7.3" img="r2-15-5.jpg" bleft="765.65" btop="17.65" bscalex="-1" zindex="1" />
+    <item left="1246" top="147.65" img="r2-15-6.jpg" bleft="986.7" btop="38.65" bscalex="1" zindex="1" />
+    <item left="1298.25" top="674" img="r2-15-7.jpg" bleft="904.15" btop="406.95" bscalex="-1" zindex="1" />
+    <item left="1011.4" top="763" img="r2-15-8.jpg" bleft="882.15" btop="462.95" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_2_16" bcw="439" bcl="310.95" bct="478.95" bcbg="1">
+    <item left="1294" top="408" img="r2-16-1.jpg" bleft="919.7" btop="256.8" bscalex="-1" zindex="1" />
+    <item left="1024" top="716" img="r2-16-2.jpg" bleft="790.65" btop="374.75" bscalex="-1" zindex="1" />
+    <item left="228.4" top="478" img="r2-16-3.jpg" bleft="200" btop="287.85" bscalex="-1" zindex="1" />
+    <item left="404" top="42" img="r2-16-4.jpg" bleft="350" btop="71.05" bscalex="-1" zindex="1" />
+    <item left="1087.8" top="10.05" img="r2-16-5.jpg" bleft="797.65" btop="45.85" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_2_17" bcw="448.95" bcl="670.95" bct="310" bcbg="1">
+    <item left="432" top="127" img="r2-17-1.jpg" bleft="395.6" btop="77.9" bscalex="-1" zindex="1" />
+    <item left="578.55" top="216" img="r2-17-2.jpg" bleft="548.1" btop="122.85" bscalex="1" zindex="1" />
+    <item left="290.9" top="850.7" img="r2-17-3.jpg" bleft="327.1" btop="492.9" bscalex="1" zindex="1" />
+    <item left="403.25" top="789.9" img="r2-17-4.jpg" bleft="392.65" btop="468.8" bscalex="-1" zindex="1" />
+    <item left="509" top="552" img="r2-17-5.jpg" bleft="426.1" btop="339.85" bscalex="-1" zindex="1" />
+    <item left="1254" top="280" img="r2-17-6.jpg" bleft="895.1" btop="152.85" bscalex="-1" zindex="1" />
+    <item left="920.1" top="40.2" img="r2-17-7.jpg" bleft="1025.1" btop="214.85" bscalex="1" zindex="1" />
+    <item left="1058.05" top="640" img="r2-17-8.jpg" bleft="924.6" btop="472.8" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_2_18" bcw="408" bcl="693" bct="31" bcbg="1">
+    <item left="428" top="531.95" img="r2-18-1.jpg" bleft="337.65" btop="270.9" bscalex="-1" zindex="1" />
+    <item left="518.15" top="580" img="r2-18-2.jpg" bleft="541.1" btop="341.8" bscalex="1" zindex="1" />
+    <item left="32" top="49.8" img="r2-18-3.jpg" bleft="326.1" btop="214.85" bscalex="1" zindex="1" />
+    <item left="1342.3" top="546" img="r2-18-4.jpg" bleft="1047.1" btop="317.25" bscalex="1" zindex="1" />
+    <item left="1222" top="687.55" img="r2-18-5.jpg" bleft="879.1" btop="373.55" bscalex="-1" zindex="1" />
+    <item left="800.3" top="289.65" img="r2-18-6-2.jpg" bleft="1090" btop="270" bscalex="1" zindex="1" />
+    <item left="572" top="262.15" img="r2-18-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="672.25" top="232" img="r2-18-1-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="1509.6" top="488" img="r2-18-6-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_2_19" bcw="408.35" bcl="183.95" bct="483.95" bcbg="1">
+    <item left="316" top="152" img="r2-19-1.jpg" bleft="322.65" btop="118" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_3_1" bcw="520" bcl="365" bct="12" bcbg="1">
+    <item left="172.2" top="314" img="r3-1-1.jpg" bleft="350.65" btop="144.85" bscalex="1" zindex="1" />
+    <item left="550.25" top="372" img="r3-1-2.jpg" bleft="541.1" btop="177" bscalex="1" zindex="1" />
+    <item left="726" top="344" img="r3-1-3.jpg" bleft="650" btop="218.55" bscalex="-1" zindex="1" />
+    <item left="1308" top="292" img="r3-1-4.jpg" bleft="913.1" btop="204.3" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_3_2" bcw="236" bcl="372.95" bct="343">
+    <item left="188.75" top="393.55" img="r3-2-1.jpg" bleft="286.65" btop="220.5" bscalex="1" zindex="1" />
+    <item left="363.05" top="182" img="r3-2-2.jpg" bleft="303.1" btop="115.05" bscalex="-1" zindex="1" />
+    <item left="405" top="827" img="r3-2-3.jpg" bleft="370.1" btop="480.8" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_3_3" bcw="351" bcl="140" bct="536.75">
+    <item left="214.1" top="369.5" img="r3-3-1.jpg" bleft="375.65" btop="198.5" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_4" bcw="400" bcl="202" bct="553">
+    <item left="" top="" img="" bleft="408.65" btop="309.4" bscalex="-1" zindex="1" />
+    <item left="222.25" top="478.2" img="r3-4-2.jpg" bleft="313.1" btop="285.05" bscalex="1" zindex="1" />
+    <item left="114.15" top="17.6" img="r3-4-3.jpg" bleft="352.1" btop="35.3" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_5" bcw="409" bcl="134" bct="540">
+    <item left="176" top="302" img="r3-5-1.jpg" bleft="375.65" btop="198.5" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_6" bcw="480" bcl="145" bct="553">
+    <item left="333.65" top="437.05" img="r3-6-1.jpg" bleft="326.65" btop="250.4" bscalex="-1" zindex="1" />
+    <item left="181" top="337" img="r3-6-2.jpg" bleft="309" btop="181" bscalex="1" zindex="1" />
+    <item left="578.15" top="26" img="r3-6-3.jpg" bleft="466.1" btop="152.85" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_3_7" bcw="409" bcl="134" bct="540">
+    <item left="239.8" top="300" img="r3-7-1.jpg" bleft="401.65" btop="198.4" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_8" bcw="500" bcl="140" bct="510">
+    <item left="190" top="373" img="r3-8-1.jpg" bleft="313.65" btop="237.4" bscalex="1" zindex="1" />
+    <item left="214" top="14" img="r3-8-2.jpg" bleft="445" btop="10" bscalex="1" zindex="1" />
+    <item left="1186.2" top="624.85" img="r3-8-3.jpg" bleft="783.1" btop="271.75" bscalex="-1" zindex="1" />
+    <item left="1116" top="46" img="r3-8-4.jpg" bleft="989.1" btop="22.8" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_9" bcw="502" bcl="132" bct="11">
+    <item left="309.9" top="258.5" img="r3-9-1.jpg" bleft="273.65" btop="200.4" bscalex="-1" zindex="1" />
+    <item left="1225.9" top="258.5" img="r3-9-2.jpg" bleft="1003.25" btop="187.1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_11" bcw="344" bcl="218" bct="14">
+    <item left="304.85" top="592" img="r3-11-1.jpg" bleft="348.7" btop="372.45" bscalex="-1" zindex="1" />
+    <item left="299.45" top="329.1" img="r3-11-2.jpg" bleft="348.7" btop="168.4" bscalex="1" zindex="1" />
+    <item left="573" top="403" img="r3-11-3.jpg" bleft="532.7" btop="230.45" bscalex="1" zindex="1" />
+    <item left="8" top="479" img="r3-11-4.jpg" bleft="173.65" btop="287.45" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_12" bcw="280" bcl="268" bct="104">
+    <item left="145" top="391" img="r3-12-1.jpg" bleft="215.7" btop="278.45" bscalex="-1" zindex="1" />
+    <item left="422.75" top="616" img="r3-12-2.jpg" bleft="348.7" btop="342.45" bscalex="-1" zindex="1" />
+    <item left="608.2" top="557" img="r3-12-3.jpg" bleft="438.7" btop="329" bscalex="-1" zindex="1" />
+    <item left="620.7" top="706" img="r3-12-4.jpg" bleft="565.75" btop="394.15" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_13" bcw="459" bcl="161" bct="19">
+    <item left="533.85" top="674" img="r3-13-1.jpg" bleft="424.75" btop="381.8" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="319.65" btop="320" bscalex="-1" zindex="1" />
+    <item left="584.45" top="298" img="r3-13-3.jpg" bleft="490" btop="168" bscalex="-1" zindex="1" />
+    <item left="428" top="350" img="r3-13-4.jpg" bleft="372" btop="168" bscalex="-1" zindex="1" />
+    <item left="289.5" top="365.5" img="r3-13-5.jpg" bleft="307" btop="168" bscalex="1" zindex="1" />
+    <item left="128" top="474.45" img="r3-13-6.jpg" bleft="197" btop="168" bscalex="1" zindex="1" />
+    <item left="196.05" top="670" img="r3-13-7.jpg" bleft="277" btop="384" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_14" bcw="177" bcl="135" bct="375">
+    <item left="439.5" top="65.3" img="r3-14-2.jpg" bleft="449.75" btop="30" bscalex="1" zindex="1" />
+    <item left="394" top="215.35" img="r3-14-1.jpg" bleft="412.65" btop="123.4" bscalex="1" zindex="1" />
+    <item left="328.5" top="111.95" img="r3-14-3.jpg" bleft="358.7" btop="30" bscalex="1" zindex="1" />
+    <item left="271" top="159" img="r3-14-4.jpg" bleft="285" btop="10" bscalex="1" zindex="1" />
+    <item left="184" top="168.5" img="r3-14-5.jpg" bleft="155" btop="49.5" bscalex="-1" zindex="1" />
+    <item left="230" top="201.5" img="r3-14-6.jpg" bleft="192" btop="121.3" bscalex="-1" zindex="1" />
+    <item left="476" top="420.5" img="r3-15-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="163.55" top="895.7" img="r3-15-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_3_15" bcw="177" bcl="135" bct="375">
+    <item left="476" top="420.5" img="r3-15-1.jpg" bleft="494.75" btop="208.5" bscalex="1" zindex="1" />
+    <item left="163.55" top="895.7" img="r3-15-2.jpg" bleft="510" btop="491.65" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_16" bcw="475" bcl="135" bct="290">
+    <item left="466" top="232" img="r3-16-1.jpg" bleft="480.75" btop="91.5" bscalex="1" zindex="1" />
+    <item left="251.5" top="217" img="r3-16-2.jpg" bleft="356.65" btop="85.85" bscalex="1" zindex="1" />
+    <item left="494" top="680.2" img="r3-16-3.jpg" bleft="524.75" btop="425.45" bscalex="1" zindex="1" />
+    <item left="278" top="642" img="r3-16-4.jpg" bleft="384.75" btop="417.45" bscalex="1" zindex="1" />
+    <item left="64.15" top="600" img="r3-16-5.jpg" bleft="275.75" btop="417.45" bscalex="1" zindex="1" />
+    <item left="1196" top="110.2" img="r3-16-6.jpg" bleft="944.75" btop="14.5" bscalex="1" zindex="1" />
+    <item left="1196" top="110.2" img="r3-16-6.jpg" bleft="1032.7" btop="27.5" bscalex="1" zindex="1" />
+    <item left="976" top="25.6" img="r3-16-8.jpg" bleft="814.75" btop="12.5" bscalex="1" zindex="1" />
+    <item left="1076.4" top="150.15" img="r3-16-9.jpg" bleft="847.75" btop="64.6" bscalex="1" zindex="1" />
+    <item left="878" top="566" img="r3-16-10.jpg" bleft="740" btop="325.6" bscalex="1" zindex="1" />
+    <item left="878" top="566" img="r3-16-10.jpg" bleft="855" btop="325.6" bscalex="1" zindex="1" />
+    <item left="1430" top="785.75" img="r3-16-12.jpg" bleft="1077.7" btop="464.8" bscalex="1" zindex="1" />
+    <item left="1259.5" top="821.5" img="r3-16-13.jpg" bleft="969.7" btop="480.8" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_17" bcw="500" bcl="135" bct="412">
+    <item left="332" top="24" img="r3-17-1.jpg" bleft="386.75" btop="1" bscalex="1" zindex="1" />
+    <item left="228" top="335.8" img="r3-17-2.jpg" bleft="364" btop="199" bscalex="1" zindex="1" />
+    <item left="614" top="458" img="r3-17-3.jpg" bleft="471.75" btop="306.65" bscalex="1" zindex="1" />
+    <item left="614" top="458" img="r3-17-3.jpg" bleft="541.75" btop="263.5" bscalex="1" zindex="1" />
+    <item left="911.1" top="94.1" img="r3-17-5.jpg" bleft="670" btop="38.5" bscalex="-1" zindex="1" />
+    <item left="996" top="52.2" img="r3-17-6.jpg" bleft="831" btop="1" bscalex="1" zindex="1" />
+    <item left="883.5" top="266" img="r3-17-7.jpg" bleft="742.7" btop="142.5" bscalex="1" zindex="1" />
+    <item left="688.15" top="320" img="r3-17-8.jpg" bleft="621" btop="139.5" bscalex="1" zindex="1" />
+    <item left="742" top="462" img="r3-17-9.jpg" bleft="777" btop="294" bscalex="1" zindex="1" />
+    <item left="1006" top="482" img="r3-17-10.png" bleft="953" btop="300" bscalex="1" zindex="1" />
+    <item left="1358" top="578" img="r3-17-11.jpg" bleft="1070" btop="280.65" bscalex="1" zindex="1" />
+    <item left="1268.3" top="296.1" img="r3-17-12.jpg" bleft="1008" btop="146" bscalex="1" zindex="1" />
+    <item left="1388" top="92.35" img="r3-17-13.jpg" bleft="961.7" btop="33.85" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_3_18" bcw="388" bcl="529" bct="520">
+    <item left="71.3" top="4" img="r3-18-1.jpg" bleft="305" btop="2" bscalex="1" zindex="1" />
+    <item left="373" top="483.65" img="r3-18-2.jpg" bleft="439" btop="234" bscalex="1" zindex="1" />
+    <item left="575.45" top="376.5" img="r3-18-3.jpg" bleft="514.75" btop="204.7" bscalex="1" zindex="1" />
+    <item left="202.5" top="686" img="r3-18-4.jpg" bleft="411" btop="484.5" bscalex="1" zindex="1" />
+    <item left="971" top="130" img="r3-18-5.jpg" bleft="843.75" btop="87.85" bscalex="1" zindex="1" />
+    <item left="995" top="631.8" img="r3-18-6.jpg" bleft="832" btop="352" bscalex="1" zindex="1" />
+    <item left="1335.5" top="763" img="r3-18-7.jpg" bleft="1046.7" btop="468.45" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_3_19" bcw="369" bcl="203" bct="441">
+    <item left="446.2" top="514.25" img="r3-19-1.jpg" bleft="434.75" btop="360" bscaley="-1" bscalex="1" zindex="1" />
+    <item left="381.5" top="496" img="r3-19-2.jpg" bleft="335.65" btop="355.25" bscaley="-1" bscalex="-1" zindex="1" />
+    <item left="169" top="391" img="r3-19-3.jpg" bleft="296.75" btop="220.7" bscalex="1" zindex="1" />
+    <item left="344.4" top="434" img="r3-19-4.jpg" bleft="362" btop="228.5" bscalex="1" zindex="1" />
+    <item left="551.2" top="388.7" img="r3-19-5.jpg" bleft="524.75" btop="225.85" bscalex="1" zindex="1" />
+    <item left="658" top="532" img="r3-19-6.jpg" bleft="595.2" btop="306.65" bscalex="1" zindex="1" />
+    <item left="658" top="532" img="r3-19-6.jpg" bleft="595.2" btop="306.65" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_1" bcw="320" bcl="825" bct="461" bcbg="1">
+    <item left="244" top="213.7" img="r4-1-1.jpg" bleft="447.75" btop="47" bscalex="1" zindex="1" />
+    <item left="800" top="300" img="r4-1-2.jpg" bleft="795" btop="164" bscalex="1" zindex="1" />
+    <item left="885.55" top="716" img="r4-1-3.jpg" bleft="838.7" btop="428" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="951.2" btop="191.5" bscalex="-1" zindex="1" />
+    <item left="1451.5" top="86" img="r4-1-5.jpg" bleft="1032" btop="30" bscalex="-1" zindex="1" />
+    <item left="1320" top="57.8" img="r4-1-6.jpg" bleft="932" btop="47" bscalex="-1" zindex="1" />
+    <item left="831.5" top="0" img="r4-1-7.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_4_2" bcw="266.8" bcl="135" bct="479" bcbg="1">
+    <item left="283" top="455" img="r4-2-1.jpg" bleft="331.7" btop="158.4" bscalex="-1" zindex="1" />
+    <item left="578" top="716" img="r4-2-2.jpg" bleft="568.65" btop="388.6" bscalex="1" zindex="1" />
+    <item left="586.5" top="504.8" img="r4-2-3.jpg" bleft="446.65" btop="274" bscalex="-1" zindex="1" />
+    <item left="251" top="370" img="r4-2-4.jpg" bleft="236.25" btop="187.5" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="189" btop="216" bscalex="1" zindex="1" />
+    <item left="142" top="170.25" img="r4-2-5.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_4_3" bcw="266.8" bcl="135" bct="479" bcbg="1">
+    <item left="230.2" top="258" img="r4-3-1.jpg" bleft="402" btop="193.4" bscalex="1" zindex="1" />
+    <item left="101.6" top="736" img="r4-3-2.jpg" bleft="280.65" btop="464.6" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="546.65" btop="255.1" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="441.2" btop="330.2" bscalex="1" zindex="1" />
+    <item left="376" top="566" img="r4-3-5.jpg" bleft="392" btop="294.45" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_4" bcw="338" bcl="294" bct="524" bcbg="1">
+    <item left="0" top="0" img="r4-4-1.jpg" bleft="391" btop="12" bscalex="1" zindex="1" />
+    <item left="506" top="646" img="r4-4-2.jpg" bleft="392" btop="289" bscalex="1" zindex="1" />
+    <item left="110" top="820" img="r4-4-3.jpg" bleft="270" btop="468" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_5" bcw="172" bcl="461.95" bct="201" bcbg="1">
+    <item left="152.45" top="229" img="r4-5-1.png" bleft="256.7" btop="6.85" bscalex="1" zindex="1" />
+    <item left="209" top="129.55" img="r4-5-2.jpg" bleft="326" btop="11" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="414.7" btop="14" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="288" btop="263" bscalex="1" zindex="1" />
+    <item left="173" top="400" img="r4-5-5.jpg" bleft="395" btop="290" bscalex="1" zindex="1" />
+    <item left="341.35" top="760.7" img="r4-5-6.jpg" bleft="426" btop="413" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_4_6" bcw="250" bcl="378" bct="474" bcbg="1">
+    <item left="126" top="24.95" img="r4-6-1.jpg" bleft="319" btop="40" bscalex="1" zindex="1" />
+    <item left="237" top="499.5" img="r4-6-2.jpg" bleft="350" btop="317" bscalex="1" zindex="1" />
+    <item left="156.1" top="844.75" img="r4-6-3.jpg" bleft="300" btop="505" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="171" btop="153" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="135" btop="200" bscalex="-1" zindex="1" />
+    <item left="" top="" img="" bleft="144" btop="78" bscalex="-1" zindex="1" />
+    <item left="377" top="217" img="r4-6-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="556" top="162" img="r4-6-1-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_4_7" bcw="250" bcl="378" bct="474" bcbg="1">
+    <item left="0" top="0" img="r4-7-1.jpg" bleft="237" btop="0" bscalex="1" zindex="1" />
+    <item left="0" top="298.4" img="r4-7-2.jpg" bleft="446" btop="196" bscalex="1" zindex="1" />
+    <item left="0" top="298.4" img="r4-7-2.jpg" bleft="548" btop="257" bscalex="1" zindex="1" />
+    <item left="494.45" top="751" img="r4-7-4.jpg" bleft="521" btop="428" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="165.7" btop="0" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_8" bcw="250" bcl="135" bct="334" bcbg="1">
+    <item left="377" top="57" img="r4-8-1.jpg" bleft="438" btop="5" bscalex="1" zindex="1" />
+    <item left="101" top="364.25" img="r4-8-2.jpg" bleft="359" btop="228" bscalex="1" zindex="1" />
+    <item left="393" top="805" img="r4-8-3.jpg" bleft="451" btop="408" bscalex="1" zindex="1" />
+    <item left="800.35" top="0.05" img="r4-8-4.jpg" bleft="784.7" btop="14" bscalex="1" zindex="1" />
+    <item left="913" top="306" img="r4-8-5.jpg" bleft="828" btop="134" bscalex="1" zindex="1" />
+    <item left="856.8" top="650" img="r4-8-6.jpg" bleft="823" btop="375" bscalex="1" zindex="1" />
+    <item left="1205.1" top="806" img="r4-8-7.jpg" bleft="951" btop="491" bscalex="1" zindex="1" />
+    <item left="194" top="25" img="r4-8-1-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_4_9" bcw="187" bcl="442.95" bct="317.95" bcbg="1">
+    <item left="10.15" top="53.6" img="r4-9-1.jpg" bleft="188" btop="0" bscalex="-1" zindex="1" />
+    <item left="64" top="459.55" img="r4-9-2.jpg" bleft="250.7" btop="255.4" bscalex="1" zindex="1" />
+    <item left="120" top="871.65" img="r4-9-3.jpg" bleft="310.2" btop="488.8" bscalex="1" zindex="1" />
+    <item left="466" top="837.5" img="r4-9-4.jpg" bleft="532.7" btop="477.35" bscalex="1" zindex="1" />
+    <item left="" top="" img="" bleft="579.7" btop="528" bscalex="1" zindex="1" />
+    <item left="874" top="303.75" img="r4-9-6.jpg" bleft="911" btop="94" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_11" bcw="428" bcl="282.95" bct="87" bcbg="1">
+    <item left="1015.6" top="337.65" img="r4-11-1.jpg" bleft="883.6" btop="202.15" bscalex="1" zindex="1" />
+    <item left="790.1" top="570.2" img="r4-11-2.jpg" bleft="724.65" btop="322.4" bscalex="1" zindex="1" />
+    <item left="1268.35" top="589.85" img="r4-11-3.jpg" bleft="940.15" btop="272.85" bscalex="-1" zindex="1" />
+    <item left="965.95" top="681.85" img="r4-11-4.jpg" bleft="843.7" btop="410" bscalex="1" zindex="1" />
+    <item left="496" top="509.75" img="r4-11-5.jpg" bleft="450.7" btop="394.15" bscalex="-1" zindex="1" />
+    <item left="192.15" top="645.75" img="r4-11-6.jpg" bleft="332.75" btop="400.3" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_12" bcw="339" bcl="700" bct="94" bcbg="1">
+    <item left="280" top="378" img="r4-12-1.jpg" bleft="392.25" btop="314.6" bscalex="1" bscaley="-1" zindex="1" />
+    <item left="320" top="597.85" img="r4-12-2.jpg" bleft="478.65" btop="359.35" bscalex="1" zindex="1" />
+    <item left="652" top="576" img="r4-12-3.jpg" bleft="569.15" btop="320" bscalex="1" zindex="1" />
+    <item left="823.65" top="615.5" img="r4-12-4.jpg" bleft="684.7" btop="336.35" bscalex="1" zindex="1" />
+    <item left="872.15" top="516" img="r4-12-5.jpg" bleft="760.7" btop="353.15" bscalex="1" zindex="1" />
+    <item left="1153.3" top="600.25" img="r4-12-6.jpg" bleft="836.7" btop="341.8" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_4_13" bcw="467" bcl="149" bct="286" bcbg="1">
+    <item left="456" top="652.5" img="r4-13-1.jpg" bleft="382.15" btop="392.15" bscalex="-1" zindex="1" />
+    <item left="52.95" top="676.45" img="r4-13-2.jpg" bleft="340.65" btop="452.3" bscalex="1" zindex="1" />
+    <item left="193.75" top="316.6" img="r4-13-3.jpg" bleft="352.15" btop="136" bscalex="1" zindex="1" />
+    <item left="48" top="255.9" img="r4-13-4.jpg" bleft="191.7" btop="131.35" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_14" bcw="454.95" bcl="160" bct="75" bcbg="1">
+    <item left="84" top="610" img="r4-14-1.jpg" bleft="272" btop="360" bscalex="1" zindex="1" />
+    <item left="187.5" top="824" img="r4-14-2.jpg" bleft="335" btop="475" bscalex="-1" zindex="1" />
+    <item left="306" top="272" img="r4-14-3.jpg" bleft="270" btop="180" bscalex="-1" zindex="1" />
+    <item left="87" top="0" img="r4-14-3-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_4_15" bcw="188" bcl="430.95" bct="59" bcbg="1">
+    <item left="174" top="578.2" img="r4-15-1.jpg" bleft="297.15" btop="368.15" bscalex="1" zindex="1" />
+    <item left="274" top="684.25" img="r4-15-2.jpg" bleft="384.65" btop="388.3" bscalex="-1" zindex="1" />
+    <item left="166" top="58" img="r4-15-3.jpg" bleft="371.15" btop="183.1" bscaley="-1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_16" bcw="265" bcl="346" bct="265" bcbg="1">
+    <item left="146" top="691.7" img="r4-16-1.jpg" bleft="297.15" btop="393.15" bscalex="1" zindex="1" />
+    <item left="288" top="776" img="r4-16-2.jpg" bleft="366.65" btop="475.25" bscalex="-1" zindex="1" />
+    <item left="255.6" top="38" img="r4-16-3.jpg" bleft="423.15" btop="166.1" bscaley="-1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_17" bcw="370" bcl="185" bct="78" bcbg="1">
+    <item left="196.05" top="421.35" img="r4-17-1.jpg" bleft="309.65" btop="226.15" bscalex="1" zindex="1" />
+    <item left="41" top="445.55" img="r4-17-2.jpg" bleft="230.7" btop="284.4" bscalex="1" zindex="1" />
+    <item left="315.25" top="497.2" img="r4-17-3.jpg" bleft="391.2" btop="295.85" bscalex="1" zindex="1" />
+    <item left="437.5" top="520.5" img="r4-17-4.jpg" bleft="491" btop="306.65" bscalex="1" zindex="1" />
+    <item left="436.75" top="709.4" img="r4-17-5.jpg" bleft="458.7" btop="371.2" bscalex="-1" zindex="1" />
+    <item left="226.25" top="727.95" img="r4-17-6.jpg" bleft="343.75" btop="421.3" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_18" bcw="500" bcl="136" bct="503" bcbg="1">
+    <item left="212.2" top="456.35" img="r4-18-1.jpg" bleft="442.65" btop="288.15" bscalex="1" zindex="1" />
+    <item left="52" top="158.3" img="r4-18-2.jpg" bleft="254.7" btop="196.4" bscaley="-1" bscalex="1" zindex="1" />
+    <item left="314" top="174" img="r4-18-3.jpg" bleft="358.2" btop="191.9" bscaley="-1" bscalex="1" zindex="1" />
+    <item left="28.3" top="418" img="r4-18-4.jpg" bleft="228" btop="295.65" bscaley="-1" bscalex="1" zindex="1" />
+    <item left="509.9" top="622.35" img="r4-18-5.jpg" bleft="426.7" btop="408.2" bscalex="-1" zindex="1" />
+    <item left="528.2" top="247.8" img="r4-18-6.jpg" bleft="566.75" btop="242.3" bscaley="-1" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_4_19" bcw="310" bcl="300" bct="40" bcbg="1">
+    <item left="452" top="572" img="r4-19-1.jpg" bleft="472" btop="415" bscaley="-1" bscalex="1" zindex="1" />
+    <item left="607.5" top="746.35" img="r4-19-2.jpg" bleft="539" btop="440" bscalex="1" zindex="1" />
+    <item left="320" top="859.95" img="r4-19-3.jpg" bleft="410" btop="544" bscalex="1" zindex="1" />
+    <item left="206" top="656" img="r4-19-4.jpg" bleft="333" btop="420" bscalex="1" zindex="1" />
+    <item left="146.15" top="490" img="r4-19-5.jpg" bleft="270" btop="265" bscalex="1" zindex="1" />
+    <item left="106" top="252" img="r4-19-6.jpg" bleft="266" btop="157" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_1" bcw="426" bcl="515" bct="420">
+    <item left="229" top="541" img="r5-1-1.jpg" bleft="282" btop="361" bscalex="1" zindex="1" />
+    <item left="670" top="344" img="r5-1-2.jpg" bleft="599" btop="105" bscalex="1" zindex="1" />
+    <item left="1246" top="319" img="r5-1-3.jpg" bleft="847" btop="68" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_2" bcw="420" bcl="201" bct="69" bcbg="1">
+    <item left="471" top="349" img="r5-2-1.jpg" bleft="503" btop="188" bscalex="1" zindex="1" />
+    <item left="223" top="430" img="r5-2-2.jpg" bleft="309" btop="231" bscalex="1" zindex="1" />
+    <item left="238" top="564" img="r5-2-3.jpg" bleft="200" btop="313" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_3" bcw="500" bcl="135" bct="250">
+    <item left="307" top="224" img="r5-3-1.jpg" bleft="375" btop="100" bscalex="1" zindex="1" />
+    <item left="575" top="784" img="r5-3-2.jpg" bleft="565" btop="385" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_4" bcw="349" bcl="134" bct="7">
+    <item left="361" top="392" img="r5-4-1-2.jpg" bleft="566" btop="77" bscalex="1" zindex="1" />
+    <item left="668" top="223" img="r5-4-1.jpg" bleft="566" btop="77" bscalex="1" zindex="1" />
+    <item left="79" top="683" img="r5-4-2.jpg" bleft="517" btop="474" bscalex="1" zindex="1" />
+    <item left="16" top="333" img="r5-4-3.jpg" bleft="163" btop="190" bscalex="1" zindex="1" />
+    <item left="120" top="367" img="r5-4-4.jpg" bleft="221" btop="248" bscalex="1" zindex="1" />
+    <item left="407" top="281" img="r5-4-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+    <item left="361" top="392" img="r5-4-1-2.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_5_5" bcw="336" bcl="140" bct="14">
+    <item left="44" top="257" img="r5-5-1.jpg" bleft="230" btop="203" bscalex="-1" zindex="1" />
+    <item left="405" top="317" img="r5-5-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_5_6" bcw="1005" bcl="134" bct="7">
+    <item left="61" top="736" img="r5-6-1.jpg" bleft="197" btop="402" bscalex="-1" zindex="1" />
+    <item left="389" top="617" img="r5-6-2.jpg" bleft="445" btop="301" bscalex="1" zindex="1" />
+    <item left="893" top="479" img="r5-6-3.jpg" bleft="735" btop="246" bscalex="1" zindex="1" />
+    <item left="1285" top="863" img="r5-6-4.jpg" bleft="838" btop="464" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_7" bcw="500" bcl="135" bct="460" bcbg="1">
+    <item left="307" top="182" img="r5-7-1.jpg" bleft="450" btop="29" bscalex="1" zindex="1" />
+    <item left="910" top="448" img="r5-7-2.jpg" bleft="694" btop="209" bscalex="-1" zindex="1" />
+    <item left="1157" top="544" img="r5-7-3.jpg" bleft="878" btop="233" bscalex="-1" zindex="1" />
+    <item left="40" top="299" img="r5-7-1-1.jpg" bleft="" btop="" bscalex="" zindex="1" autoplay="1"/>
+  </section>
+  <section ra="READER_5_8" bcw="456" bcl="154" bct="21">
+    <item left="332" top="436" img="r5-8-1.jpg" bleft="353" btop="198" bscalex="1" zindex="1" />
+    <item left="479" top="415" img="r5-8-2.jpg" bleft="428" btop="200" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_9" bcw="277" bcl="237" bct="440" bcbg="1">
+    <item left="269" top="416" img="r5-9-1.jpg" bleft="246" btop="207" bscalex="-1" zindex="1" />
+    <item left="367" top="329" img="r5-9-2.jpg" bleft="394" btop="149" bscalex="1" zindex="1" />
+    <item left="115.5" top="239" img="r5-9-3.jpg" bleft="252" btop="53" bscalex="1" zindex="1" />
+    <item left="590" top="290" img="r5-9-4.jpg" bleft="480" btop="96" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_10" bcw="400" bcl="140" bct="40">
+    <item left="245" top="379" img="r5-10-1.jpg" bleft="150" btop="130" bscalex="-1" zindex="1" />
+    <item left="443" top="349" img="r5-10-2.jpg" bleft="500" btop="100" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_12" bcw="350" bcl="137" bct="28">
+    <item left="1001" top="526" img="r5-12-1.jpg" bleft="770" btop="271" bscalex="-1" zindex="1" />
+    <item left="260" top="568" img="r5-12-2.jpg" bleft="454" btop="342" bscalex="1" zindex="1" />
+    <item left="955" top="265" img="r5-12-3.jpg" bleft="776" btop="122" bscalex="1" zindex="1" />
+    <item left="794" top="158" img="r5-12-4.jpg" bleft="724" btop="34" bscalex="1" zindex="1" />
+    <item left="832" top="43" img="r5-12-5.jpg" bleft="658" btop="8" bscalex="1" zindex="1" />
+    <item left="644" top="43" img="r5-12-6.jpg" bleft="499" btop="11" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_13" bcw="489" bcl="140" bct="226" bcbg="1">
+    <item left="0" top="541" img="r5-13-1.jpg" bleft="254" btop="343" bscalex="1" zindex="1" />
+    <item left="540" top="874" img="r5-13-2.jpg" bleft="607" btop="465" bscalex="1" zindex="1" />
+    <item left="540" top="874" img="r5-13-2.jpg" bleft="386" btop="489" bscalex="-1" zindex="1" />
+    <item left="888.5" top="502.45" img="r5-13-4.jpg" bleft="650" btop="357" bscalex="-1" zindex="1" />
+    <item left="1418" top="599.5" img="r5-13-5.jpg" bleft="918" btop="353" bscalex="-1" zindex="1" />
+    <item left="1125" top="839" img="r5-13-6.jpg" bleft="881" btop="494" bscalex="-1" zindex="1" />
+    <item left="1125" top="839" img="r5-13-6.jpg" bleft="1088" btop="483" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_14" bcw="488" bcl="142" bct="473" bcbg="1">
+    <item left="257.5" top="265.2" img="r5-14-1.jpg" bleft="185" btop="70" bscalex="-1" zindex="1" />
+    <item left="471" top="115.2" img="r5-14-2.jpg" bleft="507" btop="60" bscalex="1" zindex="1" />
+    <item left="633" top="347" img="r5-14-3.jpg" bleft="565" btop="130" bscalex="1" zindex="1" />
+    <item left="392.5" top="434" img="r5-14-4.jpg" bleft="429" btop="196" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_15" bcw="484" bcl="142" bct="480" bcbg="1">
+    <item left="405" top="166" img="r5-15-1.jpg" bleft="272" btop="42" bscalex="-1" zindex="1" />
+    <item left="473" top="140" img="r5-15-2.jpg" bleft="442" btop="7" bscalex="-1" zindex="1" />
+    <item left="513" top="400" img="r5-15-3.jpg" bleft="538" btop="241" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_16" bcw="464" bcl="138" bct="402">
+    <item left="366" top="338" img="r5-16-1.jpg" bleft="416" btop="75" bscalex="1" zindex="1" />
+    <item left="334" top="474" img="r5-16-2.jpg" bleft="266" btop="227" bscalex="-1" zindex="1" />
+    <item left="124" top="246" img="r5-16-3.jpg" bleft="235" btop="87" bscalex="1" zindex="1" />
+    <item left="1330" top="68" img="r5-16-4.jpg" bleft="1052" btop="14" bscalex="1" zindex="1" />
+    <item left="998" top="560" img="r5-16-5.jpg" bleft="905" btop="367" bscalex="1" zindex="1" />
+    <item left="854" top="684" img="r5-16-6.jpg" bleft="717" btop="358" bscalex="1" zindex="1" />
+    <item left="826" top="966" img="r5-16-7.jpg" bleft="683" btop="513" bscalex="1" zindex="1" />
+    <item left="944" top="946" img="r5-16-8.jpg" bleft="780" btop="533" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_5_17" bcw="358" bcl="136" bct="8">
+    <item left="516" top="446" img="r5-17-1.jpg" bleft="524" btop="206" bscalex="1" zindex="1" />
+    <item left="400" top="562" img="r5-17-2.jpg" bleft="366" btop="281" bscalex="1" zindex="1" />
+    <item left="272" top="515" img="r5-17-3.jpg" bleft="323" btop="267" bscalex="1" zindex="1" />
+    <item left="164" top="484" img="r5-17-4.jpg" bleft="263" btop="248" bscalex="1" zindex="1" />
+    <item left="5" top="398" img="r5-17-5.jpg" bleft="196" btop="231" bscalex="1" zindex="1" />
+    <item left="22" top="446" img="r5-17-6.jpg" bleft="133" btop="225" bscalex="1" zindex="1" />
+    <item left="674" top="877" img="r5-17-7.jpg" bleft="555" btop="524" bscalex="1" zindex="1" />
+    <item left="400" top="814" img="r5-17-8.jpg" bleft="323" btop="452" bscalex="-1" zindex="1" />
+    <item left="187" top="842" img="r5-17-9.jpg" bleft="142" btop="524" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_18" bcw="247" bcl="139" bct="33">
+    <item left="272" top="302" img="r5-18-1.jpg" bleft="244" btop="196" bscalex="-1" zindex="1" />
+    <item left="524" top="265" img="r5-18-2.jpg" bleft="558" btop="151" bscalex="1" zindex="1" />
+    <item left="420" top="805" img="r5-18-3.jpg" bleft="321" btop="447" bscalex="-1" zindex="1" />
+    <item left="636" top="892" img="r5-18-4.jpg" bleft="466" btop="503" bscalex="-1" zindex="1" />
+    <item left="172" top="886" img="r5-18-5.jpg" bleft="174" btop="513" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_5_19" bcw="348" bcl="146" bct="5" bcbg="1">
+    <item left="365" top="535" img="r5-19-1.jpg" bleft="274" btop="211" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_1" bcw="1005" bcl="134" bct="20">
+    <item left="418" top="671" img="r6-1-1.jpg" bleft="315" btop="426" bscalex="-1" zindex="1" />
+    <item left="599" top="713" img="r6-1-2.jpg" bleft="500" btop="386" bscalex="1" zindex="1" />
+    <item left="172" top="527" img="r6-1-3.jpg" bleft="293" btop="271" bscalex="1" zindex="1" />
+    <item left="113" top="604" img="r6-1-4.jpg" bleft="130" btop="327" bscalex="-1" zindex="1" />
+    <item left="106" top="334" img="r6-1-5.jpg" bleft="130" btop="160" bscalex="-1" zindex="1" />
+    <item left="221" top="850" img="r6-1-6.jpg" bleft="337" btop="533" bscalex="-1" zindex="1" />
+    <item left="1082" top="403" img="r6-1-7.jpg" bleft="743" btop="195" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_2" bcw="420" bcl="131" bct="265" bcbg="1">
+    <item left="278" top="679" img="r6-2-1.jpg" bleft="195" btop="375" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_3" bcw="429" bcl="189" bct="19" bcbg="1">
+    <item left="343" top="671" img="r6-3-1.jpg" bleft="515" btop="380" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_4" bcw="420" bcl="157" bct="217">
+    <item left="304" top="655" img="r6-4-1.jpg" bleft="342" btop="384" bscalex="1" zindex="1" />
+    <item left="465" top="874" img="r6-4-2.jpg" bleft="502" btop="476" bscalex="1" zindex="1" />
+    <item left="146" top="565" img="r6-4-3.jpg" bleft="130" btop="300" bscalex="-1" zindex="1" />
+    <item left="728" top="640" img="r6-4-4.jpg" bleft="541" btop="328" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_5" bcw="237" bcl="141" bct="160">
+    <item left="229" top="146" img="r6-5-1.jpg" bleft="223" btop="18" bscalex="-1" zindex="1" />
+    <item left="404" top="319" img="r6-5-2.jpg" bleft="439" btop="146" bscalex="1" zindex="1" />
+    <item left="563" top="164" img="r6-5-3.jpg" bleft="539" btop="47" bscalex="1" zindex="1" />
+    <item left="149" top="809" img="r6-5-4.jpg" bleft="330" btop="344" bscalex="1" zindex="1" />
+    <item left="251" top="587" img="r6-5-5.jpg" bleft="418" btop="299" bscalex="1" zindex="1" />
+    <item left="546" top="574" img="r6-5-6.jpg" bleft="517" btop="307" bscalex="1" zindex="1" />
+    <item left="546" top="751" img="r6-5-7.jpg" bleft="543" btop="456" bscalex="1" zindex="1" />
+    <item left="431" top="601" img="r6-5-8.jpg" bleft="202" btop="423" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_6" bcw="421" bcl="169" bct="465" bcbg="1">
+    <item left="564" top="293" img="r6-6-1.jpg" bleft="431" btop="150" bscalex="-1" zindex="1" />
+    <item left="651" top="44" img="r6-6-2.jpg" bleft="585" btop="12" bscalex="1" zindex="1" />
+    <item left="443" top="583" img="r6-6-3.jpg" bleft="441" btop="340" bscalex="1" zindex="1" />
+    <item left="266" top="499" img="r6-6-4.jpg" bleft="240" btop="256" bscalex="-1" zindex="1" />
+    <item left="391" top="107" img="r6-6-5.jpg" bleft="348" btop="12" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_7" bcw="430" bcl="163" bct="488" bcbg="1">
+    <item left="435" top="175" img="r6-7-1.jpg" bleft="300" btop="104" bscalex="-1" zindex="1" />
+    <item left="197" top="338" img="r6-7-2.jpg" bleft="169" btop="178" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_8" bcw="996" bcl="141" bct="503" bcbg="1">
+    <item left="319" top="544" img="r6-8-1.jpg" bleft="425" btop="323" bscalex="1" zindex="1" />
+    <item left="1230" top="306" img="r6-8-2.jpg" bleft="1008" btop="147" bscalex="1" zindex="1" />
+    <item left="1108" top="246" img="r6-8-3.jpg" bleft="815" btop="108" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_9" bcw="468" bcl="151" bct="497" bcbg="1">
+    <item left="533" top="88" img="r6-9-1.jpg" bleft="492" btop="28" bscalex="1" zindex="1" />
+    <item left="377" top="205" img="r6-9-2.jpg" bleft="295" btop="55" bscalex="-1" zindex="1" />
+    <item left="103" top="379" img="r6-9-3.jpg" bleft="225" btop="165" bscalex="1" zindex="1" />
+    <item left="82" top="554" img="r6-9-4.jpg" bleft="224" btop="287" bscalex="1" zindex="1" />
+    <item left="182" top="596" img="r6-9-5.jpg" bleft="393" btop="270" bscalex="1" zindex="1" />
+    <item left="680" top="233" img="r6-9-6.jpg" bleft="567" btop="88" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_10" bcw="420" bcl="176" bct="487" bcbg="1">
+    <item left="371" top="145" img="r6-10-1.jpg" bleft="445" btop="30" bscalex="1" zindex="1" />
+    <item left="190" top="65" img="r6-10-2.jpg" bleft="270" btop="12" bscalex="1" zindex="1" />
+    <item left="196" top="277" img="r6-10-3.jpg" bleft="280" btop="100" bscalex="1" zindex="1" />
+    <item left="118" top="406" img="r6-10-4.jpg" bleft="128" btop="196" bscalex="-1" zindex="1" />
+    <item left="450" top="299" img="r6-10-5.jpg" bleft="422" btop="142" bscalex="1" zindex="1" />
+    <item left="115" top="701" img="r6-10-6.jpg" bleft="333" btop="289" bscalex="1" zindex="1" />
+    <item left="101" top="685" img="r6-10-7.jpg" bleft="146" btop="363" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_12" bcw="665" bcl="473" bct="8">
+    <item left="161" top="440" img="r6-12-1.jpg" bleft="252" btop="216" bscalex="1" zindex="1" />
+    <item left="130" top="601" img="r6-12-2.jpg" bleft="137" btop="330" bscalex="-1" zindex="1" />
+    <item left="377" top="295" img="r6-12-3.jpg" bleft="323" btop="132" bscalex="-1" zindex="1" />
+    <item left="643" top="641" img="r6-12-4.jpg" bleft="454" btop="336" bscalex="-1" zindex="1" />
+    <item left="941" top="443" img="r6-12-5.jpg" bleft="676" btop="281" bscalex="-1" zindex="1" />
+    <item left="1096" top="424" img="r6-12-6.jpg" bleft="795" btop="206" bscalex="-1" zindex="1" />
+    <item left="1160" top="557" img="r6-12-7.jpg" bleft="894" btop="291" bscalex="1" zindex="1" />
+    <item left="1298" top="560" img="r6-12-8.jpg" bleft="987" btop="294" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_13" bcw="576" bcl="560" bct="473" bcbg="1">
+    <item left="26" top="60" img="r6-13-1.jpg" bleft="128" btop="20" bscalex="-1" zindex="1" />
+    <item left="498" top="564" img="r6-13-2.jpg" bleft="488" btop="303" bscalex="1" zindex="1" />
+    <item left="1020" top="292" img="r6-13-3.jpg" bleft="683" btop="92" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_14" bcw="203" bcl="434" bct="320">
+    <item left="89" top="49" img="r6-14-1.jpg" bleft="225" btop="8" bscalex="1" zindex="1" />
+    <item left="557" top="140" img="r6-14-2.jpg" bleft="409" btop="42" bscalex="-1" zindex="1" />
+    <item left="400" top="526" img="r6-14-3.jpg" bleft="270" btop="320" bscalex="-1" zindex="1" />
+    <item left="361" top="860" img="r6-14-4.jpg" bleft="236" btop="500" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_15" bcw="500" bcl="135" bct="8" bcbg="1">
+    <item left="444" top="583" img="r6-15-1.jpg" bleft="381" btop="254" bscalex="1" zindex="1" />
+    <item left="202" top="859" img="r6-15-2.jpg" bleft="168" btop="467" bscalex="-1" zindex="1" />
+    <item left="271" top="745" img="r6-15-3.jpg" bleft="495" btop="464" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_16" bcw="482" bcl="144" bct="460" bcbg="1">
+    <item left="391" top="479" img="r6-16-1.jpg" bleft="482" btop="238" bscalex="1" zindex="1" />
+  </section>
+  <section ra="READER_6_17" bcw="466" bcl="154" bct="15">
+    <item left="220" top="190" img="r6-17-1.jpg" bleft="258" btop="184" bscalex="1" zindex="1" />
+    <item left="546" top="652" img="r6-17-2.jpg" bleft="443" btop="343" bscalex="-1" zindex="1" />
+    <item left="654" top="545" img="r6-17-3.jpg" bleft="540" btop="187" bscalex="-1" zindex="1" />
+    <item left="166" top="830" img="r6-17-4.jpg" bleft="238" btop="414" bscalex="1" zindex="1" />
+    <item left="426" top="808" img="r6-17-5.jpg" bleft="380" btop="414" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_18" bcw="505" bcl="644" bct="433">
+    <item left="8" top="62" img="r6-18-1.jpg" bleft="505" btop="53" bscalex="1" zindex="1" />
+    <item left="178" top="76" img="r6-18-2.jpg" bleft="191" btop="11" bscalex="-1" zindex="1" />
+    <item left="292" top="774" img="r6-18-3.jpg" bleft="354" btop="400" bscalex="1" zindex="1" />
+    <item left="466" top="792" img="r6-18-4.jpg" bleft="479" btop="506" bscalex="1" zindex="1" />
+    <item left="1068" top="534" img="r6-18-5.jpg" bleft="843" btop="250" bscalex="1" zindex="1" />
+    <item left="1008" top="246" img="r6-18-6.jpg" bleft="697" btop="100" bscalex="-1" zindex="1" />
+  </section>
+  <section ra="READER_6_19" bcw="498" bcl="186" bct="132" bcbg="1">
+    <item left="200" top="622" img="r6-19-1.jpg" bleft="183" btop="310" bscalex="-1" zindex="1" />
+    <item left="406" top="464" img="r6-19-2.jpg" bleft="424" btop="257" bscalex="1" zindex="1" />
+    <item left="432" top="610" img="r6-19-3.jpg" bleft="548" btop="292" bscalex="1" zindex="1" />
+    <item left="1012" top="304" img="r6-19-4.jpg" bleft="733" btop="217" bscalex="-1" zindex="1" />
+    <item left="1000" top="712" img="r6-19-5.jpg" bleft="880" btop="476" bscalex="1" zindex="1" />
+  </section>
+</root>
+    

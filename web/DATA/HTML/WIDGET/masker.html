@@ -1,0 +1,46 @@
+<div id="masker_wrapper" class="masker_wrapper" mid="0">
+  <span class="hint">Click to change shape</span>
+  <div class="shape"><img src="" /><span /></div>
+  <span class="resizer lt" />
+  <span class="resizer rt" />
+  <span class="resizer lb" />
+  <span class="resizer rb" />
+</div>
+
+<script>
+  $(document).ready(function () {
+    var maskie = [
+      "masker_round.png",
+      "masker_square.png",
+      "masker_giraffe.png",
+    ];
+    $("#masker_wrapper")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          var mid = parseInt($(this).attr("mid"));
+          $(this)
+            .find("img")
+            .attr("src", "./images/common/" + maskie[mid]);
+          //
+          mid++;
+          if (mid > maskie.length - 1) {
+            mid = 0;
+          }
+          $(this).attr("mid", mid);
+        }
+      })
+      .mousedown()
+      .mouseup();
+
+    getHighestDepthWidget($("#masker"));
+    makeDraggable($("#masker_wrapper"), true, $("#masker_wrapper"));
+  });
+</script>

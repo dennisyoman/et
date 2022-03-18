@@ -1,0 +1,621 @@
+<root>
+  <!--
+  ra:對應課數代號
+  大圖命名方式: ra-bg.jpg
+
+  -焦點要在左上角 -
+  left:動畫圖片x座標
+  top:動畫圖片y座標
+  img:動畫圖片檔名
+  bleft:泡泡相對圖片左上角x軸
+  btop:泡泡相對圖片左上角y軸
+  bscaleX:泡泡方向 1尖尖朝左 / -1尖尖朝右
+  bscaley:-1 泡泡上下顛倒
+  zindex:深度設定
+
+-->
+  <section ra="WLS2_1_1">
+    <item left='412' top='127' img='wls2-1-1-1.jpg' bleft='363.25' btop='65.8' bscalex='-1' zindex='1' />
+    <item left='495' top='443' img='wls2-1-1-2.jpg' bleft='410.25' btop='268.8' bscalex='-1' zindex='1' />
+    <item left='412' top='127' img='wls2-1-1-1.jpg' bleft='435.75' btop='43.45' bscalex='1' zindex='1' />
+    <item left='495' top='443' img='wls2-1-1-2.jpg' bleft='491.30' btop='248.8' bscalex='1' zindex='1' />
+    <item left='412' top='127' img='wls2-1-1-1.jpg' bleft='482.3' btop='76.45' bscalex='1' zindex='1' />
+    <item left='495' top='443' img='wls2-1-1-2.jpg' bleft='526.85' btop='289.45' bscalex='1' zindex='1' />
+  </section>
+  <section ra="WLS2_1_2">
+    <item left='655' top='399' img='wls2-1-2-1.jpg' bleft='486.25' btop='186.8' bscalex='-1' zindex='1' />
+    <item left='157' top='507' img='wls2-1-2-2.jpg' bleft='282.85' btop='254.10' bscalex='1' zindex='1' />
+    <item left='655' top='399' img='wls2-1-2-1.jpg' bleft='550.75' btop='178.45' bscalex='1' zindex='1' />
+    <item left='157' top='507' img='wls2-1-2-2.jpg' bleft='207.20' btop='239.8' bscalex='-1' zindex='1' />
+    <item left='655' top='399' img='wls2-1-2-1.jpg' bleft='586.25' btop='214.75' bscalex='1' zindex='1' />
+    <item left='157' top='507' img='wls2-1-2-2.jpg' bleft='167.85' btop='280.15' bscalex='-1' zindex='1' />
+  </section>
+  <section ra="WLS2_1_3">
+    <item left='550' top='368' img='wls2-1-3-1.jpg' bleft='429' btop='171.95' bscalex='-1' zindex='1' />
+    <item left='181' top='269' img='wls2-1-3-2.jpg' bleft='225.5' btop='158.95' bscalex='-1' zindex='1' />
+    <item left='550' top='368' img='wls2-1-3-1.jpg' bleft='493' btop='165.95' bscalex='1' zindex='1' />
+    <item left='181' top='269' img='wls2-1-3-2.jpg' bleft='303' btop='152.95' bscalex='1' zindex='1' />
+    <item left='550' top='368' img='wls2-1-3-1.jpg' bleft='515.5' btop='205.3' bscalex='1' zindex='1' />
+  </section>
+  <section ra="WLS2_1_4">
+    <item left='410' top='252' img='wls2-1-4-1.jpg' bleft='445' btop='45.6' bscalex='-1' zindex='1' />
+    <item left='155' top='255' img='wls2-1-4-2.jpg' bleft='325.5' btop='49.95' bscalex='1' zindex='1' />
+    <item left='410' top='252' img='wls2-1-4-1.jpg' bleft='551' btop='45.6' bscalex='1' zindex='1' />
+    <item left='155' top='255' img='wls2-1-4-2.jpg' bleft='178.05' btop='34.3' bscalex='-1' zindex='1' />
+  </section>
+  <section ra="WLS2_1_5">
+    <item left='164' top='434' img='wls2-1-5-1.jpg' bleft='446' btop='69.65' bscalex='1' zindex='1' />
+    <item left='176' top='340' img='wls2-1-5-2.jpg' bleft='300.5' btop='114.95' bscalex='1' zindex='1' />
+    <item left='164' top='434' img='wls2-1-5-1.jpg' bleft='505.5' btop='93.65' bscalex='1' zindex='1' />
+    <item left='176' top='340' img='wls2-1-5-2.jpg' bleft='214' btop='102.3' bscalex='-1' zindex='1' />
+    <item left='164' top='434' img='wls2-1-5-1.jpg' bleft='515.5' btop='148.65' bscalex='1' zindex='1' />
+    <item left='176' top='340' img='wls2-1-5-2.jpg' bleft='152' btop='138.3' bscalex='-1' zindex='1' />
+  </section>
+  <section ra="WLS2_1_6">
+    <item left='133' top='890' img='wls2-1-6-1.jpg' bleft='243.05' btop='470.9' bscalex='1' zindex='1' />
+    <item left='299' top='805' img='wls2-1-6-2.jpg' bleft='376.95' btop='498.9' bscalex='1' zindex='1' />
+    <item left='133' top='890' img='wls2-1-6-1.jpg' bleft='269.5' btop='506.6' bscalex='1' zindex='1' />
+    <item left='563' top='843' img='wls2-1-6-3.jpg' bleft='441' btop='484.9' bscalex='-1' zindex='1' />
+    <item left='70' top='596' img='wls2-1-6-4.jpg' bleft='224.5' btop='275.95' bscalex='1' zindex='1' />
+    <item left='299' top='805' img='wls2-1-6-2.jpg' bleft='388.5' btop='543.9' bscalex='1' zindex='1' />
+    <item left='70' top='596' img='wls2-1-6-4.jpg' bleft='229.5' btop='317.3' bscalex='1' zindex='1' />
+    <item left='133' top='890' img='wls2-1-6-1.jpg' bleft='265' btop='553.95' bscalex='1' zindex='1' />
+  </section>
+  <section ra="WLS2_2_1">
+    <item left='' top='' img='' bleft='377.25' btop='211.75' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='237.7' btop='228.5' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='318' btop='238.5' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='225.25' btop='267.85' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='377.25' btop='259.05' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='220.75' btop='307.20' bscalex='-1' zindex='1' />
+    <item left='438' top='647' img='wls2-2-1-1.jpg' bleft='406.8' btop='387.95' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='422.95' btop='298.4' bscalex='1' zindex='1' />
+    <item left='438' top='647' img='wls2-2-1-1.jpg' bleft='515.5' btop='384.95' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_2_2'>
+    <item left='529' top='180' img='WLS2-2-2-1.jpg' bleft='520' btop='86' bscalex='1' zindex='1' />
+    <item left='174' top='218' img='WLS2-2-2-2.jpg' bleft='287' btop='78' bscalex='-1' zindex='1' />
+    <item left='529' top='180' img='WLS2-2-2-1.jpg' bleft='507' btop='35' bscalex='1' zindex='1' />
+    <item left='174' top='218' img='WLS2-2-2-2.jpg' bleft='273' btop='118' bscalex='-1' zindex='1' />
+    <item left='529' top='180' img='WLS2-2-2-1.jpg' bleft='430' btop='25' bscalex='-1' zindex='1' />
+    <item left='147' top='295' img='WLS2-2-2-3.jpg' bleft='238' btop='164' bscalex='1' zindex='1' />
+    <item left='529' top='180' img='WLS2-2-2-1.jpg' bleft='388' btop='58' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_2_3'>
+    <item left='417' top='681' img='WLS2-2-3-1.jpg' bleft='493' btop='298' bscalex='1' zindex='1' />
+    <item left='226' top='550' img='WLS2-2-3-2.jpg' bleft='316' btop='259' bscalex='1' zindex='1' />
+    <item left='417' top='681' img='WLS2-2-3-1.jpg' bleft='530' btop='349' bscalex='1' zindex='1' />
+    <item left='226' top='550' img='WLS2-2-3-2.jpg' bleft='228' btop='259' bscalex='-1' zindex='1' />
+    <item left='417' top='681' img='WLS2-2-3-1.jpg' bleft='395' btop='326' bscalex='-1' zindex='1' />
+    <item left='226' top='550' img='WLS2-2-3-2.jpg' bleft='176' btop='341' bscalex='-1' zindex='1' />
+    <item left='417' top='681' img='WLS2-2-3-1.jpg' bleft='388' btop='380' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_2_4'>
+    <item left='' top='' img='' bleft='172' btop='282' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='555' btop='192' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='286' btop='275' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='472' btop='201' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='254' btop='354' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='397' btop='229' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='258' btop='308' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='135' btop='318' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_2_5'>
+    <item left='219' top='422' img='WLS2-2-5-1.jpg' bleft='276' btop='184' bscalex='1' zindex='1' />
+    <item left='150' top='541' img='WLS2-2-5-2.jpg' bleft='196' btop='244' bscalex='1' zindex='1' />
+    <item left='219' top='422' img='WLS2-2-5-1.jpg' bleft='331' btop='212' bscalex='1' zindex='1' />
+    <item left='150' top='541' img='WLS2-2-5-2.jpg' bleft='139' btop='274' bscalex='-1' zindex='1' />
+    <item left='219' top='422' img='WLS2-2-5-1.jpg' bleft='335' btop='260' bscalex='1' zindex='1' />
+    <item left='150' top='541' img='WLS2-2-5-2.jpg' bleft='131' btop='324' bscalex='-1' zindex='1' />
+    <item left='219' top='422' img='WLS2-2-5-1.jpg' bleft='336' btop='309' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_2_6'>
+    <item left='90' top='214' img='WLS2-2-6-1.jpg' bleft='250' btop='117' bscalex='1' zindex='1' />
+    <item left='298' top='470' img='WLS2-2-6-2.jpg' bleft='294' btop='219' bscalex='-1' zindex='1' />
+    <item left='90' top='214' img='WLS2-2-6-1.jpg' bleft='133' btop='112' bscalex='-1' zindex='1' />
+    <item left='298' top='470' img='WLS2-2-6-2.jpg' bleft='261' btop='260' bscalex='-1' zindex='1' />
+    <item left='90' top='214' img='WLS2-2-6-1.jpg' bleft='128' btop='157' bscalex='-1' zindex='1' />
+    <item left='298' top='470' img='WLS2-2-6-2.jpg' bleft='379' btop='239' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_1'>
+    <item left='189' top='502' img='WLS2-3-1-1.jpg' bleft='142' btop='195' bscalex='-1' zindex='1' />
+    <item left='555' top='491' img='WLS2-3-1-2.jpg' bleft='566' btop='200' bscalex='1' zindex='1' />
+    <item left='189' top='502' img='WLS2-3-1-1.jpg' bleft='206' btop='186' bscalex='1' zindex='1' />
+    <item left='555' top='491' img='WLS2-3-1-2.jpg' bleft='495' btop='195' bscalex='-1' zindex='1' />
+    <item left='189' top='502' img='WLS2-3-1-1.jpg' bleft='271' btop='193' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_2'>
+    <item left='386' top='258' img='WLS2-3-2-1.jpg' bleft='416' btop='92' bscalex='-1' zindex='1' />
+    <item left='306' top='392' img='WLS2-3-2-2.jpg' bleft='416' btop='250' bscalex='1' zindex='1' />
+    <item left='386' top='258' img='WLS2-3-2-1.jpg' bleft='524' btop='92' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_3'>
+    <item left='233' top='651' img='WLS2-3-3-1.jpg' bleft='230' btop='332' bscalex='-1' zindex='1' />
+    <item left='483' top='704' img='WLS2-3-3-2.jpg' bleft='473' btop='384' bscalex='1' zindex='1' />
+    <item left='233' top='651' img='WLS2-3-3-1.jpg' bleft='316' btop='342' bscalex='1' zindex='1' />
+    <item left='483' top='704' img='WLS2-3-3-2.jpg' bleft='404' btop='377' bscalex='-1' zindex='1' />
+    <item left='233' top='651' img='WLS2-3-3-1.jpg' bleft='200' btop='369' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_4'>
+    <item left='639' top='642' img='WLS2-3-4-1.jpg' bleft='550' btop='326' bscalex='1' zindex='1' />
+    <item left='538' top='591' img='WLS2-3-4-2.jpg' bleft='440' btop='320' bscalex='-1' zindex='1' />
+    <item left='639' top='642' img='WLS2-3-4-1.jpg' bleft='569' btop='363' bscalex='1' zindex='1' />
+    <item left='538' top='591' img='WLS2-3-4-2.jpg' bleft='419' btop='352' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_5'>
+    <item left='205' top='342' img='WLS2-3-5-1.jpg' bleft='208' btop='168' bscalex='-1' zindex='1' />
+    <item left='298' top='342' img='WLS2-3-5-2.jpg' bleft='346' btop='169' bscalex='1' zindex='1' />
+    <item left='205' top='342' img='WLS2-3-5-1.jpg' bleft='195' btop='206' bscalex='-1' zindex='1' />
+    <item left='298' top='342' img='WLS2-3-5-2.jpg' bleft='284' btop='163' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_3_6'>
+    <item left='494' top='363' img='WLS2-3-6-1.jpg' bleft='541' btop='203' bscalex='1' zindex='1' />
+    <item left='108' top='292' img='WLS2-3-6-2.jpg' bleft='239' btop='142' bscalex='1' zindex='1' />
+    <item left='274' top='409' img='WLS2-3-6-3.jpg' bleft='379' btop='221' bscalex='1' zindex='1' />
+    <item left='494' top='363' img='WLS2-3-6-1.jpg' bleft='442' btop='204' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_1'>
+    <item left='236' top='441' img='WLS2-4-1-1.jpg' bleft='242' btop='222' bscalex='-1' zindex='1' />
+    <item left='300' top='413' img='WLS2-4-1-2.jpg' bleft='342' btop='228' bscalex='1' zindex='1' />
+    <item left='236' top='441' img='WLS2-4-1-1.jpg' bleft='228' btop='258' bscalex='-1' zindex='1' />
+    <item left='300' top='413' img='WLS2-4-1-2.jpg' bleft='360' btop='262' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_2'>
+    <item left='668' top='441' img='WLS2-4-2-1.jpg' bleft='566' btop='219' bscalex='1' zindex='1' />
+    <item left='620' top='397' img='WLS2-4-2-2.jpg' bleft='494' btop='214' bscalex='-1' zindex='1' />
+    <item left='668' top='441' img='WLS2-4-2-1.jpg' bleft='573' btop='255' bscalex='1' zindex='1' />
+    <item left='620' top='397' img='WLS2-4-2-2.jpg' bleft='469' btop='245' bscalex='-1' zindex='1' />
+    <item left='668' top='441' img='WLS2-4-2-1.jpg' bleft='568' btop='295' bscalex='1' zindex='1' />
+    <item left='620' top='397' img='WLS2-4-2-2.jpg' bleft='475' btop='288' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_3'>
+    <item left='327' top='713' img='WLS2-4-3-1.jpg' bleft='315' btop='401' bscalex='-1' zindex='1' />
+    <item left='215' top='722' img='WLS2-4-3-2.jpg' bleft='195' btop='411' bscalex='-1' zindex='1' />
+    <item left='327' top='713' img='WLS2-4-3-1.jpg' bleft='373' btop='410' bscalex='1' zindex='1' />
+    <item left='215' top='722' img='WLS2-4-3-2.jpg' bleft='251' btop='397' bscalex='1' zindex='1' />
+    <item left='327' top='713' img='WLS2-4-3-1.jpg' bleft='385' btop='456' bscalex='1' zindex='1' />
+    <item left='215' top='722' img='WLS2-4-3-2.jpg' bleft='187' btop='451' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_4'>
+    <item left='122' top='923' img='WLS2-4-4-1.jpg' bleft='151' btop='495' bscalex='-1' zindex='1' />
+    <item left='173' top='319' img='WLS2-4-4-2.jpg' bleft='292' btop='132' bscalex='1' zindex='1' />
+    <item left='344' top='382' img='WLS2-4-4-3.jpg' bleft='403' btop='166' bscalex='1' zindex='1' />
+    <item left='122' top='923' img='WLS2-4-4-1.jpg' bleft='218' btop='490' bscalex='1' zindex='1' />
+    <item left='173' top='319' img='WLS2-4-4-2.jpg' bleft='223' btop='133' bscalex='-1' zindex='1' />
+    <item left='491' top='362' img='WLS2-4-4-4.jpg' bleft='540' btop='209' bscalex='1' zindex='1' />
+    <item left='344' top='382' img='WLS2-4-4-3.jpg' bleft='337' btop='160' bscalex='-1' zindex='1' />
+    <item left='122' top='923' img='WLS2-4-4-1.jpg' bleft='258' btop='522' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_5'>
+    <item left='213' top='98' img='WLS2-4-5-1.jpg' bleft='313' btop='124' bscalex='-1' zindex='1' />
+    <item left='213' top='98' img='WLS2-4-5-1.jpg' bleft='326' btop='86' bscalex='-1' zindex='1' />
+    <item left='213' top='98' img='WLS2-4-5-1.jpg' bleft='369' btop='60' bscalex='-1' zindex='1' />
+    <item left='213' top='98' img='WLS2-4-5-1.jpg' bleft='423' btop='85' bscalex='1' zindex='1' />
+    <item left='213' top='98' img='WLS2-4-5-1.jpg' bleft='431' btop='123' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_4_6'>
+    <item left='442' top='174' img='WLS2-4-6-1.jpg' bleft='400' btop='106' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='405' btop='321' bscalex='1' zindex='1' />
+    <item left='442' top='174' img='WLS2-4-6-1.jpg' bleft='415' btop='71' bscalex='-1' zindex='1' />
+    <item left='143' top='477' img='WLS2-4-6-2.jpg' bleft='166' btop='244' bscalex='-1' zindex='1' />
+    <item left='442' top='174' img='WLS2-4-6-1.jpg' bleft='476' btop='62' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='516' btop='347' bscalex='-1' zindex='1' />
+    <item left='442' top='174' img='WLS2-4-6-1.jpg' bleft='500' btop='96' bscalex='1' zindex='1' />
+    <item left='564' top='475' img='WLS2-4-6-3.jpg' bleft='553' btop='232' bscalex='1' zindex='1' />
+    <item left='442' top='174' img='WLS2-4-6-1.jpg' bleft='549' btop='127' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='314' btop='249' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_1'>
+    <item left='' top='' img='' bleft='289' btop='240' bscalex='-1' zindex='1' />
+    <item left='104' top='150' img='WLS2-5-1-1.jpg' bleft='238' btop='92' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='351' btop='239' bscalex='1' zindex='1' />
+    <item left='435' top='186' img='WLS2-5-1-2.jpg' bleft='422' btop='98' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='395' btop='268' bscalex='1' zindex='1' />
+    <item left='65' top='534' img='WLS2-5-1-3.jpg' bleft='486' btop='337' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='265' btop='273' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_2'>
+    <item left='120' top='877' img='WLS2-5-2-1.jpg' bleft='196' btop='477' bscalex='1' zindex='1' />
+    <item left='658' top='203' img='WLS2-5-2-2.jpg' bleft='566' btop='81' bscalex='1' zindex='1' />
+    <item left='343' top='530' img='WLS2-5-2-3.jpg' bleft='271' btop='277' bscalex='-1' zindex='1' />
+    <item left='120' top='877' img='WLS2-5-2-1.jpg' bleft='258' btop='488' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='136' btop='178' bscalex='-1' zindex='1' />
+    <item left='120' top='877' img='WLS2-5-2-1.jpg' bleft='133' btop='485' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='220' btop='204' bscalex='1' zindex='1' />
+    <item left='120' top='877' img='' bleft='276' btop='527' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_3'>
+    <item left='482' top='644' img='WLS2-5-3-1.jpg' bleft='427' btop='354' bscalex='-1' zindex='1' />
+    <item left='642' top='658' img='WLS2-5-3-2.jpg' bleft='514' btop='337' bscalex='-1' zindex='1' />
+    <item left='482' top='644' img='WLS2-5-3-1.jpg' bleft='386' btop='386' bscalex='-1' zindex='1' />
+    <item left='642' top='658' img='WLS2-5-3-2.jpg' bleft='581' btop='342' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_4'>
+    <item left='501' top='114' img='WLS2-5-4-1.jpg' bleft='397' btop='8' bscalex='-1' zindex='1' />
+    <item left='420' top='507' img='WLS2-5-4-2.jpg' bleft='389' btop='251' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='568' btop='190' bscalex='1' zindex='1' />
+    <item left='501' top='114' img='WLS2-5-4-1.jpg' bleft='463' btop='4' bscalex='1' zindex='1' />
+    <item left='420' top='507' img='WLS2-5-4-2.jpg' bleft='453' btop='249' bscalex='1' zindex='1' />
+    <item left='501' top='114' img='WLS2-5-4-1.jpg' bleft='493' btop='39' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_5'>
+    <item left='495' top='376' img='WLS2-5-5-1.jpg' bleft='391' btop='175' bscalex='-1' zindex='1' />
+    <item left='67' top='359' img='WLS2-5-5-2.jpg' bleft='222' btop='180' bscalex='1' zindex='1' />
+    <item left='495' top='376' img='WLS2-5-5-1.jpg' bleft='452' btop='166' bscalex='1' zindex='1' />
+    <item left='67' top='359' img='WLS2-5-5-2.jpg' bleft='158' btop='166' bscalex='-1' zindex='1' />
+    <item left='495' top='376' img='WLS2-5-5-1.jpg' bleft='507' btop='186' bscalex='1' zindex='1' />
+    <item left='67' top='359' img='WLS2-5-5-2.jpg' bleft='109' btop='193' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_5_6'>
+    <item left='489' top='893' img='WLS2-5-6-1.jpg' bleft='407' btop='496' bscalex='-1' zindex='1' />
+    <item left='320' top='874' img='WLS2-5-6-2.jpg' bleft='290' btop='484' bscalex='-1' zindex='1' />
+    <item left='489' top='893' img='WLS2-5-6-1.jpg' bleft='478' btop='496' bscalex='1' zindex='1' />
+    <item left='320' top='874' img='WLS2-5-6-2.jpg' bleft='245' btop='515' bscalex='-1' zindex='1' />
+    <item left='489' top='893' img='WLS2-5-6-1.jpg' bleft='508' btop='532' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_1'>
+    <item left='127' top='906' img='WLS2-6-1-1.jpg' bleft='143' btop='492' bscalex='-1' zindex='1' />
+    <item left='117' top='182' img='WLS2-6-1-2.jpg' bleft='268' btop='122' bscalex='1' zindex='1' />
+    <item left='691' top='393' img='WLS2-6-1-3.jpg' bleft='539' btop='208' bscalex='-1' zindex='1' />
+    <item left='48' top='514' img='WLS2-6-1-4.jpg' bleft='184' btop='250' bscalex='1' zindex='1' />
+    <item left='127' top='906' img='WLS2-6-1-1.jpg' bleft='240' btop='491' bscalex='1' zindex='1' />
+    <item left='117' top='182' img='WLS2-6-1-2.jpg' bleft='197' btop='128' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_2'>
+    <item left='13' top='143' img='WLS2-6-2-1.jpg' bleft='555' btop='155' bscalex='1' zindex='1' />
+    <item left='13' top='143' img='WLS2-6-2-1.jpg' bleft='400' btop='267' bscalex='1' zindex='1' />
+    <item left='13' top='143' img='WLS2-6-2-1.jpg' bleft='225' btop='56' bscalex='-1' zindex='1' />
+    <item left='13' top='143' img='WLS2-6-2-1.jpg' bleft='484' btop='160' bscalex='-1' zindex='1' />
+    <item left='13' top='143' img='WLS2-6-2-1.jpg' bleft='454' btop='55' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_3'>
+    <item left='419' top='476' img='WLS2-6-3-1.jpg' bleft='437' btop='246' bscalex='1' zindex='1' />
+    <item left='264' top='453' img='WLS2-6-3-2.jpg' bleft='319' btop='220' bscalex='1' zindex='1' />
+    <item left='419' top='476' img='WLS2-6-3-1.jpg' bleft='373' btop='242' bscalex='-1' zindex='1' />
+    <item left='264' top='453' img='WLS2-6-3-2.jpg' bleft='252' btop='223' bscalex='-1' zindex='1' />
+    <item left='419' top='476' img='WLS2-6-3-1.jpg' bleft='342' btop='274' bscalex='-1' zindex='1' />
+    <item left='264' top='453' img='WLS2-6-3-2.jpg' bleft='223' btop='261' bscalex='-1' zindex='1' />
+    <item left='419' top='476' img='WLS2-6-3-1.jpg' bleft='466' btop='280' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_4'>
+    <item left='245' top='590' img='WLS2-6-4-1.jpg' bleft='338' btop='317' bscalex='1' zindex='1' />
+    <item left='515' top='576' img='WLS2-6-4-2.jpg' bleft='511' btop='323' bscalex='1' zindex='1' />
+    <item left='245' top='590' img='WLS2-6-4-1.jpg' bleft='273' btop='312' bscalex='-1' zindex='1' />
+    <item left='137' top='490' img='WLS2-6-4-3.jpg' bleft='159' btop='251' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_5'>
+    <item left='439' top='858' img='WLS2-6-5-1.jpg' bleft='469' btop='487' bscalex='1' zindex='1' />
+    <item left='58' top='230' img='WLS2-6-5-2.jpg' bleft='310' btop='470' bscalex='1' zindex='1' />
+    <item left='262' top='185' img='WLS2-6-5-3.jpg' bleft='396' btop='482' bscalex='-1' zindex='1' />
+    <item left='204' top='219' img='WLS2-6-5-4.jpg' bleft='242' btop='471' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_6_6'>
+    <item left='139' top='359' img='WLS2-6-6-1.jpg' bleft='274' btop='192' bscalex='1' zindex='1' />
+    <item left='9' top='228' img='WLS2-6-6-2.jpg' bleft='167' btop='88' bscalex='1' zindex='1' />
+    <item left='139' top='359' img='WLS2-6-6-1.jpg' bleft='209' btop='187' bscalex='-1' zindex='1' />
+    <item left='9' top='228' img='WLS2-6-6-2.jpg' bleft='100' btop='85' bscalex='-1' zindex='1' />
+    <item left='139' top='359' img='WLS2-6-6-1.jpg' bleft='159' btop='211' bscalex='-1' zindex='1' />
+    <item left='459' top='206' img='WLS2-6-6-3.jpg' bleft='516' btop='78' bscalex='1' zindex='1' />
+    <item left='139' top='359' img='WLS2-6-6-1.jpg' bleft='159' btop='251' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_1'>
+    <item left='232' top='553' img='WLS2-7-1-1.jpg' bleft='207' btop='293' bscalex='-1' zindex='1' />
+    <item left='449' top='537' img='WLS2-7-1-2.jpg' bleft='396' btop='263' bscalex='-1' zindex='1' />
+    <item left='232' top='553' img='WLS2-7-1-1.jpg' bleft='304' btop='271' bscalex='1' zindex='1' />
+    <item left='449' top='537' img='WLS2-7-1-2.jpg' bleft='502' btop='288' bscalex='1' zindex='1' />
+    <item left='232' top='553' img='WLS2-7-1-1.jpg' bleft='196' btop='336' bscalex='-1' zindex='1' />
+    <item left='449' top='537' img='WLS2-7-1-2.jpg' bleft='506' btop='336' bscalex='1' zindex='1' />
+    <item left='232' top='553' img='WLS2-7-1-1.jpg' bleft='341' btop='305' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_2'>
+    <item left='64' top='865' img='WLS2-7-2-1.jpg' bleft='216' btop='500' bscalex='1' zindex='1' />
+    <item left='224' top='869' img='WLS2-7-2-2.jpg' bleft='311' btop='499' bscalex='1' zindex='1' />
+    <item left='64' top='865' img='WLS2-7-2-1.jpg' bleft='128' btop='499' bscalex='-1' zindex='1' />
+    <item left='224' top='869' img='WLS2-7-2-2.jpg' bleft='339' btop='536' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_3'>
+    <item left='128' top='900' img='WLS2-7-3-1.jpg' bleft='133' btop='481' bscalex='-1' zindex='1' />
+    <item left='497' top='921' img='WLS2-7-3-2.jpg' bleft='406' btop='491' bscalex='-1' zindex='1' />
+    <item left='128' top='900' img='WLS2-7-3-1.jpg' bleft='202' btop='476' bscalex='1' zindex='1' />
+    <item left='274' top='902' img='WLS2-7-3-3.jpg' bleft='338' btop='490' bscalex='1' zindex='1' />
+    <item left='497' top='921' img='WLS2-7-3-2.jpg' bleft='475' btop='493' bscalex='1' zindex='1' />
+    <item left='128' top='900' img='WLS2-7-3-1.jpg' bleft='261' btop='493' bscalex='1' zindex='1' />
+    <item left='497' top='921' img='WLS2-7-3-2.jpg' bleft='498' btop='529' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_4'>
+    <item left='52' top='373' img='WLS2-7-4-1.jpg' bleft='107' btop='187' bscalex='-1' zindex='1' />
+    <item left='287' top='347' img='WLS2-7-4-2.jpg' bleft='348' btop='178' bscalex='1' zindex='1' />
+    <item left='52' top='373' img='WLS2-7-4-1.jpg' bleft='173' btop='182' bscalex='1' zindex='1' />
+    <item left='287' top='347' img='WLS2-7-4-2.jpg' bleft='280' btop='146' bscalex='-1' zindex='1' />
+    <item left='52' top='373' img='WLS2-7-4-1.jpg' bleft='93' btop='226' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='398' btop='358' bscalex='1' zindex='1' />
+    <item left='52' top='373' img='WLS2-7-4-1.jpg' bleft='206' btop='222' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_5'>
+    <item left='404' top='188' img='WLS2-7-5-1.jpg' bleft='464' btop='35' bscalex='1' zindex='1' />
+    <item left='245' top='277' img='WLS2-7-5-2.jpg' bleft='356' btop='103' bscalex='1' zindex='1' />
+    <item left='404' top='188' img='WLS2-7-5-1.jpg' bleft='392' btop='35' bscalex='-1' zindex='1' />
+    <item left='245' top='277' img='WLS2-7-5-2.jpg' bleft='290' btop='101' bscalex='-1' zindex='1' />
+    <item left='272' top='593' img='WLS2-7-5-3.jpg' bleft='341' btop='326' bscalex='1' zindex='1' />
+    <item left='107' top='578' img='WLS2-7-5-4.jpg' bleft='231' btop='306' bscalex='1' zindex='1' />
+    <item left='272' top='593' img='WLS2-7-5-3.jpg' bleft='361' btop='361' bscalex='1' zindex='1' />
+    <item left='107' top='578' img='WLS2-7-5-4.jpg' bleft='164' btop='310' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_7_6'>
+    <item left='311' top='127' img='WLS2-7-6-1.jpg' bleft='444' btop='22' bscalex='1' zindex='1' />
+    <item left='93' top='188' img='WLS2-7-6-2.jpg' bleft='196' btop='84' bscalex='-1' zindex='1' />
+    <item left='311' top='127' img='WLS2-7-6-1.jpg' bleft='366' btop='18' bscalex='-1' zindex='1' />
+    <item left='103' top='457' img='WLS2-7-6-3.jpg' bleft='381' btop='246' bscalex='-1' zindex='1' />
+    <item left='561' top='349' img='WLS2-7-6-4.jpg' bleft='531' btop='153' bscalex='1' zindex='1' />
+    <item left='103' top='457' img='WLS2-7-6-3.jpg' bleft='356' btop='287' bscalex='-1' zindex='1' />
+    <item left='561' top='349' img='WLS2-7-6-4.jpg' bleft='544' btop='192' bscalex='1' zindex='1' />
+  </section>
+
+  <section ra='WLS2_8_1'>
+    <item left='43' top='737' img='WLS2-8-1-1.jpg' bleft='128' btop='395.75' bscalex='-1' zindex='1'/>
+    <item left='555' top='457' img='WLS2-8-1-2.jpg' bleft='456' btop='264.95' bscalex='-1' zindex='1'/>
+    <item left='43' top='737' img='WLS2-8-1-1.jpg' bleft='224' btop='399.75' bscalex='1' zindex='1'/>
+    <item left='555' top='457' img='WLS2-8-1-2.jpg' bleft='540.5' btop='272.45' bscalex='1' zindex='1'/>
+    <item left='83' top='187' img='WLS2-8-1-3.jpg' bleft='224' btop='102.1' bscalex='1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_8_2'>
+    <item left='444' top='460' img='WLS2-8-2-1.jpg' bleft='396.5' btop='246.8' bscalex='-1' zindex='1'/>
+    <item left='537' top='166' img='WLS2-8-2-2.jpg' bleft='416' btop='68.95' bscalex='-1' zindex='1'/>
+    <item left='444' top='460' img='WLS2-8-2-1.jpg' bleft='495.5' btop='237.8' bscalex='1' zindex='1'/>
+    <item left='537' top='166' img='WLS2-8-2-2.jpg' bleft='495.5' btop='49.45' bscalex='1' zindex='1'/>
+    <item left='444' top='460' img='WLS2-8-2-1.jpg' bleft='510.5' btop='292.1' bscalex='1' zindex='1'/>
+    <item left='537' top='166' img='WLS2-8-2-2.jpg' bleft='517.5' btop='88.8' bscalex='1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_8_3'>
+    <item left='116' top='464' img='WLS2-8-3-1.jpg' bleft='144.5' btop='191.80' bscalex='-1' zindex='1'/>
+    <item left='218' top='79' img='WLS2-8-3-2.jpg' bleft='295' btop='292.1' bscalex='-1' zindex='1'/>
+    <item left='116' top='464' img='WLS2-8-3-1.jpg' bleft='225.5' btop='181.8' bscalex='1' zindex='1'/>
+    <item left='335' top='265' img='WLS2-8-3-3.jpg' bleft='399.5' btop='300.45' bscalex='1' zindex='1'/>
+    <item left='116' top='464' img='WLS2-8-3-1.jpg' bleft='273.5' btop='212.1' bscalex='1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_8_4'>
+    <item left='259' top='690' img='WLS2-8-4-1.jpg' bleft='213' btop='494.25' bscalex='-1' bscaley='-1' zindex='1'/>
+    <item left='369' top='630' img='WLS2-8-4-2.jpg' bleft='361' btop='357.1' bscalex='1' zindex='1'/>
+    <item left='259' top='690' img='WLS2-8-4-1.jpg' bleft='198' btop='447.9' bscalex='-1' bscaley='-1' zindex='1'/>
+    <item left='369' top='630' img='WLS2-8-4-2.jpg' bleft='391.5' btop='389.45' bscalex='1' zindex='1'/>
+    <item left='259' top='690' img='WLS2-8-4-1.jpg' bleft='213' btop='403.1' bscalex='-1' zindex='1'/>
+    <item left='369' top='630' img='WLS2-8-4-2.jpg' bleft='390.8' btop='434.95' bscalex='1' bscaley='-1' zindex='1'/>
+    <item left='259' top='690' img='WLS2-8-4-1.jpg' bleft='238.5' btop='363.75' bscalex='-1' zindex='1'/>
+    <item left='369' top='630' img='WLS2-8-4-2.jpg' bleft='367.85' btop='473.1' bscalex='1' bscaley='-1' zindex='1'/>
+    <item left='259' top='690' img='WLS2-8-4-1.jpg' bleft='298' btop='350.1' bscalex='1' zindex='1'/>
+    <item left='369' top='630' img='WLS2-8-4-2.jpg' bleft='305.1' btop='464' bscalex='-1' bscaley='-1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_8_5'>
+    <item left='223' top='220' img='WLS2-8-5-1.jpg' bleft='344' btop='86.15' bscalex='1' zindex='1'/>
+    <item left='385' top='502' img='WLS2-8-5-2.jpg' bleft='443' btop='184.15' bscalex='1' zindex='1'/>
+    <item left='223' top='220' img='WLS2-8-5-1.jpg' bleft='252' btop='92.15' bscalex='-1' zindex='1'/>
+    <item left='385' top='502' img='WLS2-8-5-2.jpg' bleft='473.5' btop='223.5' bscalex='1' zindex='1'/>
+    <item left='223' top='220' img='WLS2-8-5-1.jpg' bleft='235.5' btop='137.5' bscalex='-1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_8_6'>
+    <item left='349' top='181' img='WLS2-8-6-1.jpg' bleft='298' btop='103.85' bscalex='-1' zindex='1'/>
+    <item left='160' top='521' img='WLS2-8-6-2.jpg' bleft='284.5' btop='308.1' bscalex='1' zindex='1'/>
+    <item left='349' top='181' img='WLS2-8-6-1.jpg' bleft='344.5' btop='64.5' bscalex='-1' zindex='1'/>
+    <item left='86' top='359' img='WLS2-8-6-3.jpg' bleft='160.5' btop='201.5' bscalex='-1' zindex='1'/>
+    <item left='349' top='181' img='WLS2-8-6-1.jpg' bleft='442' btop='57.15' bscalex='1' zindex='1'/>
+    <item left='86' top='359' img='WLS2-8-6-3.jpg' bleft='234' btop='201.5' bscalex='1' zindex='1'/>
+    <item left='349' top='181' img='WLS2-8-6-1.jpg' bleft='457.5' btop='98.15' bscalex='1' zindex='1'/>
+    <item left='334' top='386' img='WLS2-8-6-4.jpg' bleft='390' btop='227.15' bscalex='1' zindex='1'/>
+  </section>
+
+
+  <section ra='WLS2_9_1'>
+    <item left='0' top='544' img='WLS2-9-1-1.jpg' bleft='154' btop='320.8' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='570' btop='104.5' bscalex='-1' zindex='1' />
+    <item left='651' top='296' img='WLS2-9-1-2.jpg' bleft='491.5' btop='170.5' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_9_2'>
+    <item left='233' top='226' img='WLS2-9-2-1.jpg' bleft='351' btop='143.85' bscalex='1' zindex='1'/>
+    <item left='91' top='347' img='WLS2-9-2-2.jpg' bleft='122' btop='135.5' bscalex='-1' zindex='1'/>
+    <item left='233' top='226' img='WLS2-9-2-1.jpg' bleft='330.5' btop='100.5' bscalex='1' zindex='1'/>
+    <item left='91' top='347' img='WLS2-9-2-2.jpg' bleft='169' btop='104.5' bscalex='-1' zindex='1'/>
+    <item left='233' top='226' img='WLS2-9-2-1.jpg' bleft='262.5' btop='100.5' bscalex='-1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_9_3'>
+    <item left='687' top='350' img='WLS2-9-3-1.jpg' bleft='516.5' btop='210.82' bscalex='-1' zindex='1'/>
+    <item left='567' top='589' img='WLS2-9-3-2.jpg' bleft='454' btop='310.5' bscalex='-1' zindex='1'/>
+    <item left='69' top='619' img='WLS2-9-3-3.jpg' bleft='198.5' btop='327.5' bscalex='1' zindex='1'/>
+    <item left='194' top='652' img='WLS2-9-3-4.jpg' bleft='269' btop='316.5' bscalex='-1' zindex='1'/>
+    <item left='402' top='679' img='WLS2-9-3-5.jpg' bleft='422.5' btop='355.85' bscalex='1' zindex='1'/>
+    <item left='567' top='589' img='WLS2-9-3-2.jpg' bleft='526.5' btop='305.5' bscalex='1' zindex='1'/>
+  </section>
+
+  <section ra='WLS2_9_4'>
+    <item left='130' top='295' img='WLS2-9-4-1.jpg' bleft='163.5' btop='183.85' bscalex='-1' zindex='1'/>
+    <item left='220' top='40' img='WLS2-9-4-2.jpg' bleft='370' btop='110.2' bscalex='1' zindex='1'/>
+    <item left='130' top='295' img='WLS2-9-4-1.jpg' bleft='229.5' btop='149.55' bscalex='1' zindex='1'/>
+    <item left='220' top='40' img='WLS2-9-4-2.jpg' bleft='370' btop='61.55' bscalex='1' zindex='1'/>
+    <item left='130' top='295' img='WLS2-9-4-1.jpg' bleft='282.5' btop='183.85' bscalex='1' zindex='1'/>
+  </section>
+  <section ra='WLS2_9_5'>
+    <item left='570' top='50' img='WLS2-9-5-1.jpg' bleft='435.55' btop='30.55' bscalex='-1' zindex='1'/>
+    <item left='383' top='367' img='WLS2-9-5-2.jpg' bleft='456' btop='234.25' bscalex='1' zindex='1'/>
+    <item left='474' top='527' img='WLS2-9-5-3.jpg' bleft='485.6' btop='326.6' bscalex='1' zindex='1'/>
+    <item left='570' top='50' img='WLS2-9-5-1.jpg' bleft='545.1' btop='25.55' bscalex='1' zindex='1'/>
+    <item left='474' top='527' img='WLS2-9-5-3.jpg' bleft='469.55' btop='279.9' bscalex='1' zindex='1'/>
+  </section>
+  <section ra='WLS2_9_6'>
+    <item left='560' top='281' img='WLS2-9-6-1.jpg' bleft='453.55' btop='171.85' bscalex='-1' zindex='1'/>
+    <item left='46' top='328' img='WLS2-9-6-2.jpg' bleft='226.95' btop='190.2' bscalex='1' zindex='1'/>
+    <item left='560' top='281' img='WLS2-9-6-1.jpg' bleft='553.6' btop='160.55' bscalex='1' zindex='1'/>
+    <item left='299' top='370' img='WLS2-9-6-3.jpg' bleft='372.05' btop='199.9' bscalex='1' zindex='1'/>
+
+  </section>
+
+  <section ra='WLS2_10_1'>
+    <item left='254' top='143' img='WLS2-10-1-1.jpg' bleft='258.5' btop='34.75' bscalex='-1' zindex='1' />
+    <item left='106' top='525' img='WLS2-10-1-2.jpg' bleft='250.5' btop='301.45' bscalex='1' zindex='1' />
+    <item left='254' top='143' img='WLS2-10-1-1.jpg' bleft='336' btop='39.75' bscalex='1' zindex='1' />
+    <item left='106' top='525' img='WLS2-10-1-2.jpg' bleft='145.5' btop='301.45' bscalex='-1' zindex='1' />
+    <item left='480' top='399' img='WLS2-10-1-3.jpg' bleft='477' btop='221.1' bscalex='1' zindex='1' />
+    <item left='254' top='143' img='WLS2-10-1-1.jpg' bleft='227.5' btop='73.1' bscalex='-1' zindex='1' />
+    <item left='480' top='399' img='WLS2-10-1-3.jpg' bleft='383.5' btop='220.1' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra='WLS2_10_2'>
+    <item left='401' top='167' img='WLS2-10-2-1.jpg' bleft='417.5' btop='56.75' bscalex='1' zindex='1' />
+    <item left='394' top='670' img='WLS2-10-2-2.jpg' bleft='454' btop='389.05' bscalex='1' zindex='1' />
+    <item left='401' top='167' img='WLS2-10-2-1.jpg' bleft='344.5' btop='52.1' bscalex='-1' zindex='1' />
+    <item left='394' top='670' img='WLS2-10-2-2.jpg' bleft='386.5' btop='384.05' bscalex='-1' zindex='1' />
+  </section>
+
+
+  <section ra='WLS2_10_3'>
+    <item left='417' top='212' img='WLS2-10-3-1.jpg' bleft='470' btop='112.45' bscalex='1' zindex='1' />
+    <item left='64' top='271' img='WLS2-10-3-2.jpg' bleft='198' btop='86.1' bscalex='1' zindex='1' />
+    <item left='245' top='262' img='WLS2-10-3-3.jpg' bleft='339.5' btop='147.45' bscalex='1' zindex='1' />
+    <item left='417' top='212' img='WLS2-10-3-1.jpg' bleft='399' btop='86.1' bscalex='-1' zindex='1' />
+    <item left='245' top='262' img='WLS2-10-3-3.jpg' bleft='311.5' btop='114.1' bscalex='1' zindex='1' />
+    <item left='64' top='271' img='WLS2-10-3-2.jpg' bleft='134.5' btop='89.1' bscalex='-1' zindex='1' />
+    <item left='245' top='262' img='WLS2-10-3-3.jpg' bleft='247.5' btop='118.45' bscalex='-1' zindex='1' />
+    <item left='64' top='271' img='WLS2-10-3-2.jpg' bleft='96.5' btop='120.45' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra='WLS2_10_4'>
+    <item left='2' top='467' img='WLS2-10-4-1.jpg' bleft='209.5' btop='279.45' bscalex='1' zindex='1' />
+    <item left='548' top='604' img='WLS2-10-4-2.jpg' bleft='575' btop='283.45' bscalex='1' zindex='1' />
+    <item left='2' top='467' img='WLS2-10-4-1.jpg' bleft='133' btop='283.45' bscalex='-1' zindex='1' />
+    <item left='548' top='604' img='WLS2-10-4-2.jpg' bleft='431.5' btop='295.1' bscalex='-1' zindex='1' />
+  </section>
+
+
+  <section ra='WLS2_10_5'>
+    <item left='203' top='358' img='WLS2-10-5-1.jpg' bleft='274' btop='166.45' bscalex='1' zindex='1' />
+    <item left='399' top='221' img='WLS2-10-5-2.jpg' bleft='415' btop='120.45' bscalex='1' zindex='1' />
+    <item left='203' top='358' img='WLS2-10-5-1.jpg' bleft='206' btop='171.45' bscalex='-1' zindex='1' />
+    <item left='399' top='221' img='WLS2-10-5-2.jpg' bleft='406.5' btop='81.1' bscalex='1' zindex='1' />
+    <item left='346' top='152' img='WLS2-10-5-3.jpg' bleft='295.5' btop='49.75' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra='WLS2_10_6'>
+    <item left='488' top='367' img='WLS2-10-6-1.jpg' bleft='515.5' btop='175.45' bscalex='1' zindex='1' />
+    <item left='194' top='616' img='WLS2-10-6-2.jpg' bleft='292.5' btop='351.7' bscalex='1' zindex='1' />
+    <item left='488' top='367' img='WLS2-10-6-1.jpg' bleft='447.5' btop='167.1' bscalex='-1' zindex='1' />
+    <item left='194' top='616' img='WLS2-10-6-2.jpg' bleft='225.05' btop='359.4' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra="WLS2_11_1">
+    <item left='180' top='629' img='wls2-11-1-1.jpg' bleft='279.5' btop='365.5' bscalex='1' zindex='1' />
+    <item left='64' top='584' img='wls2-11-1-2.jpg' bleft='220' btop='303.5' bscalex='1' zindex='1' />
+    <item left='180' top='629' img='wls2-11-1-1.jpg' bleft='283.5' btop='404.85' bscalex='1' zindex='1' />
+    <item left='64' top='584' img='wls2-11-1-2.jpg' bleft='143.5' btop='309.8' bscalex='-1' zindex='1' />
+    <item left='180' top='629' img='wls2-11-1-1.jpg' bleft='182' btop='408.85' bscalex='-1' zindex='1' />
+    <item left='64' top='584' img='wls2-11-1-2.jpg' bleft='130' btop='358.75' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra="WLS2_11_2">
+    <item left='328' top='602' img='wls2-11-2-1.jpg' bleft='384.5' btop='353.5' bscalex='1' zindex='1' />
+    <item left='130' top='526' img='wls2-11-2-2.jpg' bleft='251' btop='301.5' bscalex='1' zindex='1' />
+    <item left='328' top='602' img='wls2-11-2-1.jpg' bleft='311.5' btop='337.8' bscalex='-1' zindex='1' />
+    <item left='130' top='526' img='wls2-11-2-2.jpg' bleft='166.5' btop='287.8' bscalex='-1' zindex='1' />
+  </section>
+
+  <section ra="WLS2_11_3">
+    <item left='317' top='392' img='wls2-11-3-1.jpg' bleft='370.5' btop='217.55' bscalex='1' zindex='1' />
+    <item left='' top='' img='' bleft='224' btop='217.55' bscalex='-1' zindex='1' />
+    <item left='317' top='392' img='wls2-11-3-1.jpg' bleft='306' btop='213.55' bscalex='-1' zindex='1' />
+    <item left='' top='' img='' bleft='212' btop='261.5' bscalex='-1' zindex='1' />
+    <item left='317' top='392' img='wls2-11-3-1.jpg' bleft='374.5' btop='291' bscalex='1' bscaley='-1' zindex='1' />
+    <item left='' top='' img='' bleft='224' btop='314.35' bscalex='-1' bscaley='-1' zindex='1' />
+  </section>
+
+
+  <section ra="WLS2_11_4">
+    <item left='434' top='168' img='wls2-11-4-1.jpg' bleft='502.5' btop='66.85' bscalex='1' zindex='1' />
+    <item left='123' top='445' img='wls2-11-4-2.jpg' bleft='190.5' btop='249.85' bscalex='-1' zindex='1' />
+    <item left='440' top='441' img='wls2-11-4-3.jpg' bleft='535' btop='256.45' bscalex='1' zindex='1' />
+    <item left='434' top='168' img='wls2-11-4-1.jpg' bleft='430' btop='58.85' bscalex='-1' zindex='1' />
+    <item left='180' top='176' img='wls2-11-4-4.jpg' bleft='302.5' btop='56.8' bscalex='1' zindex='1' />
+  </section>
+
+
+  <section ra="WLS2_11_5">
+    <item left='76' top='426' img='wls2-11-5-1.jpg' bleft='206.5' btop='211.5' bscalex='1' zindex='1' />
+    <item left='289' top='447' img='wls2-11-5-2.jpg' bleft='256' btop='265.1' bscalex='-1' zindex='1' />
+    <item left='76' top='426' img='wls2-11-5-1.jpg' bleft='139' btop='211.5' bscalex='-1' zindex='1' />
+    <item left='360' top='350' img='wls2-11-5-3.jpg' bleft='398.5' btop='165.9' bscalex='1' zindex='1' />
+    <item left='76' top='426' img='wls2-11-5-1.jpg' bleft='138' btop='339.45' bscalex='-1' bscaley='-1' zindex='1' />
+    <item left='410' top='444' img='wls2-11-5-4.jpg' bleft='436.5' btop='247.45' bscalex='1' zindex='1' />
+    <item left='76' top='426' img='wls2-11-5-1.jpg' bleft='204.5' btop='339.45' bscalex='1' bscaley='-1' zindex='1' />
+    <item left='360' top='350' img='wls2-11-5-3.jpg' bleft='329' btop='160.1' bscalex='-1' zindex='1' />
+    <item left='289' top='447' img='wls2-11-5-2.jpg' bleft='256' btop='313.35' bscalex='-1' bscaley='-1' zindex='1' />
+    <item left='410' top='444' img='wls2-11-5-4.jpg' bleft='432.5' btop='323.45' bscalex='1' bscaley='-1' zindex='1' />
+    <item left='76' top='426' img='wls2-11-5-1.jpg' bleft='105' btop='265.1' bscalex='-1' zindex='1' />
+
+  </section>
+
+
+  <section ra="WLS2_11_6">
+    <item left='615' top='412' img='wls2-11-6-1.jpg' bleft='565.5' btop='130.85' bscalex='-1' zindex='1' />
+    <item left='497' top='370' img='wls2-11-6-2.jpg' bleft='392' btop='134.85' bscalex='-1' zindex='1' />
+    <item left='615' top='412' img='wls2-11-6-1.jpg' bleft='483.5' btop='327.85' bscalex='-1' bscaley='-1' zindex='1' />
+    <item left='497' top='370' img='wls2-11-6-2.jpg' bleft='463.5' btop='122.5' bscalex='1' zindex='1' />
+    <item left='615' top='412' img='wls2-11-6-1.jpg' bleft='513.5' btop='361.85' bscalex='-1' bscaley='-1' zindex='1' />
+    <item left='497' top='370' img='wls2-11-6-2.jpg' bleft='371' btop='185.85' bscalex='-1' zindex='1' />
+    <item left='615' top='412' img='wls2-11-6-1.jpg' bleft='577.45' btop='336.2' bscalex='1' bscaley='-1' zindex='1' />
+    <item left='497' top='370' img='wls2-11-6-2.jpg' bleft='373' btop='229.85' bscalex='-1' zindex='1' />
+
+  </section>
+  <section ra='WLS2_12_1'>
+    <item left='103' top='284' img='wls2-12-1-1.jpg' bleft='122.5' btop='130.75' bscalex='-1' zindex='1' />
+    <item left='524' top='527' img='wls2-12-1-2.jpg' bleft='497.5' btop='290.45' bscalex='1' zindex='1' />
+    <item left='103' top='284' img='wls2-12-1-1.jpg' bleft='265' btop='130.75' bscalex='1' zindex='1' />
+    <item left='524' top='527' img='wls2-12-1-2.jpg' bleft='411.5' btop='316.45' bscalex='-1' zindex='1' />
+    <item left='103' top='284' img='wls2-12-1-1.jpg' bleft='287.5' btop='174.1' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_12_2'>
+    <item left='67' top='601' img='wls2-12-2-1.jpg' bleft='103.05' btop='369.7' bscalex='-1' zindex='1' />
+    <item left='93' top='567' img='wls2-12-2-2.jpg' bleft='134.55' btop='324.45' bscalex='-1' zindex='1' />
+    <item left='67' top='601' img='wls2-12-2-1.jpg' bleft='174' btop='413.15' bscalex='1' bscaley='-1' zindex='1' />
+    <item left='93' top='567' img='wls2-12-2-2.jpg' bleft='201.5' btop='334.7' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_12_3'>
+    <item left='537' top='664' img='wls2-12-3-1.jpg' bleft='423.5' btop='415.7' bscalex='-1' zindex='1' />
+    <item left='480' top='319' img='wls2-12-3-2.jpg' bleft='557.5' btop='183.45' bscalex='1' zindex='1' />
+    <item left='537' top='664' img='wls2-12-3-1.jpg' bleft='545' btop='401.7' bscalex='1' zindex='1' />
+    <item left='480' top='319' img='wls2-12-3-2.jpg' bleft='393.5' btop='178.45' bscalex='-1' zindex='1' />
+    <item left='537' top='664' img='wls2-12-3-1.jpg' bleft='565.5' btop='446.05' bscalex='1' zindex='1' />
+    <item left='480' top='319' img='wls2-12-3-2.jpg' bleft='470.5' btop='162.45' bscalex='-1' zindex='1' />
+  </section>
+  <section ra='WLS2_12_4'>
+    <item left='567' top='737' img='wls2-12-4-1.jpg' bleft='450.5' btop='440.7' bscalex='-1' zindex='1' />
+    <item left='121' top='853' img='wls2-12-4-2.jpg' bleft='313.5' btop='518.4' bscalex='1' zindex='1' />
+    <item left='567' top='737' img='wls2-12-4-1.jpg' bleft='478' btop='401.35' bscalex='-1' zindex='1' />
+    <item left='121' top='853' img='wls2-12-4-2.jpg' bleft='297.45' btop='472.05' bscalex='1' zindex='1' />
+    <item left='567' top='737' img='wls2-12-4-1.jpg' bleft='550.5' btop='386.05' bscalex='1' zindex='1' />
+    <item left='121' top='853' img='wls2-12-4-2.jpg' bleft='248.5' btop='432.7' bscalex='1' zindex='1' />
+    <item left='567' top='737' img='wls2-12-4-1.jpg' bleft='608.5' btop='414.05' bscalex='1' zindex='1' />
+    <item left='121' top='853' img='wls2-12-4-2.jpg' bleft='162.55' btop='437.05' bscalex='-1' zindex='1' />
+    <item left='567' top='737' img='wls2-12-4-1.jpg' bleft='616.5' btop='458.05' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_12_5'>
+    <item left='94' top='347' img='wls2-12-5-1.jpg' bleft='134.55' btop='222.7' bscalex='-1' zindex='1' />
+    <item left='494' top='487' img='wls2-12-5-2.jpg' bleft='512.5' btop='293.4' bscalex='1' zindex='1' />
+    <item left='94' top='347' img='wls2-12-5-1.jpg' bleft='162.55' btop='178.35' bscalex='-1' zindex='1' />
+    <item left='494' top='487' img='wls2-12-5-2.jpg' bleft='520.5' btop='340.7' bscalex='1' zindex='1' />
+    <item left='94' top='347' img='wls2-12-5-1.jpg' bleft='240.5' btop='183.35' bscalex='1' zindex='1' />
+    <item left='494' top='487' img='wls2-12-5-2.jpg' bleft='534.5' btop='392.7' bscalex='1' zindex='1' />
+  </section>
+  <section ra='WLS2_12_6'>
+    <item left='494' top='110' img='wls2-12-6-1.jpg' bleft='393.55' btop='57.7' bscalex='-1' zindex='1' />
+    <item left='173' top='269' img='wls2-12-6-2.jpg' bleft='366.5' btop='201.5' bscalex='1' zindex='1' />
+    <item left='494' top='110' img='wls2-12-6-1.jpg' bleft='453.05' btop='36.35' bscalex='-1' zindex='1' />
+    <item left='173' top='269' img='wls2-12-6-2.jpg' bleft='349.5' btop='151.75' bscalex='1' zindex='1' />
+    <item left='494' top='110' img='wls2-12-6-1.jpg' bleft='512.55' btop='63.35' bscalex='1' zindex='1' />
+    <item left='173' top='269' img='wls2-12-6-2.jpg' bleft='253' btop='149.75' bscalex='-1' zindex='1' />
+    <item left='494' top='110' img='wls2-12-6-1.jpg' bleft='525.55' btop='110.4' bscalex='1' zindex='1' />
+  </section>
+
+</root>
+    

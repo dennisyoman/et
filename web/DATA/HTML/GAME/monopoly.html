@@ -1,0 +1,143 @@
+<div id="monopoly_wrapper" class="monopoly_wrapper wow slideInDown">
+  <span class="close" />
+  <span class="reset" />
+  <div class="board" />
+  <div class="assetsPreload">
+    <img src="./images/common/monopoly.jpg" />
+    <img src="./images/common/monopoly_card.jpg" />
+    <img src="./images/common/chimes.gif" />
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //createContent
+    getWBS();
+    var wbAll = [];
+    for (var k = 0; k < widgetWB.length; k++) {
+      if (widgetWB[k] && k <= lid) {
+        for (var j = 0; j < widgetWB[k].length; j++) {
+          wbAll.push(widgetWB[k][j]);
+        }
+      }
+    }
+    shuffle(wbAll);
+    //
+    var loop = Math.ceil(10 / wbAll.length);
+    if (loop > 1) {
+      var tempwbAll = [];
+      for (var k = 0; k < loop; k++) {
+        tempwbAll = tempwbAll.concat(wbAll);
+      }
+      wbAll = tempwbAll;
+    }
+
+    //
+    var itemHTML = "";
+    for (var k = 0; k < wbAll.length; k++) {
+      if (k < 10) {
+        var wordArr = wbAll[k][0].split("^");
+        itemHTML += `<div class="cardo ${
+          isitEmpty(wbAll[k][1]) ? "noImg" : ""
+        }">
+                      <div class="context">
+                        <span class="piece red"></span>
+                        <span class="chimes"></span>
+                        <span class="img"><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${
+          wbAll[k][1]
+        }" /></span>
+                        <span class="word">${wordArr[0]}</span>
+                        <audio preload="auto" src="./DATA/${sid}/BOOK${bid}/AUDIO/${
+          wbAll[k][2]
+        }" />
+                      </div>
+                    </div>`;
+
+        if (wbAll[k][1] != "") {
+          $("#monopoly_wrapper .assetsPreload").append(
+            `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${wbAll[k][1]}" />`
+          );
+        }
+      }
+    }
+    $("#monopoly_wrapper .board").append(itemHTML);
+
+    $("#monopoly_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //lowlag audios
+        var tempSound = $("#monopoly_wrapper").find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+        //btns
+        $("#monopoly")
+          .find(".close")
+          .unbind()
+          .bind("click", function (e) {
+            $("#monopoly").remove();
+          });
+        $("#monopoly")
+          .find(".reset")
+          .unbind()
+          .bind("click", function (e) {
+            $("#monopoly").remove();
+            appendMonopoly();
+          });
+        //cards
+        $("#monopoly")
+          .find(".cardo")
+          .unbind()
+          .bind("click", function (e) {
+            if (!$(this).hasClass("active")) {
+              $(this).addClass("active");
+              rootSoundEffect($show);
+            } else {
+              //make chimes
+              var uniq = new Date().getTime();
+              $(this)
+                .find(".chimes")
+                .empty()
+                .append(`<img src="./images/common/chimes.gif?uniq=${uniq}"/>`);
+              playWBAudio2($(this));
+              rootSoundEffect($chimes);
+            }
+          });
+        $("#monopoly")
+          .find(".cardo .piece")
+          .unbind()
+          .bind("click", function (e) {
+            e.stopPropagation();
+            //
+            rootSoundEffect($click);
+            for (i = 0; i < pieceArr.length; i++) {
+              if ($(this).hasClass(pieceArr[i])) {
+                var newID = i + 1;
+                if (newID == pieceArr.length) {
+                  newID = 0;
+                }
+                $(this).removeClass(pieceArr[i]).addClass(pieceArr[newID]);
+                break;
+              }
+            }
+          });
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    checkCompLoading("#monopoly_wrapper");
+  });
+</script>

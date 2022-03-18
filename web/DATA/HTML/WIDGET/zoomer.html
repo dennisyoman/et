@@ -1,0 +1,64 @@
+<div class="zoomer_wrapper">
+  <span class="edit"></span>
+  <span class="erase"></span>
+  <span class="eraseAll"></span>
+  <div class="drawer"></div>
+  <div class="canvas"></div>
+  <div class="overlay"></div>
+  <span class="resizer lt" />
+  <span class="resizer rt" />
+  <span class="resizer lb" />
+  <span class="resizer rb" />
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#zoomer")
+      .unbind()
+      .bind("mousedown", function (e) {
+        getHighestDepthWidget($(this));
+      })
+      .bind("touchstart", function (e) {
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#zoomer"));
+
+    $("#zoomer .edit")
+      .unbind()
+      .bind("click", function (e) {
+        $(this).toggleClass("active").siblings(".erase").removeClass("active");
+
+        if ($(this).hasClass("active")) {
+          $(this).siblings(".eraseAll").addClass("active");
+          $(this).siblings(".drawer").addClass("editable");
+        } else {
+          $(this).siblings(".eraseAll").removeClass("active");
+          $(this).siblings(".drawer").removeClass("editable");
+        }
+      });
+    $("#zoomer .erase")
+      .unbind()
+      .bind("click", function (e) {
+        $(this).toggleClass("active").siblings(".edit").removeClass("active");
+        if ($(this).hasClass("active")) {
+          $(this).siblings(".drawer").addClass("editable");
+          $(this).siblings(".eraseAll").addClass("active");
+        } else {
+          $(this).siblings(".eraseAll").removeClass("active");
+          $(this).siblings(".drawer").removeClass("editable");
+        }
+      });
+    $("#zoomer .eraseAll")
+      .unbind()
+      .bind("click", function (e) {
+        $(this).removeClass("active");
+        $(this).siblings(".edit").removeClass("active");
+        $(this).siblings(".erase").removeClass("active");
+        $(this).siblings(".drawer").removeClass("editable");
+        //
+        var clearTar = $(this).siblings(".drawer").find("canvas");
+        var cctx = clearTar.get(0).getContext("2d");
+        cctx.clearRect(0, 0, clearTar.attr("width"), clearTar.attr("height"));
+      });
+  });
+</script>

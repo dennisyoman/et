@@ -1,0 +1,598 @@
+<root>
+  <!--
+  cm:對應課數代號
+  item: 一層一層的包下去
+  srt:內容文字
+  強制斷行請使用 : &lt;br/&gt;
+  &請使用 : &amp;
+
+-->
+  <section cm="WRYG-12-T">
+    <item layer="l1" id="1" srt="New Year’s&lt;br/&gt;Resolution" left="52" top="238"/>
+    <item layer="l2" id="2" dad="1" srt="Mike" left="273" top="80"/>
+    <item layer="l2" id="3" dad="1" srt="Lucy" left="421" top="254"/>
+    <item layer="l2" id="4" dad="1" srt="Peter" left="273" top="433"/>
+    <item layer="l3" id="5" dad="2" srt="stronger" left="600" top="92"/>
+    <item layer="l3" id="6" dad="3" srt="excellent&lt;br/&gt;grades" left="740" top="265"/>
+    <item layer="l3" id="7" dad="4" srt="a tablet" left="600" top="444"/>
+    <item layer="l4" id="8" dad="5" srt="jog&lt;br/&gt;every&lt;br/&gt;day" left="911" top="104"/>
+    <item layer="l4" id="9" dad="6" srt="review&lt;br/&gt;after&lt;br/&gt;school" left="1040" top="282"/>
+    <item layer="l4" id="10" dad="7" srt="save&lt;br/&gt;pocket&lt;br/&gt;money" left="911" top="456"/>
+  </section>
+  <section cm="WRYG-12-3R">
+    <item layer="l1" id="1" srt="English" left="372" top="62"/>
+    <item layer="l1" id="2" srt="math" left="640" top="62"/>
+    <item layer="l2" id="3" dad="1" back="4" spe="WRYG-12-3R-1" srt="May" left="224" top="308"/>
+    <item layer="l2" id="4" dad="2" back="3" spe="WRYG-12-3R-2" srt="peaceful" left="828" top="308"/>
+    <item layer="l3" id="5" dad="3" srt="math" left="55" top="95"/>
+    <item layer="l3" id="6" dad="4" srt="English" left="1005" top="95"/>
+    <item layer="l4" id="7" dad="5" srt="100" left="65" top="476"/>
+    <item layer="l4" id="8" dad="6" srt="100" left="1016" top="476"/>
+  </section>
+  <section cm="WRYG-12-2R">
+    <item layer="l1" id="1" srt="modern" left="426" top="80"/>
+    <item layer="l1" id="2" srt="people" left="426" top="382"/>
+    <item layer="l2" id="3" dad="1" srt="hustle &amp;&lt;br/&gt;bustle" left="208" top="100"/>
+    <item layer="l2" id="4" dad="2,3" srt="annoyed &amp;&lt;br/&gt;impatient" left="208" top="402"/>
+    <item layer="l2" id="5" dad="1" srt="solitude" left="696" top="100"/>
+    <item layer="l2" id="6" dad="2,5" srt="peaceful" left="696" top="402"/>
+    <item layer="l3" id="7" dad="3" srt="noisy" left="8" top="110"/>
+    <item layer="l3" id="8" dad="4" back="7" srt="crazy" left="8" top="412"/>
+    <item layer="l3" id="9" dad="5" srt="walk&lt;br/&gt;a dog" left="920" top="110"/>
+    <item layer="l3" id="10" dad="5" srt="read&lt;br/&gt;a book" left="920" top="314"/>
+    <item layer="l4" id="11" dad="9" srt="nature" left="1120" top="122"/>
+    <item layer="l4" id="12" dad="10" srt="coffee shop" left="1120" top="326"/>
+  </section>
+  <section cm="WRYG-12-1R">
+    <item layer="l1" id="1" srt="hand&lt;br/&gt;gestures" left="360" top="228"/>
+    <item layer="l2" id="2" dad="1" srt="express &amp;&lt;br/&gt;communicate" left="160" top="74"/>
+    <item layer="l2" id="3" dad="1" srt="vivid" left="160" top="420"/>
+    <item layer="l2" id="4" dad="1" srt="wave hand" left="584" top="70"/>
+    <item layer="l2" id="5" dad="1" srt="V sign" left="752" top="250"/>
+    <item layer="l2" id="6" dad="1" srt="thumbs up" left="584" top="434"/>
+    <item layer="l3" id="7" dad="4" srt="goodbye" left="924" top="80"/>
+    <item layer="l3" id="8" dad="5" srt="victory" left="1016" top="258"/>
+    <item layer="l3" id="9" dad="6" srt="approval" left="902" top="444"/>
+    <item layer="l3" id="10" dad="2" back="1" spe="WRYG-12-1R-1" srt="words" left="30" top="260"/>
+  </section>
+  <section cm="WRYG-11-T">
+    <item layer="l1" id="1" srt="lost dog" left="240" top="228"/>
+    <item layer="l2" id="2" dad="1" srt="empty&lt;br/&gt;doghouse" left="18" top="252"/>
+    <item layer="l2" id="3" dad="1" srt="posters" left="448" top="82"/>
+    <item layer="l2" id="4" dad="1" srt="search" left="620" top="250"/>
+    <item layer="l2" id="5" dad="1" back="1" srt="dog found" left="448" top="428"/>
+    <item layer="l3" id="6" dad="3" srt="put up" left="794" top="92"/>
+    <item layer="l3" id="7" dad="4" srt="places that&lt;br/&gt;Brownie likes" left="920" top="260" type="xl"/>
+    <item layer="l3" id="8" dad="5" srt="phone call" left="794" top="436"/>
+    <item layer="l4" id="9" dad="6" srt="sidewalk" left="1024" top="108"/>
+    <item layer="l4" id="9" dad="8" srt="bakery" left="1024" top="454"/>
+  </section>
+  <section cm="WRYG-11-3R">
+    <item layer="l1" id="1" srt="John&lt;br/&gt;broke leg" left="424" top="218"/>
+    <item layer="l2" id="2" dad="1" srt="Betsy" left="250" top="66"/>
+    <item layer="l2" id="3" dad="1" srt="rumor" left="120" top="274"/>
+    <item layer="l2" id="4" dad="1" srt="in hospital" left="725" top="240"/>
+    <item layer="l3" id="5" dad="4" srt="To see is&lt;br/&gt;to believe" left="982" top="116"/>
+    <item layer="l4" id="6" dad="5" srt="at school&lt;br/&gt;later" left="994" top="360"/>
+    <item layer="l5" id="7" dad="6" srt="overslept" left="756" top="518"/>
+    <item layer="l6" id="8" dad="7" srt="John grazed knee" left="437" top="530"/>
+    <item layer="l7" id="9" back="3" dad="8" srt="truth" left="160" top="540"/>
+  </section>
+  <section cm="WRYG-11-2R">
+    <item layer="l1" id="1" srt="rain" left="292" top="60"/>
+    <item layer="l2" id="2" dad="1" back="1" srt="sun" left="578" top="86"/>
+    <item layer="l2" id="3" dad="1" srt="a week" left="54" top="86"/>
+    <item layer="l2" id="4" dad="1" srt="tired of" left="312" top="330"/>
+    <item layer="l3" id="5" dad="4" srt="gray&lt;br/&gt;scenery" left="118" top="440"/>
+    <item layer="l3" id="6" dad="4" srt="humidity" left="510" top="464"/>
+    <item layer="l3" id="7" dad="4" srt="inconvenience" left="663" top="328" type="xl"/>
+    <item layer="l3" id="8" dad="2" srt="rainbow" left="850" top="98"/>
+    <item layer="l4" id="9" dad="8" srt="happy" left="865" top="306"/>
+    <item layer="l5" id="10" dad="9" srt="take a photo" left="1054" top="340"/>
+    <item layer="l5" id="11" dad="9" srt="brilliant" left="1054" top="440"/>
+  </section>
+  <section cm="WRYG-11-1R">
+    <item layer="l1" id="1" srt="Sofia" left="8" top="232"/>
+    <item layer="l2" id="2" dad="1" srt="intelligent &amp;&lt;br/&gt;studies hard" left="214" top="68"/>
+    <item layer="l2" id="3" dad="1" srt="talented" left="320" top="252"/>
+    <item layer="l2" id="4" dad="1" srt="easy-going" left="214" top="436"/>
+    <item layer="l3" id="5" dad="2" srt="good&lt;br/&gt;grades" spe="WRYG-11-1R-1" left="476" top="66"/>
+    <item layer="l3" id="6" dad="3" srt="plays&lt;br/&gt;tennis" left="650" top="170"/>
+    <item layer="l3" id="7" dad="3" srt="plays&lt;br/&gt;the violin" left="650" top="352"/>
+    <item layer="l3" id="8" dad="4" srt="cares&lt;br/&gt;&amp;&lt;br/&gt;helps" spe="WRYG-11-1R-2" left="476" top="456"/>
+    <item layer="l4" id="9" dad="5,6,7,8" srt="admires&lt;br/&gt;her" left="858" top="270"/>
+    <item layer="l5" id="10" dad="9" srt="role model" left="1056" top="306"/>
+  </section>
+  <section cm="WRYG-10-T">
+    <item layer="l1" id="1" srt="got a bad&lt;br/&gt;grade" left="302" top="224"/>
+    <item layer="l2" id="2" dad="1" srt="cram for&lt;br/&gt;the test" left="64" top="252"/>
+    <item layer="l2" id="3" dad="1" srt="frustrated" left="502" top="72"/>
+    <item layer="l2" id="4" dad="1" srt="self-&lt;br/&gt;reflection" left="502" top="426"/>
+    <item layer="l3" id="5" dad="2" srt="stay up&lt;br/&gt;late" left="178" top="74"/>
+    <item layer="l3" id="6" dad="2" srt="short&lt;br/&gt;on time" left="178" top="450"/>
+    <item layer="l3" id="7" dad="4" srt="study&lt;br/&gt;habits" left="692" top="252"/>
+    <item layer="l4" id="8" dad="7" srt="in class" left="868" top="133"/>
+    <item layer="l4" id="9" dad="7" srt="after&lt;br/&gt;school" left="868" top="420"/>
+    <item layer="l5" id="10" dad="8" srt="pay&lt;br/&gt;attention" left="1042" top="98"/>
+    <item layer="l5" id="11" dad="8" srt="take notes" left="1042" top="208"/>
+    <item layer="l5" id="12" dad="9" srt="do&lt;br/&gt;exercises" left="1042" top="452"/>
+  </section>
+  <section cm="WRYG-10-3R">
+    <item layer="l1" id="1" srt="clubs" left="316" top="198"/>
+    <item layer="l2" id="2" dad="1" srt="critical&lt;br/&gt;thinking" left="130" top="66"/>
+    <item layer="l2" id="3" dad="1" srt="healthy" left="54" top="270"/>
+    <item layer="l2" id="4" dad="1" srt="fun" left="222" top="436"/>
+    <item layer="l2" id="5" dad="1" srt="stories &amp;&lt;br/&gt;movies" left="540" top="64"/>
+    <item layer="l2" id="6" dad="1" srt="sports" left="660" top="268"/>
+    <item layer="l2" id="7" dad="1" srt="skill-based" left="508" top="434"/>
+    <item layer="l3" id="8" dad="5" srt="movie club" left="826" top="74"/>
+    <item layer="l3" id="9" dad="6" srt="basketball&lt;br/&gt;club" left="974" top="272"/>
+    <item layer="l3" id="10" dad="7" srt="chess club" left="826" top="444"/>
+  </section>
+  <section cm="WRYG-10-2R">
+    <item layer="l1" id="1" srt="geography&lt;br/&gt;class" left="60" top="126"/>
+    <item layer="l2" id="2" dad="1" srt="London" left="240" top="354"/>
+    <item layer="l3" id="3" dad="2" srt="landmarks" left="370" top="160"/>
+    <item layer="l4" id="4" dad="3" srt="London&lt;br/&gt;Eye" left="598" top="102"/>
+    <item layer="l4" id="5" dad="3" srt="Buckingham&lt;br/&gt;Palace" left="598" top="276" type="xl"/>
+    <item layer="l4" id="6" dad="3" srt="British&lt;br/&gt;Museum" left="598" top="456"/>
+    <item layer="l5" id="7" dad="4" srt="photos" left="814" top="134"/>
+    <item layer="l5" id="8" dad="5" srt="videos" left="814" top="308"/>
+    <item layer="l5" id="9" dad="6" srt="displays" left="814" top="482"/>
+    <item layer="l6" id="10" dad="7" srt="amazing&lt;br/&gt;view" left="1022" top="142"/>
+    <item layer="l6" id="11" dad="8" srt="Guard&lt;br/&gt;Changing" left="1022" top="324"/>
+  </section>
+  <section cm="WRYG-10-1R">
+    <item layer="l1" id="1" srt="hobby/&lt;br/&gt;pastime" left="10" top="226"/>
+    <item layer="l2" id="2" dad="1" srt="father" left="170" top="44"/>
+    <item layer="l2" id="3" dad="1" srt="Ann" left="170" top="442"/>
+    <item layer="l2" id="4" dad="1" srt="mother" left="372" top="148"/>
+    <item layer="l2" id="5" dad="1" srt="Ben" left="372" top="344"/>
+    <item layer="l3" id="6" dad="2" srt="reading" left="788" top="56"/>
+    <item layer="l3" id="7" dad="3" srt="playing the&lt;br/&gt;piano" left="788" top="448"/>
+    <item layer="l3" id="8" dad="4" srt="gardening" left="604" top="158"/>
+    <item layer="l3" id="9" dad="5" srt="playing&lt;br/&gt;basketball" left="604" top="354"/>
+    <item layer="l4" id="10" dad="6,7,8,9" srt="spend&lt;br/&gt;weekends&lt;br/&gt;together" left="900" top="276"/>
+    <item layer="l5" id="11" dad="10" srt="going to&lt;br/&gt;the movies" left="1058" top="212"/>
+    <item layer="l5" id="12" dad="10" srt="riding bikes" left="1058" top="378"/>
+  </section>
+  <section cm="WRYG-9-T">
+    <item layer="l1" id="1" srt="Mandy" left="258" top="76"/>
+    <item layer="l2" id="2" dad="1" srt="traffic&lt;br/&gt;jam" left="32" top="96"/>
+    <item layer="l2" id="3" dad="1" srt="not home&lt;br/&gt;yet" left="532" top="96"/>
+    <item layer="l2" id="4" dad="1" srt="arrives home" left="532" top="354"/>
+    <item layer="l3" id="5" dad="2" srt="cars" left="42" top="366"/>
+    <item layer="l3" id="6" dad="3,4" srt="parents" left="728" top="232"/>
+    <item layer="l4" id="7" dad="5" srt="not&lt;br/&gt;moving" left="298" top="322"/>
+    <item layer="l4" id="8" dad="5" srt="honk" left="298" top="482"/>
+    <item layer="l4" id="9" dad="6" srt="worried" left="994" top="96"/>
+    <item layer="l4" id="10" dad="6" srt="relieved" left="994" top="410"/>
+    <item layer="l5" id="11" dad="9" srt="watches&lt;br/&gt;the time" left="930" top="278"/>
+    <item layer="l5" id="12" dad="9" srt="tries to&lt;br/&gt;call" left="1072" top="278"/>
+  </section>
+  <section cm="WRYG-9-3R">
+    <item layer="l1" id="1" srt="Betsy" left="460" top="60"/>
+    <item layer="l2" id="2" dad="1" srt="friendly" left="228" top="78"/>
+    <item layer="l2" id="3" dad="1" srt="active" left="740" top="78"/>
+    <item layer="l2" id="4" dad="1" srt="warm-&lt;br/&gt;hearted" left="480" top="326"/>
+    <item layer="l3" id="5" dad="2" srt="polite" left="24" top="152"/>
+    <item layer="l3" id="6" dad="4" srt="helped the&lt;br/&gt;old lady" left="294" top="450"/>
+    <item layer="l3" id="7" dad="3" srt="thoughtful" left="996" top="90"/>
+    <item layer="l3" id="8" dad="3" srt="served&lt;br/&gt;the food" left="750" top="322"/>
+    <item layer="l4" id="9" dad="5" srt="greets" left="166" top="322"/>
+    <item layer="l4" id="10" dad="8" srt="helping&lt;br/&gt;others" left="1010" top="334"/>
+    <item layer="l5" id="11" dad="9" srt="teacher" left="48" top="508"/>
+    <item layer="l5" id="12" dad="10" srt="happy" left="1016" top="534"/>
+  </section>
+  <section cm="WRYG-9-2R">
+    <item layer="l1" id="1" srt="Andy’s mom" left="94" top="64"/>
+    <item layer="l2" id="2" dad="1" srt="love plants" left="120" top="342"/>
+    <item layer="l3" id="3" dad="2" srt="calm/&lt;br/&gt;relaxed" left="394" top="448"/>
+    <item layer="l4" id="4" dad="3" back="1,2" srt="garden" left="414" top="240"/>
+    <item layer="l5" id="5" dad="4" srt="afternoon&lt;br/&gt;tea" left="634" top="142"/>
+    <item layer="l5" id="6" dad="4" srt="plants/&lt;br/&gt;flowers" left="634" top="392"/>
+    <item layer="l6" id="7" dad="5" srt="beauty of&lt;br/&gt;nature" left="858" top="154"/>
+    <item layer="l6" id="8" dad="6" srt="bring them&lt;br/&gt;in the house" left="858" top="406"/>
+    <item layer="l7" id="9" dad="7,8" srt="Andy feels&lt;br/&gt;lucky" left="1052" top="278"/>
+  </section>
+  <section cm="WRYG-9-1R">
+    <item layer="l1" id="1" srt="warm-hearted" left="28" top="108"/>
+    <item layer="l2" id="2" dad="1" srt="willing to&lt;br/&gt;help" left="304" top="130"/>
+    <item layer="l3" id="3" dad="2" srt="helped&lt;br/&gt;Ben" left="536" top="142"/>
+    <item layer="l3" id="4" dad="2" srt="a sick&lt;br/&gt;friend" left="536" top="366"/>
+    <item layer="l4" id="5" dad="3" srt="science" left="746" top="156"/>
+    <item layer="l4" id="6" dad="4" srt="mopped&lt;br/&gt;the&lt;br/&gt;floor" left="746" top="380"/>
+    <item layer="l5" id="7" dad="5,6" srt="got home&lt;br/&gt;late" left="922" top="298"/>
+    <item layer="l6" id="8" dad="7" srt="parents" left="1066" top="206"/>
+    <item layer="l7" id="9" dad="8" srt="should learn&lt;br/&gt;to say no" left="1058" top="396"/>
+  </section>
+  <section cm="WRYG-8-T">
+    <item layer="l1" id="1" srt="love music" left="28" top="290"/>
+    <item layer="l2" id="2" dad="1" srt="my sister" left="50" top="62"/>
+    <item layer="l2" id="3" dad="1" srt="practice&lt;br/&gt;with&lt;br/&gt;family" left="260" top="62"/>
+    <item layer="l2" id="4" dad="1" srt="alone" left="468" top="158"/>
+    <item layer="l2" id="5" dad="1" srt="weekend" left="468" top="352"/>
+    <item layer="l2" id="6" dad="1" srt="grow up" left="260" top="450"/>
+    <item layer="l3" id="7" dad="3" srt="Melody&lt;br/&gt;➝piano&lt;br/&gt;I➝violin" left="674" top="62"/>
+    <item layer="l3" id="8" dad="4" srt="listen to&lt;br/&gt;the CD" left="776" top="222"/>
+    <item layer="l3" id="9" dad="5" srt="music" left="690" top="368"/>
+    <item layer="l3" id="10" dad="6" srt="be a&lt;br/&gt;musician" left="852" top="466"/>
+    <item layer="l5" id="11" dad="8" srt="sing" left="1052" top="242"/>
+    <item layer="l5" id="12" dad="9" srt="live&lt;br/&gt;concerts" left="1052" top="402"/>
+  </section>
+  <section cm="WRYG-8-3R">
+    <item layer="l1" id="1" srt="Tracy" left="66" top="234"/>
+    <item layer="l2" id="2" dad="1" srt="10 years old" left="256" top="64"/>
+    <item layer="l2" id="3" dad="1" srt="superstar" left="256" top="444"/>
+    <item layer="l2" id="4" dad="1" srt="music" left="402" top="252"/>
+    <item layer="l3" id="5" dad="4" srt="sing" left="540" top="78"/>
+    <item layer="l3" id="6" dad="4" srt="dance" left="540" top="452"/>
+    <item layer="l3" id="7" dad="4" srt="class party" left="694" top="264"/>
+    <item layer="l4" id="8" dad="7" srt="song" left="860" top="122"/>
+    <item layer="l4" id="9" dad="7" srt="ballet" left="860" top="470"/>
+    <item layer="l5" id="10" dad="8" srt="peaceful" left="1056" top="154"/>
+    <item layer="l5" id="11" dad="9" srt="clap and&lt;br/&gt;cheer" left="1056" top="498"/>
+  </section>
+  <section cm="WRYG-8-2R">
+    <item layer="l1" id="1" srt="Simon &amp;&lt;br/&gt;Anita" left="116" top="72"/>
+    <item layer="l2" id="2" dad="1" srt="enjoy the&lt;br/&gt;movie" left="426" top="98"/>
+    <item layer="l2" id="3" dad="1" srt="go to&lt;br/&gt;the movies" left="142" top="346"/>
+    <item layer="l3" id="4" dad="3" srt="last&lt;br/&gt;weekend" left="352" top="460"/>
+    <item layer="l3" id="5" dad="3" back="2" srt="Friday the&lt;br/&gt;13&lt;sup&gt;th&lt;/sup&gt;" left="528" top="320"/>
+    <item layer="l4" id="6" dad="5" srt="horror&lt;br/&gt;movie" left="760" top="333"/>
+    <item layer="l5" id="7" dad="6" srt="cover eyes" left="768" top="154"/>
+    <item layer="l5" id="8" dad="6" srt="hold&lt;br/&gt;one’s arm" left="962" top="368"/>
+    <item layer="l5" id="9" dad="6" srt="scream&lt;br/&gt;loudly" left="962" top="502"/>
+    <item layer="l6" id="10" dad="7" srt="dare not&lt;br/&gt;open eyes" left="962" top="162"/>
+  </section>
+  <section cm="WRYG-8-1R">
+    <item layer="l1" id="1" srt="long&lt;br/&gt;vacation" left="28" top="122"/>
+    <item layer="l2" id="2" dad="1" srt="travel&lt;br/&gt;abroad" left="222" top="338"/>
+    <item layer="l3" id="3" dad="2" srt="famous&lt;br/&gt;buildings" left="374" top="154"/>
+    <item layer="l4" id="4" dad="3" srt="the Eiffel&lt;br/&gt;Tower" left="602" top="103"/>
+    <item layer="l4" id="5" dad="3" srt="the&lt;br/&gt;Statue of&lt;br/&gt;Liberty" left="602" top="284"/>
+    <item layer="l4" id="6" dad="3" srt="Tokyo Tower" left="602" top="468"/>
+    <item layer="l5" id="7" dad="4" srt="&lt;b&gt;X&lt;/b&gt; French" left="858" top="137"/>
+    <item layer="l5" id="8" dad="5" srt="took pictures" left="858" top="314"/>
+    <item layer="l5" id="9" dad="6" srt="&lt;b&gt;X&lt;/b&gt; had been to Japan" left="858" top="500"/>
+    <item layer="l6" id="10" dad="8" srt="enjoyed&lt;br/&gt;a lot" left="1068" top="328"/>
+  </section>
+  <section cm="WRYG-7-T">
+    <item layer="l1" id="1" srt="Josh, Becky&lt;br/&gt;&amp;&lt;br/&gt;Brownie" left="61" top="97"/>
+    <item layer="l2" id="2" dad="1" srt="picnic" left="88" top="414"/>
+    <item layer="l3" id="3" dad="2" srt="fast food&lt;br/&gt;takeout" left="377" top="132"/>
+    <item layer="l3" id="4" dad="2" srt="park" left="377" top="426"/>
+    <item layer="l4" id="5" dad="3" srt="Triple&lt;br/&gt;burger set" left="620" top="92" type="xl"/>
+    <item layer="l4" id="6" dad="3" srt="fried chicken" left="620" top="256"/>
+    <item layer="l4" id="7" dad="4" srt="chat" left="620" top="438"/>
+    <item layer="l5" id="8" dad="7" srt="enjoy&lt;br/&gt;fast food" left="844" top="470"/>
+    <item layer="l6" id="9" dad="8" srt="run excitedly&lt;br/&gt;(dog)" left="1040" top="482"/>
+  </section>
+  <section cm="WRYG-7-3R">
+    <item layer="l1" id="1" srt="Jordan &amp;&lt;br/&gt;Parents" left="41" top="247"/>
+    <item layer="l2" id="2" dad="1" srt="lunch" left="328" top="270"/>
+    <item layer="l3" id="3" dad="2" srt="Sunday" left="340" top="72"/>
+    <item layer="l3" id="4" dad="2" srt="Happy&lt;br/&gt;Fast food" left="578" top="280"/>
+    <item layer="l4" id="5" dad="4" srt="talk" left="822" top="86"/>
+    <item layer="l4" id="6" dad="4" srt="No.1" left="822" top="295"/>
+    <item layer="l4" id="7" dad="4" srt="laugh" left="822" top="482"/>
+    <item layer="l5" id="8" dad="6" srt="hamburgers" left="1022" top="326"/>
+  </section>
+  <section cm="WRYG-7-2R">
+    <item layer="l1" id="1" srt="weekend" left="88" top="258"/>
+    <item layer="l2" id="2" dad="1" srt="raining" left="344" top="65"/>
+    <item layer="l3" id="3" dad="2" srt="stay home" left="354" top="290"/>
+    <item layer="l4" id="4" dad="3" srt="Dad" left="592" top="90"/>
+    <item layer="l4" id="5" dad="3" srt="kids" left="592" top="307"/>
+    <item layer="l4" id="6" dad="3" srt="Mom" left="592" top="490"/>
+    <item layer="l5" id="7" dad="4" srt="read a&lt;br/&gt;magazine" left="815" top="122"/>
+    <item layer="l5" id="8" dad="5" srt="play a&lt;br/&gt;board game" left="815" top="342"/>
+    <item layer="l5" id="9" dad="6" srt="bake a cake" left="815" top="522"/>
+    <item layer="l6" id="10" dad="7,8,9" srt="happy" left="1020" top="352"/>
+  </section>
+  <section cm="WRYG-7-1R">
+    <item layer="l1" id="1" srt="a field trip to&lt;br/&gt;Happy Zoo" left="25" top="229"/>
+    <item layer="l2" id="2" dad="1" srt="this&lt;br/&gt;morning" left="236" top="74"/>
+    <item layer="l2" id="3" dad="1" srt="right now" left="370" top="250"/>
+    <item layer="l2" id="4" dad="1" srt="next week" left="236" top="440"/>
+    <item layer="l3" id="5" dad="2" srt="informed&lt;br/&gt;about the&lt;br/&gt;trip" left="586" top="84"/>
+    <item layer="l3" id="6" dad="3" srt="in the&lt;br/&gt;library" left="704" top="260"/>
+    <item layer="l3" id="7" dad="4" srt="visit the zoo" left="586" top="450"/>
+    <item layer="l4" id="8" dad="5" srt="asked to get&lt;br/&gt;information" left="930" top="98" type="xl"/>
+    <item layer="l4" id="9" dad="6" srt="borrow books&lt;br/&gt;about&lt;br/&gt;animals" left="1042" top="276"/>
+    <item layer="l4" id="10" dad="7" srt="see real&lt;br/&gt;zebras" left="930" top="466"/>
+  </section>
+  <section cm="WRYG-6-T">
+    <item layer="l1" id="1" srt="Ted" left="102" top="350"/>
+    <item layer="l2" id="2" dad="1" srt="in a hurry" left="122" top="96"/>
+    <item layer="l2" id="3" dad="1" srt="sorry" left="382" top="366"/>
+    <item layer="l3" id="4" dad="2" srt="run" left="390" top="112"/>
+    <item layer="l3" id="5" dad="3" srt="pick up" left="628" top="378"/>
+    <item layer="l4" id="6" dad="4" srt="turn the&lt;br/&gt;corner" left="644" top="122"/>
+    <item layer="l4" id="7" dad="5" srt="apologize" left="860" top="400"/>
+    <item layer="l5" id="8" dad="6" srt="bump into" left="860" top="140"/>
+    <item layer="l5" id="9" dad="7" back="8" srt="woman" left="860" top="276"/>
+    <item layer="l6" id="10" dad="9" srt="forgive Ted" left="1048" top="258"/>
+    <item layer="l6" id="11" dad="9" srt="drop a bag" left="1048" top="340"/>
+  </section>
+  <section cm="WRYG-6-3R">
+    <item layer="l1" id="1" srt="go shopping" left="314" top="60"/>
+    <item layer="l2" id="2" dad="1" srt="new clothes" left="71" top="312"/>
+    <item layer="l2" id="3" dad="1" srt="hands" left="614" top="83"/>
+    <item layer="l3" id="4" dad="3" srt="shopping&lt;br/&gt;bags" left="874" top="92"/>
+    <item layer="l3" id="5" dad="2" srt="closet" left="352" top="322"/>
+    <item layer="l4" id="6" dad="5" srt="full &amp;&lt;br/&gt;messy" left="640" top="334"/>
+    <item layer="l4" id="7" dad="5" srt="tidy up" left="513" top="475"/>
+    <item layer="l5" id="8" dad="7" srt="donate" left="762" top="510"/>
+    <item layer="l6" id="9" dad="8" srt="needy" left="980" top="524"/>
+  </section>
+  <section cm="WRYG-6-2R">
+    <item layer="l1" id="1" srt="sports day" left="30" top="230"/>
+    <item layer="l2" id="2" dad="1" srt="Jeff" left="310" top="254"/>
+    <item layer="l3" id="3" dad="2" srt="nervous" left="392" top="64"/>
+    <item layer="l3" id="4" dad="2" srt="happy" left="392" top="463"/>
+    <item layer="l3" id="5" dad="2" srt="100m" left="630" top="62"/>
+    <item layer="l4" id="6" dad="5" srt="finish" left="647" top="281"/>
+    <item layer="l4" id="7" dad="5" srt="fall&lt;br/&gt;behind" left="896" top="76"/>
+    <item layer="l4" id="8" dad="5" srt="fall down" left="896" top="227"/>
+    <item layer="l4" id="9" dad="5" srt="keep on" left="896" top="378"/>
+    <item layer="l4" id="10" back="6" dad="4" srt="cheer" left="647" top="482"/>
+  </section>
+  <section cm="WRYG-6-1R">
+    <item layer="l1" id="1" srt="Mark" left="103" top="240"/>
+    <item layer="l2" id="2" dad="1" srt="bored" left="290" top="60"/>
+    <item layer="l2" id="3" dad="1" srt="nervous" left="460" top="260"/>
+    <item layer="l2" id="4" dad="1" srt="apologize" left="290" top="450"/>
+    <item layer="l3" id="5" dad="2" srt="kick the&lt;br/&gt;ball" left="576" top="72"/>
+    <item layer="l3" id="6" dad="3" srt="vase" left="711" top="270"/>
+    <item layer="l3" id="7" dad="4" srt="Mom" left="633" top="458"/>
+    <item layer="l4" id="8" dad="6" srt="hit a&lt;br/&gt;vase" left="846" top="102"/>
+    <item layer="l4" id="9" dad="7" srt="forgive" left="948" top="285"/>
+    <item layer="l4" id="10" dad="7" srt="remind" left="948" top="474"/>
+  </section>
+  <section cm="WRYG-5-T">
+    <item layer="l1" id="1" srt="Guinness&lt;br/&gt;World" left="72" top="226"/>
+    <item layer="l2" id="2" dad="1" srt="Cindy" left="310" top="72"/>
+    <item layer="l2" id="3" back="2,4" dad="1" srt="latest copy" left="474" top="246"/>
+    <item layer="l2" id="4" dad="1" srt="Frank" left="310" top="432"/>
+    <item layer="l3" id="5" dad="2" srt="largest&lt;br/&gt;hula hoop" left="712" top="82"/>
+    <item layer="l3" id="6" dad="4" srt="longest&lt;br/&gt;tongue" left="712" top="445"/>
+    <item layer="l4" id="7" dad="5" srt="Yuya&lt;br/&gt;Yamada" left="726" top="280"/>
+    <item layer="l4" id="8" dad="5" srt="Nov.9,2017" left="974" top="92" type="xl"/>
+    <item layer="l4" id="9" dad="6" srt="Nov.27,2012" left="974" top="282" type="xl"/>
+    <item layer="l4" id="10" dad="6" srt="Nick&lt;br/&gt;Stoeberl" left="974" top="458"/>
+  </section>
+  <section cm="WRYG-5-3R">
+    <item layer="l1" id="1" srt="graduation&lt;br/&gt;day" left="89" top="224"/>
+    <item layer="l2" id="2" dad="1" srt="ceremony" left="305" top="60"/>
+    <item layer="l2" id="3" dad="1" srt="celebration&lt;br/&gt;dinner" left="305" top="446"/>
+    <item layer="l3" id="4" dad="2" srt="hall" left="542" top="70"/>
+    <item layer="l3" id="5" dad="2" srt="diploma" left="542" top="264"/>
+    <item layer="l3" id="6" dad="3" srt="parents" left="542" top="457"/>
+    <item layer="l4" id="7" dad="5" srt="speech" left="755" top="277"/>
+    <item layer="l4" id="8" dad="6" srt="proud" left="755" top="472"/>
+    <item layer="l5" id="9" dad="7" srt="Nick" left="755" top="122"/>
+    <item layer="l5" id="10" dad="7" srt="touching &amp;&lt;br/&gt;inspirational" left="944" top="310"/>
+    <item layer="l6" id="11" dad="9" srt="nervous" left="944" top="133"/>
+  </section>
+  <section cm="WRYG-5-2R">
+    <item layer="l1" id="1" srt="invention&lt;br/&gt;of vehicles" left="77" top="228"/>
+    <item layer="l2" id="2" dad="1" srt="convenient&lt;br/&gt;transportation" left="342" top="247" type="xl"/>
+    <item layer="l3" id="3" dad="2" srt="Mia" left="567" top="260"/>
+    <item layer="l4" id="4" dad="3" srt="school bus" left="580" top="78"/>
+    <item layer="l4" id="5" dad="3" srt="subway" left="580" top="464"/>
+    <item layer="l4" id="6" dad="3" srt="bike" left="778" top="275"/>
+    <item layer="l5" id="7" dad="4" srt="school" left="785" top="112"/>
+    <item layer="l5" id="8" dad="5" srt="for place" left="785" top="498"/>
+    <item layer="l5" id="9" dad="6" srt="library" left="969" top="306"/>
+    <item layer="l6" id="10" dad="8" srt="with friends" left="987" top="507"/>
+  </section>
+  <section cm="WRYG-5-1R">
+    <item layer="l1" id="1" srt="Tony" left="19" top="180"/>
+    <item layer="l2" id="2" dad="1" srt="grandparents" left="40" top="449" type="xl"/>
+    <item layer="l2" id="3" dad="1" srt="letter" left="287" top="222"/>
+    <item layer="l3" id="4" dad="3" srt="summer&lt;br/&gt;vacation" left="521" top="232"/>
+    <item layer="l4" id="5" dad="4" srt="next week" left="538" top="64"/>
+    <item layer="l4" id="6" dad="4" srt="July 10&lt;sup&gt;th&lt;/sup&gt;" left="538" top="438"/>
+    <item layer="l4" id="7" dad="4" srt="farm" left="728" top="247"/>
+    <item layer="l5" id="8" dad="5" srt="July 1&lt;sup&gt;st&lt;/sup&gt;" left="728" top="98"/>
+    <item layer="l5" id="9" dad="7" srt="take care of" left="907" top="222"/>
+    <item layer="l5" id="10" dad="7" srt="enjoy meals" left="907" top="320"/>
+    <item layer="l5" id="11" dad="6" srt="Taiwan" left="907" top="470"/>
+    <item layer="l6" id="12" dad="8" srt="fly" left="915" top="106"/>
+    <item layer="l6" id="13" dad="9,10" srt="grandparents" left="1100" top="360"/>
+    <item layer="l7" id="14" dad="12" srt="the U.S." left="1078" top="118"/>
+  </section>
+  <section cm="WRYG-4-T">
+    <item layer="l1" id="1" srt="self" left="71" top="223"/>
+    <item layer="l2" id="2" dad="1" srt="personal&lt;br/&gt;information" left="274" top="73"/>
+    <item layer="l2" id="3" dad="1" srt="future plan" left="274" top="430"/>
+    <item layer="l2" id="4" dad="1" srt="Cathy" left="455" top="241"/>
+    <item layer="l3" id="5" dad="2" back="4" srt="6&lt;sup&gt;th&lt;/sup&gt; grade" left="616" top="76"/>
+    <item layer="l3" id="6" dad="4" srt="3 good&lt;br/&gt;friends" left="752" top="251"/>
+    <item layer="l3" id="7" dad="3" back="4,6" srt="go to&lt;br/&gt;college" left="616" top="443"/>
+    <item layer="l4" id="8" dad="5" srt="reading" left="875" top="90"/>
+    <item layer="l4" id="9" dad="7" srt="be a doctor" left="875" top="454"/>
+    <item layer="l5" id="10" dad="8" srt="favorite&lt;br/&gt;subject" left="1048" top="250"/>
+  </section>
+  <section cm="WRYG-4-3R">
+    <item layer="l1" id="1" srt="Norman" left="111" top="226"/>
+    <item layer="l2" id="2" dad="1" srt="personal&lt;br/&gt;information" left="386" top="153"/>
+    <item layer="l2" id="3" dad="1" srt="family" left="386" top="375"/>
+    <item layer="l3" id="4" dad="2" srt="2&lt;sup&gt;nd&lt;/sup&gt; grade" left="648" top="63"/>
+    <item layer="l3" id="5" dad="3" srt="parents" left="648" top="258"/>
+    <item layer="l3" id="6" dad="3" srt="sibling(s)" left="648" top="446"/>
+    <item layer="l4" id="7" dad="4" srt="hobby" left="901" top="77"/>
+    <item layer="l4" id="8" dad="5" srt="job" left="901" top="271"/>
+    <item layer="l4" id="9" dad="6" srt="age" left="901" top="459"/>
+    <item layer="l5" id="10" dad="7" srt="future" left="1100" top="106"/>
+  </section>
+  <section cm="WRYG-4-2R">
+    <item layer="l1" id="1" srt="Terry" left="79" top="178"/>
+    <item layer="l2" id="2" dad="1" srt="animal" left="339" top="70"/>
+    <item layer="l2" id="3" dad="1" srt="play" left="339" top="290"/>
+    <item layer="l3" id="4" dad="2" srt="adopt" left="577" top="77"/>
+    <item layer="l3" id="5" dad="3" srt="puppy" back="4" left="577" top="302"/>
+    <item layer="l3" id="6" dad="3" srt="park" left="191" top="457"/>
+    <item layer="l4" id="7" dad="4" srt="eat" left="794" top="239"/>
+    <item layer="l4" id="8" dad="5" srt="take&lt;br/&gt;a nap" left="794" top="418"/>
+    <item layer="l5" id="9" dad="7" srt="appetite" left="985" top="269"/>
+    <item layer="l5" id="10" dad="8" srt="dog house" left="985" top="446"/>
+  </section>
+  <section cm="WRYG-4-1R">
+    <item layer="l1" id="1" srt="party" left="111" top="226"/>
+    <item layer="l2" id="2" dad="1" srt="convenience&lt;br/&gt;store" left="386" top="153" type='xl'/>
+    <item layer="l2" id="3" dad="1" srt="Saturday" left="386" top="375"/>
+    <item layer="l3" id="4" dad="2" srt="Friday" left="648" top="63"/>
+    <item layer="l3" id="5" dad="2" srt="food" left="648" top="258"/>
+    <item layer="l3" id="6" dad="3" srt="play&lt;br/&gt;games" left="648" top="446"/>
+    <item layer="l4" id="7" dad="4" srt="after&lt;br/&gt;school" left="901" top="77"/>
+    <item layer="l4" id="8" dad="5" srt="drinks" left="901" top="271"/>
+    <item layer="l4" id="9" dad="6" srt="enjoy the&lt;br/&gt;food" left="901" top="459"/>
+  </section>
+  <section cm="WRYG-3-T">
+    <item layer="l1" id="1" srt="trip" left="289" top="233"/>
+    <item layer="l2" id="2" dad="1" srt="summer" left="54" top="59"/>
+    <item layer="l2" id="3" dad="1" srt="in the&lt;br/&gt;country" left="54" top="253"/>
+    <item layer="l2" id="4" dad="1" srt="by train" left="54" top="449"/>
+    <item layer="l2" id="5" dad="1" srt="my family" left="483" top="75"/>
+    <item layer="l2" id="6" dad="1" srt="meadow" left="483" top="442"/>
+    <item layer="l2" id="7" dad="1" srt="river" left="666" top="249"/>
+    <item layer="l3" id="8" dad="6" srt="look at" left="716" top="459"/>
+    <item layer="l3" id="9" dad="7" srt="go fishing" left="860" top="71"/>
+    <item layer="l3" id="10" dad="7" srt="read&lt;br/&gt;novels" left="1016" top="220"/>
+    <item layer="l3" id="11" dad="7" srt="play ball" left="911" top="389"/>
+  </section>
+  <section cm="WRYG-3-3R">
+    <item layer="l1" id="1" srt="smartphone" left="56" top="218"/>
+    <item layer="l2" id="2" dad="1" srt="spend&lt;br/&gt;a lot of&lt;br/&gt;time" left="343" top="240"/>
+    <item layer="l3" id="3" dad="2" srt="contact&lt;br/&gt;with" left="501" top="67"/>
+    <item layer="l3" id="4" dad="2" srt="listen to&lt;br/&gt;music" left="640" top="252"/>
+    <item layer="l3" id="5" dad="2" srt="play&lt;br/&gt;games" left="487" top="451"/>
+    <item layer="l4" id="6" dad="3" srt="facetime" left="789" top="83"/>
+    <item layer="l4" id="7" dad="4" srt="outside" left="925" top="264"/>
+    <item layer="l4" id="8" dad="5" srt="at home" left="781" top="463"/>
+    <item layer="l5" id="9" dad="6" srt="text" left="1008" top="117"/>
+  </section>
+  <section cm="WRYG-3-2R">
+    <item layer="l1" id="1" srt="food lover" left="72" top="232"/>
+    <item layer="l2" id="2" dad="1" srt="restaurants" left="317" top="78"/>
+    <item layer="l2" id="3" dad="1" srt="home" left="317" top="423"/>
+    <item layer="l3" id="4" dad="2" srt="enjoy&lt;br/&gt;delicious&lt;br/&gt;food" left="560" top="82"/>
+    <item layer="l3" id="5" dad="3" srt="see how&lt;br/&gt;to cook" left="560" top="436"/>
+    <item layer="l4" id="6" dad="4" srt="different&lt;br/&gt;styles" left="794" top="94"/>
+    <item layer="l4" id="7" dad="5" srt="taste" left="815" top="444"/>
+    <item layer="l5" id="8" dad="6,7" back="1" srt="dream" left="1009" top="211"/>
+    <item layer="l6" id="9" dad="8" srt="be a cook" left="1018" top="347"/>
+    <item layer="l7" id="10" dad="9" srt="enjoy &amp; smile" left="995" top="461"/>
+  </section>
+  <section cm="WRYG-3-1R">
+    <item layer="l1" id="1" srt="travel&lt;br/&gt;experience" left="88" top="208"/>
+    <item layer="l2" id="2" dad="1" srt="UK" left="326" top="67"/>
+    <item layer="l2" id="3" dad="1" srt="France" left="470" top="244"/>
+    <item layer="l2" id="4" dad="1" srt="America" left="326" top="445"/>
+    <item layer="l3" id="5" dad="2" srt="The British&lt;br/&gt;Museum" left="613" top="63"/>
+    <item layer="l3" id="6" dad="3" srt="The Eiffel&lt;br/&gt;Tower" left="732" top="255"/>
+    <item layer="l3" id="7" dad="4" srt="Central&lt;br/&gt;Park" left="610" top="453"/>
+    <item layer="l4" id="8" dad="5" srt="exhibits" left="865" top="80"/>
+    <item layer="l4" id="9" dad="6" srt="buildings" left="960" top="266"/>
+    <item layer="l4" id="10" dad="7" srt="nature" left="865" top="476"/>
+  </section>
+  <section cm="WRYG-2-T">
+    <item layer="l1" id="1" srt="Math test" left="411" top="57"/>
+    <item layer="l2" id="2" dad="1" srt="next&lt;br/&gt;Monday" left="170" top="79"/>
+    <item layer="l2" id="3" dad="1" srt="get a 100" left="696" top="79"/>
+    <item layer="l2" id="4" dad="1" srt="prepare" left="432" top="325"/>
+    <item layer="l3" id="5" dad="3" srt="happy" left="933" top="218"/>
+    <item layer="l3" id="6" dad="4" srt="Saturday" left="189" top="325"/>
+    <item layer="l3" id="7" dad="4" srt="Sunday" left="700" top="325"/>
+    <item layer="l4" id="8" dad="6" srt="home" left="52" top="487"/>
+    <item layer="l4" id="9" dad="7" srt="library" left="870" top="487"/>
+    <item layer="l5" id="10" dad="8,9" srt="study hard" left="462" top="520"/>
+  </section>
+  <section cm="WRYG-2-3R">
+    <item layer="l1" id="1" srt="balanced&lt;br/&gt;diet" left="308" top="219"/>
+    <item layer="l2" id="2" dad="1" srt="milk" left="142" top="58"/>
+    <item layer="l2" id="3" dad="1" srt="eggs" left="65" top="263"/>
+    <item layer="l2" id="4" dad="1" srt="bread" left="171" top="442"/>
+    <item layer="l2" id="5" dad="1" srt="healthy" left="558" top="115"/>
+    <item layer="l3" id="6" dad="5" srt="exercise" left="681" top="327"/>
+    <item layer="l3" id="7" dad="5" srt="achieve&lt;br/&gt;his goal" left="786" top="83"/>
+    <item layer="l4" id="8" dad="6" srt="jog" left="540" top="456"/>
+    <item layer="l4" id="9" dad="6" srt="basketball" left="855" top="456"/>
+    <item layer="l4" id="10" dad="7" srt="tall" left="1000" top="81"/>
+  </section>
+  <section cm="WRYG-2-2R">
+    <item layer="l1" id="1" srt="typhoon" left="364" top="63"/>
+    <item layer="l2" id="2" dad="1" srt="TV news" left="125" top="63"/>
+    <item layer="l2" id="3" dad="1" srt="windy&lt;br/&gt;and&lt;br/&gt;rainy" left="144" top="267"/>
+    <item layer="l2" id="4" dad="1" srt="prepare" left="523" top="295"/>
+    <item layer="l2" id="5" dad="1" srt="clean" left="685" top="97"/>
+    <item layer="l3" id="6" dad="4" srt="food &amp; drink" left="310" top="445" type='xl'/>
+    <item layer="l3" id="7" dad="4" srt="flashlight" left="681" top="464"/>
+    <item layer="l3" id="8" dad="4" srt="battery" left="808" top="310"/>
+    <item layer="l4" id="9" dad="5" srt="sweep" left="1000" top="68"/>
+    <item layer="l4" id="10" dad="5" srt="garbage" left="1000" top="265"/>
+  </section>
+  <section cm="WRYG-2-1R">
+    <item layer="l1" id="1" srt="musical&lt;br/&gt;talent" left="403" top="77"/>
+    <item layer="l2" id="2" dad="1" srt="violin" left="209" top="243"/>
+    <item layer="l2" id="3" dad="1" srt="piano" left="556" top="301"/>
+    <item layer="l2" id="4" dad="1" srt="sing" left="684" top="82"/>
+    <item layer="l3" id="5" dad="2" srt="competition" left="96" top="56" type='xl'/>
+    <item layer="l3" id="6" dad="2" srt="beautifully" left="88" top="430"/>
+    <item layer="l3" id="7" dad="3" srt="lovely" left="404" top="457"/>
+    <item layer="l3" id="8" dad="3" srt="compose" left="777" top="399"/>
+    <item layer="l4" id="9" dad="4" srt="sweetly" left="942" top="63"/>
+    <item layer="l4" id="10" dad="4" srt="pop songs" left="905" top="261"/>
+  </section>
+  <section cm="WRYG-1-1R">
+    <item layer="l1" id="1" srt="fight" left="419" top="78"/>
+    <item layer="l2" id="2" dad="1" srt="share" left="691" top="52"/>
+    <item layer="l2" id="3" dad="1" srt="Mom" left="592" top="296"/>
+    <item layer="l2" id="4" dad="1" srt="toy" left="270" top="296"/>
+    <item layer="l2" id="5" dad="1" srt="angry" left="190" top="59"/>
+    <item layer="l3" id="6" dad="2" srt="fun" left="928" top="53"/>
+    <item layer="l3" id="7" dad="2" srt="love" left="872" top="234"/>
+    <item layer="l3" id="8" dad="3" srt="teach" left="830" top="416"/>
+    <item layer="l3" id="9" dad="3" srt="sad" left="470" top="466"/>
+    <item layer="l3" id="10" dad="4" srt="broken" left="93" top="449"/>
+  </section>
+  <section cm="WRYG-1-2R">
+    <item layer="l1" id="1" srt="study" left="266" top="193"/>
+    <item layer="l2" id="2" dad="1" srt="bedroom" left="140" top="426"/>
+    <item layer="l2" id="3" dad="1" srt="noisy" left="481" top="67"/>
+    <item layer="l3" id="4" dad="3" srt="mad" left="171" top="51"/>
+    <item layer="l4" id="5" dad="10" srt="apologize" left="948 " top="97"/>
+    <item layer="l3" id="6" dad="3" srt="watch TV" left="625 " top="274"/>
+    <item layer="l4" id="7" dad="6" srt="laugh" left="554 " top="469"/>
+    <item layer="l4" id="8" dad="6" srt="living room" left="746 " top="463"/>
+    <item layer="l4" id="9" dad="6" srt="turn down" left="853 " top="288"/>
+    <item layer="l3" id="10" dad="3" srt="sorry" left="713 " top="81"/>
+  </section>
+  <section cm="WRYG-1-3R">
+    <item layer="l1" id="1" srt="ill" left="644" top="212"/>
+    <item layer="l2" id="2" dad="1" srt="lie in bed" left="486" top="63"/>
+    <item layer="l2" id="3" dad="1" srt="cold" left="381" top="262"/>
+    <item layer="l2" id="4" dad="1" srt="fever" left="778" top="447"/>
+    <item layer="l2" id="5" dad="1" srt="doctor" left="922" top="252"/>
+    <item layer="l3" id="6" dad="5" srt="medecine" left="825" top="57"/>
+    <item layer="l3" id="7" dad="3" srt="sneeze" left="477" top="462"/>
+    <item layer="l3" id="8" dad="3" srt="not wear" left="153" top="259"/>
+    <item layer="l4" id="9" dad="8" srt="windy" left="288" top="123"/>
+    <item layer="l5" id="10" dad="9" srt="outside" left="97" top="97"/>
+  </section>
+  <section cm="WRYG-1-T">
+    <item layer="l1" id="1" srt="eye" left="384" top="85"/>
+    <item layer="l2" id="2" dad="1" srt="read" left="131" top="73"/>
+    <item layer="l2" id="3" dad="1" srt="watch TV" left="301" top="345"/>
+    <item layer="l2" id="4" dad="1" srt="see words" left="648" top="248"/>
+    <item layer="l3" id="5" dad="2" srt="close" left="75" top="298"/>
+    <item layer="l3" id="6" dad="4" srt="blackboard" left="782" top="59" type='xl'/>
+    <item layer="l3" id="7" dad="4" srt="not clear" left="918" top="254"/>
+    <item layer="l3" id="8" dad="4" srt="sit" left="534" top="458"/>
+    <item layer="l4" id="9" dad="8" srt="angry" left="773" top="483"/>
+    <item layer="l5" id="10" dad="9" srt="yell at" left="977" top="515"/>
+  </section>
+</root>
+    

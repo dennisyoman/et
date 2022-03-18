@@ -1,0 +1,140 @@
+//font
+@mixin font-family($font-face, $weight, $size, $space) {
+  font-family: $font-face;
+  font-weight: $weight;
+  font-size: $size;
+  letter-spacing: $space;
+}
+
+//basics
+@mixin rotate($ang) {
+  -ms-transform: rotate($ang);
+  -webkit-transform: rotate($ang);
+  transform: rotate($ang);
+}
+
+@mixin transition($type, $speed) {
+  -webkit-transition: $type $speed;
+  transition: $type $speed;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+
+@mixin borderRadius($size) {
+  border-radius: $size;
+  -moz-border-radius: $size;
+  -webkit-border-radius: $size;
+}
+
+@mixin boxShadow($var) {
+  -webkit-box-shadow: $var;
+  -moz-box-shadow: $var;
+  box-shadow: $var;
+}
+
+@mixin dropShadow($var) {
+  -webkit-filter: drop-shadow($var);
+  filter: drop-shadow($var);
+}
+
+@mixin textShadow($var) {
+  -webkit-text-shadow: $var;
+  -moz-text-shadow: $var;
+  text-shadow: $var;
+}
+
+@mixin opacity($var) {
+  opacity: $var;
+  -moz-opacity: $var;
+  -khtml-opacity: $var;
+  filter: alpha(opacity = $var * 100);
+}
+
+@mixin box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin clear {
+  content: "";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+  width: 100%;
+}
+
+@mixin translate($varx, $vary) {
+  -ms-transform: translate($varx, $vary);
+  -webkit-transform: translate($varx, $vary);
+  transform: translate($varx, $vary);
+  -webkit-animation-fill-mode: forwards;
+}
+
+@mixin transformOrigin($varx, $vary) {
+  -ms-transform-origin: $varx $vary;
+  -webkit-transform-origin: $varx $vary;
+  transform-origin: $varx $vary;
+}
+
+@mixin scale($var) {
+  -ms-transform: scale($var);
+  -webkit-transform: scale($var);
+  transform: scale($var);
+}
+@mixin scaleX($var) {
+  -ms-transform: scaleX($var);
+  -webkit-transform: scaleX($var);
+  transform: scaleX($var);
+}
+@mixin scaleXY($varx, $vary) {
+  -ms-transform: scale($varx, $vary);
+  -webkit-transform: scale($varx, $vary);
+  transform: scale($varx, $vary);
+}
+
+@mixin transform3D($tx, $ty, $tz, $rx, $ry, $rz) {
+  transform: rotateZ($rz) rotateX($rx) rotateY($ry) translateX($tx)
+    translateY($ty) translateZ($tz);
+  -moz-transform: rotateZ($rz) rotateX($rx) rotateY($ry) translateX($tx)
+    translateY($ty) translateZ($tz);
+  -webkit-transform: rotateZ($rz) rotateX($rx) rotateY($ry) translateX($tx)
+    translateY($ty) translateZ($tz);
+}
+
+@mixin transform3D_2($tx, $ty, $tz, $rx, $ry, $rz) {
+  transform: translateX($tx) translateY($ty) translateZ($tz) rotateZ($rz)
+    rotateX($rx) rotateY($ry);
+  -moz-transform: translateX($tx) translateY($ty) translateZ($tz) rotateZ($rz)
+    rotateX($rx) rotateY($ry);
+  -webkit-transform: translateX($tx) translateY($ty) translateZ($tz)
+    rotateZ($rz) rotateX($rx) rotateY($ry);
+}
+
+@mixin translate3D($tx, $ty, $tz, $imp) {
+  -ms-transform: translateX($tx) translateY($ty) translateZ($tz) $imp;
+  -webkit-transform: translateX($tx) translateY($ty) translateZ($tz) $imp;
+  transform: translateX($tx) translateY($ty) translateZ($tz) $imp;
+}
+
+@mixin rotate3D($rx, $ry, $rz) {
+  transform: rotateX($rx) rotateY($ry) rotateZ($rz);
+  -moz-transform: rotateX($rx) rotateY($ry) rotateZ($rz);
+  -webkit-transform: rotateX($rx) rotateY($ry) rotateZ($rz);
+}
+
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke * -1;
+  @for $i from $from through $stroke {
+    @for $j from $from through $stroke {
+      $shadow: append($shadow, $i * 1px $j * 1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}

@@ -1,0 +1,55 @@
+<div class="largeboard_wrapper wow slideInUp">
+  <span class="keyboard" mt="2"
+    ><img src="./images/common/board_keyboard.png"
+  /></span>
+  <span class="eraseAll" mt="2"
+    ><img src="./images/common/board_clear.png"
+  /></span>
+  <div class="keyer">
+    <textarea spellcheck="false" id="mytext"></textarea>
+  </div>
+</div>
+<div class="assetsPreload">
+  <img src="./images/common/board.png" />
+  <img src="./images/common/board_keyboard.png" />
+  <img src="./images/common/board_clear.png" />
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#keyboard").remove();
+    $("#mytext").keyboard();
+    $("#largeboard")
+      .unbind()
+      .bind("mousedown", function (e) {
+        getHighestDepthWidget($(this));
+      })
+      .bind("touchstart", function (e) {
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#largeboard"));
+
+    $("#largeboard .eraseAll")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          $("#mytext").val("");
+        }
+      });
+    //
+    $("#largeboard")
+      .attr("id", "")
+      .delay(80)
+      .queue(function () {
+        $(this).dequeue();
+        makeDraggable($(this), false, $(this));
+      });
+  });
+</script>

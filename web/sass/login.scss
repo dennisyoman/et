@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+@import "./mixin";
+@import "./common";
+
+//@import "./animation";
+
+.login_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url("../images/login/et_index_bg.jpg") center center no-repeat;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-crisp-edges; /* Webkit (non-standard naming) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  backface-visibility: hidden;
+  background-size: cover;
+  img {
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-crisp-edges; /* Webkit (non-standard naming) */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+    backface-visibility: hidden;
+  }
+  .login-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .login-panel {
+    position: absolute;
+    top: 175px;
+    left: 200px;
+    z-index: 5;
+    img {
+      width: 213.5px;
+      height: auto;
+    }
+  }
+  .giraffe {
+    position: absolute;
+    top: 18px;
+    left: 180px;
+    z-index: 3;
+    img {
+      width: 133.5px;
+      height: auto;
+    }
+  }
+  .scissors {
+    position: absolute;
+    top: 50px;
+    left: 425px;
+    z-index: 1;
+    img {
+      width: 100px;
+      height: auto;
+    }
+  }
+  .science {
+    position: absolute;
+    top: 25px;
+    left: 320px;
+    z-index: 1;
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+  .book {
+    position: absolute;
+    top: 180px;
+    left: 435px;
+    z-index: 1;
+    img {
+      width: 80px;
+      height: auto;
+    }
+  }
+  .soccer {
+    position: absolute;
+    top: 165px;
+    left: 115px;
+    z-index: 1;
+    img {
+      width: 66px;
+      height: auto;
+    }
+  }
+  .logo {
+    position: absolute;
+    top: 98px;
+    left: 305px;
+    z-index: 9;
+    pointer-events: none;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    img {
+      width: 125px;
+      height: auto;
+    }
+  }
+
+  .input {
+    position: absolute;
+    top: 207px;
+    left: 225px;
+    z-index: 15 !important;
+    font-size: 12px;
+    line-height: 25px;
+    color: #000;
+    width: 200px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    .showpw {
+      position: absolute;
+      top: 28px;
+      right: 26px;
+      width: 16px;
+      height: 16px;
+      background: url("../images/common/showpw.png") no-repeat center center;
+      background-size: 15px auto;
+      z-index: 3;
+      cursor: pointer;
+      @include opacity(0.4);
+
+      &.active {
+        @include opacity(1);
+      }
+    }
+  }
+  input[name="username"],
+  input[name="password"] {
+    font-size: 12px;
+    color: $main;
+    width: 85px;
+    z-index: 10;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    display: inline-block;
+    margin-left: 5px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  #ok {
+    position: absolute;
+    top: 263px;
+    left: 353px;
+    cursor: pointer;
+    z-index: 20 !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    img {
+      width: 60px;
+      height: auto;
+      image-rendering: -moz-crisp-edges; /* Firefox */
+      image-rendering: -o-crisp-edges; /* Opera */
+      image-rendering: -webkit-crisp-edges; /* Webkit (non-standard naming) */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+      backface-visibility: hidden;
+    }
+  }
+
+  .error {
+    position: absolute;
+    top: 290px;
+    left: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    color: $text;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    color: #333;
+    font-weight: bold;
+    z-index: 1;
+    text-align: center;
+    @include scale(0.5);
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: subpixel-antialiased;
+    backface-visibility: hidden;
+    -webkit-transform: scale(0.7) translate3d(0, 0, 0);
+    transform: scale(0.7) translate3d(0, 0, 0);
+  }
+}

@@ -1,0 +1,46 @@
+<div class="roulette_wrapper wow bounceIn">
+  <div class="board">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+  </div>
+  <div class="pin"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#roulette")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          //spin
+          rootSoundEffect($help);
+          var angles = [0, 60, 120, 180, 240, 300];
+          var result = angles[Math.floor(Math.random() * angles.length)];
+          $(".roulette ").addClass("disabled");
+          $(".roulette_wrapper .pin")
+            .css("transform", "rotate(" + (1080 + result) + "deg)")
+            .delay(1600)
+            .queue(function () {
+              $(".roulette ").removeClass("disabled");
+              $(this).css("transform", "rotate(" + result + "deg)");
+              $(this).dequeue();
+            });
+          //
+        }
+        //getHighestDepthWidget($(this));
+      });
+    //getHighestDepthWidget($("#roulette"));
+    makeDraggable($("#roulette"));
+  });
+</script>

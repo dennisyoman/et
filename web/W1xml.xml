@@ -1,0 +1,230 @@
+<root>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>abroad</Question>
+    <Chinese>到國外</Chinese>
+    <Audio>abroad.mp3</Audio>
+    <Syntactic>(adv.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>ab_ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _ _oa_</ExtraPractice2>
+    <ExtraPractice3>_ _r_ _d</ExtraPractice3>
+    <Syllable>a^broad</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>appreciate</Question>
+    <Chinese>感謝</Chinese>
+    <Audio>appreciate.mp3</Audio>
+    <Syntactic>(v.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>a_ _ _ _c_ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _pr_ _ _ _ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ _ _a_e</ExtraPractice3>
+    <Syllable>ap^pre^ci^ate</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>chance</Question>
+    <Chinese>機會</Chinese>
+    <Audio>chance.mp3</Audio>
+    <Syntactic>(n.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>ch_ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _an_ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ce</ExtraPractice3>
+    <Syllable>chance</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>excellent</Question>
+    <Chinese>極佳的</Chinese>
+    <Audio>excellent.mp3</Audio>
+    <Syntactic>(adj.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>ex_ _ _ _ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _ce_ _ _ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ _en_</ExtraPractice3>
+    <Syllable>ex^cel^lent</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>except</Question>
+    <Chinese>除…之外</Chinese>
+    <Audio>except.mp3</Audio>
+    <Syntactic>(prep.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>ex_ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _ce_ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _pt</ExtraPractice3>
+    <Syllable>ex^cept</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>experience</Question>
+    <Chinese>經驗</Chinese>
+    <Audio>experience.mp3</Audio>
+    <Syntactic>(n.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>ex_ _ _ _ _ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _ _er_ _ _ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _i_ _ _e</ExtraPractice3>
+    <Syllable>ex^pe^ri^ence</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>marvelous</Question>
+    <Chinese>令人驚歎的</Chinese>
+    <Audio>marvelous.mp3</Audio>
+    <Syntactic>(adj.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>m_ _v_ _ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _ _ _el_ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ _ou_</ExtraPractice3>
+    <Syllable>mar^vel^ous</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>perhaps</Question>
+    <Chinese>或許</Chinese>
+    <Audio>perhaps.mp3</Audio>
+    <Syntactic>(adv.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>p_ _h_ _ _</ExtraPractice1>
+    <ExtraPractice2>_er_ _ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ps</ExtraPractice3>
+    <Syllable>per^haps</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>popular</Question>
+    <Chinese>受歡迎的</Chinese>
+    <Audio>popular.mp3</Audio>
+    <Syntactic>(adj.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>p_p_ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_o_u_ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ar</ExtraPractice3>
+    <Syllable>pop^u^lar</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>postcard</Question>
+    <Chinese>明信片</Chinese>
+    <Audio>postcard.mp3</Audio>
+    <Syntactic>(n.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>p_ _ _ _ _ _d</ExtraPractice1>
+    <ExtraPractice2>_ _st_ _ _ _</ExtraPractice2>
+    <ExtraPractice3>_ _ _ _ _ar_</ExtraPractice3>
+    <Syllable>post^card</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>record</Question>
+    <Chinese>將（聲音、影像等）錄下</Chinese>
+    <Audio>record.mp3</Audio>
+    <Syntactic>(v.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>re_ _ _ _</ExtraPractice1>
+    <ExtraPractice2>_ _c_ _d</ExtraPractice2>
+    <ExtraPractice3>_ _ _or_</ExtraPractice3>
+    <Syllable>re^cord</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+  <item>
+    <TestType>V</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>C</Range>
+    <Question>upload</Question>
+    <Chinese>上傳</Chinese>
+    <Audio>upload.mp3</Audio>
+    <Syntactic>(v.)</Syntactic>
+    <Remark>
+    </Remark>
+    <ExtraPractice1>_pl_ _ _</ExtraPractice1>
+    <ExtraPractice2>u_ _ _ _d</ExtraPractice2>
+    <ExtraPractice3>_ _ _oa_</ExtraPractice3>
+    <Syllable>up^load</Syllable>
+    <ExtraSentence>
+    </ExtraSentence>
+  </item>
+</root>

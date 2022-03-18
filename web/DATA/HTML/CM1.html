@@ -1,0 +1,619 @@
+<div id="cm_module_wrapper" class="CM1_wrapper">
+  <div class="assetsPreload">
+    <img src="./images/common/cm_bg1.png" />
+    <img src="./images/common/cm_bg2.png" />
+    <img src="./images/common/cm_light.png" />
+    <img src="./images/common/cm_star.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //載入完成要執行init
+    $("#cm_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //init
+        //createArrows();
+        $(this)
+          .find("ul.front li")
+          .each(function () {
+            if (!$(this).find("> ul").length > 0) {
+              $(this).addClass("active");
+            }
+            $(this)
+              .unbind()
+              .bind("click", function (e) {
+                if ($(this).find("> ul").length > 0) {
+                  $(this).toggleClass("active");
+                  if (!$(this).hasClass("active")) {
+                    $(this)
+                      .find("li")
+                      .each(function () {
+                        if ($(this).find("> ul").length > 0) {
+                          $(this).removeClass("active");
+                        }
+                      });
+                  }
+                }
+                //
+                showArrow();
+                e.stopPropagation();
+              });
+          });
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //load cm1.xml
+    loadCMxml();
+  });
+
+  var loadCMxml = function () {
+    gpath = "./cm1.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        createMap(data);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var createMap = function (xml) {
+    //create contents
+    var cm;
+    var radius1 = 78;
+    var radius2 = 45;
+    var radius3 = 32;
+    var radius4 = 25;
+    var diff = 5;
+    let targetNode = $(contentXML).find(
+      "section:eq(" + (parseInt(uid) - 1) + ")"
+    );
+    $(targetNode)
+      .find("item")
+      .each(function (k) {
+        if (!isitEmpty($(this).text())) {
+          if (k == 0) {
+            //target code
+            cm = $(this).text().split("|")[0];
+            cm = cm.replace(".swf", "");
+          }
+        }
+      });
+
+    $(xml)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("cm") == cm) {
+          //create Content
+          var html = "<ul class='front'>";
+          //layer1
+          for (var i = 0; i < $(this).children("item").length; i++) {
+            var node = $(this).children("item").eq(i);
+            var srt = node.attr("srt");
+            var top = node.attr("top");
+            var left = node.attr("left");
+            var type = node.attr("type") == undefined ? "" : node.attr("type");
+            html += `<li class="wow fadeIn2 ${type}" style="top:${
+              top / 2
+            }px;left:${left / 2}px;"><span class="light"/><p>${srt}</p>`;
+            ////layer2
+            if (node.children("item").length > 0) {
+              html += "<ul>";
+              for (var j = 0; j < node.children("item").length; j++) {
+                var node2 = node.children("item").eq(j);
+                var srt = node2.attr("srt");
+                var top = parseInt(node2.attr("top")) / 2;
+                var left = parseInt(node2.attr("left")) / 2;
+                var type =
+                  node2.attr("type") == undefined ? "" : node2.attr("type");
+                html += `<li class="wow fadeIn2 ${type}" style="top:${top}px;left:${left}px;"><span class="star"/><p>${srt}</p>`;
+                //////layer3
+                if (node2.children("item").length > 0) {
+                  html += "<ul>";
+                  for (var n = 0; n < node2.children("item").length; n++) {
+                    var node3 = node2.children("item").eq(n);
+                    var srt = node3.attr("srt");
+                    var top = parseInt(node3.attr("top")) / 2;
+                    var left = parseInt(node3.attr("left")) / 2;
+                    var type =
+                      node3.attr("type") == undefined ? "" : node3.attr("type");
+                    html += `<li class="wow fadeIn2 ${type}" style="top:${top}px;left:${left}px;"><p>${srt}</p>`;
+                    //////layer4
+                    if (node3.children("item").length > 0) {
+                      html += "<ul>";
+                      for (var m = 0; m < node3.children("item").length; m++) {
+                        var node4 = node3.children("item").eq(m);
+                        var srt = node4.attr("srt");
+                        var top = parseInt(node4.attr("top")) / 2;
+                        var left = parseInt(node4.attr("left")) / 2;
+                        html += `<li class="wow fadeIn2" style="top:${top}px;left:${left}px;"><p>${srt}</p>`;
+                        //////layer5
+                        if (node4.children("item").length > 0) {
+                          html += "<ul>";
+                          for (
+                            var g = 0;
+                            g < node4.children("item").length;
+                            g++
+                          ) {
+                            var node5 = node4.children("item").eq(g);
+                            var srt = node5.attr("srt");
+                            var top = parseInt(node5.attr("top")) / 2;
+                            var left = parseInt(node5.attr("left")) / 2;
+
+                            html += `<li class="wow fadeIn2" style="top:${top}px;left:${left}px;"><p>${srt}</p></li>`;
+                          }
+                          html += "</ul>";
+                        }
+                        html += `</li>`;
+                      }
+                      html += "</ul>";
+                    }
+                    html += `</li>`;
+                  }
+                  html += "</ul>";
+                }
+                html += `</li>`;
+              }
+              html += "</ul>";
+            }
+            html += `</li>`;
+          }
+          html += "</ul>";
+          $("#cm_module_wrapper").append(html);
+        }
+      });
+    //create Arrow
+    $("#cm_module_wrapper")
+      .delay(500)
+      .queue(function () {
+        $(xml)
+          .find("section")
+          .each(function (k) {
+            if ($(this).attr("cm") == cm) {
+              //append arrow
+              var htmlA = "<ul class='back'>";
+              //layer1
+              for (var i = 0; i < $(this).children("item").length; i++) {
+                var node = $(this).children("item").eq(i);
+                var srt = node.attr("srt");
+                var top = node.attr("top");
+                var left = node.attr("left");
+                htmlA += "<li>";
+                ////layer2
+                if (node.children("item").length > 0) {
+                  htmlA += "<ul>";
+                  for (var j = 0; j < node.children("item").length; j++) {
+                    var node2 = node.children("item").eq(j);
+                    var srt = node2.attr("srt");
+                    var top = parseInt(node2.attr("top")) / 2;
+                    var left = parseInt(node2.attr("left")) / 2;
+                    var topA =
+                      parseInt(node2.parent().attr("top")) / 2 + radius1;
+                    var leftA =
+                      parseInt(node2.parent().attr("left")) / 2 + radius1;
+                    var centerElem = $(".front > li")
+                      .eq(i)
+                      .find(">ul > li")
+                      .eq(j);
+                    radius2 = centerElem.width() / 2 / stageRatio;
+                    //arrow
+                    var heightA = Math.sqrt(
+                      (topA - top - radius2) * (topA - top - radius2) +
+                        (leftA - left - radius2) * (leftA - left - radius2)
+                    );
+                    var rotateA =
+                      Math.atan2(topA - top - radius2, leftA - left - radius2) *
+                        (180 / Math.PI) +
+                      90;
+                    console.log(rotateA);
+                    htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                      heightA - radius2 - diff
+                    }px;transform:rotate(${rotateA}deg);" class="arrow l1"/>`;
+                    //////layer3
+                    if (node2.children("item").length > 0) {
+                      htmlA += "<ul>";
+                      for (var n = 0; n < node2.children("item").length; n++) {
+                        var node3 = node2.children("item").eq(n);
+                        var srt = node3.attr("srt");
+                        var top = parseInt(node3.attr("top")) / 2;
+                        var left = parseInt(node3.attr("left")) / 2;
+                        var topA =
+                          parseInt(node3.parent().attr("top")) / 2 + radius2;
+                        var leftA =
+                          parseInt(node3.parent().attr("left")) / 2 + radius2;
+                        var centerElem = $(".front > li")
+                          .eq(i)
+                          .find(">ul > li")
+                          .eq(j)
+                          .find(">ul > li")
+                          .eq(n);
+                        radius3 = centerElem.width() / 2 / stageRatio;
+                        //arrow
+                        var heightA = Math.sqrt(
+                          (topA - top - radius3) * (topA - top - radius3) +
+                            (leftA - left - radius3) * (leftA - left - radius3)
+                        );
+                        var rotateA =
+                          Math.atan2(
+                            topA - top - radius3,
+                            leftA - left - radius3
+                          ) *
+                            (180 / Math.PI) +
+                          90;
+
+                        htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                          heightA - radius3 - diff
+                        }px;transform:rotate(${rotateA}deg);" class="arrow l2"/>`;
+                        //////layer4
+                        if (node3.children("item").length > 0) {
+                          htmlA += "<ul>";
+                          for (
+                            var m = 0;
+                            m < node3.children("item").length;
+                            m++
+                          ) {
+                            var node4 = node3.children("item").eq(m);
+                            var srt = node4.attr("srt");
+                            var top = parseInt(node4.attr("top")) / 2;
+                            var left = parseInt(node4.attr("left")) / 2;
+                            var topA =
+                              parseInt(node4.parent().attr("top")) / 2 +
+                              radius3;
+                            var leftA =
+                              parseInt(node4.parent().attr("left")) / 2 +
+                              radius3;
+                            var centerElem = $(".front > li")
+                              .eq(i)
+                              .find(">ul > li")
+                              .eq(j)
+                              .find(">ul > li")
+                              .eq(n)
+                              .find(">ul > li")
+                              .eq(m);
+
+                            radius4 = centerElem.width() / 2 / stageRatio;
+                            radius4_v = centerElem.height() / 2 / stageRatio;
+
+                            //arrow
+                            var heightA = Math.sqrt(
+                              (topA - top - radius4_v) *
+                                (topA - top - radius4_v) +
+                                (leftA - left - radius4) *
+                                  (leftA - left - radius4)
+                            );
+
+                            var rotateA =
+                              Math.atan2(
+                                topA - top - radius4_v,
+                                leftA - left - radius4
+                              ) *
+                                (180 / Math.PI) +
+                              90;
+                            //H angle
+                            var rotateB =
+                              Math.atan2(
+                                topA - top - radius4_v,
+                                leftA - left - radius4
+                              ) *
+                              (180 / Math.PI);
+
+                            if (rotateB < 0 && rotateB >= -90) {
+                              rotateB = Math.abs(rotateB);
+                            } else if (rotateB > 90 && rotateB <= 180) {
+                              rotateB = 180 - rotateB;
+                            } else if (rotateB < -90) {
+                              rotateB = 180 + rotateB;
+                            }
+                            var lengthB =
+                              radius4 * Math.tan((rotateB * Math.PI) / 180);
+
+                            //V angle
+                            var rotateC = 90 - rotateB;
+
+                            if (lengthB < radius4_v) {
+                              htmlA += `<li><span style="top:${topA}px;left:${leftA}px;height:${
+                                heightA -
+                                radius4 / Math.sin((rotateC * Math.PI) / 180) -
+                                diff
+                              }px;transform:rotate(${rotateA}deg);" class="arrow l3"/>`;
+                            } else {
+                              htmlA += `<li><span style="top:${topA}px;left:${leftA}px;height:${
+                                heightA -
+                                radius4_v /
+                                  Math.sin((rotateB * Math.PI) / 180) -
+                                diff
+                              }px;transform:rotate(${rotateA}deg);" class="arrow l3"/>`;
+                            }
+
+                            //////layer5
+                            if (node4.children("item").length > 0) {
+                              htmlA += "<ul>";
+                              for (
+                                var g = 0;
+                                g < node4.children("item").length;
+                                g++
+                              ) {
+                                var node5 = node4.children("item").eq(g);
+                                var srt = node5.attr("srt");
+                                var top = parseInt(node5.attr("top")) / 2;
+                                var left = parseInt(node5.attr("left")) / 2;
+                                var topA =
+                                  parseInt(node5.parent().attr("top")) / 2 + 11;
+                                var leftA =
+                                  parseInt(node5.parent().attr("left")) / 2 +
+                                  radius4;
+                                var centerElem = $(".front > li")
+                                  .eq(i)
+                                  .find(">ul > li")
+                                  .eq(j)
+                                  .find(">ul > li")
+                                  .eq(n)
+                                  .find(">ul > li")
+                                  .eq(m)
+                                  .find(">ul > li")
+                                  .eq(g);
+                                radius5 = centerElem.width() / 2 / stageRatio;
+                                radius5_v =
+                                  centerElem.height() / 2 / stageRatio;
+
+                                //arrow
+                                var heightA = Math.sqrt(
+                                  (topA - top - radius5_v) *
+                                    (topA - top - radius5_v) +
+                                    (leftA - left - radius5) *
+                                      (leftA - left - radius5)
+                                );
+                                var rotateA =
+                                  Math.atan2(
+                                    topA - top - radius5_v,
+                                    leftA - left - radius5
+                                  ) *
+                                    (180 / Math.PI) +
+                                  90;
+
+                                //H angle
+                                var rotateB =
+                                  Math.atan2(
+                                    topA - top - radius5_v,
+                                    leftA - left - radius5
+                                  ) *
+                                  (180 / Math.PI);
+
+                                if (rotateB < 0 && rotateB >= -90) {
+                                  rotateB = Math.abs(rotateB);
+                                } else if (rotateB > 90 && rotateB <= 180) {
+                                  rotateB = 180 - rotateB;
+                                } else if (rotateB < -90) {
+                                  rotateB = 180 + rotateB;
+                                }
+                                var lengthB =
+                                  radius5 * Math.tan((rotateB * Math.PI) / 180);
+
+                                //V angle
+                                var rotateC = 90 - rotateB;
+
+                                if (lengthB < radius5_v) {
+                                  htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                                    heightA -
+                                    radius5 /
+                                      Math.sin((rotateC * Math.PI) / 180) -
+                                    diff
+                                  }px;transform:rotate(${rotateA}deg);" class="arrow l4"/></li>`;
+                                } else {
+                                  htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                                    heightA -
+                                    radius5_v /
+                                      Math.sin((rotateB * Math.PI) / 180) -
+                                    diff
+                                  }px;transform:rotate(${rotateA}deg);" class="arrow l4"/></li>`;
+                                }
+                              }
+                              htmlA += `</ul>`;
+                            }
+                            htmlA += `</li>`;
+                          }
+                          htmlA += `</ul>`;
+                        }
+                        htmlA += `</li>`;
+                      }
+                      htmlA += `</ul>`;
+                    }
+                    htmlA += `</li>`;
+                  }
+                  htmlA += `</ul>`;
+                }
+                htmlA += `</li>`;
+              }
+              htmlA += `</ul>`;
+              $("#cm_module_wrapper").append(htmlA);
+              //
+              $("#cm_module_wrapper")
+                .find("ul.front li")
+                .each(function () {
+                  $(this).addClass("hid");
+                });
+            }
+          });
+        //
+        $(this).dequeue().unbind();
+        //
+      });
+
+    //check loading
+    checkCompLoading("#cm_module_wrapper");
+  };
+
+  var createArrows = function () {
+    var radius1 = 78;
+    var radius2 = 45;
+    var radius3 = 32;
+    var radius4 = 25;
+    var diff = 5;
+    var htmlA = "<ul class='back'>";
+    for (var i = 0; i < $("ul.front").children("li").length; i++) {
+      var node = $("ul.front").children("li").eq(i);
+      var top = node.css("top");
+      var left = node.css("left");
+      htmlA += "<li>";
+      ////layer2
+      if (node.children("ul").length > 0) {
+        htmlA += "<ul>";
+        for (
+          var j = 0;
+          j < node.children("ul").eq(0).children("li").length;
+          j++
+        ) {
+          var node2 = node.children("ul").eq(0).children("li").eq(j);
+          var top = parseInt(node2.css("top"));
+
+          var left = parseInt(node2.css("left"));
+
+          var topA = parseInt(node.css("top")) + radius1;
+          var leftA = parseInt(node.css("left")) + radius1;
+          console.log("top", topA);
+          console.log("left", leftA);
+          //arrow
+          var heightA = Math.sqrt(
+            (topA - top - radius2) * (topA - top - radius2) +
+              (leftA - left - radius2) * (leftA - left - radius2)
+          );
+          var rotateA =
+            Math.atan2(topA - top - radius2, leftA - left - radius2) *
+              (180 / Math.PI) +
+            90;
+          htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+            heightA - radius2 - diff
+          }px;transform:rotate(${rotateA}deg);" class="arrow l1"/>`;
+          //////layer3
+          if (node2.children("ul").length > 0) {
+            htmlA += "<ul>";
+            for (
+              var n = 0;
+              n < node2.children("ul").eq(0).children("li").length;
+              n++
+            ) {
+              var node3 = node2.children("ul").eq(0).children("li").eq(n);
+              var top = parseInt(node3.css("top"));
+              var left = parseInt(node3.css("left"));
+              var topA = parseInt(node2.css("top")) + radius2;
+              var leftA = parseInt(node2.css("left")) + radius2;
+              //arrow
+              var heightA = Math.sqrt(
+                (topA - top - radius3) * (topA - top - radius3) +
+                  (leftA - left - radius3) * (leftA - left - radius3)
+              );
+              var rotateA =
+                Math.atan2(topA - top - radius3, leftA - left - radius3) *
+                  (180 / Math.PI) +
+                90;
+
+              htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                heightA - radius3 - diff
+              }px;transform:rotate(${rotateA}deg);" class="arrow l2"/>`;
+              //////layer4
+              if (node3.children("ul").length > 0) {
+                htmlA += "<ul>";
+                for (
+                  var m = 0;
+                  m < node3.children("ul").eq(0).children("li").length;
+                  m++
+                ) {
+                  var node4 = node3.children("ul").eq(0).children("li").eq(m);
+                  var top = parseInt(node4.css("top"));
+                  var left = parseInt(node4.css("left"));
+                  var topA = parseInt(node3.css("top")) + radius3;
+                  var leftA = parseInt(node3.css("left")) + radius3;
+
+                  //arrow
+                  var heightA = Math.sqrt(
+                    (topA - top - 11) * (topA - top - 11) +
+                      (leftA - left - radius4) * (leftA - left - radius4)
+                  );
+                  var rotateA =
+                    Math.atan2(topA - top - 11, leftA - left - radius4) *
+                      (180 / Math.PI) +
+                    90;
+                  htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                    heightA - radius4 - diff
+                  }px;transform:rotate(${rotateA}deg);" class="arrow l3"/>`;
+                  //////layer5
+                  if (node4.children("ul").length > 0) {
+                    htmlA += "<ul>";
+                    for (
+                      var g = 0;
+                      g < node4.children("ul").eq(0).children("li").length;
+                      g++
+                    ) {
+                      var node5 = node4
+                        .children("ul")
+                        .eq(0)
+                        .children("li")
+                        .eq(g);
+                      var top = parseInt(node5.css("top"));
+                      var left = parseInt(node5.css("left"));
+                      var topA = parseInt(node4.css("top")) + 11;
+                      var leftA = parseInt(node4.css("left")) + radius4;
+
+                      //arrow
+                      var heightA = Math.sqrt(
+                        (topA - top - 8) * (topA - top - 8) +
+                          (leftA - left - radius4) * (leftA - left - radius4)
+                      );
+                      var rotateA =
+                        Math.atan2(topA - top - 8, leftA - left - radius4) *
+                          (180 / Math.PI) +
+                        90;
+                      htmlA += `<li><span  style="top:${topA}px;left:${leftA}px;height:${
+                        heightA - radius4 - diff
+                      }px;transform:rotate(${rotateA}deg);" class="arrow l4"/></li>`;
+                    }
+                    htmlA += `</ul>`;
+                  }
+                  htmlA += `</li>`;
+                }
+                htmlA += `</ul>`;
+              }
+              htmlA += `</li>`;
+            }
+            htmlA += `</ul>`;
+          }
+          htmlA += `</li>`;
+        }
+        htmlA += `</ul>`;
+      }
+      htmlA += `</li>`;
+    }
+    htmlA += `</ul>`;
+    $("#cm_module_wrapper").append(htmlA);
+  };
+
+  var showArrow = function () {
+    $("ul.front li").each(function (i) {
+      if ($(this).hasClass("active")) {
+        $("ul.back li").eq(i).addClass("active");
+      } else {
+        $("ul.back li").eq(i).removeClass("active");
+      }
+    });
+  };
+</script>

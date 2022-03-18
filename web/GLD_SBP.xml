@@ -1,0 +1,82 @@
+<root>
+  <lesson sid="GLD" bid="1" lid="1">
+    <section name="Story" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>
+        <Sequence>Sequence</Sequence>
+        <Content>Content</Content>
+        <Image>Image</Image>
+        <Sound>Sound</Sound>
+        <Fill>Fill in</Fill>
+        <Question1>Question1</Question1>
+        <Question2>Question2</Question2>
+        <Question3>Question3</Question3>
+        <Question4>Question4</Question4>
+        <Question5>Question5</Question5>
+      </item>
+    </section>
+    <section name="Bonus" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>
+        <Sequence>Sequence</Sequence>
+        <Image>Image</Image>
+        <Sound>Sound</Sound>
+        <Sentence1>Sentence1</Sentence1>
+        <Sentence2>Sentence2</Sentence2>
+        <Sentence3>Sentence3</Sentence3>
+        <Sentence4>Sentence4</Sentence4>
+        <Sentence5>Sentence5</Sentence5>
+        <SentenceNum>SentenceNum</SentenceNum>
+        <Answer>Answer</Answer>
+        <p2c>Part 2 Content</p2c>
+        <p2s>Part2_SightWord</p2s>
+        <typen>typen</typen>
+        <SightWordSound>SightWordSound</SightWordSound>
+      </item>
+    </section>
+    <section name="Playscript" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>Image|Sound</item>
+    </section>
+  </lesson>
+  <lesson sid="GLD" bid="1" lid="2">
+    <section name="Story" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>
+        <Sequence>Sequence</Sequence>
+        <Content>Content</Content>
+        <Image>Image</Image>
+        <Sound>Sound</Sound>
+        <Fill>Fill in</Fill>
+        <Question1>Question1</Question1>
+        <Question2>Question2</Question2>
+        <Question3>Question3</Question3>
+        <Question4>Question4</Question4>
+        <Question5>Question5</Question5>
+      </item>
+    </section>
+    <section name="Bonus" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>
+        <Sequence>Sequence</Sequence>
+        <Image>Image</Image>
+        <Sound>Sound</Sound>
+        <Sentence1>Sentence1</Sentence1>
+        <Sentence2>Sentence2</Sentence2>
+        <Sentence3>Sentence3</Sentence3>
+        <Sentence4>Sentence4</Sentence4>
+        <Sentence5>Sentence5</Sentence5>
+        <SentenceNum>SentenceNum</SentenceNum>
+        <Answer>Answer</Answer>
+        <p2c>Part 2 Content</p2c>
+        <p2s>Part2_SightWord</p2s>
+        <typen>typen</typen>
+        <SightWordSound>SightWordSound</SightWordSound>
+      </item>
+    </section>
+    <section name="Playscript" swf="Flash" image="Image" skin="Skin">
+      <!-- item可能有多個,依照 sequence 小到大排列 -->
+      <item>Image|Sound</item>
+    </section>
+  </lesson>
+</root>

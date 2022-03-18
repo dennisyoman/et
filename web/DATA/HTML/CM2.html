@@ -1,0 +1,354 @@
+<div id="cm_module_wrapper" class="CM2_wrapper">
+  <div id="svg">
+    <svg>
+      <rect x="2" y="2" rx="19" ry="19" />
+    </svg>
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/cm2_bg1.png" />
+    <img src="./images/common/cm2_bg2.png" />
+    <img src="./images/common/cm2_bg3.png" />
+    <img src="./images/common/cm2_bg4.png" />
+    <img src="./images/common/cm2_bg5.png" />
+    <img src="./images/common/cm2_bg6.png" />
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    //載入完成要執行init
+    $("#cm_module_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        //init
+        setupMap();
+        $(this)
+          .find("ul li")
+          .each(function () {
+            $(this)
+              .unbind()
+              .bind("click", function (e) {
+                $(this).toggleClass("active");
+                if (!$(this).hasClass("active")) {
+                  closeSons($(this));
+                } else {
+                  openSons($(this));
+                }
+                resetBackArrow();
+              });
+          })
+          .addClass("hid");
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //load cm1.xml
+    loadCMxml();
+  });
+
+  var loadCMxml = function () {
+    gpath = "./cm2.xml";
+    $.ajax({
+      type: "GET",
+      url: gpath,
+      data: {},
+      cache: false,
+      contentType: "application/json; charset=utf-8",
+      async: false,
+      timeout: 10000,
+      dataType: "xml",
+      success: function (data) {
+        console.log(data);
+        //create contents
+        createMap(data);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
+        console.log("content:Error");
+      },
+    });
+  };
+
+  var openSons = function (tar) {
+    $("#cm_module_wrapper > ul > li").each(function (i) {
+      var dadAy = $(this).attr("dad").split(",");
+      for (var k = 0; k < dadAy.length; k++) {
+        if ("c" + dadAy[k] == tar.attr("id")) {
+          $(this).css("display", "inline-flex");
+        }
+      }
+    });
+  };
+
+  var closeSons = function (tar) {
+    $("#cm_module_wrapper > ul > li").each(function (i) {
+      var dadAy = $(this).attr("dad").split(",");
+      var isSon = false;
+      for (var k = 0; k < dadAy.length; k++) {
+        if ("c" + dadAy[k] == tar.attr("id")) {
+          isSon = true;
+        }
+      }
+      for (var k = 0; k < dadAy.length; k++) {
+        if ($("#c" + dadAy[k]).hasClass("active")) {
+          isSon = false;
+        }
+      }
+      if (isSon) {
+        $(this).hide().removeClass("active");
+        closeSons($(this));
+      }
+    });
+  };
+
+  var resetBackArrow = function () {
+    $("#cm_module_wrapper .backarrow").removeClass("show");
+    $("#cm_module_wrapper > ul > li").each(function (i) {
+      if ($(this).attr("back") && $(this).css("display") != "none") {
+        var backAy = $(this).attr("back").split(",");
+        for (var k = 0; k < backAy.length; k++) {
+          if ($("#c" + backAy[k]).css("display") != "none") {
+            $(this)
+              .find(".ba" + backAy[k])
+              .addClass("show");
+          }
+        }
+      }
+    });
+  };
+
+  var setupMap = function () {
+    var diff = 5;
+
+    $("#cm_module_wrapper > ul > li").each(function (i) {
+      var tid = $(this).attr("id");
+      $(this).addClass("single");
+      for (var k = 0; k < $("#cm_module_wrapper > ul > li").length; k++) {
+        var dadAy = $("#cm_module_wrapper > ul > li")
+          .eq(k)
+          .attr("dad")
+          .split(",");
+        for (var j = 0; j < dadAy.length; j++) {
+          if ("c" + dadAy[j] == $(this).attr("id")) {
+            //has son
+            $(this).removeClass("single");
+            //create arrow
+            var centerElem = $("#cm_module_wrapper > ul > li").eq(k);
+            var centerElemA = $(this);
+            var top = parseInt(centerElem.css("top"));
+            var left = parseInt(centerElem.css("left"));
+            var radius = [];
+
+            radius = [
+              centerElem.height() / 2 / stageRatio,
+              centerElem.width() / 2 / stageRatio,
+            ];
+
+            var topA = parseInt(centerElemA.css("top"));
+            var leftA = parseInt(centerElemA.css("left"));
+            var radiusA = [];
+            radiusA = [
+              centerElemA.height() / 2 / stageRatio,
+              centerElemA.width() / 2 / stageRatio,
+            ];
+
+            var heightA = Math.sqrt(
+              (topA + radiusA[0] - top - radius[0]) *
+                (topA + radiusA[0] - top - radius[0]) +
+                (leftA + radiusA[1] - left - radius[1]) *
+                  (leftA + radiusA[1] - left - radius[1])
+            );
+            var rotateA =
+              Math.atan2(
+                topA + radiusA[0] - top - radius[0],
+                leftA + radiusA[1] - left - radius[1]
+              ) *
+                (180 / Math.PI) +
+              90;
+
+            var hasSameBackArrow = false;
+            if (centerElem.attr("back")) {
+              var backAy = centerElem.attr("back").split(",");
+              for (var n = 0; n < backAy.length; n++) {
+                if ("c" + backAy[n] == centerElemA.attr("id")) {
+                  hasSameBackArrow = true;
+                }
+              }
+            }
+
+            if ($(this).attr("spe")) {
+              $(this).append(`<span class="arrow ${$(this).attr("spe")}"/>`);
+            } else if (hasSameBackArrow) {
+              //no arrow
+            } else {
+              if (
+                Math.abs(topA + radiusA[0] - top - radius[0]) <
+                Math.abs(leftA + radiusA[1] - left - radius[1])
+              ) {
+                centerElemA.append(
+                  `<span  style="top:${topA + radiusA[0]}px;left:${
+                    leftA + radiusA[1]
+                  }px;height:${
+                    heightA - radius[1] - diff
+                  }px;transform:rotate(${rotateA}deg);" class="arrow"/>`
+                );
+              } else {
+                centerElemA.append(
+                  `<span  style="top:${topA + radiusA[0]}px;left:${
+                    leftA + radiusA[1]
+                  }px;height:${
+                    heightA - radius[0] - diff
+                  }px;transform:rotate(${rotateA}deg);" class="arrow"/>`
+                );
+              }
+            }
+          }
+        }
+      }
+      for (var k = 0; k < $("#cm_module_wrapper > ul > li").length; k++) {
+        var backAy = $(this).attr("back").split(",");
+        for (var j = 0; j < backAy.length; j++) {
+          if (
+            "c" + backAy[j] ==
+            $("#cm_module_wrapper > ul > li").eq(k).attr("id")
+          ) {
+            //create back arrow
+            var centerElem = $("#cm_module_wrapper > ul > li").eq(k);
+            var centerElemA = $(this);
+            var top = parseInt(
+              $("#cm_module_wrapper > ul > li").eq(k).css("top")
+            );
+            var left = parseInt(
+              $("#cm_module_wrapper > ul > li").eq(k).css("left")
+            );
+            var radius = [];
+            radius = [
+              centerElem.height() / 2 / stageRatio,
+              centerElem.width() / 2 / stageRatio,
+            ];
+
+            var topA = parseInt($(this).css("top"));
+            var leftA = parseInt($(this).css("left"));
+            var radiusA = [];
+            radiusA = [
+              centerElemA.height() / 2 / stageRatio,
+              centerElemA.width() / 2 / stageRatio,
+            ];
+
+            var heightA = Math.sqrt(
+              (topA + radiusA[0] - top - radius[0]) *
+                (topA + radiusA[0] - top - radius[0]) +
+                (leftA + radiusA[1] - left - radius[1]) *
+                  (leftA + radiusA[1] - left - radius[1])
+            );
+            var rotateA =
+              Math.atan2(
+                topA + radiusA[0] - top - radius[0],
+                leftA + radiusA[1] - left - radius[1]
+              ) *
+                (180 / Math.PI) +
+              90;
+            var diffX =
+              ((left + radius[1] - leftA - radiusA[1]) * (radiusA[1] + diff)) /
+              heightA;
+            var diffY =
+              ((top + radius[0] - topA - radiusA[0]) * (radiusA[0] + diff)) /
+              heightA;
+
+            if ($(this).attr("spe")) {
+              $(this).append(
+                `<span class="backarrow  ba${backAy[j]} ${$(this).attr(
+                  "spe"
+                )}"/>`
+              );
+            } else {
+              if (
+                Math.abs(topA + radiusA[0] - top - radius[0]) <
+                Math.abs(leftA + radiusA[1] - left - radius[1])
+              ) {
+                $(this).append(
+                  `<span  style="top:${topA + radiusA[0] + diffY}px;left:${
+                    leftA + radiusA[1] + diffX
+                  }px;height:${
+                    heightA - radius[1] - radiusA[1] - diff * 2
+                  }px;transform:rotate(${rotateA}deg);" class="backarrow ba${
+                    backAy[j]
+                  }"/>`
+                );
+              } else {
+                $(this).append(
+                  `<span  style="top:${topA + radiusA[0] + diffY}px;left:${
+                    leftA + radiusA[1] + diffX
+                  }px;height:${
+                    heightA - radius[0] - radiusA[0] - diff * 2
+                  }px;transform:rotate(${rotateA}deg);" class="backarrow ba${
+                    backAy[j]
+                  }"/>`
+                );
+              }
+            }
+          }
+        }
+      }
+    });
+  };
+
+  var createMap = function (xml) {
+    //create contents
+    var cm = sid + "-" + bid + "-" + lid;
+    console.log(cm);
+
+    $(xml)
+      .find("section")
+      .each(function (k) {
+        if ($(this).attr("cm") == cm) {
+          //create Content
+          var html = "<ul>";
+          //layer1
+          for (var i = 0; i < $(this).children("item").length; i++) {
+            var node = $(this).children("item").eq(i);
+            var srt = node.attr("srt");
+            var top = node.attr("top");
+            var left = node.attr("left");
+            var layer = node.attr("layer");
+            var type = node.attr("type") == undefined ? "" : node.attr("type");
+            if (node.attr("dad")) {
+              var dad = node.attr("dad");
+            } else {
+              var dad = "";
+            }
+            if (node.attr("back")) {
+              var back = node.attr("back");
+            } else {
+              back = "";
+            }
+            if (node.attr("spe")) {
+              var spe = node.attr("spe");
+            } else {
+              spe = "";
+            }
+            var id = node.attr("id");
+            html += `<li id="c${id}" back="${back}" spe="${spe}" layer="${layer}" class="${layer} ${type} wow fadeIn2" dad="${dad}" style="top:${
+              top / 2
+            }px;left:${left / 2}px;"><p>${srt}</p>`;
+            if (layer == "l5") {
+              html += `<span class="svg"></span>`;
+            }
+            html += "</li>";
+          }
+          html += "</ul>";
+
+          $("#cm_module_wrapper").append(html);
+        }
+      });
+    $(".svg").html($("#svg").html());
+
+    //check loading
+    checkCompLoading("#cm_module_wrapper");
+  };
+</script>

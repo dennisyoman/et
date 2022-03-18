@@ -1,0 +1,170 @@
+<root>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>1</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Jenny: My name is Jenny.</word1>
+    <word2>Jenny: ____ ____ is Jenny.</word2>
+    <sfx>WS-2-1-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>2</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Jenny: Hi, what is your name?</word1>
+    <word2>Jenny: Hi, what is ____ name?</word2>
+    <sfx>WS-2-2-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>2</lid>
+    <section>2</section>
+    <seq>2</seq>
+    <word1>Daisy: Hello, my name is Daisy.</word1>
+    <word2>Daisy: Hello, my name is Daisy.</word2>
+    <sfx>WS-2-2-2-2.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>3</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Benny: What is his name?</word1>
+    <word2>Benny: What is ____ name?</word2>
+    <sfx>WS-2-3-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>3</lid>
+    <section>2</section>
+    <seq>2</seq>
+    <word1>Jenny: His name is Edison.</word1>
+    <word2>Jenny: His name is Edison.</word2>
+    <sfx>WS-2-3-2-2.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>3</lid>
+    <section>2</section>
+    <seq>3</seq>
+    <word1>Benny: What is her name?</word1>
+    <word2>Benny: What is ____ name?</word2>
+    <sfx>WS-2-3-2-3.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>3</lid>
+    <section>2</section>
+    <seq>4</seq>
+    <word1>Jenny: Her name is Daisy.</word1>
+    <word2>Jenny: Her name is Daisy.</word2>
+    <sfx>WS-2-3-2-4.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>4</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Jenny: I am Jenny.  I am a girl.</word1>
+    <word2>Jenny: ____ am Jenny.  I am a ____.</word2>
+    <sfx>WS-2-4-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>4</lid>
+    <section>2</section>
+    <seq>2</seq>
+    <word1>Teacher: You are Benny.  You are a boy.</word1>
+    <word2>Teacher: ____ are Benny.  You are a ____.</word2>
+    <sfx>WS-2-4-2-2.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>5</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Daisy: He is my father.  She is my mother.</word1>
+    <word2>Daisy: ____ is my ____.  ____ is my ____.</word2>
+    <sfx>WS-2-5-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>6</lid>
+    <section>2</section>
+    <seq>1</seq>
+    <word1>Jenny: Who is the boy?</word1>
+    <word2>Jenny: Who is the boy?</word2>
+    <sfx>WS-2-6-2-1.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>6</lid>
+    <section>2</section>
+    <seq>2</seq>
+    <word1>Justin: He is my brother.</word1>
+    <word2>Justin: He is my ____.</word2>
+    <sfx>WS-2-6-2-2.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>6</lid>
+    <section>2</section>
+    <seq>3</seq>
+    <word1>Jenny: Who is she?</word1>
+    <word2>Jenny: Who is she?</word2>
+    <sfx>WS-2-6-2-3.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+  <item>
+    <sid>WS</sid>
+    <bid>2</bid>
+    <lid>6</lid>
+    <section>2</section>
+    <seq>4</seq>
+    <word1>Justin: She is my sister.</word1>
+    <word2>Justin: She is my ____.</word2>
+    <sfx>WS-2-6-2-4.mp3</sfx>
+    <LetsCheck>
+    </LetsCheck>
+  </item>
+</root>

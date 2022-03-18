@@ -1,0 +1,28 @@
+<root>
+  <lesson sid="GLD" bid="1" lid="1">
+    <section section="0" name="Warm-up" swf="Flash" image="Image" skin="Skin"/>
+    <section section="1" name="Lead In" swf="Flash" image="Image" skin="Skin">
+      <item>Content|Image|Video|GEO</item>
+      <item>Content|Image|Video|GEO</item>
+      <item>Content|Image|Video|GEO</item>
+    </section>
+    <section section="2" name="Word Bank" swf="Flash" image="Image" skin="Skin">
+      <item>Content|Parts of speech|Image|Sound|ExampleSentence|ExampleSound</item>
+      <item>Content|Parts of speech|Image|Sound|ExampleSentence|ExampleSound</item>
+      <item>Content|Parts of speech|Image|Sound|ExampleSentence|ExampleSound</item>
+    </section>
+    <section section="3" name="Activity 1" swf="Flash" image="Image" skin="Skin">
+      <item>Image|Answer</item>
+      <item>Image|Answer</item>
+      <item>Image|Answer</item>
+    </section>
+    <section section="4" name="Story" swf="Flash" image="Image" skin="Skin"/>
+    <section section="5" name="Activity 2~6" swf="Flash" image="Image" skin="Skin">
+      <item>Image|Answer|Sound</item>
+      <item>Image|Answer|Sound</item>
+      <item>Image|Answer|Sound</item>
+    </section>
+    <section section="6" name="Bonus" swf="Flash" image="Image" skin="Skin"/>
+    <section section="7" name="Playscript" swf="Flash" image="Image" skin="Skin"/>
+  </lesson>
+</root>

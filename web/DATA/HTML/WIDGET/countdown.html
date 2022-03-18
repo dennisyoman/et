@@ -1,0 +1,210 @@
+<div class="countdown_wrapper wow bounceIn">
+  <span class="display" currT="0" addT="0">00：00</span>
+  <span class="trigs">
+    <span mt="3"></span>
+    <span mt="3"></span>
+    <span mt="3"></span>
+    <span mt="3"></span>
+  </span>
+  <span mt="2" class="play">Start</span>
+  <span mt="2" class="reset">Reset</span>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //default
+    $(".countdown .display")
+      .text(
+        countDownDefault[0].toString() +
+          countDownDefault[1].toString() +
+          "：" +
+          countDownDefault[2].toString() +
+          countDownDefault[3].toString()
+      )
+      .attr(
+        "addT",
+        1000 *
+          (countDownDefault[3] * 1 +
+            countDownDefault[2] * 10 +
+            countDownDefault[1] * 60 +
+            countDownDefault[0] * 600)
+      );
+
+    $("#countdown .play")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+          $(this).toggleClass("active");
+          if ($(this).hasClass("active")) {
+            $(this).text("Pause");
+            $(this).siblings(".trigs").addClass("disabled");
+            $(this).siblings(".reset").hide();
+            //counting
+            $(this).siblings(".display").attr("currT", new Date().getTime());
+            setTimeout(function () {
+              countingDown();
+            }, 100);
+          } else {
+            $(this).text("Start");
+            $(this).siblings(".trigs").removeClass("disabled");
+            $(this).siblings(".reset").show();
+          }
+        }
+      });
+    $("#countdown .reset")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+          //default
+          $(".countdown .display")
+            .text(
+              countDownDefault[0].toString() +
+                countDownDefault[1].toString() +
+                "：" +
+                countDownDefault[2].toString() +
+                countDownDefault[3].toString()
+            )
+            .attr(
+              "addT",
+              1000 *
+                (countDownDefault[3] * 1 +
+                  countDownDefault[2] * 10 +
+                  countDownDefault[1] * 60 +
+                  countDownDefault[0] * 600)
+            );
+          $(this).hide();
+        }
+      })
+      .hide();
+    $("#countdown .trigs > span")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          var rangee = 20;
+          var ott = parseInt($(this).offset().top / stageRatio);
+          var ctt = parseInt(e.clientY / stageRatio);
+          var ct = $(".countdown .display").text().replace("：", "");
+          var ctArr = ct.split("");
+          var maxNum = 9;
+          rootSoundEffect($click);
+          switch ($(this).index()) {
+            case 0:
+              maxNum = 5;
+              break;
+            case 1:
+              break;
+            case 2:
+              maxNum = 5;
+              break;
+            case 3:
+              break;
+          }
+          if (ctt - ott < rangee / 2) {
+            if (parseInt(ctArr[$(this).index()]) < maxNum) {
+              ctArr[$(this).index()] = parseInt(ctArr[$(this).index()]) + 1;
+            } else {
+              ctArr[$(this).index()] = 0;
+            }
+          } else {
+            if (parseInt(ctArr[$(this).index()]) == 0) {
+              ctArr[$(this).index()] = maxNum;
+            } else {
+              ctArr[$(this).index()] = parseInt(ctArr[$(this).index()]) - 1;
+            }
+          }
+          $(".countdown .display")
+            .text(
+              ctArr[0].toString() +
+                ctArr[1].toString() +
+                "：" +
+                ctArr[2].toString() +
+                ctArr[3].toString()
+            )
+            .attr(
+              "addT",
+              1000 *
+                (ctArr[3] * 1 + ctArr[2] * 10 + ctArr[1] * 60 + ctArr[0] * 600)
+            );
+          // set countDownDefault
+          countDownDefault = [
+            parseInt(ctArr[0]),
+            parseInt(ctArr[1]),
+            parseInt(ctArr[2]),
+            parseInt(ctArr[3]),
+          ];
+          console.log(countDownDefault);
+        }
+      });
+
+    var countingDown = function () {
+      var adddown =
+        parseInt($(".countdown .display").attr("addT")) -
+        new Date().getTime() +
+        parseInt($(".countdown .display").attr("currT"));
+      console.log(adddown);
+      adddown = Math.max(adddown, 0);
+      $(".countdown .display").text(getHMS(adddown));
+      if ($(".countdown .play").hasClass("active") && adddown > 0) {
+        setTimeout(function () {
+          countingDown();
+        }, 100);
+      } else {
+        //pause counting
+        $(".countdown .play").removeClass("active").text("Start");
+        $(".countdown .trigs").removeClass("disabled");
+        $(".countdown .display").attr("addT", adddown);
+        $(".countdown .reset").show();
+        //
+        //times up
+        if (adddown == 0) {
+          $(".countdown_wrapper")
+            .parent()
+            .removeClass("alert")
+            .delay(100)
+            .queue(function () {
+              rootSoundEffect($surprise);
+              $(this).addClass("alert").dequeue();
+            });
+        }
+      }
+    };
+    //
+    $("#countdown")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (click.x == e.clientX && click.y == e.clientY) {
+          //
+        }
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#countdown"));
+    makeDraggable($("#countdown"));
+  });
+</script>

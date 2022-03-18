@@ -1,0 +1,152 @@
+<root>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>A: Are you a student?&lt;BR&gt;B: No, I ^am^ (be) not a student.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>3</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>A: ^Is^ (be) she your teacher?&lt;BR&gt;B: Yes, she is.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>3</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>A: ^Does^ (do) your mother like cooking?&lt;BR&gt;B: No, she doesn't like cooking.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>2</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>A: Do they go to school by themselves?&lt;BR&gt;B: No, they ^don't^ (do).</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>2</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>A: ^Are^ (be) Jack and Jenny from the U.K.?&lt;BR&gt;B: No, they aren't.  They are from the U.S.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>3</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>I ^want^ (want) to order a cup of coffee.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>Helen and her family ^dance^ (dance) together when they are at a party.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>Rita ^lives^ (live) in the mountains.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>Vicky ^uses^ (use) a smartphone.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>My sister and I ^go^ (go) shopping every weekend.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>The salesperson ^sells^ (sell) furniture in this store.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>They ^plan^ (plan) to travel to Australia this summer.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>I ^hope^ (hope) to be an artist in the future.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>Nick ^walks^ (walk) ten minutes to work every day.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+  <item>
+    <TestType>G</TestType>
+    <lv>WRYG</lv>
+    <Book>1</Book>
+    <Unit>1</Unit>
+    <Range>G</Range>
+    <Question>Dad ^talks^ (talk) on the phone very often.</Question>
+    <Remark>現在簡單式</Remark>
+    <etSection>1</etSection>
+  </item>
+</root>

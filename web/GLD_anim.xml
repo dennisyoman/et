@@ -1,0 +1,450 @@
+<root>
+  <!--
+  ra:對應課數代號
+  bcw:對應文字框main_txt寬度
+  bcl:對應文字框main_txt x座標 - 128px
+  bct:對應文字框main_txt y座標
+  bcbg: 1代表有白背景
+
+  bc:文字框有幾個區塊就有幾個bc
+  -->
+  <section ra="GLD_1_1">
+    <item>
+      <bc bcw="392" bcl="163" bct="150" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="400" bcl="810" bct="615" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="417" bcl="95" bct="542" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="520" bcl="105" bct="136" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="520" bcl="120" bct="135" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="614" bcl="755" bct="128" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_1_2">
+    <item>
+      <bc bcw="580" bcl="40" bct="128" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="470" bcl="76" bct="124" bcbg=""/>
+      <bc bcw="440" bcl="802" bct="720" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="391" bcl="93" bct="188" bcbg=""/>
+      <bc bcw="420" bcl="860" bct="532" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="391" bcl="300" bct="60" bcbg=""/>
+      <bc bcw="391" bcl="34" bct="412" bcbg=""/>
+      <bc bcw="391" bcl="300" bct="750" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="600" bcl="84" bct="120" bcbg=""/>
+      <bc bcw="600" bcl="738" bct="730" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="359" bcl="75" bct="120" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_1_3">
+    <item>
+      <bc bcw="725" bcl="41" bct="689" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="440" bcl="30" bct="510" bcbg="1"/>
+      <bc bcw="550" bcl="750" bct="77" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="490" bcl="35" bct="94" bcbg=""/>
+      <bc bcw="595" bcl="750" bct="94" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="660" bcl="36" bct="680" bcbg=""/>
+      <bc bcw="650" bcl="700" bct="33" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="730" bct="183" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="520" bcl="700" bct="221" bcbg="1"/>
+    </item>
+  </section>
+  <section ra="GLD_1_4">
+    <item>
+      <bc bcw="550" bcl="73" bct="110" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="392" bcl="143" bct="134" bcbg=""/>
+      <bc bcw="392" bcl="870" bct="134" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="470" bcl="90" bct="644" bcbg=""/>
+      <bc bcw="417" bcl="853" bct="138" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="386" bcl="114" bct="135" bcbg=""/>
+      <bc bcw="386" bcl="804" bct="747" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="355" bcl="100" bct="140" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="463" bcl="54" bct="598" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_1_5">
+    <item>
+      <bc bcw="607" bcl="42" bct="137" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="125" bct="724" bcbg=""/>
+      <bc bcw="640" bcl="759" bct="48" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="541" bcl="100" bct="98" bcbg=""/>
+      <bc bcw="608" bcl="750" bct="98" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="517" bcl="72" bct="98" bcbg=""/>
+      <bc bcw="640" bcl="750" bct="98" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="520" bcl="86" bct="134" bcbg=""/>
+      <bc bcw="585" bcl="750" bct="98" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="657" bcl="36" bct="130" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_1_6">
+    <item>
+      <bc bcw="657" bcl="36" bct="130" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="36" bct="130" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="590" bcl="50" bct="130" bcbg=""/>
+      <bc bcw="561" bcl="761" bct="130" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="444" bcl="140" bct="130" bcbg=""/>
+      <bc bcw="561" bcl="772" bct="130" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="444" bcl="96" bct="135" bcbg=""/>
+      <bc bcw="475" bcl="820" bct="135" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="520" bcl="57" bct="131" bcbg=""/>
+      <bc bcw="338" bcl="861" bct="797" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_2_1">
+    <item>
+      <bc bcw="607" bcl="42" bct="120" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="125" bct="150" bcbg=""/>
+      <bc bcw="515" bcl="810" bct="150" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="125" bct="650" bcbg=""/>
+      <bc bcw="515" bcl="810" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="125" bct="100" bcbg=""/>
+      <bc bcw="515" bcl="810" bct="700" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="130" bct="140" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="515" bcl="90" bct="600" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_2_2">
+    <item>
+      <bc bcw="700" bcl="50" bct="80" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="80" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="80" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="80" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="720" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_2_3">
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="80" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg="" small="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="80" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="80" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="160" bcbg="1"/>
+    </item>
+  </section>
+  <section ra="GLD_3_1">
+    <item>
+      <bc bcw="630" bcl="50" bct="160" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="700" bcl="50" bct="10" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="10" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="720" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="80" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="80" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_3_2">
+    <item>
+      <bc bcw="630" bcl="50" bct="130" bcbg="1"/>
+      <bc bcw="630" bcl="750" bct="700" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="700" bcl="50" bct="60" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="700" bcl="200" bct="80" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="1200" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="720" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_3_3">
+    <item>
+      <bc bcw="630" bcl="50" bct="130" bcbg="1"/>
+      <bc bcw="630" bcl="750" bct="50" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="730" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="70" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_4_1">
+    <item>
+      <bc bcw="1300" bcl="50" bct="10" bcbg=""/>
+      <bc bcw="670" bcl="50" bct="200" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="550" bcl="50" bct="730" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="60" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="440" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="860" bcbg=""/>
+      <bc bcw="550" bcl="750" bct="52" bcbg=""/>
+      <bc bcw="630" bcl="730" bct="495" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="750" bct="750" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="625" bcl="58" bct="450" bcbg=""/>
+      <bc bcw="500" bcl="850" bct="224" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="620" bcl="745" bct="100" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_4_2">
+    <item>
+      <bc bcw="466" bcl="770" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="400" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="860" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="400" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="860" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="400" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="860" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="400" bcbg=""/>
+      <bc bcw="630" bcl="730" bct="860" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="750" bct="200" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="100" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="160" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="830" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_4_3">
+    <item>
+      <bc bcw="480" bcl="80" bct="730" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="425" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="820" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="370" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="760" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="670" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="680" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="1300" bcl="50" bct="30" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_5_1">
+    <item>
+      <bc bcw="500" bcl="50" bct="110" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="60" bcbg=""/>
+      <bc bcw="360" bcl="400" bct="630" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="650" bcl="30" bct="20" bcbg=""/>
+      <bc bcw="650" bcl="730" bct="70" bcbg=""/>
+      <bc bcw="650" bcl="730" bct="450" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="700" bcl="30" bct="60" bcbg=""/>
+      <bc bcw="700" bcl="30" bct="650" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="700" bcl="30" bct="80" bcbg=""/>
+      <bc bcw="340" bcl="30" bct="640" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="60" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="500" bcl="800" bct="220" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_5_2">
+    <item>
+      <bc bcw="820" bcl="20" bct="90" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="25" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="480" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="50" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="500" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="850" bcbg="1"/>
+      <bc bcw="630" bcl="750" bct="480" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="200" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="600" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="200" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="570" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="30" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="570" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="1300" bcl="50" bct="30" bcbg=""/>
+    </item>
+  </section>
+  <section ra="GLD_5_3">
+    <item>
+      <bc bcw="550" bcl="90" bct="60" bcbg=""/>
+      <bc bcw="550" bcl="780" bct="70" bcbg=""/>
+      <bc bcw="520" bcl="90" bct="800" bcbg=""/>
+      <bc bcw="550" bcl="700" bct="800" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="120" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+      <bc bcw="430" bcl="950" bct="400" bcbg="1"/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="370" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="760" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="670" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="425" bcbg=""/>
+      <bc bcw="630" bcl="50" bct="820" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="630" bcl="50" bct="680" bcbg=""/>
+      <bc bcw="630" bcl="750" bct="100" bcbg=""/>
+    </item>
+    <item>
+      <bc bcw="1300" bcl="50" bct="30" bcbg=""/>
+    </item>
+  </section>
+</root>
+    

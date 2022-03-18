@@ -1,0 +1,1129 @@
+<root>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>sing</word>
+    <img>WLS2-1-1-3-1.jpg</img>
+    <sfx>WLS2-1-1-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>_ _ng^_i_ _^s_ _ _</Listen>
+    <Speak>sing</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Who is singing?</SpeakSentence>
+    <Read>My father is ( singing / sing ) a song.</Read>
+    <Write>He is s____ging his favorite song now.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>7</section>
+    <seq>1</seq>
+    <word>loud^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-1-7-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>l_ _d^_ou_</Listen>
+    <Speak>loud</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>It's very loud.</SpeakSentence>
+    <Read>It's too ( cry / loud ).  I can't hear you.</Read>
+    <Write>That music is l____d.  I can’t hear you.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>song</word>
+    <img>WLS2-1-1-3-2.jpg</img>
+    <sfx>WLS2-1-1-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>_ _ng^_o_ _^s_ _ _</Listen>
+    <Speak>song</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>He is singing his favorite song now.</SpeakSentence>
+    <Read>My mother is singing her favorite ( sing / song ) now.</Read>
+    <Write>My father's favorite s____g is "You Are My Sunshine."</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>7</section>
+    <seq>2</seq>
+    <word>hear^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-1-7-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>h_ _ _^_ear</Listen>
+    <Speak>hear</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I can't hear you.</SpeakSentence>
+    <Read>Can you ( hear / loud ) me?</Read>
+    <Write>I h____r someone crying.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>someone</word>
+    <img>WLS2-1-1-3-3.jpg</img>
+    <sfx>WLS2-1-1-3-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>s_ _ _o_ _</Listen>
+    <Speak>some^one</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Someone is crying.</SpeakSentence>
+    <Read>( Song / Someone ) is crying.</Read>
+    <Write>Listen!  S____e is singing.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>7</section>
+    <seq>3</seq>
+    <word>road^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-1-7-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>r_ _d^_oa_</Listen>
+    <Speak>road</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>There are a lot of cars and buses on the road.</SpeakSentence>
+    <Read>There are a lot of cars on the ( loud / road ).</Read>
+    <Write>There aren’t many cars on the r____d.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>cry</word>
+    <img>WLS2-1-1-3-4.jpg</img>
+    <sfx>WLS2-1-1-3-4.mp3</sfx>
+    <PhonicsImage>WLS2-1-1-3-4P.jpg</PhonicsImage>
+    <Listen>cr_^_ _y</Listen>
+    <Speak>cry</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Someone is crying.</SpeakSentence>
+    <Read>My baby sister is ( cry / crying ).</Read>
+    <Write>Who is c____ying?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>1</lid>
+    <section>3</section>
+    <seq>5</seq>
+    <word>baby</word>
+    <img>WLS2-1-1-3-5.jpg</img>
+    <sfx>WLS2-1-1-3-5.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>_a_y^b_b_</Listen>
+    <Speak>ba^by</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I guess that's my baby sister.</SpeakSentence>
+    <Read>That is my ( play / baby ) sister.</Read>
+    <Write>Her b____y sister is playing with a toy.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>fix</word>
+    <img>WLS2-1-2-3-1.jpg</img>
+    <sfx>WLS2-1-2-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>f_ _^_i_^_ _x</Listen>
+    <Speak>fix</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I'm fixing my bicycle now.</SpeakSentence>
+    <Read>He is ( fixing / fix ) his bicycle.</Read>
+    <Write>My father can f____x the watch.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>8</section>
+    <seq>1</seq>
+    <word>push^learnmore</word>
+    <img>WLS2-1-2-8-1.jpg</img>
+    <sfx>WLS2-1-2-8-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>p_sh^pu_ _^_u_ _^_ _sh</Listen>
+    <Speak>push</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Is he pushing the little girl?</SpeakSentence>
+    <Read>She is ( pushing / singing ) the little boy.</Read>
+    <Write>Don't p____h!</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>part</word>
+    <img>WLS2-1-2-3-2.jpg</img>
+    <sfx>WLS2-1-2-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>p_ _t^_ar_</Listen>
+    <Speak>part</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I want to buy a part in the store.</SpeakSentence>
+    <Read>I want to buy a ( fix / part ) in the store.</Read>
+    <Write>I can put all the p____ts together.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>8</section>
+    <seq>2</seq>
+    <word>pray^learnmore</word>
+    <img>WLS2-1-2-8-2.jpg</img>
+    <sfx>WLS2-1-2-8-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>pr_ _^_ _ay</Listen>
+    <Speak>pray</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Are they praying?</SpeakSentence>
+    <Read>We are ( push / praying ) now.</Read>
+    <Write>I'll p____y for the poor dog.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>still</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-2-3-3.mp3</sfx>
+    <PhonicsImage>WLS2-1-2-3-3P.jpg</PhonicsImage>
+    <Listen>st_ _ _^_ _i_ _^_ _ _ll</Listen>
+    <Speak>still</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I still need to wait for my mom to come home.</SpeakSentence>
+    <Read>The baby ( cry / still ) needs some milk.</Read>
+    <Write>You s____l need to see a doctor.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>2</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>wait</word>
+    <img>WLS2-1-2-3-4.jpg</img>
+    <sfx>WLS2-1-2-3-4.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>w_ _t^_ai_</Listen>
+    <Speak>wait</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I still need to wait for my mom to come home.</SpeakSentence>
+    <Read>She still needs to ( wait / fix ) for her mom to come home.</Read>
+    <Write>Who are you w____ting for?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>hop</word>
+    <img>WLS2-1-3-3-1.jpg</img>
+    <sfx>WLS2-1-3-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>h_p^_o_^h_ _^_ _p</Listen>
+    <Speak>hop</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>They're hopping, running, falling and laughing.</SpeakSentence>
+    <Read>My friends are ( hopping / hoping ) and playing.</Read>
+    <Write>My rabbit cannot h____p very well.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>8</section>
+    <seq>1</seq>
+    <word>jog^learnmore</word>
+    <img>WLS2-1-3-8-1.jpg</img>
+    <sfx>WLS2-1-3-8-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>j_ _^_o_^_ _g</Listen>
+    <Speak>jog</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>The man is jogging.</SpeakSentence>
+    <Read>The man isn't ( laugh / jogging ) now.</Read>
+    <Write>J_gging is good for your health.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>fall (v.)</word>
+    <img>WLS2-1-3-3-2.jpg</img>
+    <sfx>WLS2-1-3-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>f_ll^fa_ _^_ _ll</Listen>
+    <Speak>fall</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>They're hopping, running, falling and laughing.</SpeakSentence>
+    <Read>Look, the wall is ( falling / fall ) down.</Read>
+    <Write>Leaves f_____l in fall.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>8</section>
+    <seq>2</seq>
+    <word>dig^learnmore</word>
+    <img>WLS2-1-3-8-2.jpg</img>
+    <sfx>WLS2-1-3-8-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>d_ _^_i_^_ _g</Listen>
+    <Speak>dig</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>The boy is digging.</SpeakSentence>
+    <Read>The dog is ( digging / jog ).</Read>
+    <Write>A dog is d____gging a hole in my yard.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>laugh</word>
+    <img>WLS2-1-3-3-3.jpg</img>
+    <sfx>WLS2-1-3-3-3.mp3</sfx>
+    <PhonicsImage>WLS2-1-3-3-3P.jpg</PhonicsImage>
+    <Listen>l_ _gh^lau_ _^l_ _ _ _^_ _ _gh</Listen>
+    <Speak>laugh</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>They're hopping, running, falling and laughing.</SpeakSentence>
+    <Read>Why are they ( wait / laughing ) so hard?</Read>
+    <Write>Be quiet!  Don't l____h too loud.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>8</section>
+    <seq>3</seq>
+    <word>sports day^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-3-8-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>sp_ _ts  d_ _^_ _or_ _  _ay^_ _ _ _ts  d_ _^sp_ _ _ _  d_ _</Listen>
+    <Speak>sports^ ^day</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>It's a great day for sports day.</SpeakSentence>
+    <Read>It’s a great day for ( store / sports day ).</Read>
+    <Write>It's not a good day for s____ts d____y.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>3</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>all</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-3-3-4.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>a_ _^_ll</Listen>
+    <Speak>all</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>They're all having so much fun.</SpeakSentence>
+    <Read>We’re ( all / fall ) having so much fun.</Read>
+    <Write>They a____l like to play basketball.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>wrong</word>
+    <img>WLS2-1-4-3-1.jpg</img>
+    <sfx>WLS2-1-4-3-1.mp3</sfx>
+    <PhonicsImage>WLS2-1-4-3-1P.jpg</PhonicsImage>
+    <Listen>_ _ong^wro_ _^wr_ng^wr_ _ _^_ _ _ng</Listen>
+    <Speak>wrong</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>What's wrong?</SpeakSentence>
+    <Read>What’s ( wrong / write )?</Read>
+    <Write>What's w____g with you?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>7</section>
+    <seq>1</seq>
+    <word>cheese^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-4-7-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>ch_ _se^_ _ _ _se^_ _ee_ _</Listen>
+    <Speak>cheese</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Today, I would like to make a great meal for you all--cheese hot dogs.</SpeakSentence>
+    <Read>May I have some ( cheese / right )?</Read>
+    <Write>C____e is my favorite food.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>dentist</word>
+    <img>WLS2-1-4-3-2.jpg</img>
+    <sfx>WLS2-1-4-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>d_ _t_st^_e_t_st^d_ _t_ _ _</Listen>
+    <Speak>den^tist</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I need to see the dentist right now!</SpeakSentence>
+    <Read>I need to see the ( dentist / wrong ) right now.</Read>
+    <Write>My brother needs to see the d____t.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>7</section>
+    <seq>2</seq>
+    <word>hot dog(s)^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-4-7-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>h_t  d_g^_o_  _o_^h_ _  d_ _</Listen>
+    <Speak>hot^ ^dog</Speak>
+    <SpeakSound>WLS2-1-4-7-2S.mp3</SpeakSound>
+    <SpeakSentence>Then we need to put some cheese on the hot dogs.</SpeakSentence>
+    <Read>Put some cheese on the ( hot dogs / laugh ).</Read>
+    <Write>I have h____t d____gs and milk for breakfast.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>toothache</word>
+    <img>WLS2-1-4-3-3.jpg</img>
+    <sfx>WLS2-1-4-3-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>t_ _tha_ _e^too_ _a_ _e^t_ _ _ _a_ _ _</Listen>
+    <Speak>tooth^ache</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Oh, your toothache must be really bad.</SpeakSentence>
+    <Read>Do you have a ( toothache / sports )?</Read>
+    <Write>She has a terrible t____e.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>7</section>
+    <seq>3</seq>
+    <word>minute^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-4-7-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>m_n_t_^m_ _ _t_^m_ _ _t_</Listen>
+    <Speak>min^ute</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>First, we must cook the hot dogs for one minute.</SpeakSentence>
+    <Read>Let's cook the hot dogs for one ( minutes / minute ).</Read>
+    <Write>There are 60 m____es in an hour.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>bad</word>
+    <img>WLS2-1-4-3-4.jpg</img>
+    <sfx>WLS2-1-4-3-4.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>b_ _^_ _d^_a_</Listen>
+    <Speak>bad</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Oh, your toothache must be really bad.</SpeakSentence>
+    <Read>Your toothache must be really ( laugh / bad ).</Read>
+    <Write>Oh, what a b____d day.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>4</lid>
+    <section>3</section>
+    <seq>5</seq>
+    <word>painful</word>
+    <img>WLS2-1-4-3-5.jpg</img>
+    <sfx>WLS2-1-4-3-5.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>p_ _nf_l^p_ _ _f_ _^_ _ _n_ _l</Listen>
+    <Speak>pain^ful</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Yes, it's very painful.</SpeakSentence>
+    <Read>My leg is very ( painful / help ).</Read>
+    <Write>My back is so p____l that I can’t walk right now.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>headache</word>
+    <img>WLS2-1-5-3-1.jpg</img>
+    <sfx>WLS2-1-5-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>h_ _da_ _e^h_ _d_ch_^h_ _ _a_ _ _^_ea_a_ _e</Listen>
+    <Speak>head^ache</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I have a terrible headache now.</SpeakSentence>
+    <Read>I have a terrible ( headache / painful ).</Read>
+    <Write>I’m sick.  I have a h____e.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>8</section>
+    <seq>1</seq>
+    <word>runny nose^learnmore</word>
+    <img>WLS2-1-5-8-1.jpg</img>
+    <sfx>WLS2-1-5-8-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>r_ _ _y  n_ _ _^_u_ _y  _o_ _^_u_ _ _  n_ _ _</Listen>
+    <Speak>run^ny^ ^nose</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I have a runny nose.</SpeakSentence>
+    <Read>She has a ( running / runny nose ).</Read>
+    <Write>Do you have a r____y n____e?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>dizzy</word>
+    <img>WLS2-1-5-3-2.jpg</img>
+    <sfx>WLS2-1-5-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>d_ _ _y^_ _zz_^_i_ _ _^d_ _ _ _</Listen>
+    <Speak>diz^zy</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>I am cold and dizzy.</SpeakSentence>
+    <Read>I am cold and ( toothache / dizzy ).</Read>
+    <Write>I feel cold and d____y.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>body</word>
+    <img>WLS2-1-5-3-3.jpg</img>
+    <sfx>WLS2-1-5-3-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>b_d_^b_ _ _^_ _d_</Listen>
+    <Speak>bod^y</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>My body is in pain.</SpeakSentence>
+    <Read>My ( must / body ) is in pain.</Read>
+    <Write>Is the head a part of the b____y?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>pain</word>
+    <img>WLS2-1-5-3-4.jpg</img>
+    <sfx>WLS2-1-5-3-4.mp3</sfx>
+    <PhonicsImage>WLS2-1-5-3-4P.jpg</PhonicsImage>
+    <Listen>p_ _n^p_ _ _^_ _ _n</Listen>
+    <Speak>pain</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>My body is in pain.</SpeakSentence>
+    <Read>My body is in a lot of ( pain / back ).</Read>
+    <Write>My leg is in p____n.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>5</seq>
+    <word>fever</word>
+    <img>WLS2-1-5-3-5.jpg</img>
+    <sfx>WLS2-1-5-3-5.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>f_v_r^f_ _ _r^_ _v_ _</Listen>
+    <Speak>fe^ver</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>You have a fever.</SpeakSentence>
+    <Read>Do you have a ( feels / fever )?</Read>
+    <Write>Oh, no.  She has a f____r.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>6</seq>
+    <word>sore throat</word>
+    <img>WLS2-1-5-3-6.jpg</img>
+    <sfx>WLS2-1-5-3-6.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>s_r_  thr_ _t^s_ _ _  _ _ _oa_^s_ _ _  th_ _ _ _</Listen>
+    <Speak>sore^ ^throat</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Do you have a sore throat?</SpeakSentence>
+    <Read>Do you have a ( laughing / sore throat )?</Read>
+    <Write>He has a terrible s____e t____t.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>5</lid>
+    <section>3</section>
+    <seq>7</seq>
+    <word>flu</word>
+    <img>WLS2-1-5-3-7.jpg</img>
+    <sfx>WLS2-1-5-3-7.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>f_ _^_ _u</Listen>
+    <Speak>flu</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Do I have the flu?</SpeakSentence>
+    <Read>I have the ( flu / wrong ).</Read>
+    <Write>I don’t feel well because I have the f____u.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>6</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>exercise</word>
+    <img>WLS2-1-6-3-1.jpg</img>
+    <sfx>WLS2-1-6-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>ex_ _ _ _se^_ _ _ _ci_ _</Listen>
+    <Speak>ex^er^cise</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Exercise and a good diet are important, too.</SpeakSentence>
+    <Read>( Exercise / Remember ) is important for our health.</Read>
+    <Write>E____e is good for our health.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>6</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>diet</word>
+    <img>WLS2-1-6-3-2.jpg</img>
+    <sfx>WLS2-1-6-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>d_ _t^_ie_</Listen>
+    <Speak>di^et</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Exercise and a good diet are important, too.</SpeakSentence>
+    <Read>A good ( diet / vegetables ) is important for our health.</Read>
+    <Write>A good d____t is important.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>6</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>germ(s)</word>
+    <img>WLS2-1-6-3-3.jpg</img>
+    <sfx>WLS2-1-6-3-3.mp3</sfx>
+    <PhonicsImage>WLS2-1-6-3-3P.jpg</PhonicsImage>
+    <Listen>ge_ _^g_ _m^g_ _ _^_ _ _m</Listen>
+    <Speak>germ</Speak>
+    <SpeakSound>WLS2-1-6-3-3S.mp3</SpeakSound>
+    <SpeakSentence>We have to stay away from germs.</SpeakSentence>
+    <Read>We have to stay away from ( still / germs ).</Read>
+    <Write>How can we stay away from g____ms?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>6</lid>
+    <section>3</section>
+    <seq>4</seq>
+    <word>remember</word>
+    <img>WLS2-1-6-3-4.jpg</img>
+    <sfx>WLS2-1-6-3-4.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>re_ _ _b_ _^re_ _ _ _ _r^r_m_ _b_ _</Listen>
+    <Speak>re^mem^ber</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>You need to remember, "An apple a day keeps the doctor away."</SpeakSentence>
+    <Read>You need to ( remember / important ), "An apple a day keeps the doctor away."</Read>
+    <Write>You need to r____r what your mom says.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>6</lid>
+    <section>3</section>
+    <seq>5</seq>
+    <word>doctor</word>
+    <img>WLS2-1-6-3-5.jpg</img>
+    <sfx>WLS2-1-6-3-5.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>d_ _t_ _^d_ _ _ _r^_o_t_ _</Listen>
+    <Speak>doc^tor</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>You need to remember, "An apple a day keeps the doctor away."</SpeakSentence>
+    <Read>An apple a day keeps the ( doctor / minute ) away.</Read>
+    <Write>You have to see a d____r when you’re sick.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>8</lid>
+    <section>3</section>
+    <seq>1</seq>
+    <word>grain(s)^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-8-3-1.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>gr_ _ _^_ _ai_^_ _ _ _n</Listen>
+    <Speak>grain</Speak>
+    <SpeakSound>WLS2-1-8-3-1S.mp3</SpeakSound>
+    <SpeakSentence>Grains are small, hard and dry.</SpeakSentence>
+    <Read>( Grains / Germs ) are important in our diet.</Read>
+    <Write>The farmer grows g____ns and vegetables.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>8</lid>
+    <section>3</section>
+    <seq>2</seq>
+    <word>oil^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-8-3-2.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>oi_^_ _l</Listen>
+    <Speak>oil</Speak>
+    <SpeakSound>
+    </SpeakSound>
+    <SpeakSentence>Fish oil is good for your eyes.</SpeakSentence>
+    <Read>Fish ( oil / grains ) is good for children's health.</Read>
+    <Write>Which o____l is best for your heart?</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+  <item>
+    <sid>WLS2</sid>
+    <bid>1</bid>
+    <lid>8</lid>
+    <section>3</section>
+    <seq>3</seq>
+    <word>bean(s)^learnmore</word>
+    <img>
+    </img>
+    <sfx>WLS2-1-8-3-3.mp3</sfx>
+    <PhonicsImage>
+    </PhonicsImage>
+    <Listen>b_ _n^b_ _ _^_ea_^_ _ _n</Listen>
+    <Speak>bean</Speak>
+    <SpeakSound>WLS2-1-8-3-3S.mp3</SpeakSound>
+    <SpeakSentence>He doesn't like to eat beans.</SpeakSentence>
+    <Read>My brother likes to eat ( beans / away ).</Read>
+    <Write>I don't like green b____ns.</Write>
+    <TryItAudio>
+    </TryItAudio>
+    <TryItImg>
+    </TryItImg>
+    <TryItAnswerKey>
+    </TryItAnswerKey>
+  </item>
+</root>

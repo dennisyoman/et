@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" lang="EN" content="" />
+    <meta name="keywords" lang="zh-TW" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- facebook/orkut -->
+    <meta property="og:title" content="Giraffe e-teaching | 長頸鹿美語" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./images/thumb.jpg" />
+    <meta property="og:description" content="" />
+    <meta name="description" content="" />
+    <link rel="image_src" type="image/jpeg" href="./images/thumb.jpg" />
+    <title>Giraffe e-teaching | 長頸鹿美語</title>
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./images/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/icons/favicon-16x16.png"
+    />
+    <link rel="shortcut icon" href="./images/icons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta
+      name="msapplication-config"
+      content="./images/icons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- css -->
+    <!--<link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,600&display=swap&subset=chinese-traditional"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap"
+      rel="stylesheet"
+    />-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      rev="stylesheet"
+      media="screen"
+      href="./css/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      rev="stylesheet"
+      media="screen"
+      href="./css/swiper.min.css"
+    />
+    <link rel="stylesheet" href="./css/jquery.fancybox.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      rev="stylesheet"
+      media="screen"
+      href="./css/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      rev="stylesheet"
+      media="screen"
+      href="./css/app.css"
+    />
+
+    <link
+      href="./css/jquery.virtual_keyboard.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div id="wrapper" class="wrapper">
+      <div id="root" class="root">
+        <div id="loading" class="loading">
+          <div class="spin">
+            <span></span>
+            <p></p>
+          </div>
+        </div>
+        <div id="basic-tools" class="basic-tools">
+          <span id="fullscreen" class="fullscreen wow fadeIn"></span>
+          <span id="return" class="return wow bounceInLeft"></span>
+          <span id="lines" class="lines"></span>
+          <span id="sizer" class="sizer wow fadeIn lock">
+            <span id="sizer_dragger" class="sizer_dragger">x 1</span>
+          </span>
+          <span id="power" class="power wow fadeIn">
+            <span
+              id="confirm-power"
+              class="confirm-power wow rotateInUpRight"
+              data-wow-duration=".5s"
+            >
+              <span id="backToGEO"></span>
+            </span>
+          </span>
+        </div>
+        <div id="units" class="units wow fadeIn">
+          <ul id="icon-wrapper" class="icon-wrapper"></ul>
+          <div onClick="removeUnits(1)" class="overlay"></div>
+        </div>
+        <div id="widget" class="widget" zindex="2"></div>
+        <div id="kw" class="kw"></div>
+        <div id="canvas-board" class="canvas-board" zindex="2">
+          <!-- Dennis update 2022/1/14 start -->
+          <span
+            id="cbg"
+            class="canvas-btn-group"
+            onClick="groupCanvas()"
+          ></span>
+          <span
+            id="cba"
+            class="canvas-btn-apart"
+            onClick="apartCanvas()"
+          ></span>
+          <!-- Dennis update 2022/1/14 end -->
+        </div>
+        <div id="lines_board" class="lines_board">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="main" class="main"></div>
+      </div>
+      <div class="assetsPreload">
+        <img src="./images/common/spinner.png" />
+      </div>
+    </div>
+
+    <!-- javascript -->
+    <script src="./js/jquery-3.1.1.js"></script>
+    <!--<script src="./js/tw_cn.js"></script>-->
+    <script src="./js/lowLag.js"></script>
+    <script src="./js/hammer.min.js"></script>
+    <script src="./js/html2canvas.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script src="./js/jquery.wow.min.js"></script>
+    <script src="./js/jquery.fancybox.min.js"></script>
+    <script src="./js/app.js"></script>
+
+    <script src="./js/jquery.virtual_keyboard.js"></script>
+  </body>
+</html>

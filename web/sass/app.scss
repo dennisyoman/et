@@ -1,0 +1,606 @@
+@charset "UTF-8";
+
+@import "./mixin";
+@import "./common";
+@import "./animation";
+@import "./module";
+@import "./custom_module";
+
+@font-face {
+  font-family: Gfont;
+  src: url("../font/GiraffeTron.otf");
+}
+@font-face {
+  font-family: Gfont-Bold;
+  src: url("../font/GiraffeTronBold.otf");
+}
+
+sup {
+  @include scale(0.6);
+  display: inline-block;
+  margin-left: -2px;
+}
+b {
+  font-family: Gfont-Bold;
+}
+
+html,
+body,
+select,
+option,
+.modal,
+input,
+textarea {
+  font-family: "Gfont", "Noto Sans TC", "Heiti TC", "儷黑 Pro", "LiHei Pro",
+    "文泉驛正黑", "WenQuanYi Zen Hei", "微軟正黑體", "Microsoft JhengHei",
+    "新細明體", sans-serif, Arial, Helvetica;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $text;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+*:after,
+*:before {
+  @include box;
+  //-webkit-touch-callout: none;
+  //-webkit-user-select: none;
+  //-khtml-user-select: none;
+  //-moz-user-select: none;
+  //-ms-user-select: none;
+  //user-select: none;
+  //-webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.kw {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  z-index: 99999;
+  pointer-events: none;
+  #keyboard {
+    width: 900px;
+    height: 215px;
+    transform-origin: bottom left;
+    @include scale(0.7);
+
+    .submit,
+    .delete {
+      display: none !important;
+    }
+  }
+}
+
+.root {
+  width: 640px;
+  height: 360px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  @include translate(-50%, -50%);
+
+  overflow: hidden;
+  z-index: 2;
+  background: #f8f8f8 url("../images/bg.jpg") no-repeat center center;
+  background-size: cover;
+  > .canvas-board {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    //overflow: hidden;
+    z-index: 4;
+    pointer-events: none;
+    //Dennis update 2022/1/14 start
+    .canvas-btn-group {
+      pointer-events: auto !important;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 65%;
+      left: 10px;
+      background: url("../images/common/btn_group.png") no-repeat center center;
+      background-size: 100% 100%;
+      display: none;
+    }
+    .canvas-btn-apart {
+      pointer-events: auto !important;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 73%;
+      left: 10px;
+      background: url("../images/common/btn_apart.png") no-repeat center center;
+      background-size: 100% 100%;
+      display: none;
+    }
+    //Dennis update 2022/1/14 end
+  }
+  > .widget {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    //overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+
+    //Dennis update 2022/2/22 start
+    .canvas-btn-group {
+      pointer-events: auto !important;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 65%;
+      left: 10px;
+      background: url("../images/common/btn_group.png") no-repeat center center;
+      background-size: 100% 100%;
+      display: none;
+    }
+    .canvas-btn-apart {
+      pointer-events: auto !important;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 73%;
+      left: 10px;
+      background: url("../images/common/btn_apart.png") no-repeat center center;
+      background-size: 100% 100%;
+      display: none;
+    }
+    //Dennis update 2022/2/22 end
+
+    .smokeEffect {
+      position: absolute;
+      width: 126px;
+      height: 148px;
+      z-index: 0;
+      transform-origin: center center;
+      margin-left: -63px;
+      margin-top: -74px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  > .lines_board {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    display: none;
+    padding: 50px 50px 0;
+    pointer-events: none;
+
+    > span {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border-top: 3px solid #8fc3db;
+      border-bottom: 3px solid #8fc3db;
+      padding-top: 17px;
+      margin-bottom: 35px;
+      &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        border-top: 2px dashed #8fc3db;
+        margin-bottom: 18px;
+      }
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        border-top: 2px solid #8fc3db;
+      }
+    }
+  }
+
+  > .main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    box-sizing: content-box;
+    &.autoMoving {
+      @include transition(all, 0.5s);
+    }
+    &.default {
+      top: 0 !important;
+      left: 0 !important;
+    }
+  }
+
+  > .units {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 99;
+    .icon-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      white-space: nowrap;
+      pointer-events: none;
+      @include translate(-50%, -50%);
+
+      li {
+        pointer-events: auto;
+        cursor: pointer;
+        display: inline-block;
+        width: 100px;
+        height: auto;
+        text-align: center;
+        margin: 15px 3px;
+
+        &.visited {
+          filter: saturate(0);
+        }
+
+        h3 {
+          font-size: 12px;
+          color: #fff;
+          line-height: 1.2;
+          white-space: normal;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .overlay {
+      width: 110%;
+      height: 110%;
+      margin-left: -5%;
+      margin-top: -5%;
+    }
+
+    &.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .basic-tools {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
+
+    &.inclass {
+      span {
+        &.return {
+          display: inline-block;
+        }
+
+        &.lines {
+          display: inline-block;
+        }
+      }
+    }
+
+    span {
+      pointer-events: auto;
+      display: inline-block;
+      position: absolute;
+      z-index: 1;
+      &.fullscreen {
+        left: 5px;
+        top: 10px;
+        width: 20px;
+        height: 15px;
+        background: url("../images/common/btn_fullscreen.png") no-repeat center
+          center;
+        background-size: contain;
+        cursor: pointer;
+      }
+
+      &.return {
+        left: 5px;
+        top: 30px;
+        width: 20px;
+        height: 20px;
+        background: url("../images/common/btn_return.png") no-repeat center
+          center;
+        background-size: contain;
+        cursor: pointer;
+        display: none;
+      }
+
+      &.lines {
+        left: 5px;
+        top: 55px;
+        width: 20px;
+        height: 20px;
+        background: url("../images/common/btn_lines.png") no-repeat center
+          center;
+        background-size: contain;
+        cursor: pointer;
+        display: none;
+        @include opacity(0.4);
+        &.active {
+          @include opacity(1);
+        }
+      }
+      &.sizer {
+        left: 5px;
+        top: 80px;
+        width: 20px;
+        height: 40px;
+        display: none;
+        pointer-events: none;
+
+        .sizer_dragger {
+          position: absolute;
+          pointer-events: auto;
+          top: 0;
+          left: 0;
+          display: inline-block;
+          width: 200%;
+          height: 16px;
+          background: #fff;
+          cursor: pointer;
+          z-index: 2;
+          @include borderRadius(4px);
+          @include boxShadow(0 0 2px rgba(0, 0, 0, 0.2));
+          @include scale(0.5);
+          transform-origin: left top;
+          color: #aaa;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          &::before {
+            content: "";
+            width: 100%;
+            height: 48px;
+            position: absolute;
+            top: -16px;
+            left: 0;
+          }
+        }
+        &::before {
+          content: "";
+          width: 2px;
+          height: 100%;
+          position: absolute;
+          left: 9px;
+          top: 4px;
+          background: #eee;
+          @include boxShadow(0 0 2px rgba(0, 0, 0, 0.2));
+          z-index: 1;
+        }
+      }
+
+      &.power {
+        //display:none;
+        right: 10px;
+        bottom: 15px;
+        width: 12.5px;
+        height: 12.5px;
+        background: url("../images/common/btn_power.png") no-repeat center
+          center;
+        background-size: contain;
+        cursor: pointer;
+        &.active {
+          .confirm-power {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.confirm-power {
+        display: none;
+        right: -7px;
+        top: -37px;
+        width: 60px;
+        height: 37.5px;
+        background: url("../images/common/confirm_power.png") no-repeat center
+          center;
+        background-size: contain;
+        cursor: pointer;
+        #backToGEO {
+          width: 50%;
+          height: 80%;
+        }
+      }
+    }
+  }
+
+  .loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: none;
+
+    &.spinIn {
+      display: block;
+      pointer-events: auto;
+
+      > div.spin {
+        display: flex;
+      }
+    }
+
+    > div.spin {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: none;
+      background: url("../images/common/spinner_logo.png") center center
+        no-repeat;
+      background-size: 45px 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > span {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background: url("../images/common/spinner.png") center center no-repeat;
+        background-size: 100% 100%;
+        animation: selfRotate 3s infinite linear;
+        -webkit-animation: selfRotate 3s infinite linear;
+      }
+
+      > P {
+        position: absolute;
+        font-size: 12px;
+        color: #333;
+        line-height: 20px;
+        text-align: center;
+        pointer-events: none;
+        width: 50px;
+        top: calc(50% + 23px);
+        left: 50%;
+        margin-left: -25px;
+      }
+    }
+  }
+}
+
+.assetsPreload {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  pointer-events: none;
+
+  * {
+    position: absolute;
+    top: 100vh;
+    left: -100vw;
+    max-width: 4px;
+    max-height: 4px;
+
+    @include opacity(0.1);
+  }
+}
+
+input {
+  letter-spacing: 0;
+  display: block;
+  outline: none;
+  background: none;
+  border: none;
+  min-width: 1px;
+  padding: 0;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #aaa;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #aaa;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #aaa;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #aaa;
+}
+
+.noAni {
+  //animation: none !important;
+  animation-duration: 0 !important;
+  animation-direction: reverse !important;
+}
+
+.keepCardFace {
+  -webkit-transform: rotate3d(0, 1, 0, 0deg) !important;
+  transform: rotate3d(0, 1, 0, 0deg) !important;
+  //animation-direction: reverse !important;
+  animation-duration: 0 !important;
+  > div > * {
+    opacity: 1 !important;
+    animation-duration: 0 !important;
+  }
+}
+.keepCardback {
+  -webkit-transform: rotate3d(0, 1, 0, 0deg) !important;
+  transform: rotate3d(0, 1, 0, 0deg) !important;
+  //animation-direction: normal !important;
+  animation-duration: 0 !important;
+  > div > * {
+    opacity: 0 !important;
+    animation-duration: 0 !important;
+  }
+}
+
+#myCanvas {
+  position: absolute;
+  z-index: 999999;
+}
+
+.fancybox-active {
+  height: 100% !important;
+}
+
+//Dennis update 2022/1/17 start
+i {
+  font-style: italic !important;
+}

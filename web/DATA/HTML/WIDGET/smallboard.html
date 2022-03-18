@@ -1,0 +1,188 @@
+<div class="smallboard_wrapper wow slideInUp">
+  <span class="edit active" mt="2"
+    ><img src="./images/common/board_draw.png"
+  /></span>
+  <!--<span class="keyboard" mt="2"
+    ><img src="./images/common/board_keyboard.png"
+  /></span>-->
+  <span class="eraseAll" mt="2"
+    ><img src="./images/common/board_clear.png"
+  /></span>
+  <div class="drawer"><canvas width="197" height="108"></canvas></div>
+  <div class="keyer">
+    <textarea spellcheck="false" id="mytext"></textarea>
+  </div>
+</div>
+<div class="assetsPreload">
+  <img src="./images/common/board.png" />
+  <img src="./images/common/board_draw.png" />
+  <img src="./images/common/board_keyboard.png" />
+  <img src="./images/common/board_clear.png" />
+</div>
+
+<script>
+  $(document).ready(function () {
+    //$("#keyboard").remove();
+    //$("#mytext").keyboard();
+    //
+    $("#smallboard")
+      .unbind()
+      .bind("mousedown", function (e) {
+        getHighestDepthWidget($(this));
+      })
+      .bind("touchstart", function (e) {
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#smallboard"));
+
+    $("#smallboard .edit")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          $(this).siblings(".drawer").show();
+          $(this).siblings(".keyer").hide();
+          $(this).addClass("active").siblings(".active").removeClass("active");
+          //
+          $("#mytext").val("");
+        }
+      });
+    $("#smallboard .keyboard")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          $(this).siblings(".drawer").hide();
+          $(this).siblings(".keyer").show();
+          $(this).addClass("active").siblings(".active").removeClass("active");
+          //
+          var clearTar = $(this).siblings(".drawer").find("canvas");
+          var cctx = clearTar.get(0).getContext("2d");
+          cctx.clearRect(0, 0, clearTar.attr("width"), clearTar.attr("height"));
+          $("input[name='username']").keyboard();
+          $("#password").keyboard();
+        }
+      });
+    $("#smallboard .eraseAll")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          var clearTar = $(this).siblings(".drawer").find("canvas");
+          var cctx = clearTar.get(0).getContext("2d");
+          cctx.clearRect(0, 0, clearTar.attr("width"), clearTar.attr("height"));
+          //
+          $("#mytext").val("");
+        }
+      });
+    //
+    var can = $("#smallboard").find(".drawer > canvas").get(0);
+    var ctx = can.getContext("2d");
+    var isDraw = false;
+    ctx.strokeStyle = "#66ccff";
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    var startX, startY;
+    var _eraserWidth = 100;
+    var newZoomRatio = stageRatioReal / stageRatioMain;
+    var ol = 8;
+    var ot = 7;
+
+    // Mouse Down Event
+    ["mousedown", "touchstart"].forEach(function (e) {
+      can.addEventListener(e, function (event) {
+        isDraw = true;
+        newZoomRatio = stageRatioReal / stageRatioMain;
+
+        if (event.clientX) {
+          startX =
+            (event.clientX - $(".smallboard").offset().left) / newZoomRatio -
+            ol;
+          startY =
+            (event.clientY - $(".smallboard").offset().top) / newZoomRatio - ot;
+        } else {
+          startX =
+            (event.touches[0].clientX - $(".smallboard").offset().left) /
+              newZoomRatio -
+            ol;
+          startY =
+            (event.touches[0].clientY - $(".smallboard").offset().top) /
+              newZoomRatio -
+            ot;
+        }
+      });
+    });
+
+    // Mouse Move Event
+    ["mousemove", "touchmove"].forEach(function (e) {
+      can.addEventListener(e, function (event) {
+        if (isDraw) {
+          if (event.clientX) {
+            drawLineBoard(
+              startX,
+              startY,
+              (event.clientX - $(".smallboard").offset().left) / newZoomRatio -
+                ol,
+              (event.clientY - $(".smallboard").offset().top) / newZoomRatio -
+                ot
+            );
+          } else {
+            drawLineBoard(
+              startX,
+              startY,
+              (event.touches[0].clientX - $(".smallboard").offset().left) /
+                newZoomRatio -
+                ol,
+              (event.touches[0].clientY - $(".smallboard").offset().top) /
+                newZoomRatio -
+                ot
+            );
+          }
+        }
+      });
+    });
+
+    ["mouseup", "mouseleave", "touchend"].forEach(function (e) {
+      can.addEventListener(e, function (event) {
+        isDraw = false;
+      });
+    });
+
+    function drawLineBoard(x, y, stopX, stopY) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(stopX, stopY);
+      ctx.closePath();
+      ctx.stroke();
+      startX = stopX;
+      startY = stopY;
+    }
+    //
+    $("#smallboard")
+      .attr("id", "")
+      .delay(80)
+      .queue(function () {
+        $(this).dequeue();
+        makeDraggable($(this), false, $(this));
+      });
+  });
+</script>

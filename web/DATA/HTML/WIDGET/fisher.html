@@ -1,0 +1,54 @@
+<div class="fisher_wrapper">
+  <div class="fishman standard">
+    <span class="wow heartBeat" data-wow-iteration="infinite">+1</span>
+  </div>
+  <div class="pool" />
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#fisher")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          //spin
+
+          var scores = ["-2", "-1", "0", "+1", "+2"];
+          var status = ["boot", "bad", "zero", "good", "good"];
+          rootSoundEffect($water);
+          $("#widget > .fisher")
+            .addClass("disabled")
+            .find(".fishman")
+            .removeClass("standard boot bad zero good")
+            .addClass("fishing")
+            .delay(1600)
+            .queue(function () {
+              var randID = Math.floor(Math.random() * scores.length);
+              $(this)
+                .removeClass("fishing")
+                .addClass(status[randID])
+                .find("span")
+                .text(scores[randID]);
+              $("#widget > .fisher").removeClass("disabled");
+              $(this).dequeue();
+            });
+          //
+        } else {
+          $("#widget > .fisher")
+            .find(".fishman")
+            .removeClass("fishing boot bad zero good")
+            .addClass("standard");
+        }
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#fisher"));
+    makeDraggable($("#fisher"));
+  });
+</script>

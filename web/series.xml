@@ -1,0 +1,922 @@
+<root>
+  <series name="WOW! Starter" sid="WS" img="WS_series.jpg">
+    <book name="Book 1" bid="1" img="WS_book1.jpg">
+      <lesson lid="1">Aa, Bb, Cc, Dd</lesson>
+      <lesson lid="2">Ee, Ff, Gg, Hh</lesson>
+      <lesson lid="3">Ii, Jj, Kk, Ll</lesson>
+      <lesson lid="4">Mm, Nn, Oo, Pp</lesson>
+      <lesson lid="5">Qq, Rr, Ss, Tt, Uu</lesson>
+      <lesson lid="6">Vv, Ww, Xx, Yy, Zz</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WS_book2.jpg">
+      <lesson lid="1">My name is Jenny.</lesson>
+      <lesson lid="2">What is your name?</lesson>
+      <lesson lid="3">His name is Edison.</lesson>
+      <lesson lid="4">I am a girl.</lesson>
+      <lesson lid="5">He is my father.</lesson>
+      <lesson lid="6">Who is the boy?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WS_book3.jpg">
+      <lesson lid="1">It is a pencil.</lesson>
+      <lesson lid="2">What is it?</lesson>
+      <lesson lid="3">It is not a pen.</lesson>
+      <lesson lid="4">What is this?</lesson>
+      <lesson lid="5">What is that?</lesson>
+      <lesson lid="6">This is an ant.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+  </series>
+  <series name="Giraffe Phonics" sid="GP" img="GP_series.jpg">
+    <book name="Book 1" bid="1" img="GP_book1.jpg">
+      <lesson lid="1">Alphabet &amp; Short Vowel a</lesson>
+      <lesson lid="2">Alphabet &amp; Short Vowel e</lesson>
+      <lesson lid="3">Alphabet &amp; Short Vowel i</lesson>
+      <lesson lid="4">Alphabet &amp; Short Vowel o</lesson>
+      <lesson lid="5">Alphabet &amp; Short Vowel u</lesson>
+      <lesson lid="6">Alphabet &amp; Short Vowels</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+      <lesson lid="9">Paired Consonants: p / b </lesson>
+      <lesson lid="10">Paired Consonants: t / d </lesson>
+      <lesson lid="11">Paired Consonants: c, k / g </lesson>
+      <lesson lid="12">Paired Consonants: f / v </lesson>
+      <lesson lid="13">Paired Consonants: s / z </lesson>
+      <lesson lid="14">Paired Consonants: ts / ds </lesson>
+      <lesson lid="15">Review III </lesson>
+      <lesson lid="16">Review IV</lesson>
+      <lesson lid="17">Paired Consonants: th / th </lesson>
+      <lesson lid="18">Consonants Digraphs: ch / sh</lesson>
+      <lesson lid="19">Consonants Digraphs: ph / ng</lesson>
+      <lesson lid="20">Vowel Discrimination: a / e</lesson>
+      <lesson lid="21">Vowel Discrimination: e / i</lesson>
+      <lesson lid="22">Vowel Discrimination: o / u</lesson>
+      <lesson lid="23">Review V</lesson>
+      <lesson lid="24">Review VI</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="GP_book2.jpg">
+      <lesson lid="1">Spelling Rule: -ff</lesson>
+      <lesson lid="2">Spelling Rule: -ss</lesson>
+      <lesson lid="3">Spelling Rule: -ll</lesson>
+      <lesson lid="4">Spelling Rule: -ck</lesson>
+      <lesson lid="5">Spelling Rule: -tch</lesson>
+      <lesson lid="6">Spelling Rule: -dge</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+      <lesson lid="9">Long Vowel Rules: a-e / -ay</lesson>
+      <lesson lid="10">Long Vowel Rules: e-e / -e</lesson>
+      <lesson lid="11">Long Vowel Rules: i-e / -ie</lesson>
+      <lesson lid="12">Long Vowel Rules: o-e / -ow</lesson>
+      <lesson lid="13">Long Vowel Rules: u-e / -ew</lesson>
+      <lesson lid="14">Long Vowel Rules: u-e / -ue</lesson>
+      <lesson lid="15">Review III </lesson>
+      <lesson lid="16">Review IV</lesson>
+      <lesson lid="17">Long Vowel Rule: -ai-</lesson>
+      <lesson lid="18">Long Vowel Rules: -ea- / -ee-</lesson>
+      <lesson lid="19">Long Vowel Rule: -igh-</lesson>
+      <lesson lid="20">Long Vowel Rule: -oa-</lesson>
+      <lesson lid="21">Long Vowel Rule: -ui-</lesson>
+      <lesson lid="22">Vowel Discrimination: oo / oo</lesson>
+      <lesson lid="23">Review V</lesson>
+      <lesson lid="24">Review VI</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="GP_book3.jpg">
+      <lesson lid="1">Consonant Blends: pl / bl</lesson>
+      <lesson lid="2">Consonant Blends: cl / gl</lesson>
+      <lesson lid="3">Consonant Blends: fl / sl</lesson>
+      <lesson lid="4">Consonant Blends: pr / br</lesson>
+      <lesson lid="5">Consonant Blends: cr / gr</lesson>
+      <lesson lid="6">Consonant Blend: fr</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+      <lesson lid="9">Consonant Blend: tr</lesson>
+      <lesson lid="10">Consonant Blend: dr</lesson>
+      <lesson lid="11">Consonant Blend: sp</lesson>
+      <lesson lid="12">Consonant Blend: st</lesson>
+      <lesson lid="13">Consonant Blends: sc / sk</lesson>
+      <lesson lid="14">Consonant Blends: sm / sn</lesson>
+      <lesson lid="15">Review III </lesson>
+      <lesson lid="16">Review IV</lesson>
+      <lesson lid="17">Consonant Blend: spl</lesson>
+      <lesson lid="18">Consonant Blend: spr</lesson>
+      <lesson lid="19">Consonant Blend: scr</lesson>
+      <lesson lid="20">Consonant Blend: str</lesson>
+      <lesson lid="21">Y Rule I</lesson>
+      <lesson lid="22">Y Rule II</lesson>
+      <lesson lid="23">Review V</lesson>
+      <lesson lid="24">Review VI</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="GP_book4.jpg">
+      <lesson lid="1">Soft C Rules: ce / ci / cy</lesson>
+      <lesson lid="2">Soft G Rules: ge / gi / gy</lesson>
+      <lesson lid="3">R-Controlled Vowel: ar (stressed)</lesson>
+      <lesson lid="4">R-Controlled Vowel: or (stressed)</lesson>
+      <lesson lid="5">R-Controlled Vowel: er, ir, ur (stressed)</lesson>
+      <lesson lid="6">R-Controlled Vowel: ar, er, or, ir, ur (unstressed)</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+      <lesson lid="9">R-Controlled Vowel: are</lesson>
+      <lesson lid="10">R-Controlled Vowel: air</lesson>
+      <lesson lid="11">R-Controlled Vowel: eer</lesson>
+      <lesson lid="12">R-Controlled Vowel: ear</lesson>
+      <lesson lid="13">R-Controlled Vowel: ear</lesson>
+      <lesson lid="14">R-Controlled Vowel: ear</lesson>
+      <lesson lid="15">Review III </lesson>
+      <lesson lid="16">Review IV</lesson>
+      <lesson lid="17">Vowel Digraphs: au / aw</lesson>
+      <lesson lid="18">Diphthongs: ou / ow</lesson>
+      <lesson lid="19">Diphthongs: oi / oy</lesson>
+      <lesson lid="20">Vowel Digraph: ea</lesson>
+      <lesson lid="21">Syllabic Consonants: ple / tle / cle</lesson>
+      <lesson lid="22">Syllabic Consonants: ble / dle / gle</lesson>
+      <lesson lid="23">Review V</lesson>
+      <lesson lid="24">Review VI</lesson>
+    </book>
+  </series>
+  <series name="WOW! Little Sun Level 1" sid="WLS1" img="WLS1_series.jpg">
+    <book name="Book 1" bid="1" img="WLS1_book1.jpg">
+      <lesson lid="1">Hello.  What is your name?</lesson>
+      <lesson lid="2">Good morning.</lesson>
+      <lesson lid="3">Hi.  How are you?</lesson>
+      <lesson lid="4">Goodbye.</lesson>
+      <lesson lid="5">I'm sorry.</lesson>
+      <lesson lid="6">Thank you.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WLS1_book2.jpg">
+      <lesson lid="1">He is my father.</lesson>
+      <lesson lid="2">Who is the girl?</lesson>
+      <lesson lid="3">I live with my parents.</lesson>
+      <lesson lid="4">What is it?</lesson>
+      <lesson lid="5">What are they?</lesson>
+      <lesson lid="6">Let's count the eggs.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WLS1_book3.jpg">
+      <lesson lid="1">How old are you?</lesson>
+      <lesson lid="2">How much is it?</lesson>
+      <lesson lid="3">What time is it?</lesson>
+      <lesson lid="4">What time do you go to school?</lesson>
+      <lesson lid="5">Where is the boat?</lesson>
+      <lesson lid="6">Do you want ice cream?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="WLS1_book4.jpg">
+      <lesson lid="1">My daddy is very tall and thin.</lesson>
+      <lesson lid="2">My mommy is small.</lesson>
+      <lesson lid="3">The rabbit stops and sleeps.</lesson>
+      <lesson lid="4">Wake up, Jenny.</lesson>
+      <lesson lid="5">Please write the word.</lesson>
+      <lesson lid="6">Can you spell "friend"?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="WLS1_book5.jpg">
+      <lesson lid="1">The horse is black.</lesson>
+      <lesson lid="2">What color is it?</lesson>
+      <lesson lid="3">My favorite color is pink.</lesson>
+      <lesson lid="4">What shape is it?</lesson>
+      <lesson lid="5">This is a paper heart.</lesson>
+      <lesson lid="6">I see a diamond on the left.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="WLS1_book6.jpg">
+      <lesson lid="1">Let's draw a face.</lesson>
+      <lesson lid="2">What can you do with your hands?</lesson>
+      <lesson lid="3">I like to brush my teeth.</lesson>
+      <lesson lid="4">What should I wear?</lesson>
+      <lesson lid="5">Their shirts and pants are so dirty.</lesson>
+      <lesson lid="6">Whose coat is that?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 7" bid="7" img="WLS1_book7.jpg">
+      <lesson lid="1">Let's buy some meat.</lesson>
+      <lesson lid="2">I love fruit.</lesson>
+      <lesson lid="3">Does Benny want to drink juice?</lesson>
+      <lesson lid="4">I am so hungry.</lesson>
+      <lesson lid="5">What's the matter?</lesson>
+      <lesson lid="6">I don't feel well.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 8" bid="8" img="WLS1_book8.jpg">
+      <lesson lid="1">I read in the living room.</lesson>
+      <lesson lid="2">Mommy is in the kitchen.</lesson>
+      <lesson lid="3">I don't like this basement.</lesson>
+      <lesson lid="4">There is too much homework for a week.</lesson>
+      <lesson lid="5">What day is today?</lesson>
+      <lesson lid="6">What a beautiful Saturday!</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 9" bid="9" img="WLS1_book9.jpg">
+      <lesson lid="1">What does it look like?</lesson>
+      <lesson lid="2">It feels soft.</lesson>
+      <lesson lid="3">It tastes like water.</lesson>
+      <lesson lid="4">He is on the roof of his doghouse.</lesson>
+      <lesson lid="5">They are under the sink.</lesson>
+      <lesson lid="6">Benny is behind the stone.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 10" bid="10" img="WLS1_book10.jpg">
+      <lesson lid="1">What do you like to do in spring?</lesson>
+      <lesson lid="2">I usually swim in summer.</lesson>
+      <lesson lid="3">Winter is my favorite season.</lesson>
+      <lesson lid="4">What is that building?</lesson>
+      <lesson lid="5">Where do you want to go?</lesson>
+      <lesson lid="6">I want to go to the bookstore.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 11" bid="11" img="WLS1_book11.jpg">
+      <lesson lid="1">Why do you like it?</lesson>
+      <lesson lid="2">May I ask a question?</lesson>
+      <lesson lid="3">Why is Jenny behind the castle?</lesson>
+      <lesson lid="4">Who sails the boat?</lesson>
+      <lesson lid="5">How do you get there?</lesson>
+      <lesson lid="6">My mom takes a train to work.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 12" bid="12" img="WLS1_book12.jpg">
+      <lesson lid="1">The owl is cute, isn't it?</lesson>
+      <lesson lid="2">They are brave, aren't they?</lesson>
+      <lesson lid="3">Dad isn't busy now, is he?</lesson>
+      <lesson lid="4">You can draw Wrinkle, can't you?</lesson>
+      <lesson lid="5">You want to swim with us, don't you?</lesson>
+      <lesson lid="6">The rabbit looks so cute, doesn’t it?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+  </series>
+  <series name="Children's Favorite Stories" sid="Reader" img="Reader_series.jpg">
+    <book name="Book 1" bid="1" img="Reader_book1.jpg">
+      <lesson lid="1">Saturday: P.1</lesson>
+      <lesson lid="2">Saturday: P.2</lesson>
+      <lesson lid="3">Saturday: P.3</lesson>
+      <lesson lid="4">Saturday: P.4</lesson>
+      <lesson lid="5">Saturday: P.5</lesson>
+      <lesson lid="6">Saturday: P.6</lesson>
+      <lesson lid="7">Saturday: P.7-P.8</lesson>
+      <lesson lid="8">Saturday: P.9-P.10</lesson>
+      <lesson lid="9">Saturday: P.11-P.12</lesson>
+      <lesson lid="10">Saturday: P.1-P.12</lesson>
+      <lesson lid="11">A Perfect Girl: P.17-P.18</lesson>
+      <lesson lid="12">A Perfect Girl: P.19</lesson>
+      <lesson lid="13">A Perfect Girl: P.20</lesson>
+      <lesson lid="14">A Perfect Girl: P.21</lesson>
+      <lesson lid="15">A Perfect Girl: P.22</lesson>
+      <lesson lid="16">A Perfect Girl: P.23-P.24</lesson>
+      <lesson lid="17">A Perfect Girl: P.25-P.26</lesson>
+      <lesson lid="18">A Perfect Girl: P.25-P.26</lesson>
+      <lesson lid="19">A Perfect Girl: P.27-P.28</lesson>
+      <lesson lid="20">A Perfect Girl: P.17-P.28</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="Reader_book2.jpg">
+      <lesson lid="1">A Missing Shoe: P.1-P.2</lesson>
+      <lesson lid="2">A Missing Shoe: P.3-P.4</lesson>
+      <lesson lid="3">A Missing Shoe: P.5-P.6</lesson>
+      <lesson lid="4">A Missing Shoe: P.5-P.6</lesson>
+      <lesson lid="5">A Missing Shoe: P.7-P.8</lesson>
+      <lesson lid="6">A Missing Shoe: P.9.-P.10</lesson>
+      <lesson lid="7">A Missing Shoe: P.9.-P.10</lesson>
+      <lesson lid="8">A Missing Shoe: P.11-P.12</lesson>
+      <lesson lid="9">A Missing Shoe: P.11-P.12</lesson>
+      <lesson lid="10">A Missing Shoe: P.1-P.12</lesson>
+      <lesson lid="11">The Big Black Monster: P.17</lesson>
+      <lesson lid="12">The Big Black Monster: P.18</lesson>
+      <lesson lid="13">The Big Black Monster: P.19</lesson>
+      <lesson lid="14">The Big Black Monster: P.20</lesson>
+      <lesson lid="15">The Big Black Monster: P.21-P.22</lesson>
+      <lesson lid="16">The Big Black Monster: P.23-P.24</lesson>
+      <lesson lid="17">The Big Black Monster: P.25-P.26</lesson>
+      <lesson lid="18">The Big Black Monster: P.27-P.28</lesson>
+      <lesson lid="19">The Big Black Monster: P.29</lesson>
+      <lesson lid="20">The Big Black Monster: P.17-P29</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="Reader_book3.jpg">
+      <lesson lid="1">Ten Dollars: P.1-P.2</lesson>
+      <lesson lid="2">Ten Dollars: P.3</lesson>
+      <lesson lid="3">Ten Dollars: P.4</lesson>
+      <lesson lid="4">Ten Dollars: P.5</lesson>
+      <lesson lid="5">Ten Dollars: P.6</lesson>
+      <lesson lid="6">Ten Dollars: P.7</lesson>
+      <lesson lid="7">Ten Dollars: P.8</lesson>
+      <lesson lid="8">Ten Dollars: P.9-P.10</lesson>
+      <lesson lid="9">Ten Dollars: P.11-P.12</lesson>
+      <lesson lid="10">Ten Dollars: P.1-P.12</lesson>
+      <lesson lid="11">Copycat Froggy: P.17</lesson>
+      <lesson lid="12">Copycat Froggy: P.18</lesson>
+      <lesson lid="13">Copycat Froggy: P.19</lesson>
+      <lesson lid="14">Copycat Froggy: P.20</lesson>
+      <lesson lid="15">Copycat Froggy: P.20</lesson>
+      <lesson lid="16">Copycat Froggy: P.21-P.22</lesson>
+      <lesson lid="17">Copycat Froggy: P.23-P.24</lesson>
+      <lesson lid="18">Copycat Froggy: P.25-P.26</lesson>
+      <lesson lid="19">Copycat Froggy: P.27-P.28</lesson>
+      <lesson lid="20">Copycat Froggy: P.17-P.28</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="Reader_book4.jpg">
+      <lesson lid="1">Mr. Finn: P.1-P.2</lesson>
+      <lesson lid="2">Mr. Finn: P.3</lesson>
+      <lesson lid="3">Mr. Finn: P.4</lesson>
+      <lesson lid="4">Mr. Finn: P.5</lesson>
+      <lesson lid="5">Mr. Finn: P.6</lesson>
+      <lesson lid="6">Mr. Finn: P.7</lesson>
+      <lesson lid="7">Mr. Finn: P.8</lesson>
+      <lesson lid="8">Mr. Finn: P.9-P.10</lesson>
+      <lesson lid="9">Mr. Finn: P.11-P.12</lesson>
+      <lesson lid="10">Mr. Finn: P.1-P.12</lesson>
+      <lesson lid="11">Why Does the Moon Hang in the Sky?: P.17-P.18</lesson>
+      <lesson lid="12">Why Does the Moon Hang in the Sky?: P.19-P.20</lesson>
+      <lesson lid="13">Why Does the Moon Hang in the Sky?: P.21</lesson>
+      <lesson lid="14">Why Does the Moon Hang in the Sky?: P.22</lesson>
+      <lesson lid="15">Why Does the Moon Hang in the Sky?: P.23</lesson>
+      <lesson lid="16">Why Does the Moon Hang in the Sky?: P.24</lesson>
+      <lesson lid="17">Why Does the Moon Hang in the Sky?: P.25</lesson>
+      <lesson lid="18">Why Does the Moon Hang in the Sky?: P.26</lesson>
+      <lesson lid="19">Why Does the Moon Hang in the Sky?: P.27-P.28</lesson>
+      <lesson lid="20">Why Does the Moon Hang in the Sky?: P.17-P.28</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="Reader_book5.jpg">
+      <lesson lid="1">My Big Brother: P.1-P.2</lesson>
+      <lesson lid="2">My Big Brother: P.3</lesson>
+      <lesson lid="3">My Big Brother: P.4</lesson>
+      <lesson lid="4">My Big Brother: P.5</lesson>
+      <lesson lid="5">My Big Brother: P.6</lesson>
+      <lesson lid="6">My Big Brother: P.7-P.8</lesson>
+      <lesson lid="7">My Big Brother: P.9-P.10</lesson>
+      <lesson lid="8">My Big Brother: P.11</lesson>
+      <lesson lid="9">My Big Brother: P.12</lesson>
+      <lesson lid="10">My Big Brother: P.13</lesson>
+      <lesson lid="11">My Big Brother: P.1-P.13</lesson>
+      <lesson lid="12">Ten Minutes Late: P.17-P.18</lesson>
+      <lesson lid="13">Ten Minutes Late: P.19-P.20</lesson>
+      <lesson lid="14">Ten Minutes Late: P.21</lesson>
+      <lesson lid="15">Ten Minutes Late: P.22</lesson>
+      <lesson lid="16">Ten Minutes Late: P.23-P.24</lesson>
+      <lesson lid="17">Ten Minutes Late: P.25</lesson>
+      <lesson lid="18">Ten Minutes Late: P.26</lesson>
+      <lesson lid="19">Ten Minutes Late: P.27-P.28</lesson>
+      <lesson lid="20">Ten Minutes Late: P.17-P.28</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="Reader_book6.jpg">
+      <lesson lid="1">Carl and Charlie: P.1-P.2</lesson>
+      <lesson lid="2">Carl and Charlie: P.3</lesson>
+      <lesson lid="3">Carl and Charlie: P.4</lesson>
+      <lesson lid="4">Carl and Charlie: P.5</lesson>
+      <lesson lid="5">Carl and Charlie: P.6</lesson>
+      <lesson lid="6">Carl and Charlie: P.7</lesson>
+      <lesson lid="7">Carl and Charlie: P.8</lesson>
+      <lesson lid="8">Carl and Charlie: P.9-P.10</lesson>
+      <lesson lid="9">Carl and Charlie: P.11</lesson>
+      <lesson lid="10">Carl and Charlie: P.12</lesson>
+      <lesson lid="11">Carl and Charlie: P.1-P.12</lesson>
+      <lesson lid="12">The Big Girl Of Narrowsville: P.17-P.18</lesson>
+      <lesson lid="13">The Big Girl Of Narrowsville: P.19-P.20</lesson>
+      <lesson lid="14">The Big Girl Of Narrowsville: P.21</lesson>
+      <lesson lid="15">The Big Girl Of Narrowsville: P.22</lesson>
+      <lesson lid="16">The Big Girl Of Narrowsville: P.23</lesson>
+      <lesson lid="17">The Big Girl Of Narrowsville: P.24</lesson>
+      <lesson lid="18">The Big Girl Of Narrowsville: P.25-P.26</lesson>
+      <lesson lid="19">The Big Girl Of Narrowsville: P.27-P.28</lesson>
+      <lesson lid="20">The Big Girl Of Narrowsville: P.17-P.28</lesson>
+    </book>
+  </series>
+  <series name="WOW! Little Sun Level 2" sid="WLS2" img="WLS2_series.jpg">
+    <book name="Book 1" bid="1" img="WLS2_book1.jpg">
+      <lesson lid="1">Who is singing?</lesson>
+      <lesson lid="2">Are you going there now?</lesson>
+      <lesson lid="3">I'm watching my friends.</lesson>
+      <lesson lid="4">I need to see a dentist.</lesson>
+      <lesson lid="5">How do you feel?</lesson>
+      <lesson lid="6">What is important for our health?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WLS2_book2.jpg">
+      <lesson lid="1">Here comes the bus.</lesson>
+      <lesson lid="2">I see a fish swimming.</lesson>
+      <lesson lid="3">What's wrong with your pet?</lesson>
+      <lesson lid="4">Let's go jogging!</lesson>
+      <lesson lid="5">No eating!</lesson>
+      <lesson lid="6">The swimming pool is so big.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WLS2_book3.jpg">
+      <lesson lid="1">They are my relatives.</lesson>
+      <lesson lid="2">They are friends, neighbors, and classmates.</lesson>
+      <lesson lid="3">He is not lonely at all.</lesson>
+      <lesson lid="4">The red bridge is very high.</lesson>
+      <lesson lid="5">The hill is as high as a house.</lesson>
+      <lesson lid="6">I want to be as healthy as my dad.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="WLS2_book4.jpg">
+      <lesson lid="1">Cross the street quickly!</lesson>
+      <lesson lid="2">How long does it take?</lesson>
+      <lesson lid="3">Where are you from?</lesson>
+      <lesson lid="4">How many marbles are there in the bag?</lesson>
+      <lesson lid="5">There are four children in the race.</lesson>
+      <lesson lid="6">How many books do you have?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="WLS2_book5.jpg">
+      <lesson lid="1">What will you do later?</lesson>
+      <lesson lid="2">What are you going to do?</lesson>
+      <lesson lid="3">Everybody will be busy.</lesson>
+      <lesson lid="4">January has 31 days.</lesson>
+      <lesson lid="5">I'm going to visit a museum.</lesson>
+      <lesson lid="6">I can't wait for July and August to come.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="WLS2_book6.jpg">
+      <lesson lid="1">It's time for recess.</lesson>
+      <lesson lid="2">He can jump rope very well.</lesson>
+      <lesson lid="3">I love sports.</lesson>
+      <lesson lid="4">I enjoy watching TV in my free time.</lesson>
+      <lesson lid="5">My mother loves to skate.</lesson>
+      <lesson lid="6">This computer game is terrific.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 7" bid="7" img="WLS2_book7.jpg">
+      <lesson lid="1">What does your father do?</lesson>
+      <lesson lid="2">They use calculators a lot.</lesson>
+      <lesson lid="3">What do waiters and waitresses do?</lesson>
+      <lesson lid="4">What do you want to be in the future?</lesson>
+      <lesson lid="5">I want to do it by myself.</lesson>
+      <lesson lid="6">Do it yourself.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 8" bid="8" img="WLS2_book8.jpg">
+      <lesson lid="1">Do you have the time?</lesson>
+      <lesson lid="2">It's a quarter after six.</lesson>
+      <lesson lid="3">When do you eat breakfast?</lesson>
+      <lesson lid="4">Where is mine?</lesson>
+      <lesson lid="5">Why don't you borrow theirs?</lesson>
+      <lesson lid="6">It looks as new as yours.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 9" bid="9" img="WLS2_book9.jpg">
+      <lesson lid="1">Which one do you prefer?</lesson>
+      <lesson lid="2">Her dinosaur is prettier.</lesson>
+      <lesson lid="3">A subway is more comfortable than a bus.</lesson>
+      <lesson lid="4">Can I set the table?</lesson>
+      <lesson lid="5">Let's order some takeout for dinner.</lesson>
+      <lesson lid="6">I like every dish.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 10" bid="10" img="WLS2_book10.jpg">
+      <lesson lid="1">May I talk to Benny?</lesson>
+      <lesson lid="2">Is Jenny there, please?</lesson>
+      <lesson lid="3">You can call me after 7.</lesson>
+      <lesson lid="4">Look at the big yellow sun.</lesson>
+      <lesson lid="5">Wrinkle is scared.</lesson>
+      <lesson lid="6">I am tired of walking.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 11" bid="11" img="WLS2_book11.jpg">
+      <lesson lid="1">I am so excited about this trip.</lesson>
+      <lesson lid="2">They can move quickly.</lesson>
+      <lesson lid="3">Stay away from these alligators.</lesson>
+      <lesson lid="4">My mommy is the kindest in the world.</lesson>
+      <lesson lid="5">What is the biggest city in the world?</lesson>
+      <lesson lid="6">This is the most boring computer game.</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 12" bid="12" img="WLS2_book12.jpg">
+      <lesson lid="1">Where is the famous Thai restaurant?</lesson>
+      <lesson lid="2">ABC Bank is across from the grocery store.</lesson>
+      <lesson lid="3">How can I get to the new shopping mall?</lesson>
+      <lesson lid="4">How tall are you?</lesson>
+      <lesson lid="5">Its width is one meter.</lesson>
+      <lesson lid="6">How much sugar do we need?</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+  </series>
+  <series name="WOW! Big Sky Level 3" sid="WBS3" img="WBS3_series.jpg">
+    <book name="Book 1" bid="1" img="WBS3_book1.jpg">
+      <lesson lid="1">A Welcome Party</lesson>
+      <lesson lid="2">A Farewell Party</lesson>
+      <lesson lid="3">A Garage Sale</lesson>
+      <lesson lid="4">A Moving Sale</lesson>
+      <lesson lid="5">At the Airport</lesson>
+      <lesson lid="6">At the Train Station</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WBS3_book2.jpg">
+      <lesson lid="1">The First Day of School</lesson>
+      <lesson lid="2">My Dictionary</lesson>
+      <lesson lid="3">Our Library</lesson>
+      <lesson lid="4">Using a Dictionary</lesson>
+      <lesson lid="5">The Best Tour Guide of the Library</lesson>
+      <lesson lid="6">A Field Trip</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WBS3_book3.jpg">
+      <lesson lid="1">Jenny's Birthday Party</lesson>
+      <lesson lid="2">Cursive Writing</lesson>
+      <lesson lid="3">Special Cards</lesson>
+      <lesson lid="4">A Show-and-Tell Day</lesson>
+      <lesson lid="5">Rudy the Robot (I)</lesson>
+      <lesson lid="6">Rudy the Robot (II)</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="WBS3_book4.jpg">
+      <lesson lid="1">A Letter to Daisy</lesson>
+      <lesson lid="2">Snowstorms</lesson>
+      <lesson lid="3">My Job</lesson>
+      <lesson lid="4">A Snowstorm Party</lesson>
+      <lesson lid="5">A Final Exam</lesson>
+      <lesson lid="6">Christmas Day</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="WBS3_book5.jpg">
+      <lesson lid="1">New Year Countdown</lesson>
+      <lesson lid="2">The New Year Parade</lesson>
+      <lesson lid="3">The Mayor's Speech</lesson>
+      <lesson lid="4">Picking a Leader</lesson>
+      <lesson lid="5">Benny's Vacation</lesson>
+      <lesson lid="6">Lucy's Big House</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="WBS3_book6.jpg">
+      <lesson lid="1">Happy Chinese New Year</lesson>
+      <lesson lid="2">A spoiled Child</lesson>
+      <lesson lid="3">Poor Kiki</lesson>
+      <lesson lid="4">A Pet Shop</lesson>
+      <lesson lid="5">Just a Little Messy</lesson>
+      <lesson lid="6">Never Give Up</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 7" bid="7" img="WBS3_book7.jpg">
+      <lesson lid="1">Youth Playhouse (I)</lesson>
+      <lesson lid="2">Youth Playhouse (II)</lesson>
+      <lesson lid="3">A Dream Come True</lesson>
+      <lesson lid="4">Tarzan</lesson>
+      <lesson lid="5">Visiting Chinatown</lesson>
+      <lesson lid="6">VIP Studio</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 8" bid="8" img="WBS3_book8.jpg">
+      <lesson lid="1">George Washington (I)</lesson>
+      <lesson lid="2">George Washington (II)</lesson>
+      <lesson lid="3">Learning from the Book</lesson>
+      <lesson lid="4">The Three Little Pigs (I)</lesson>
+      <lesson lid="5">The Three Little Pigs (II)</lesson>
+      <lesson lid="6">Good Job!</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 9" bid="9" img="WBS3_book9.jpg">
+      <lesson lid="1">Music Studio</lesson>
+      <lesson lid="2">Beethoven</lesson>
+      <lesson lid="3">Little Red Riding Hood (I)</lesson>
+      <lesson lid="4">Little Red Riding Hood (II)</lesson>
+      <lesson lid="5">Little Red Riding Hood (III)</lesson>
+      <lesson lid="6">Outer Space</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 10" bid="10" img="WBS3_book10.jpg">
+      <lesson lid="1">Giraffe Camp</lesson>
+      <lesson lid="2">Camp Schedule</lesson>
+      <lesson lid="3">Giraffe Amusement Park</lesson>
+      <lesson lid="4">Out of Order</lesson>
+      <lesson lid="5">Paper-Scissors-Stone</lesson>
+      <lesson lid="6">The Time Zone</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 11" bid="11" img="WBS3_book11.jpg">
+      <lesson lid="1">Scienceland (I)</lesson>
+      <lesson lid="2">Scienceland (II)</lesson>
+      <lesson lid="3">The Barnyard (I)</lesson>
+      <lesson lid="4">The Barnyard (II)</lesson>
+      <lesson lid="5">A Chinese Marketplace</lesson>
+      <lesson lid="6">Ancient Cities</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 12" bid="12" img="WBS3_book12.jpg">
+      <lesson lid="1">Five Senses</lesson>
+      <lesson lid="2">Our Eyes</lesson>
+      <lesson lid="3">My Own Vegetables</lesson>
+      <lesson lid="4">Homesick</lesson>
+      <lesson lid="5">Waiting in Lines</lesson>
+      <lesson lid="6">Farewell, Wrinkle</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+  </series>
+  <series name="WOW! Big Sky Level 4" sid="WBS4" img="WBS4_series.jpg">
+    <book name="Book 1" bid="1" img="WBS4_book1.jpg">
+      <lesson lid="1">A School of Fish</lesson>
+      <lesson lid="2">An Octopus</lesson>
+      <lesson lid="3">A Jellyfish</lesson>
+      <lesson lid="4">The Aquarium</lesson>
+      <lesson lid="5">Sponges</lesson>
+      <lesson lid="6">The Souvenir Shop</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WBS4_book2.jpg">
+      <lesson lid="1">The Botanical Garden</lesson>
+      <lesson lid="2">A Sunflower Field</lesson>
+      <lesson lid="3">Life at the Pond</lesson>
+      <lesson lid="4">Tropical Rainforests</lesson>
+      <lesson lid="5">Different Destinations</lesson>
+      <lesson lid="6">A Million Light Bulbs</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WBS4_book3.jpg">
+      <lesson lid="1">Dinosaurs (I)</lesson>
+      <lesson lid="2">Dinosaurs (II)</lesson>
+      <lesson lid="3">Dragons Never Existed</lesson>
+      <lesson lid="4">Zebra Stripes</lesson>
+      <lesson lid="5">A Giraffe's Long Neck</lesson>
+      <lesson lid="6">A Bird Expert</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="WBS4_book4.jpg">
+      <lesson lid="1">A Season of Giving</lesson>
+      <lesson lid="2">A Winter Donation</lesson>
+      <lesson lid="3">In the Hospital (I)</lesson>
+      <lesson lid="4">In the Hospital (II)</lesson>
+      <lesson lid="5">New Year's Resolutions</lesson>
+      <lesson lid="6">Last Christmas</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="WBS4_book5.jpg">
+      <lesson lid="1">Billions of Cells</lesson>
+      <lesson lid="2">Humans vs. Computers</lesson>
+      <lesson lid="3">Benny's Worry</lesson>
+      <lesson lid="4">Hair Colors</lesson>
+      <lesson lid="5">All About Sweat</lesson>
+      <lesson lid="6">How Embarrassing!</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="WBS4_book6.jpg">
+      <lesson lid="1">Baby Teeth</lesson>
+      <lesson lid="2">Chicken Pox</lesson>
+      <lesson lid="3">In a Blue Mood</lesson>
+      <lesson lid="4">Poison Ivy</lesson>
+      <lesson lid="5">Feeling Numb</lesson>
+      <lesson lid="6">Stomach Rumbling</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 7" bid="7" img="WBS4_book7.jpg">
+      <lesson lid="1">Jealousy</lesson>
+      <lesson lid="2">Brain Teasers</lesson>
+      <lesson lid="3">A Role Model</lesson>
+      <lesson lid="4">Daydreams</lesson>
+      <lesson lid="5">Setting Goals</lesson>
+      <lesson lid="6">Rumors</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 8" bid="8" img="WBS4_book8.jpg">
+      <lesson lid="1">Pied Piper</lesson>
+      <lesson lid="2">Secrets</lesson>
+      <lesson lid="3">Fairness</lesson>
+      <lesson lid="4">Priorities</lesson>
+      <lesson lid="5">Respect</lesson>
+      <lesson lid="6">Generosity</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 9" bid="9" img="WBS4_book9.jpg">
+      <lesson lid="1">Being Responsible</lesson>
+      <lesson lid="2">Being Considerate</lesson>
+      <lesson lid="3">Good Manners</lesson>
+      <lesson lid="4">Moderation</lesson>
+      <lesson lid="5">Cheating on the Exam</lesson>
+      <lesson lid="6">An Honest Mistake</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 10" bid="10" img="WBS4_book10.jpg">
+      <lesson lid="1">Leftovers</lesson>
+      <lesson lid="2">Recycling</lesson>
+      <lesson lid="3">No Littering</lesson>
+      <lesson lid="4">Saving Energy</lesson>
+      <lesson lid="5">Air Pollution</lesson>
+      <lesson lid="6">Endangered Species</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 11" bid="11" img="WBS4_book11.jpg">
+      <lesson lid="1">The Ants and the Grasshopper</lesson>
+      <lesson lid="2">The Milkmaid and Her Pail</lesson>
+      <lesson lid="3">The Bundle of Sticks</lesson>
+      <lesson lid="4">The Goose and the Golden Eggs</lesson>
+      <lesson lid="5">The Travelers and the Wallet</lesson>
+      <lesson lid="6">The Emperor's New Suit (I)</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+    <book name="Book 12" bid="12" img="WBS4_book12.jpg">
+      <lesson lid="1">Stone Soup</lesson>
+      <lesson lid="2">Icarus</lesson>
+      <lesson lid="3">Hercules</lesson>
+      <lesson lid="4">Narcissus</lesson>
+      <lesson lid="5">The Trojan Horse</lesson>
+      <lesson lid="6">King Midas (I)</lesson>
+      <lesson lid="7">Review I</lesson>
+      <lesson lid="8">Review II</lesson>
+    </book>
+  </series>
+  <series name="WOW! Reach Your Goal" sid="WRYG" img="WRYG_series.jpg">
+    <book name="Book 1" bid="1" img="WRYG_book1.jpg">
+      <lesson lid="1C">A Postcard from Paris</lesson>
+      <lesson lid="1R">Traveling in Singapore</lesson>
+      <lesson lid="2C">An Adventure Camp</lesson>
+      <lesson lid="2R">An Unforgettable Experience</lesson>
+      <lesson lid="3C">The Effects of Global Warming</lesson>
+      <lesson lid="3R">What Will Happen to Our Beaches?</lesson>
+      <lesson lid="T">GEPT Test 1 </lesson>
+    </book>
+    <book name="Book 2" bid="2" img="WRYG_book2.jpg">
+      <lesson lid="1C">Things to Do During Lunar New Year</lesson>
+      <lesson lid="1R">Lunar New Year</lesson>
+      <lesson lid="2C">A Piano Concert</lesson>
+      <lesson lid="2R">A Memorable Birthday</lesson>
+      <lesson lid="3C">Give It a Try!</lesson>
+      <lesson lid="3R">Annual Sports Meet</lesson>
+      <lesson lid="T">GEPT Test 2 </lesson>
+    </book>
+    <book name="Book 3" bid="3" img="WRYG_book3.jpg">
+      <lesson lid="1C">The British Museum</lesson>
+      <lesson lid="1R">A Visit to the Museum</lesson>
+      <lesson lid="2C">My Dream</lesson>
+      <lesson lid="2R">I Want to Become a Superhero!</lesson>
+      <lesson lid="3C">Robert's Photography</lesson>
+      <lesson lid="3R">The Power of Technology</lesson>
+      <lesson lid="T">GEPT Test 3 </lesson>
+    </book>
+    <book name="Book 4" bid="4" img="WRYG_book4.jpg">
+      <lesson lid="1C">Smartphones</lesson>
+      <lesson lid="1R">Convenience Stores</lesson>
+      <lesson lid="2C">A Gathering for Dogs and Dog Lovers</lesson>
+      <lesson lid="2R">Owning a Dog</lesson>
+      <lesson lid="3C">The Class Rank</lesson>
+      <lesson lid="3R">A Self-Introduction</lesson>
+      <lesson lid="T">GEPT Test 4 </lesson>
+    </book>
+    <book name="Book 5" bid="5" img="WRYG_book5.jpg">
+      <lesson lid="1C">Disney Princess Movies</lesson>
+      <lesson lid="1R">Royal Families</lesson>
+      <lesson lid="2C">My Idol</lesson>
+      <lesson lid="2R">Transportation</lesson>
+      <lesson lid="3C">Guinness World Records</lesson>
+      <lesson lid="3R">Graduation Ceremony</lesson>
+      <lesson lid="T">GEPT Test 5 </lesson>
+    </book>
+    <book name="Book 6" bid="6" img="WRYG_book6.jpg">
+      <lesson lid="1C">Who Broke My Plate?</lesson>
+      <lesson lid="1R">A Second Chance</lesson>
+      <lesson lid="2C">Our High School Days</lesson>
+      <lesson lid="2R">Slow and Steady Wins the Race</lesson>
+      <lesson lid="3C">Seasonal Colors in Fashion</lesson>
+      <lesson lid="3R">What a Waste!</lesson>
+      <lesson lid="T">GEPT Test 6 </lesson>
+    </book>
+    <book name="Book 7" bid="7" img="WRYG_book7.jpg">
+      <lesson lid="1C">The Evolution of Armadillos</lesson>
+      <lesson lid="1R">Nine-banded Armadillos</lesson>
+      <lesson lid="2C">Having Lots of Fun at Home</lesson>
+      <lesson lid="2R">Rainy Days</lesson>
+      <lesson lid="3C">Get Some Food to Go</lesson>
+      <lesson lid="3R">History of Fast Food</lesson>
+      <lesson lid="T">GEPT Test 7 </lesson>
+    </book>
+    <book name="Book 8" bid="8" img="WRYG_book8.jpg">
+      <lesson lid="1C">A Wonderful Place for Our Honeymoon</lesson>
+      <lesson lid="1R">The Coldest City on Earth</lesson>
+      <lesson lid="2C">What's the Big Deal?</lesson>
+      <lesson lid="2R">Friday the 13th</lesson>
+      <lesson lid="3C">The Beatles </lesson>
+      <lesson lid="3R">King of Pop</lesson>
+      <lesson lid="T">GEPT Test 8 </lesson>
+    </book>
+    <book name="Book 9" bid="9" img="WRYG_book9.jpg">
+      <lesson lid="1C">What's a Bigfoot?</lesson>
+      <lesson lid="1R">Nessie</lesson>
+      <lesson lid="2C">An Amazing Gift</lesson>
+      <lesson lid="2R">Venus Flytrap</lesson>
+      <lesson lid="3C">The Perfect Date</lesson>
+      <lesson lid="3R">Star Wars</lesson>
+      <lesson lid="T">GEPT Test 9 </lesson>
+    </book>
+    <book name="Book 10" bid="10" img="WRYG_book10.jpg">
+      <lesson lid="1C">Roller Coasters</lesson>
+      <lesson lid="1R">Amusement Parks</lesson>
+      <lesson lid="2C">The Tower of London</lesson>
+      <lesson lid="2R">London</lesson>
+      <lesson lid="3C">You Are a Great Detective!</lesson>
+      <lesson lid="3R">Board Games</lesson>
+      <lesson lid="T">GEPT Test 10</lesson>
+    </book>
+    <book name="Book 11" bid="11" img="WRYG_book11.jpg">
+      <lesson lid="1C">Jeet Kune Do</lesson>
+      <lesson lid="1R">Bruce Lee</lesson>
+      <lesson lid="2C">Constellations</lesson>
+      <lesson lid="2R">Northern Lights</lesson>
+      <lesson lid="3C">Let Them Eat Cake!</lesson>
+      <lesson lid="3R">Rumors Have Wings </lesson>
+      <lesson lid="T">GEPT Test 11</lesson>
+    </book>
+    <book name="Book 12" bid="12" img="WRYG_book12.jpg">
+      <lesson lid="1C">Be Careful About the Hand Gestures</lesson>
+      <lesson lid="1R">Hand Gestures</lesson>
+      <lesson lid="2C">The Swiss Family Robinson</lesson>
+      <lesson lid="2R">Desert Islands</lesson>
+      <lesson lid="3C">Volunteer Work</lesson>
+      <lesson lid="3R">Ebenezer Scrooge</lesson>
+      <lesson lid="T">GEPT Test 12</lesson>
+    </book>
+  </series>
+  <series name="Giraffeland" sid="GLD" img="GLD_series.jpg">
+    <book name="Book 1" bid="1" img="GLD_book1.jpg">
+      <lesson lid="1">My Favorite Season</lesson>
+      <lesson lid="2">Hide and Seek on the Farm</lesson>
+      <lesson lid="3">I Can Go with You</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 2" bid="2" img="GLD_book2.jpg">
+      <lesson lid="1">Let's Go to School!</lesson>
+      <lesson lid="2">Guess What</lesson>
+      <lesson lid="3">The King's Birthday</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 3" bid="3" img="GLD_book3.jpg">
+      <lesson lid="1">Don't Forget Your Raincoat</lesson>
+      <lesson lid="2">Sports Day</lesson>
+      <lesson lid="3">Let's Go Swimming</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 4" bid="4" img="GLD_book4.jpg">
+      <lesson lid="1">Family and Friends</lesson>
+      <lesson lid="2">The Tenth Fish</lesson>
+      <lesson lid="3">Busy Fingers</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 5" bid="5" img="GLD_book5.jpg">
+      <lesson lid="1">A Good Year</lesson>
+      <lesson lid="2">When the Bell Rings</lesson>
+      <lesson lid="3">Free Time</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 6" bid="6" img="GLD_book6.jpg">
+      <lesson lid="1">Our Parents' Jobs</lesson>
+      <lesson lid="2">Jennifer's Busy Day</lesson>
+      <lesson lid="3">Meet the Neighbors</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 7" bid="7" img="GLD_book7.jpg">
+      <lesson lid="1">Jackson's Kitchen</lesson>
+      <lesson lid="2">Giraffe National Park</lesson>
+      <lesson lid="3">The Paper Cup Phone</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+    <book name="Book 8" bid="8" img="GLD_book8.jpg">
+      <lesson lid="1">The Homework Party　</lesson>
+      <lesson lid="2">A Holiday Coupon</lesson>
+      <lesson lid="3">Time to Clean Up</lesson>
+      <lesson lid="4">Playscript</lesson>
+    </book>
+  </series>
+</root>

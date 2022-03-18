@@ -1,0 +1,95 @@
+<div class="scorer_wrapper wow bounceIn">
+  <span class="header">
+    <span mt="3" />
+  </span>
+  <span class="trigs">
+    <span mt="3">0</span>
+    <span mt="3">0</span>
+  </span>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#scorer .header > span")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+          rootSoundEffect($click);
+          for (i = 0; i < pieceArr.length; i++) {
+            if ($(this).parent().parent().parent().hasClass(pieceArr[i])) {
+              var newID = i + 1;
+              if (newID == pieceArr.length) {
+                newID = 0;
+              }
+
+              $(this)
+                .parent()
+                .parent()
+                .parent()
+                .removeClass(pieceArr[i])
+                .addClass(pieceArr[newID]);
+              break;
+            }
+          }
+        }
+      });
+    $("#scorer .trigs > span")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        console.log(Math.abs(click.x - e.clientX));
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+          var rangee = 40;
+          var ott = parseInt($(this).offset().top / stageRatio);
+          var ctt = parseInt(e.clientY / stageRatio);
+          var maxNum = 9;
+          rootSoundEffect($show);
+          if (ctt - ott < rangee / 2) {
+            if (parseInt($(this).text()) < maxNum) {
+              $(this).text(parseInt($(this).text()) + 1);
+            } else {
+              $(this).text(0);
+            }
+          } else {
+            if (parseInt($(this).text()) == 0) {
+              $(this).text(maxNum);
+            } else {
+              $(this).text(parseInt($(this).text()) - 1);
+            }
+          }
+        }
+      });
+    $("#scorer")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          //
+        }
+        getHighestDepthWidget($(this));
+      });
+    getHighestDepthWidget($("#scorer"));
+    makeDraggable($("#scorer"));
+  });
+</script>

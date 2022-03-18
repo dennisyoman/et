@@ -1,0 +1,217 @@
+<div class="painting_wrapper">
+  <canvas width="2560" height="1280"></canvas>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var canvas = $("#painting canvas").get(0);
+    var context = canvas.getContext("2d");
+    var boundings = canvas.getBoundingClientRect();
+
+    // Specifications
+    var intPoint = [0, 0];
+    var mouseX = 0;
+    var mouseY = 0;
+    var mouseXPre = 0;
+    var mouseYPre = 0;
+    var mouseXPre2 = 0;
+    var mouseYPre2 = 0;
+    var m = 0;
+    var dx1 = 0;
+    var dy1 = 0;
+    var threshold = 25;
+
+    var isDrawing = false;
+    var isCloning = false;
+
+    // Mouse Down Event
+    ["mousedown", "touchstart"].forEach(function (e) {
+      canvas.addEventListener(e, function (event) {
+        clearTimeout(paintVar);
+        //reset
+        mouseX = 0;
+        mouseY = 0;
+        mouseXPre = 0;
+        mouseYPre = 0;
+        mouseXPre2 = 0;
+        mouseYPre2 = 0;
+        m = 0;
+        dx1 = 0;
+        dy1 = 0;
+        //
+
+        if (!isCloning) {
+          context.strokeStyle = $("#painting").attr("col");
+          context.lineWidth = $("#painting").attr("stroke");
+          context.lineCap = "round";
+          context.lineJoin = "round";
+          isDrawing = true;
+          setMouseCoordinates(event);
+          intPoint = [mouseX, mouseY];
+
+          // Start Drawing
+          context.beginPath();
+          context.moveTo(mouseX, mouseY);
+
+          getHighestDepthWidget($("#painting"));
+          //
+          mouseXPre = mouseX;
+          mouseYPre = mouseY;
+          mouseXPre2 = mouseX;
+          mouseYPre2 = mouseY;
+        } else {
+          isDrawing = false;
+        }
+      });
+    });
+
+    // Mouse Move Event
+    ["mousemove", "touchmove"].forEach(function (e) {
+      canvas.addEventListener(e, function (event) {
+        if (isDrawing) {
+          setMouseCoordinates(event);
+          var xc = (mouseXPre + mouseX) / 2;
+          var yc = (mouseYPre + mouseY) / 2;
+          context.moveTo(mouseXPre, mouseYPre);
+          context.quadraticCurveTo(xc, yc, mouseX, mouseY);
+          context.stroke();
+        }
+        mouseXPre = mouseX;
+        mouseYPre = mouseY;
+      });
+    });
+
+    // Mouse Up Event
+
+    ["mouseup", "touchend"].forEach(function (e) {
+      canvas.addEventListener(e, function (event) {
+        //first dot
+        if (intPoint[0] == mouseX && intPoint[1] == mouseY) {
+          context.arc(
+            mouseX,
+            mouseY,
+            parseInt($("#painting").attr("stroke")) / 2,
+            0,
+            2 * Math.PI,
+            false
+          );
+          context.fillStyle = $("#painting").attr("col");
+          context.fill();
+        }
+        isDrawing = false;
+        //custom zoomer
+        isCloning = true;
+        isDrawing = false;
+        if ($("#painting").length > 0) {
+          $("#canvas-board").append(
+            `<div id="canvas" uid="${new Date().getTime()}" gid="${groupID}" class="canvas"/>`
+          );
+          $("#canvas")
+            .unbind()
+            .bind("mousedown touchstart", function (e) {
+              getHighestDepthCanvas($(this));
+            });
+          getHighestDepthCanvas($("#canvas"));
+        }
+        //調整出血
+
+        canvasCord[0] = canvasCord[0] - threshold;
+        canvasCord[1] = canvasCord[1] - threshold;
+        canvasCord[2] = canvasCord[2] + threshold * 2;
+        canvasCord[3] = canvasCord[3] + threshold * 2;
+
+        //
+        $("#canvas").css("top", canvasCord[1] / pRatio + "px");
+        $("#canvas").css("left", canvasCord[0] / pRatio + "px");
+        $("#canvas").css(
+          "height",
+          Math.abs(canvasCord[1] - canvasCord[3]) + "px"
+        );
+        $("#canvas").css(
+          "width",
+          Math.abs(canvasCord[0] - canvasCord[2]) + "px"
+        );
+        var canvas2 = document.createElement("canvas");
+        canvas2.height = Math.abs(canvasCord[1] - canvasCord[3]);
+        canvas2.width = Math.abs(canvasCord[0] - canvasCord[2]);
+        var destCtx = canvas2.getContext("2d");
+        destCtx.drawImage(
+          $("#painting canvas").get(0),
+          -1 * canvasCord[0],
+          -1 * canvasCord[1]
+        );
+        $("#canvas").get(0).appendChild(canvas2);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //$("#painting").remove();
+
+        $("#canvas")
+          .attr("iX", canvasCord[0])
+          .attr("iY", canvasCord[1])
+          .addClass("disabled")
+          .attr("id", "")
+          .delay(1)
+          .queue(function () {
+            makeDraggable($(this));
+            if ($(".pen_tool .eraser").hasClass("active")) {
+              $(this).removeClass("disabled");
+            }
+            if (
+              $(".btn_paletton").hasClass("active") &&
+              $(".btn_brush").hasClass("active")
+            ) {
+              appendPainting(true);
+            }
+            $(this)
+              .dequeue()
+              .unbind()
+              .bind("mousedown", function (e) {
+                click.x = e.clientX;
+                click.y = e.clientY;
+                getHighestDepthCanvas($(this));
+              })
+              .bind("mouseup", function (e) {
+                if (
+                  Math.abs(click.x - e.clientX) <
+                    click.threshold * stageRatioReal &&
+                  Math.abs(click.y - e.clientY) <
+                    click.threshold * stageRatioReal
+                ) {
+                  groupSelect($(this));
+                }
+              });
+            //
+            isCloning = false;
+          });
+        paintVar = setTimeout(function () {
+          groupID = new Date().getTime();
+        }, paintPauseDuration);
+      });
+    });
+
+    // Handle Mouse Coordinates
+    function setMouseCoordinates(event) {
+      var newZoomRatio = stageRatioReal / stageRatioMain;
+
+      mouseX =
+        (event.clientX * pRatio) / newZoomRatio -
+        (boundings.left * pRatio) / newZoomRatio;
+      mouseY =
+        (event.clientY * pRatio) / newZoomRatio -
+        (boundings.top * pRatio) / newZoomRatio;
+      if (!mouseX) {
+        mouseX =
+          (event.touches[0].clientX * pRatio) / newZoomRatio -
+          (boundings.left * pRatio) / newZoomRatio;
+        mouseY =
+          (event.touches[0].clientY * pRatio) / newZoomRatio -
+          (boundings.top * pRatio) / newZoomRatio;
+      }
+      canvasCord[0] = Math.floor(Math.min(mouseX, canvasCord[0]));
+      canvasCord[1] = Math.floor(Math.min(mouseY, canvasCord[1]));
+      canvasCord[2] = Math.ceil(Math.max(mouseX, canvasCord[2]));
+      canvasCord[3] = Math.ceil(Math.max(mouseY, canvasCord[3]));
+    }
+    //init
+    setPen();
+  });
+</script>

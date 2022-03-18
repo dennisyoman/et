@@ -1,0 +1,29 @@
+.WLS1-1-8-1 .ans1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 250px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.WLS1-1-8-1 .ans1 img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.WLS1-1-8-1 .ans2 {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  height: 250px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.WLS1-1-8-1 .ans2 img {
+  width: 100%;
+  height: auto;
+  display: none;
+}

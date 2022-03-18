@@ -1,0 +1,91 @@
+<div class="counter_wrapper wow bounceIn">
+  <span class="display disabled" currT="0" addT="0">00：00</span>
+  <span mt="2" class="play">Start</span>
+  <span mt="2" class="reset">Reset</span>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //
+    $("#counter .play")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+
+          $(this).toggleClass("active");
+          if ($(this).hasClass("active")) {
+            $(this).text("Pause");
+            //counting
+            $(this).siblings(".display").attr("currT", new Date().getTime());
+            setTimeout(function () {
+              countingUp();
+            }, 100);
+          } else {
+            $(this).text("Start");
+          }
+        }
+      });
+    $("#counter .reset")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          e.stopPropagation();
+          if (!$(this).siblings(".play").hasClass("active")) {
+            rootSoundEffect($click);
+            $(".counter .display")
+              .text("00：00")
+              .attr("currT", 0)
+              .attr("addT", 0);
+          }
+        }
+      });
+    var countingUp = function () {
+      var addup =
+        new Date().getTime() -
+        parseInt($(".counter .display").attr("currT")) +
+        parseInt($(".counter .display").attr("addT"));
+      $(".counter .display").text(getHMS(addup));
+      if ($(".counter .play").hasClass("active")) {
+        setTimeout(function () {
+          countingUp();
+        }, 100);
+      } else {
+        //pause counting
+        $(".counter .display").attr("addT", addup);
+      }
+    };
+    //
+    $("#counter")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+        getHighestDepthWidget($(this));
+      })
+      .bind("mouseup", function (e) {
+        if (
+          Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+          Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal
+        ) {
+          //
+        }
+      });
+    getHighestDepthWidget($("#counter"));
+    makeDraggable($("#counter"));
+  });
+</script>

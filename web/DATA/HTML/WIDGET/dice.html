@@ -1,0 +1,105 @@
+<div class="dice_wrapper">
+  <div class="dice_body">
+    <div class="side one"></div>
+    <div class="side two"></div>
+    <div class="side three"></div>
+    <div class="side four"></div>
+    <div class="side five"></div>
+    <div class="side six"></div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var rnd, rndX, rndY;
+    var x, y, z;
+    var firstshow = true;
+
+    $("#dice")
+      .attr("id", "")
+      .unbind()
+      .bind("mousedown", function (e) {
+        click.x = e.clientX;
+        click.y = e.clientY;
+        getHighestDepthWidget($(this));
+      })
+      .bind("mouseup", function (e) {
+        if (
+          (Math.abs(click.x - e.clientX) < click.threshold * stageRatioReal &&
+            Math.abs(click.y - e.clientY) < click.threshold * stageRatioReal) ||
+          firstshow
+        ) {
+          firstshow = false;
+          //
+          var randomRotate = Math.floor(Math.random() * 360);
+          var uniq = new Date().getTime();
+          $("#widget").append(
+            `<span class="smokeEffect"><img src="./images/common/smoke.gif?uniq=${uniq}"/></span>`
+          );
+          $(".smokeEffect").css({
+            transform: "rotate(" + randomRotate + "deg)",
+            top: parseInt($(this).css("top")) + 25 + "px",
+            left: parseInt($(this).css("left")) + 25 + "px",
+          });
+          //
+          e.preventDefault();
+          $(this)
+            .addClass("rolling")
+            .delay(2500)
+            .queue(function () {
+              $("#widget .smokeEffect").remove();
+              $(this).removeClass("rolling");
+              $(this).dequeue();
+            });
+          rnd = Math.floor(Math.random() * 6 + 1);
+          rndX = Math.floor(Math.random() * 4 - 2);
+          rndY = Math.floor(Math.random() * 4 - 2);
+          rndA = Math.floor(Math.random() * 80 - 40);
+
+          switch (rnd) {
+            case 1:
+              x = 720 + rndX * 360;
+              y = 810 + rndY * 360;
+              z = 0;
+              break;
+            case 6:
+              x = 720 + rndX * 360;
+              y = 990 + rndY * 360;
+              z = 0;
+              break;
+            default:
+              x = 720 + (6 - rnd) * 90 + rndX * 360;
+              y = 900 + rndY * 360;
+              z = 180;
+              break;
+          }
+          //
+          rootSoundEffect($bouncing);
+          //
+          $(this)
+            .css("top", Math.floor(Math.random() * 270))
+            .css("left", Math.floor(Math.random() * 590))
+            .find(".dice_wrapper")
+            .css("transform", "rotate(" + rndA + "deg)")
+            .find(".dice_body")
+            .css(
+              "transform",
+              "translateZ(-100px) rotateY(" +
+                x +
+                "deg) rotateX(" +
+                y +
+                "deg) rotateZ(" +
+                z +
+                "deg)"
+            );
+        }
+      })
+      .delay(80)
+      .queue(function () {
+        $(this).dequeue();
+        makeDraggable($(this));
+        $(this).show();
+        $(this).mousedown().mouseup();
+      });
+  });
+</script>

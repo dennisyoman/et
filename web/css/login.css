@@ -1,0 +1,238 @@
+.login_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url("../images/login/et_index_bg.jpg") center center no-repeat;
+  image-rendering: -moz-crisp-edges;
+  /* Firefox */
+  image-rendering: -o-crisp-edges;
+  /* Opera */
+  image-rendering: -webkit-crisp-edges;
+  /* Webkit (non-standard naming) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE (non-standard property) */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background-size: cover;
+}
+
+.login_wrapper img {
+  image-rendering: -moz-crisp-edges;
+  /* Firefox */
+  image-rendering: -o-crisp-edges;
+  /* Opera */
+  image-rendering: -webkit-crisp-edges;
+  /* Webkit (non-standard naming) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE (non-standard property) */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.login_wrapper .login-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.login_wrapper .login-panel {
+  position: absolute;
+  top: 175px;
+  left: 200px;
+  z-index: 5;
+}
+
+.login_wrapper .login-panel img {
+  width: 213.5px;
+  height: auto;
+}
+
+.login_wrapper .giraffe {
+  position: absolute;
+  top: 18px;
+  left: 180px;
+  z-index: 3;
+}
+
+.login_wrapper .giraffe img {
+  width: 133.5px;
+  height: auto;
+}
+
+.login_wrapper .scissors {
+  position: absolute;
+  top: 50px;
+  left: 425px;
+  z-index: 1;
+}
+
+.login_wrapper .scissors img {
+  width: 100px;
+  height: auto;
+}
+
+.login_wrapper .science {
+  position: absolute;
+  top: 25px;
+  left: 320px;
+  z-index: 1;
+}
+
+.login_wrapper .science img {
+  width: 50px;
+  height: auto;
+}
+
+.login_wrapper .book {
+  position: absolute;
+  top: 180px;
+  left: 435px;
+  z-index: 1;
+}
+
+.login_wrapper .book img {
+  width: 80px;
+  height: auto;
+}
+
+.login_wrapper .soccer {
+  position: absolute;
+  top: 165px;
+  left: 115px;
+  z-index: 1;
+}
+
+.login_wrapper .soccer img {
+  width: 66px;
+  height: auto;
+}
+
+.login_wrapper .logo {
+  position: absolute;
+  top: 98px;
+  left: 305px;
+  z-index: 9;
+  pointer-events: none;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.login_wrapper .logo img {
+  width: 125px;
+  height: auto;
+}
+
+.login_wrapper .input {
+  position: absolute;
+  top: 207px;
+  left: 225px;
+  z-index: 15 !important;
+  font-size: 12px;
+  line-height: 25px;
+  color: #000;
+  width: 200px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.login_wrapper .input .showpw {
+  position: absolute;
+  top: 28px;
+  right: 26px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/showpw.png") no-repeat center center;
+  background-size: 15px auto;
+  z-index: 3;
+  cursor: pointer;
+  opacity: 0.4;
+  -moz-opacity: 0.4;
+  -khtml-opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+.login_wrapper .input .showpw.active {
+  opacity: 1;
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.login_wrapper input[name="username"],
+.login_wrapper input[name="password"] {
+  font-size: 12px;
+  color: #603813;
+  width: 85px;
+  z-index: 10;
+  text-align: left;
+  border-bottom: 1px solid #000;
+  display: inline-block;
+  margin-left: 5px;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.login_wrapper #ok {
+  position: absolute;
+  top: 263px;
+  left: 353px;
+  cursor: pointer;
+  z-index: 20 !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.login_wrapper #ok img {
+  width: 60px;
+  height: auto;
+  image-rendering: -moz-crisp-edges;
+  /* Firefox */
+  image-rendering: -o-crisp-edges;
+  /* Opera */
+  image-rendering: -webkit-crisp-edges;
+  /* Webkit (non-standard naming) */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE (non-standard property) */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.login_wrapper .error {
+  position: absolute;
+  top: 290px;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  color: #333;
+  z-index: 1;
+  text-align: center;
+}
+
+.login_wrapper .copyright {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  color: #333;
+  font-weight: bold;
+  z-index: 1;
+  text-align: center;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: scale(0.7) translate3d(0, 0, 0);
+  transform: scale(0.7) translate3d(0, 0, 0);
+}

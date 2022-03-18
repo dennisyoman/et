@@ -1,0 +1,236 @@
+<div id="flipcard_wrapper" class="flipcard_wrapper wow slideInDown">
+  <span class="close" />
+  <span class="bar disabled" />
+  <div class="func wow bounceInRight">
+    <span class="wb_read" />
+    <span class="wb_write" />
+  </div>
+  <div class="board">
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+  <div class="assetsPreload">
+    <img src="./images/common/wb_write.png" />
+    <img src="./images/common/wb_write_speaker.png" />
+    <img src="./images/common/wb_read.png" />
+    <img src="./images/common/wb_read_speaker.png" />
+    <img src="./images/common/coin.jpg" />
+    <img src="./images/common/flipcard.png" />
+    <img src="./images/common/flipcardbar.png" />
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //getFCXML();
+    $("#flipcard").find(".bar").hide();
+    $("#flipcard_wrapper")
+      .unbind()
+      .bind("compLoaded", function () {
+        var dest;
+        //lowlag audios
+        var tempSound = $("#flipcard_wrapper").find("audio");
+        if (tempSound.length > 0) {
+          tempSound.each(function () {
+            if ($SFXNameAr.indexOf($(this).attr("src")) == -1) {
+              $SFXNameAr.push($(this).attr("src"));
+              $SFXAr.push(new Audio($(this).attr("src")));
+            }
+          });
+        }
+        //btns
+        $("#flipcard")
+          .find(".close")
+          .unbind()
+          .bind("click", function (e) {
+            $("#flipcard").remove();
+          });
+        $("#flipcard")
+          .find(".wb_read")
+          .unbind()
+          .bind("click", function (e) {
+            flipmode = 1;
+            $("#flipcard").find(".bar").hide();
+            showAnswer = true;
+            //
+            if ($(this).hasClass("active")) {
+              //判斷是否按在喇叭
+              var pl = $("#root").offset().left / stageRatioReal;
+              if (e.pageX / stageRatioReal - pl < 600) {
+                //發音
+                rootSoundEffectName("./DATA/GP/AUDIO/" + letterArr[dest]);
+              } else {
+                dest = Math.floor(Math.random() * letterArr.length);
+                $("#flipcard").find(".bar").click();
+              }
+            } else {
+              dest = Math.floor(Math.random() * letterArr.length);
+              $("#flipcard").find(".bar").click();
+            }
+            $(this)
+              .addClass("active sub")
+              .siblings(".active")
+              .removeClass("active sub");
+          });
+        $("#flipcard")
+          .find(".wb_write")
+          .unbind()
+          .bind("click", function (e) {
+            flipmode = 2;
+            $("#flipcard").find(".bar").show();
+            //
+            if ($(this).hasClass("active")) {
+              //判斷是否按在喇叭
+              var pl = $("#root").offset().left / stageRatio;
+              if (e.pageX / stageRatio < 600 + pl) {
+                //發音
+                rootSoundEffectName("./DATA/GP/AUDIO/" + letterArr[dest]);
+              } else {
+                showAnswer = false;
+                dest = Math.floor(Math.random() * letterArr.length);
+                $("#flipcard").find(".bar").click();
+              }
+            } else {
+              showAnswer = false;
+              dest = Math.floor(Math.random() * letterArr.length);
+              $("#flipcard").find(".bar").click();
+            }
+            //
+            $(this)
+              .addClass("active sub")
+              .siblings(".active")
+              .removeClass("active sub");
+          });
+        $("#flipcard")
+          .find(".bar")
+          .unbind()
+          .bind("click", function (e) {
+            rootSoundEffect($good);
+            var hh = 100;
+            var offsetY = -42;
+            var diff = (dest + 1) * hh + (letterArr.length + 2) * hh * 2;
+            if (flipmode == 2 && showAnswer == false) {
+              diff =
+                (letterArr.length + 1) * hh + (letterArr.length + 2) * hh * 2;
+            }
+            $(this).addClass("disabled");
+
+            $("#flipcard_wrapper .board")
+              .find("> div")
+              .addClass("autoMoving")
+              .css("top", diff * -1 + offsetY)
+              .delay(2000)
+              .queue(function () {
+                if (flipmode == 1) {
+                  $(this)
+                    .removeClass("autoMoving")
+                    .css("top", (dest + 1) * hh * -1 + offsetY)
+                    .dequeue();
+                } else {
+                  var tempDes = (dest + 1) * hh * -1 + offsetY;
+                  if (!showAnswer) {
+                    tempDes = (letterArr.length + 1) * hh * -1 + offsetY;
+                    rootSoundEffectName("./DATA/GP/AUDIO/" + letterArr[dest]);
+                  }
+
+                  $(this)
+                    .removeClass("autoMoving")
+                    .css("top", tempDes)
+                    .dequeue();
+                }
+              });
+
+            $(this)
+              .delay(2010)
+              .queue(function () {
+                if (!showAnswer) {
+                  showAnswer = true;
+                  $("#flipcard").find(".bar").removeClass("disabled");
+                }
+                $(this).dequeue();
+              });
+          });
+
+        //init
+
+        $(this)
+          .addClass("loaded")
+          .delay(500)
+          .queue(function () {
+            $(this).dequeue().unbind();
+          });
+        deactiveLoading();
+      });
+
+    //check loading
+    var showAnswer = true;
+    var flipmode = 1;
+    var letterArr = [];
+    var createList = function () {
+      letterArr = [];
+      //createContent
+      $("#flipcard_wrapper .board")
+        .find("> div")
+        .append(
+          '<span><img src="./images/common/coin.jpg" /></span><span>?</span>'
+        );
+
+      $(fcXML)
+        .find("Letter")
+        .each(function (i) {
+          letterArr.push($(this).attr("Sound"));
+          $("#flipcard_wrapper .assetsPreload").append(
+            `<audio preload="auto" src="./DATA/GP/AUDIO/${$(this).attr(
+              "Sound"
+            )}" />`
+          );
+          //
+          var classname;
+          for (var k = 0; k < 4; k++) {
+            switch ($(this).attr("L" + (k + 1))) {
+              case "a":
+                classname = "aeiou";
+                break;
+              case "e":
+                classname = "aeiou";
+                break;
+              case "i":
+                classname = "aeiou";
+                break;
+              case "o":
+                classname = "aeiou";
+                break;
+              case "u":
+                classname = "aeiou";
+                break;
+              case "w":
+                classname = "w";
+                break;
+              case "y":
+                classname = "y";
+                break;
+              default:
+                classname = "";
+                break;
+            }
+            $("#flipcard_wrapper .board")
+              .find("> div")
+              .eq(k)
+              .append(
+                `<span class="${classname}" sfx="${$(this).attr("Sound")}">${$(
+                  this
+                ).attr("L" + (k + 1))}</span>`
+              );
+          }
+        });
+    };
+    //checkCompLoading("#flipcard_wrapper");
+    createList();
+    createList();
+    createList();
+    createList();
+    checkCompLoading("#flipcard_wrapper");
+  });
+</script>
