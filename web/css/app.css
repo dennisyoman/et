@@ -2739,6 +2739,7 @@
 .WS_wb_wrapper .contents .card p.multi {
   line-height: 12px;
   white-space: normal;
+  padding: 0 5px;
 }
 
 .WS_apl_wrapper {
@@ -8155,6 +8156,7 @@
 
 .GLD_wb_wrapper .contents .card p.multi {
   line-height: 12px;
+  padding: 0 5px;
 }
 
 .GLD_sightword_wrapper {
