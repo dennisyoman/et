@@ -2732,7 +2732,7 @@
   line-height: 24px;
   color: #603813;
   font-family: Gfont-Bold;
-  padding: 0 20px;
+  padding: 0 5px;
   white-space: nowrap;
 }
 
@@ -2740,6 +2740,7 @@
   line-height: 12px;
   white-space: normal;
   padding: 0 5px;
+  word-break: break-word;
 }
 
 .WS_apl_wrapper {
@@ -7357,6 +7358,7 @@
   -webkit-transform: translateX(-50%) scale(0.8);
           transform: translateX(-50%) scale(0.8);
   line-height: 1;
+  word-break: break-word;
 }
 
 .WRYG_tis_wrapper {
@@ -8151,12 +8153,13 @@
   line-height: 24px;
   color: #603813;
   font-family: Gfont-Bold;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 
 .GLD_wb_wrapper .contents .card p.multi {
   line-height: 12px;
   padding: 0 5px;
+  word-break: break-word;
 }
 
 .GLD_sightword_wrapper {

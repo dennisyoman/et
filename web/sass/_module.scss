@@ -1648,13 +1648,14 @@
         line-height: 24px;
         color: $main;
         font-family: Gfont-Bold;
-        padding: 0 20px;
+        padding: 0 5px;
         white-space: nowrap;
 
         &.multi {
           line-height: 12px;
           white-space: normal;
           padding: 0 5px;
+          word-break: break-word;
         }
       }
     }
@@ -5530,6 +5531,7 @@
           position: relative;
           transform: translateX(-50%) scale(0.8);
           line-height: 1;
+          word-break: break-word;
         }
       }
     }
@@ -6194,11 +6196,12 @@
         line-height: 24px;
         color: $main;
         font-family: Gfont-Bold;
-        padding: 0 20px;
+        padding: 0 5px;
 
         &.multi {
           line-height: 12px;
           padding: 0 5px;
+          word-break: break-word;
         }
       }
     }
