@@ -93,10 +93,11 @@
             parseInt($("#painting").attr("stroke")) / 2,
             0,
             2 * Math.PI,
-            false
+            false,
           );
           context.fillStyle = $("#painting").attr("col");
           context.fill();
+          context.closePath();
         }
         isDrawing = false;
         //custom zoomer
@@ -104,7 +105,7 @@
         isDrawing = false;
         if ($("#painting").length > 0) {
           $("#canvas-board").append(
-            `<div id="canvas" uid="${new Date().getTime()}" gid="${groupID}" class="canvas"/>`
+            `<div id="canvas" uid="${new Date().getTime()}" gid="${groupID}" class="canvas"/>`,
           );
           $("#canvas")
             .unbind()
@@ -125,11 +126,11 @@
         $("#canvas").css("left", canvasCord[0] / pRatio + "px");
         $("#canvas").css(
           "height",
-          Math.abs(canvasCord[1] - canvasCord[3]) + "px"
+          Math.abs(canvasCord[1] - canvasCord[3]) + "px",
         );
         $("#canvas").css(
           "width",
-          Math.abs(canvasCord[0] - canvasCord[2]) + "px"
+          Math.abs(canvasCord[0] - canvasCord[2]) + "px",
         );
         var canvas2 = document.createElement("canvas");
         canvas2.height = Math.abs(canvasCord[1] - canvasCord[3]);
@@ -138,7 +139,7 @@
         destCtx.drawImage(
           $("#painting canvas").get(0),
           -1 * canvasCord[0],
-          -1 * canvasCord[1]
+          -1 * canvasCord[1],
         );
         $("#canvas").get(0).appendChild(canvas2);
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -180,6 +181,7 @@
                 }
               });
             //
+            canvasCord = [2560, 1280, 0, 0];
             isCloning = false;
           });
         paintVar = setTimeout(function () {

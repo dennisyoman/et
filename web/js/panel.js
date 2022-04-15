@@ -233,7 +233,7 @@ var appendBoardSmall = function (e) {
     "",
     "",
     "",
-    true
+    true,
   );
 };
 var appendBoardLarge = function (e) {
@@ -247,7 +247,7 @@ var appendBoardLarge = function (e) {
     "",
     "",
     "",
-    true
+    true,
   );
 };
 
@@ -266,7 +266,7 @@ var appendPiece = function (e) {
   //
   if ($("#piece").length < 1) {
     $("#widget").append(
-      `<div id="piece" class="wow bounceIn piece ${pieceClass}"/>`
+      `<div id="piece" class="wow bounceIn piece ${pieceClass}"/>`,
     );
     rootSoundEffect($pop);
     $("#piece")
@@ -300,7 +300,7 @@ var appendScorer = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   } else {
     console.log("點太快了`,急甚麼?");
@@ -320,7 +320,7 @@ var appendRoulette = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   }
 };
@@ -336,7 +336,7 @@ var appendFisher = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   }
 };
@@ -352,7 +352,7 @@ var appendFinger = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   }
 };
@@ -368,7 +368,7 @@ var appendCountdown = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   }
 };
@@ -384,7 +384,7 @@ var appendCounter = function (e) {
       "",
       "",
       "",
-      true
+      true,
     );
   }
 };
@@ -404,7 +404,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         } else if ($("#widget").children(".dice.green").length == 0) {
           $("#widget").append(`<div id="dice" class="dice green"/>`);
@@ -415,7 +415,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         }
         break;
@@ -429,7 +429,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         } else if ($("#widget").children(".dice.yellow").length == 0) {
           $("#widget").append(`<div id="dice" class="dice yellow"/>`);
@@ -440,7 +440,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         }
         break;
@@ -454,7 +454,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         } else if ($("#widget").children(".dice.pink").length == 0) {
           $("#widget").append(`<div id="dice" class="dice pink"/>`);
@@ -465,7 +465,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         }
       case 4:
@@ -478,7 +478,7 @@ var appendDice = function (e, type) {
             "",
             "",
             "",
-            true
+            true,
           );
         }
         break;
@@ -585,7 +585,7 @@ var handleZoomDrag = function (ev) {
         scrollX: 0,
         scrollY: 0,
         scale: html2canvasScale,
-      }
+      },
     ).then(function (canvas) {
       var ctx = canvas.getContext("2d");
 
@@ -641,6 +641,7 @@ var makeDrawable = function (tar) {
   ctx.lineJoin = "round";
   var startX, startY;
   var _eraserWidth = 100;
+  var intPoint = [0, 0];
 
   // Mouse Down Event
   ["mousedown", "touchstart"].forEach(function (e) {
@@ -660,6 +661,7 @@ var makeDrawable = function (tar) {
           ((event.touches[0].clientY - tar.offset().top) * html2canvasScale) /
           th;
       }
+      intPoint = [startX, startY];
     });
   });
 
@@ -678,7 +680,7 @@ var makeDrawable = function (tar) {
               ((event.clientY - tar.offset().top) * html2canvasScale) / th -
                 _eraserWidth / 2,
               _eraserWidth,
-              _eraserWidth
+              _eraserWidth,
             );
           } else {
             ctx.clearRect(
@@ -691,7 +693,7 @@ var makeDrawable = function (tar) {
                 th -
                 _eraserWidth / 2,
               _eraserWidth,
-              _eraserWidth
+              _eraserWidth,
             );
           }
         } else {
@@ -700,7 +702,7 @@ var makeDrawable = function (tar) {
               startX,
               startY,
               ((event.clientX - tar.offset().left) * html2canvasScale) / tw,
-              ((event.clientY - tar.offset().top) * html2canvasScale) / th
+              ((event.clientY - tar.offset().top) * html2canvasScale) / th,
             );
           } else {
             drawLine(
@@ -711,7 +713,7 @@ var makeDrawable = function (tar) {
                 tw,
               ((event.touches[0].clientY - tar.offset().top) *
                 html2canvasScale) /
-                th
+                th,
             );
           }
         }
@@ -719,7 +721,19 @@ var makeDrawable = function (tar) {
     });
   });
 
-  ["mouseup", "mouseleave", "touchend"].forEach(function (e) {
+  ["mouseup", "touchend"].forEach(function (e) {
+    can.addEventListener(e, function (event) {
+      //first dot
+      if (intPoint[0] == startX && intPoint[1] == startY) {
+        ctx.arc(startX, startY, ctx.lineWidth / 2, 0, 2 * Math.PI, false);
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.fill();
+        ctx.closePath();
+      }
+      isDraw = false;
+    });
+  });
+  ["mouseleave"].forEach(function (e) {
     can.addEventListener(e, function (event) {
       isDraw = false;
     });
@@ -831,7 +845,7 @@ var appendPainting = function (active) {
         "",
         "",
         "",
-        true
+        true,
       );
     }
   } else {
@@ -852,7 +866,7 @@ var appendMasker = function (active) {
         "",
         "",
         "",
-        true
+        true,
       );
     }
   } else {

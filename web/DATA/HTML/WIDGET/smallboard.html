@@ -106,6 +106,7 @@
     var newZoomRatio = stageRatioReal / stageRatioMain;
     var ol = 8;
     var ot = 7;
+    var intPoint = [0, 0];
 
     // Mouse Down Event
     ["mousedown", "touchstart"].forEach(function (e) {
@@ -129,6 +130,7 @@
               newZoomRatio -
             ot;
         }
+        intPoint = [startX, startY];
       });
     });
 
@@ -143,7 +145,7 @@
               (event.clientX - $(".smallboard").offset().left) / newZoomRatio -
                 ol,
               (event.clientY - $(".smallboard").offset().top) / newZoomRatio -
-                ot
+                ot,
             );
           } else {
             drawLineBoard(
@@ -154,14 +156,26 @@
                 ol,
               (event.touches[0].clientY - $(".smallboard").offset().top) /
                 newZoomRatio -
-                ot
+                ot,
             );
           }
         }
       });
     });
 
-    ["mouseup", "mouseleave", "touchend"].forEach(function (e) {
+    ["mouseup", "touchend"].forEach(function (e) {
+      can.addEventListener(e, function (event) {
+        //first dot
+        if (intPoint[0] == startX && intPoint[1] == startY) {
+          ctx.arc(startX, startY, ctx.lineWidth / 2, 0, 2 * Math.PI, false);
+          ctx.fillStyle = ctx.strokeStyle;
+          ctx.fill();
+          ctx.closePath();
+        }
+        isDraw = false;
+      });
+    });
+    ["mouseleave"].forEach(function (e) {
       can.addEventListener(e, function (event) {
         isDraw = false;
       });
