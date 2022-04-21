@@ -52,7 +52,7 @@ $(document).ready(function () {
           style_arr,
           "./css/",
           script_arr,
-          "./js/"
+          "./js/",
         );
 
         console.log("load and goto Unit selection");
@@ -183,6 +183,7 @@ let keepString = [
   " ",
   "(",
   ")",
+  "-",
 ];
 let pieceArr = ["red", "green", "blue", "orange", "purple"];
 var currentAudio;
@@ -260,7 +261,7 @@ let toLogin = function () {
     style_arr,
     "./css/",
     script_arr,
-    "./js/"
+    "./js/",
   );
 };
 
@@ -323,7 +324,7 @@ let loadContainer = function (id, section) {
     style_arr,
     "./DATA/",
     script_arr,
-    "./DATA/"
+    "./DATA/",
   );
 
   resetAudio();
@@ -349,7 +350,7 @@ let loadPanel = function () {
     "./css/",
     script_arr,
     "./js/",
-    true
+    true,
   );
 };
 let loadGlock = function () {
@@ -366,7 +367,7 @@ let loadGlock = function () {
       "./css/",
       script_arr,
       "./js/",
-      true
+      true,
     );
   }
 };
@@ -384,7 +385,7 @@ let loadPlayer = function () {
     "./css/",
     script_arr,
     "./js/",
-    true
+    true,
   );
 };
 
@@ -398,7 +399,7 @@ let loadMainSlider = function () {
     style_arr,
     "./css/",
     script_arr,
-    "./js/"
+    "./js/",
   );
 };
 
@@ -1030,7 +1031,7 @@ $.getComponent = function (
   css_path,
   js_arr,
   js_path,
-  noloading
+  noloading,
 ) {
   let delayTime = 50;
   let chamount = $(comp_holder).length;
@@ -1104,7 +1105,7 @@ let autofitScreen = function () {
       stageRatioRoot +
       "," +
       stageRatioRoot +
-      ")"
+      ")",
   );
   $("#root").css(
     "-webkit-transform",
@@ -1112,7 +1113,7 @@ let autofitScreen = function () {
       stageRatioRoot +
       "," +
       stageRatioRoot +
-      ")"
+      ")",
   );
   $("#root").css(
     "transform",
@@ -1120,7 +1121,7 @@ let autofitScreen = function () {
       stageRatioRoot +
       "," +
       stageRatioRoot +
-      ")"
+      ")",
   );
 };
 
@@ -1365,7 +1366,7 @@ let erasorPainting = function (ev) {
         (newPos[0] * pRatio) / newZoomRatio - _eraserWidth / 2,
         (newPos[1] * pRatio) / newZoomRatio - _eraserWidth / 2,
         _eraserWidth,
-        _eraserWidth
+        _eraserWidth,
       );
     });
   }
@@ -1493,7 +1494,7 @@ let apartCanvas = function () {
 let isCanvasBlank = function (canvas) {
   var context = canvas.getContext("2d");
   var pixelBuffer = new Uint32Array(
-    context.getImageData(0, 0, canvas.width, canvas.height).data.buffer
+    context.getImageData(0, 0, canvas.width, canvas.height).data.buffer,
   );
 
   return !pixelBuffer.some((color) => color !== 0);
@@ -1570,15 +1571,15 @@ let adjustSizer = function () {
       //
       $("#main").css(
         "-ms-transform",
-        "scale(" + stageRatioMain + "," + stageRatioMain + ")"
+        "scale(" + stageRatioMain + "," + stageRatioMain + ")",
       );
       $("#main").css(
         "-webkit-transform",
-        "scale(" + stageRatioMain + "," + stageRatioMain + ")"
+        "scale(" + stageRatioMain + "," + stageRatioMain + ")",
       );
       $("#main").css(
         "transform",
-        "scale(" + stageRatioMain + "," + stageRatioMain + ")"
+        "scale(" + stageRatioMain + "," + stageRatioMain + ")",
       );
 
       var rangeX = Math.abs((640 * (stageRatioMain - 1)) / 2);
