@@ -84,7 +84,7 @@ var createBooks = function () {
                                 <img onclick="openBook('${bbid}')" src="./DATA/${ssid}/${thumb}"/>
                             </div>`;
             if (sid == "GLD" && !GLDmode) {
-              if (bbid <= 4) {
+              if (bbid <= 8) {
                 slideArray.push(tempElem);
               }
             } else {
