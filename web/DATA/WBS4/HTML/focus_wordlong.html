@@ -26,7 +26,7 @@
   $(document).ready(function () {
     //create contents
     let targetNode = $(contentXML).find(
-      "section:eq(" + (parseInt(uid) - 1) + ")",
+      "section:eq(" + (parseInt(uid) - 1) + ")"
     );
     $(targetNode)
       .find("item")
@@ -48,7 +48,7 @@
         ) {
           itemHTML += `<span><img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}" /></span>`;
           $("#module_wrapper .assetsPreload").append(
-            `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`,
+            `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${comboArray[0]}"/>`
           );
         }
 
@@ -88,7 +88,7 @@
           for (var k = 0; k < pptArray.length; k++) {
             itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`;
             $("#module_wrapper .assetsPreload").append(
-              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`,
+              `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${pptArray[k]}"/>`
             );
           }
           itemHTML += `</div><div class="pagination"></div></div>`;
@@ -107,7 +107,7 @@
             if (!isitEmpty(source[3])) {
               itemHTML += `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${source[3]}"/>`;
               $("#module_wrapper .assetsPreload").append(
-                `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${source[3]}"/>`,
+                `<img src="./DATA/${sid}/BOOK${bid}/IMAGES/${source[3]}"/>`
               );
             }
             itemHTML += `<p>${source[1]}</p>
@@ -258,7 +258,7 @@
             if ($(this).hasClass("active")) {
               rootSoundEffectName(
                 $(".contents > div.selected").find("audio").attr("src"),
-                true,
+                true
               );
             } else {
               closePlayer();
@@ -301,7 +301,7 @@
                 .find(".screen")
                 .removeClass("active");
               $(".contents > div.selected").removeClass(
-                "scened mastered yourturned",
+                "scened mastered yourturned"
               );
               resetElem($(".contents > div.selected"));
               if ($(".contents > div.selected").find("audio").length > 0) {
@@ -398,7 +398,7 @@
               $(".contents > div.selected .qa li.selected").addClass("showAns");
             } else {
               $(".contents > div.selected .qa li.selected").removeClass(
-                "showAns",
+                "showAns"
               );
             }
           });
