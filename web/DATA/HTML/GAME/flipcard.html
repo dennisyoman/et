@@ -83,8 +83,8 @@
             //
             if ($(this).hasClass("active")) {
               //判斷是否按在喇叭
-              var pl = $("#root").offset().left / stageRatio;
-              if (e.pageX / stageRatio < 600 + pl) {
+              var pl = $("#root").offset().left / stageRatioReal;
+              if (e.pageX / stageRatioReal - pl < 600) {
                 //發音
                 rootSoundEffectName("./DATA/GP/AUDIO/" + letterArr[dest]);
               } else {

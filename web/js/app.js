@@ -1774,6 +1774,16 @@ function rootSoundEffectName($name, $showplayer, st, et) {
 function rootSoundEffect($tar) {
   for (let k = 0; k < $SFXAr.length; k++) {
     if ($tar == $SFXAr[k]) {
+      if (isNaN($tar.duration)) {
+        console.log("Error:no internet or no audio file loaded.");
+        console.log("Process:reload audio");
+        var tempAudio = new Audio($SFXNameAr[k]);
+        $SFXAr[k] = tempAudio;
+        lowLag.load([tempAudio.src], $SFXNameAr[k]);
+        $tar = tempAudio;
+      } else {
+        console.log("audio duration:" + $tar.duration);
+      }
       if (isIE()) {
         $tar.pause();
         $tar.currentTime = 0;
