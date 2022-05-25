@@ -1687,9 +1687,11 @@ for (let k = 0; k < $SFXAr.length; k++) {
   $SFXAr[k].preload = "auto";
 }
 function lowlagSFX() {
+  console.log("lowlagSFX start");
   for (let k = sfxLowLagged; k < $SFXAr.length; k++) {
     lowLag.load([$SFXAr[k].src], $SFXNameAr[k]);
   }
+  console.log("lowlagSFX end");
 }
 //需用開始紐觸發
 function activeSFX() {
@@ -1710,10 +1712,12 @@ function activeSFX() {
 function rootSoundEffectName($name, $showplayer, st, et) {
   resetAudio();
   //
+  var aID = -1;
   var gotAudio = false;
   for (let k = 0; k < $SFXNameAr.length; k++) {
     if ($name == $SFXNameAr[k]) {
       currentAudio = $SFXAr[k];
+      aID = k;
       gotAudio = true;
     }
   }
@@ -1725,6 +1729,18 @@ function rootSoundEffectName($name, $showplayer, st, et) {
   currentAudio.currentTime = 0;
   if (st) {
     currentAudio.currentTime = st;
+  }
+  console.log("play:" + aID);
+
+  if (isNaN(currentAudio.duration)) {
+    console.log("Error:no internet or no audio file loaded.");
+    console.log("Process:reload audio");
+    var tempAudio = new Audio($SFXNameAr[aID]);
+    $SFXAr[aID] = tempAudio;
+    lowLag.load([tempAudio.src], $SFXNameAr[aID]);
+    currentAudio = tempAudio;
+  } else {
+    console.log("audio duration:" + currentAudio.duration);
   }
   currentAudio.play();
   console.log("ie");
