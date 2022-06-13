@@ -1318,7 +1318,7 @@ let makeDraggable = function (tar, stay, resizeTar) {
           posX < 0 - ($(firstElem).width() / stageRatio) * 0.7 ||
           posX > 640 - ($(firstElem).width() / stageRatio) * 0.3 ||
           posY < 0 - ($(firstElem).height() / stageRatio) * 0.6 ||
-          posY > 320 - ($(firstElem).height() / stageRatio) * 0.4
+          posY > 280 - ($(firstElem).height() / stageRatio) * 0.4
         ) {
           if (stay || !$(firstElem).hasClass("dragger")) {
           } else {
