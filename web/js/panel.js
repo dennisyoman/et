@@ -724,7 +724,11 @@ var makeDrawable = function (tar) {
   ["mouseup", "touchend"].forEach(function (e) {
     can.addEventListener(e, function (event) {
       //first dot
-      if (intPoint[0] == startX && intPoint[1] == startY) {
+      if (
+        intPoint[0] == startX &&
+        intPoint[1] == startY &&
+        !tar.find(".erase").hasClass("active")
+      ) {
         ctx.arc(startX, startY, ctx.lineWidth / 2, 0, 2 * Math.PI, false);
         ctx.fillStyle = ctx.strokeStyle;
         ctx.fill();
