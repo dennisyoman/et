@@ -354,6 +354,8 @@ var appendFinger = function (e) {
       "",
       true
     );
+  } else {
+    $("#widget").children(".finger").attr("style", "");
   }
 };
 var appendCountdown = function (e) {
