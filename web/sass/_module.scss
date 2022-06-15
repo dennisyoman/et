@@ -335,8 +335,7 @@
         margin-bottom: -5px;
         position: relative;
         z-index: 2;
-        background: url("../images/common/detective.png") no-repeat center
-          center;
+        background: url("../images/common/detective.png") no-repeat center center;
         background-size: 100% 100%;
         @include opacity(0);
         @include transition(opacity, 0.3s);
@@ -996,8 +995,7 @@
             height: 20px;
             cursor: pointer;
             pointer-events: auto;
-            background: url("../images/common/btn_prev3.png") no-repeat center
-              center;
+            background: url("../images/common/btn_prev3.png") no-repeat center center;
             background-size: 15px 15px;
             margin: 0 5px;
           }
@@ -1415,8 +1413,7 @@
         z-index: 10;
         width: 85px;
         height: 85px;
-        background: url("../images/common/icon_right.png") no-repeat center
-          center;
+        background: url("../images/common/icon_right.png") no-repeat center center;
         background-size: 100% 100%;
       }
       .wb_stupid {
@@ -1428,8 +1425,7 @@
         z-index: 10;
         width: 23px;
         height: 105px;
-        background: url("../images/common/icon_stupid.png") no-repeat center
-          center;
+        background: url("../images/common/icon_stupid.png") no-repeat center center;
         background-size: 100% 100%;
       }
 
@@ -1542,7 +1538,7 @@
 
       &.voced {
         p {
-          letter-spacing: 0.25em;
+          letter-spacing: 0.25em !important;
         }
       }
 
@@ -1697,11 +1693,7 @@
       transform-origin: center center;
       z-index: 1;
       @include transition(all, 1s);
-      background: linear-gradient(
-        135deg,
-        rgba(243, 200, 51, 1) 50%,
-        rgba(241, 187, 1, 1) 50%
-      );
+      background: linear-gradient(135deg, rgba(243, 200, 51, 1) 50%, rgba(241, 187, 1, 1) 50%);
 
       &.alp-A {
         .uc {
@@ -2039,8 +2031,7 @@
         left: 0;
         width: 36px;
         height: 12px;
-        background: url("../images/common/ALP-button.png") no-repeat center
-          center;
+        background: url("../images/common/ALP-button.png") no-repeat center center;
         background-size: 100% 100%;
         z-index: 1;
 
@@ -2829,11 +2820,7 @@
       transform-origin: center center;
       z-index: 1;
       @include transition(all, 1s);
-      background: linear-gradient(
-        135deg,
-        rgba(243, 200, 51, 1) 50%,
-        rgba(241, 187, 1, 1) 50%
-      );
+      background: linear-gradient(135deg, rgba(243, 200, 51, 1) 50%, rgba(241, 187, 1, 1) 50%);
 
       &.alp-A {
         .uc {
@@ -3172,8 +3159,7 @@
         left: 0;
         width: 36px;
         height: 12px;
-        background: url("../images/common/ALP-button.png") no-repeat center
-          center;
+        background: url("../images/common/ALP-button.png") no-repeat center center;
         background-size: 100% 100%;
         z-index: 1;
 
@@ -3553,8 +3539,7 @@
             width: 22px;
             height: 30px;
             margin-right: 0px;
-            background: url("../images/common/wb_star.png") no-repeat center
-              left;
+            background: url("../images/common/wb_star.png") no-repeat center left;
             background-size: 44px 24px;
             vertical-align: top;
             @include scale(0.7);
@@ -3950,8 +3935,7 @@
             left: 0px;
             width: 90px;
             height: 90px;
-            background: url("../images/common/cm_bg2.png") no-repeat center
-              center;
+            background: url("../images/common/cm_bg2.png") no-repeat center center;
             background-size: 100% 100%;
             animation-name: selfRotate;
             animation-duration: 6s;
@@ -4051,8 +4035,7 @@
                     width: 100%;
                     height: 100%;
                     background: linear-gradient(90deg, #ff6600 5%, #ffe384 5%),
-                      linear-gradient(-90deg, #ff6600 5%, #ffe384 5%),
-                      linear-gradient(0deg, #ff6600 5%, #ffe384 5%),
+                      linear-gradient(-90deg, #ff6600 5%, #ffe384 5%), linear-gradient(0deg, #ff6600 5%, #ffe384 5%),
                       linear-gradient(180deg, #ff6600 5%, #ffe384 5%);
                     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
                     background-size: 400% 2px, 400% 2px, 2px 400%, 2px 400%;
@@ -4068,8 +4051,7 @@
                       background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
                     }
                     100% {
-                      background-position: 400% 0px, -500% 100%, 0px -400%,
-                        100% 700%;
+                      background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
                     }
                   }
 
@@ -4408,8 +4390,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: url("../images/common/cm2_bg1.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg1.png") no-repeat center center;
           background-size: 98% 98%;
           pointer-events: none;
           display: inline-block;
@@ -4432,8 +4413,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: url("../images/common/cm2_bg2.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg2.png") no-repeat center center;
           background-size: 98% 98%;
           pointer-events: none;
           display: inline-block;
@@ -4456,8 +4436,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: url("../images/common/cm2_bg3.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg3.png") no-repeat center center;
           background-size: 98% 98%;
           pointer-events: none;
           display: inline-block;
@@ -4480,8 +4459,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: url("../images/common/cm2_bg4.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg4.png") no-repeat center center;
           background-size: 98% 98%;
           pointer-events: none;
           display: inline-block;
@@ -4504,8 +4482,7 @@
           left: 1px;
           width: calc(100% - 2px);
           height: calc(100% - 2px);
-          background: url("../images/common/cm2_bg5.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg5.png") no-repeat center center;
           background-size: 140% 140%;
           pointer-events: none;
           display: inline-block;
@@ -4559,8 +4536,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: url("../images/common/cm2_bg6.png") no-repeat center
-            center;
+          background: url("../images/common/cm2_bg6.png") no-repeat center center;
           background-size: 100% 100%;
           pointer-events: none;
           display: inline-block;
@@ -4574,10 +4550,8 @@
           width: 100%;
           height: 100%;
           z-index: 2;
-          background: linear-gradient(90deg, #f8b62d 5%, #f5daad 5%),
-            linear-gradient(-90deg, #f8b62d 5%, #f5daad 5%),
-            linear-gradient(0deg, #f8b62d 5%, #f5daad 5%),
-            linear-gradient(180deg, #f8b62d 5%, #f5daad 5%);
+          background: linear-gradient(90deg, #f8b62d 5%, #f5daad 5%), linear-gradient(-90deg, #f8b62d 5%, #f5daad 5%),
+            linear-gradient(0deg, #f8b62d 5%, #f5daad 5%), linear-gradient(180deg, #f8b62d 5%, #f5daad 5%);
           background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
           background-size: 400% 2px, 400% 2px, 2px 400%, 2px 400%;
           background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
@@ -4968,8 +4942,7 @@
             height: 20px;
             cursor: pointer;
             pointer-events: auto;
-            background: url("../images/common/btn_prev3.png") no-repeat center
-              center;
+            background: url("../images/common/btn_prev3.png") no-repeat center center;
             background-size: 15px 15px;
             margin: 0 5px;
           }
@@ -5162,8 +5135,7 @@
               pointer-events: auto;
               cursor: pointer;
               padding-left: 20px;
-              background: url("../images/common/sentence_speaker.png") no-repeat
-                left top 2px;
+              background: url("../images/common/sentence_speaker.png") no-repeat left top 2px;
               background-size: 15px auto;
             }
           }
@@ -5331,8 +5303,7 @@
         z-index: 10;
         width: 85px;
         height: 85px;
-        background: url("../images/common/icon_right.png") no-repeat center
-          center;
+        background: url("../images/common/icon_right.png") no-repeat center center;
         background-size: 100% 100%;
       }
       .wb_stupid {
@@ -5344,8 +5315,7 @@
         z-index: 10;
         width: 23px;
         height: 105px;
-        background: url("../images/common/icon_stupid.png") no-repeat center
-          center;
+        background: url("../images/common/icon_stupid.png") no-repeat center center;
         background-size: 100% 100%;
       }
 
@@ -5429,7 +5399,7 @@
 
       &.voced {
         p {
-          letter-spacing: 0.25em;
+          letter-spacing: 0.25em !important;
         }
       }
 
@@ -5792,8 +5762,7 @@
               pointer-events: auto;
               cursor: pointer;
               padding-left: 20px;
-              background: url("../images/common/sentence_speaker.png") no-repeat
-                left top 2px;
+              background: url("../images/common/sentence_speaker.png") no-repeat left top 2px;
               background-size: 15px auto;
             }
           }
@@ -5963,8 +5932,7 @@
         z-index: 10;
         width: 85px;
         height: 85px;
-        background: url("../images/common/icon_right.png") no-repeat center
-          center;
+        background: url("../images/common/icon_right.png") no-repeat center center;
         background-size: 100% 100%;
       }
       .wb_stupid {
@@ -5976,8 +5944,7 @@
         z-index: 10;
         width: 23px;
         height: 105px;
-        background: url("../images/common/icon_stupid.png") no-repeat center
-          center;
+        background: url("../images/common/icon_stupid.png") no-repeat center center;
         background-size: 100% 100%;
       }
 
@@ -6090,7 +6057,7 @@
 
       &.voced {
         p {
-          letter-spacing: 0.25em;
+          letter-spacing: 0.25em !important;
         }
       }
 
@@ -6546,8 +6513,7 @@
         margin-bottom: -5px;
         position: relative;
         z-index: 2;
-        background: url("../images/common/detective.png") no-repeat center
-          center;
+        background: url("../images/common/detective.png") no-repeat center center;
         background-size: 100% 100%;
         @include opacity(0);
         @include transition(opacity, 0.3s);
@@ -6721,8 +6687,7 @@
         position: absolute;
         right: 5px;
         bottom: -55px;
-        background: url("../images/common/dia_audio.png") no-repeat center
-          center;
+        background: url("../images/common/dia_audio.png") no-repeat center center;
         background-size: 100% 100%;
         cursor: pointer;
         pointer-events: auto;
@@ -7024,13 +6989,11 @@
     }
     &.yourturn {
       margin-top: 15px;
-      background: url("../images/common/btn_yourturn.png") no-repeat center
-        center;
+      background: url("../images/common/btn_yourturn.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.speaker {
-      background: url("../images/common/btn_speaker.png") no-repeat center
-        center;
+      background: url("../images/common/btn_speaker.png") no-repeat center center;
       background-size: 100% 100%;
 
       > span {
@@ -7060,8 +7023,7 @@
           left: -33px;
           width: 33.5px;
           height: 30px;
-          background: url("../images/common/wb_listen_speaker.png") no-repeat
-            center center;
+          background: url("../images/common/wb_listen_speaker.png") no-repeat center center;
           background-size: 100% 100%;
         }
       }
@@ -7103,8 +7065,7 @@
           left: -33px;
           width: 33.5px;
           height: 30px;
-          background: url("../images/common/wb_listen_speaker.png") no-repeat
-            center center;
+          background: url("../images/common/wb_listen_speaker.png") no-repeat center center;
           background-size: 100% 100%;
         }
       }
@@ -7202,15 +7163,13 @@
           left: -33px;
           width: 33.5px;
           height: 30px;
-          background: url("../images/common/wb_tryit_speaker.png") no-repeat
-            center center;
+          background: url("../images/common/wb_tryit_speaker.png") no-repeat center center;
           background-size: 100% 100%;
         }
       }
     }
     &.wb_tryit_ans {
-      background: url("../images/common/wb_tryit_ans.png") no-repeat center
-        center;
+      background: url("../images/common/wb_tryit_ans.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.wb_up {
@@ -7253,8 +7212,7 @@
     }
     &.reader_question {
       height: 34px;
-      background: url("../images/common/reader_question.png") no-repeat center
-        center;
+      background: url("../images/common/reader_question.png") no-repeat center center;
       background-size: 100% 100%;
       @include borderRadius(0);
 
@@ -7265,8 +7223,7 @@
     }
     &.reader_getready {
       height: 36px;
-      background: url("../images/common/reader_getready.png") no-repeat center
-        center;
+      background: url("../images/common/reader_getready.png") no-repeat center center;
       background-size: 100% 100%;
       @include borderRadius(0);
     }
@@ -7277,13 +7234,11 @@
       bottom: 0px;
     }
     &.reader_bookcontent {
-      background: url("../images/common/reader_bookcontent.png") no-repeat
-        center center;
+      background: url("../images/common/reader_bookcontent.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.reader_bubble {
-      background: url("../images/common/reader_bubble.png") no-repeat center
-        center;
+      background: url("../images/common/reader_bubble.png") no-repeat center center;
       background-size: 100% 100%;
       height: 20px;
       @include borderRadius(0);
@@ -7315,15 +7270,13 @@
           left: -33px;
           width: 33.5px;
           height: 30px;
-          background: url("../images/common/reader_eye_all.png") no-repeat
-            center center;
+          background: url("../images/common/reader_eye_all.png") no-repeat center center;
           background-size: 100% 100%;
         }
       }
     }
     &.reader_review {
-      background: url("../images/common/reader_review.png") no-repeat center
-        center;
+      background: url("../images/common/reader_review.png") no-repeat center center;
       background-size: 100% 100%;
       > span {
         display: inline-block;
@@ -7331,13 +7284,11 @@
       }
     }
     &.wryg_learnmore {
-      background: url("../images/common/wryg_learnmore.png") no-repeat center
-        center;
+      background: url("../images/common/wryg_learnmore.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.btn_definition {
-      background: url("../images/common/btn_definition.png") no-repeat center
-        center;
+      background: url("../images/common/btn_definition.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.btn_cp {
@@ -7345,8 +7296,7 @@
       background-size: 100% 100%;
     }
     &.grammar {
-      background: url("../images/common/btn_grammar.png") no-repeat center
-        center;
+      background: url("../images/common/btn_grammar.png") no-repeat center center;
       background-size: 100% 100%;
     }
     &.btn_qa {

@@ -31,9 +31,8 @@ option,
 .modal,
 input,
 textarea {
-  font-family: "Gfont", "Noto Sans TC", "Heiti TC", "儷黑 Pro", "LiHei Pro",
-    "文泉驛正黑", "WenQuanYi Zen Hei", "微軟正黑體", "Microsoft JhengHei",
-    "新細明體", sans-serif, Arial, Helvetica;
+  font-family: "Gfont", "Noto Sans TC", "Heiti TC", "儷黑 Pro", "LiHei Pro", "文泉驛正黑", "WenQuanYi Zen Hei",
+    "微軟正黑體", "Microsoft JhengHei", "新細明體", sans-serif, Arial, Helvetica;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
@@ -339,8 +338,7 @@ body {
         top: 10px;
         width: 20px;
         height: 15px;
-        background: url("../images/common/btn_fullscreen.png") no-repeat center
-          center;
+        background: url("../images/common/btn_fullscreen.png") no-repeat center center;
         background-size: contain;
         cursor: pointer;
       }
@@ -350,8 +348,7 @@ body {
         top: 30px;
         width: 20px;
         height: 20px;
-        background: url("../images/common/btn_return.png") no-repeat center
-          center;
+        background: url("../images/common/btn_return.png") no-repeat center center;
         background-size: contain;
         cursor: pointer;
         display: none;
@@ -362,8 +359,7 @@ body {
         top: 55px;
         width: 20px;
         height: 20px;
-        background: url("../images/common/btn_lines.png") no-repeat center
-          center;
+        background: url("../images/common/btn_lines.png") no-repeat center center;
         background-size: contain;
         cursor: pointer;
         display: none;
@@ -428,8 +424,7 @@ body {
         bottom: 15px;
         width: 12.5px;
         height: 12.5px;
-        background: url("../images/common/btn_power.png") no-repeat center
-          center;
+        background: url("../images/common/btn_power.png") no-repeat center center;
         background-size: contain;
         cursor: pointer;
         &.active {
@@ -445,8 +440,7 @@ body {
         top: -37px;
         width: 60px;
         height: 37.5px;
-        background: url("../images/common/confirm_power.png") no-repeat center
-          center;
+        background: url("../images/common/confirm_power.png") no-repeat center center;
         background-size: contain;
         cursor: pointer;
         #backToGEO {
@@ -484,8 +478,7 @@ body {
       left: 0;
       z-index: 1;
       display: none;
-      background: url("../images/common/spinner_logo.png") center center
-        no-repeat;
+      background: url("../images/common/spinner_logo.png") center center no-repeat;
       background-size: 45px 45px;
       display: flex;
       justify-content: center;

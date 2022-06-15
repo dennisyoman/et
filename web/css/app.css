@@ -2612,7 +2612,7 @@
 }
 
 .WS_wb_wrapper .contents .card.voced p {
-  letter-spacing: 0.25em;
+  letter-spacing: 0.25em !important;
 }
 
 .WS_wb_wrapper .contents .card.flipback {
@@ -5634,7 +5634,7 @@
     background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
   }
   100% {
-    background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
+    background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
   }
 }
 
@@ -5643,7 +5643,7 @@
     background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
   }
   100% {
-    background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
+    background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
   }
 }
 
@@ -7239,7 +7239,7 @@
 }
 
 .WRYG_wb_wrapper .contents .card.voced p {
-  letter-spacing: 0.25em;
+  letter-spacing: 0.25em !important;
 }
 
 .WRYG_wb_wrapper .contents .card p {
@@ -8032,7 +8032,7 @@
 }
 
 .GLD_wb_wrapper .contents .card.voced p {
-  letter-spacing: 0.25em;
+  letter-spacing: 0.25em !important;
 }
 
 .GLD_wb_wrapper .contents .card.flipback {
@@ -10685,7 +10685,7 @@ option,
 .modal,
 input,
 textarea {
-  font-family: "Gfont", "Noto Sans TC", "Heiti TC", "儷黑 Pro", "LiHei Pro", "文泉驛正黑", "WenQuanYi Zen Hei", "微軟正黑體", "Microsoft JhengHei", "新細明體", sans-serif, Arial, Helvetica;
+  font-family: "Gfont", "Noto Sans TC", "Heiti TC", "儷黑 Pro", "LiHei Pro", "文泉驛正黑", "WenQuanYi Zen Hei", "微軟正黑體", "Microsoft JhengHei", "新細明體", sans-serif, Arial, Helvetica;
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
