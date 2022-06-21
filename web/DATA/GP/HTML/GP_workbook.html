@@ -35,14 +35,10 @@
 
     itemHTML += `<span><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${imgArray[0]}" /></span>`;
 
-    if (ansArray[0] != "" && ansArray[0] != undefined && ansArray[0] != null) {
+    if (!isitEmpty($(targetNode).find("item:eq(3)").text())) {
       itemHTML += `<span class="ans"><img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${ansArray[0]}" /></span>`;
     }
-    if (
-      audioArray[0] != "" &&
-      audioArray[0] != undefined &&
-      audioArray[0] != null
-    ) {
+    if (!isitEmpty($(targetNode).find("item:eq(1)").text())) {
       for (var k = 0; k < audioArray.length; k++) {
         itemHTML += `
               <audio class="a${k + 1}" preload="auto" src="./DATA/${

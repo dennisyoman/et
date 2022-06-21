@@ -28,7 +28,7 @@
       $("#gp_module_wrapper .assetsPreload").append(
         `<img src="./DATA/${gpObj.sid}/HTML/IMAGES/${imgPath}" />`
       );
-      itemHTML += `<audio preload="auto" src="./DATA/${gpObj.sid}/HTML/AUDIO/${audioArray[i]}" />`;
+      itemHTML += `<audio preload="auto" src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/AUDIO/${audioArray[i]}" />`;
       itemHTML += "</div>";
 
       $("#contents").append(itemHTML);

@@ -1,170 +1,642 @@
 <root>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>1</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Jenny: My name is Jenny.</word1>
-    <word2>Jenny: ____ ____ is Jenny.</word2>
-    <sfx>WS-2-1-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>2</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Jenny: Hi, what is your name?</word1>
-    <word2>Jenny: Hi, what is ____ name?</word2>
-    <sfx>WS-2-2-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>2</lid>
-    <section>2</section>
-    <seq>2</seq>
-    <word1>Daisy: Hello, my name is Daisy.</word1>
-    <word2>Daisy: Hello, my name is Daisy.</word2>
-    <sfx>WS-2-2-2-2.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>3</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Benny: What is his name?</word1>
-    <word2>Benny: What is ____ name?</word2>
-    <sfx>WS-2-3-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>3</lid>
-    <section>2</section>
-    <seq>2</seq>
-    <word1>Jenny: His name is Edison.</word1>
-    <word2>Jenny: His name is Edison.</word2>
-    <sfx>WS-2-3-2-2.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>3</lid>
-    <section>2</section>
-    <seq>3</seq>
-    <word1>Benny: What is her name?</word1>
-    <word2>Benny: What is ____ name?</word2>
-    <sfx>WS-2-3-2-3.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>3</lid>
-    <section>2</section>
-    <seq>4</seq>
-    <word1>Jenny: Her name is Daisy.</word1>
-    <word2>Jenny: Her name is Daisy.</word2>
-    <sfx>WS-2-3-2-4.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>4</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Jenny: I am Jenny.  I am a girl.</word1>
-    <word2>Jenny: ____ am Jenny.  I am a ____.</word2>
-    <sfx>WS-2-4-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>4</lid>
-    <section>2</section>
-    <seq>2</seq>
-    <word1>Teacher: You are Benny.  You are a boy.</word1>
-    <word2>Teacher: ____ are Benny.  You are a ____.</word2>
-    <sfx>WS-2-4-2-2.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>5</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Daisy: He is my father.  She is my mother.</word1>
-    <word2>Daisy: ____ is my ____.  ____ is my ____.</word2>
-    <sfx>WS-2-5-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>6</lid>
-    <section>2</section>
-    <seq>1</seq>
-    <word1>Jenny: Who is the boy?</word1>
-    <word2>Jenny: Who is the boy?</word2>
-    <sfx>WS-2-6-2-1.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>6</lid>
-    <section>2</section>
-    <seq>2</seq>
-    <word1>Justin: He is my brother.</word1>
-    <word2>Justin: He is my ____.</word2>
-    <sfx>WS-2-6-2-2.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>6</lid>
-    <section>2</section>
-    <seq>3</seq>
-    <word1>Jenny: Who is she?</word1>
-    <word2>Jenny: Who is she?</word2>
-    <sfx>WS-2-6-2-3.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
-  <item>
-    <sid>WS</sid>
-    <bid>2</bid>
-    <lid>6</lid>
-    <section>2</section>
-    <seq>4</seq>
-    <word1>Justin: She is my sister.</word1>
-    <word2>Justin: She is my ____.</word2>
-    <sfx>WS-2-6-2-4.mp3</sfx>
-    <LetsCheck>
-    </LetsCheck>
-  </item>
+  <lesson sid="GLD" bid="1" lid="1">
+    <section skin="" image="UNITS/icon_bigpicture.png" swf="GLD/HTML/story.html" name="Story">
+      <item>
+        <Sequence>1</Sequence>
+        <Content>My name is Sam.&lt;br&gt;This is my dog, Lucky.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.</Content>
+        <Image>GLD-1-1-4-1.jpg</Image>
+        <Sound>GLD-1-1-4-1-1.mp3</Sound>
+        <FillIn>My name is Sam.&lt;br&gt;This is my dog, Lucky.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.</FillIn>
+        <Question1> How many seasons are there in a year?</Question1>
+        <Question2>What’s the boy’s name? What’s the dog’s name?</Question2>
+        <Question3>Are the boy and the dog good friends? Why?</Question3>
+        <Question4>Which season is your favorite? Why? What do you usually do in your favorite season?</Question4>
+        <Question5>Can you describe your favorite season? (weather, temperature, etc.)</Question5>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <Content>It is &lt;b&gt;spring&lt;/b&gt;.&lt;br&gt;It is sunny and warm.&lt;br&gt;I put on my T-shirt and vest.&lt;br&gt;I want to go to the park.&lt;br&gt;We can fly a kite in the park.&lt;br&gt;We can see the flowers.</Content>
+        <Image>GLD-1-1-4-2.jpg</Image>
+        <Sound>GLD-1-1-4-2-1.mp3</Sound>
+        <FillIn>It is ____.&lt;br&gt;It is sunny and warm.&lt;br&gt;I put on my T-shirt and vest.&lt;br&gt;I want to go to the park.&lt;br&gt;We can fly a kite in the park.&lt;br&gt;We can see the flowers.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <Content>It is &lt;b&gt;summer&lt;/b&gt;.&lt;br&gt;It is sunny and hot.&lt;br&gt;I put on my shorts and sandals.&lt;br&gt;I want to go to the beach.&lt;br&gt;We can swim at the beach.&lt;br&gt;We can eat ice cream.</Content>
+        <Image>GLD-1-1-4-3.jpg</Image>
+        <Sound>GLD-1-1-4-3-1.mp3</Sound>
+        <FillIn>It is ____.&lt;br&gt;It is sunny and hot.&lt;br&gt;I put on my shorts and sandals.&lt;br&gt;I want to go to the beach.&lt;br&gt;We can swim at the beach.&lt;br&gt;We can eat ice cream.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <Content>It is &lt;b&gt;fall&lt;/b&gt;.&lt;br&gt;It is cool in fall.&lt;br&gt;I put on my hat and scarf.&lt;br&gt;I want to go to the country.&lt;br&gt;We can see the leaves.&lt;br&gt;We can run and jump in the leaves.</Content>
+        <Image>GLD-1-1-4-4.jpg</Image>
+        <Sound>GLD-1-1-4-4-1.mp3</Sound>
+        <FillIn>It is ____.&lt;br&gt;It is cool in fall.&lt;br&gt;I put on my hat and scarf.&lt;br&gt;I want to go to the country.&lt;br&gt;We can see the leaves.&lt;br&gt;We can run and jump in the leaves.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <Content>It is &lt;b&gt;winter&lt;/b&gt;.&lt;br&gt;It is very cold in winter.&lt;br&gt;I put on my coat and gloves.&lt;br&gt;I want to go outside.&lt;br&gt;We can ski.  We can play in the snow.</Content>
+        <Image>GLD-1-1-4-5.jpg</Image>
+        <Sound>GLD-1-1-4-5-1.mp3</Sound>
+        <FillIn>It is ____.&lt;br&gt;It is very cold in winter.&lt;br&gt;I put on my coat and gloves.&lt;br&gt;I want to go outside.&lt;br&gt;We can ski.  We can play in the snow.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <Content>I don't know which &lt;b&gt;season&lt;/b&gt; my dog likes best.  I like every season because I can share them all with my best friend.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.&lt;br&gt;What's your favorite season?&lt;br&gt;Spring, summer, fall, or winter—I love them all!</Content>
+        <Image>GLD-1-1-4-6.jpg</Image>
+        <Sound>GLD-1-1-4-6-1.mp3^GLD-1-1-4-all.mp3</Sound>
+        <FillIn>I don't know which ____ my dog likes best.  I like every season because I can share them all with my best friend.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.&lt;br&gt;What's your favorite season?&lt;br&gt;Spring, summer, fall, or winter—I love them all!</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+    </section>
+    <section skin="" image="UNITS/icon_sightword.png" swf="GLD/HTML/sightword.html" name="Sight Words">
+      <item>
+        <Sequence>1</Sequence>
+        <image>GLD-1-1-4-1.jpg</image>
+        <sound>GLD-1-1-4-1-1.mp3</sound>
+        <Sentence1>My name is Sam.</Sentence1>
+        <Sentence2>This is my dog, Lucky.</Sentence2>
+        <Sentence3>Lucky is my best friend.</Sentence3>
+        <Sentence4>We go everywhere together.</Sentence4>
+        <Sentence5>We have fun all year long.  </Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>My name is Sam.&lt;br&gt;This is my dog, Lucky.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <image>GLD-1-1-4-2.jpg</image>
+        <sound>GLD-1-1-4-2-1.mp3</sound>
+        <Sentence1>It is spring.&lt;br&gt;It is sunny and warm.  </Sentence1>
+        <Sentence2>I put on my T-shirt and vest.</Sentence2>
+        <Sentence3>I want to go to the park.</Sentence3>
+        <Sentence4>We can fly a kite in the park.</Sentence4>
+        <Sentence5>We can see the flowers.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>It is spring.&lt;br&gt;It is sunny and warm.&lt;br&gt;I put on my T-shirt and vest.&lt;br&gt;I want to go to the park.&lt;br&gt;We can fly a kite in the park.&lt;br&gt;We can see the flowers.</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <image>GLD-1-1-4-3.jpg</image>
+        <sound>GLD-1-1-4-3-1.mp3</sound>
+        <Sentence1>It is summer.</Sentence1>
+        <Sentence2>It is sunny and hot.</Sentence2>
+        <Sentence3>I put on my shorts and sandals.</Sentence3>
+        <Sentence4>I want to go to the beach.&lt;br&gt;We can swim at the beach.</Sentence4>
+        <Sentence5>We can eat ice cream.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>It is summer.&lt;br&gt;It is sunny and hot.&lt;br&gt;I put on my shorts and sandals.&lt;br&gt;I want to go to the beach.&lt;br&gt;We can swim at the beach.&lt;br&gt;We can eat ice cream.</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <image>GLD-1-1-4-4.jpg</image>
+        <sound>GLD-1-1-4-4-1.mp3</sound>
+        <Sentence1>It is fall.&lt;br&gt;It is cool in fall.</Sentence1>
+        <Sentence2>I put on my hat and scarf.</Sentence2>
+        <Sentence3>I want to go to the country.</Sentence3>
+        <Sentence4>We can see the leaves.</Sentence4>
+        <Sentence5>We can run and jump in the leaves.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>It is fall.&lt;br&gt;It is cool in fall.&lt;br&gt;I put on my hat and scarf.&lt;br&gt;I want to go to the country.&lt;br&gt;We can see the leaves.&lt;br&gt;We can run and jump in the leaves.</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <image>GLD-1-1-4-5.jpg</image>
+        <sound>GLD-1-1-4-5-1.mp3</sound>
+        <Sentence1>It is winter.</Sentence1>
+        <Sentence2>It is very cold in winter.</Sentence2>
+        <Sentence3>I put on my coat and gloves.</Sentence3>
+        <Sentence4>I want to go outside.</Sentence4>
+        <Sentence5>We can ski. We can play in the snow.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>It is winter.&lt;br&gt;It is very cold in winter.&lt;br&gt;I put on my coat and gloves.&lt;br&gt;I want to go outside.&lt;br&gt;We can ski.  We can play in the snow.</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <image>GLD-1-1-4-6.jpg</image>
+        <sound>GLD-1-1-4-6-1.mp3</sound>
+        <Sentence1>I don't know which season my dog likes best. </Sentence1>
+        <Sentence2>I like every season because I can share them all with my best friend.</Sentence2>
+        <Sentence3>Lucky is my best friend.&lt;br&gt;We go everywhere together.</Sentence3>
+        <Sentence4>We have fun all year long.&lt;br&gt;What's your favorite season?</Sentence4>
+        <Sentence5>Spring, summer, fall, or winter—I love them all!</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>I don't know which season my dog likes best.  I like every season because I can share them all with my best friend.&lt;br&gt;Lucky is my best friend.&lt;br&gt;We go everywhere together.&lt;br&gt;We have fun all year long.&lt;br&gt;What's your favorite season?&lt;br&gt;Spring, summer, fall, or winter—I love them all!</Content>
+        <Part2_SightWord>my^we^and^I^go^in</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>my^we^and^I^go^in</SightWordSound>
+      </item>
+    </section>
+  </lesson>
+  <lesson sid="GLD" bid="1" lid="2">
+    <section skin="" image="UNITS/icon_bigpicture.png" swf="GLD/HTML/story.html" name="Story">
+      <item>
+        <Sequence>1</Sequence>
+        <Content>It is a sunny afternoon on the farm.&lt;br&gt;The duck gathers all of his friends in front of him and says, “Let’s play a game called hide and seek.”&lt;br&gt; “That’s a wonderful idea,” says the cow.&lt;br&gt;“That sounds like fun,” says the horse.&lt;br&gt;“I want to play,” says the goat.&lt;br&gt;“Me, too,” say the sheep and the pig.</Content>
+        <Image>GLD-1-2-4-1.jpg</Image>
+        <Sound>GLD-1-2-4-1-1.mp3</Sound>
+        <FillIn>It is a sunny afternoon on the farm.&lt;br&gt;The duck gathers all of his friends in front of him and says, “Let’s play a game called hide and seek.”&lt;br&gt; “That’s a wonderful idea,” says the cow.&lt;br&gt;“That sounds like fun,” says the horse.&lt;br&gt;“I want to play,” says the goat.&lt;br&gt;“Me, too,” say the sheep and the pig.</FillIn>
+        <Question1>Can you tell me what animals are in the story?</Question1>
+        <Question2>Where are the animals?</Question2>
+        <Question3> Which animals in the story do you like most? Why?</Question3>
+        <Question4>When was the last time you played hide-and-seek? How was it?</Question4>
+        <Question5>We learn five prepositions (one is phrasal preposition) from this story. Please make a sentence using one of them.</Question5>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <Content>“How do you play?” asks the pig.&lt;br&gt; “I close my eyes and count to ten.  Everybody finds a place to hide,” says the duck.^&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” shouts the duck.</Content>
+        <Image>GLD-1-2-4-2.jpg</Image>
+        <Sound>GLD-1-2-4-2-1.mp3^GLD-1-2-4-2-2.mp3</Sound>
+        <FillIn>“How do you play?” asks the pig.&lt;br&gt; “I close my eyes and count to ten.  Everybody finds a place to hide,” says the duck.^&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” shouts the duck.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <Content>Where is the cow?&lt;br&gt;Look!&lt;br&gt;The cow is &lt;b&gt;behind&lt;/b&gt; the fence.^&lt;br&gt;Where is the horse?&lt;br&gt;Over there!&lt;br&gt;The horse is &lt;b&gt;between&lt;/b&gt; the trees.</Content>
+        <Image>GLD-1-2-4-3.jpg</Image>
+        <Sound>GLD-1-2-4-3-1.mp3^GLD-1-2-4-3-2.mp3</Sound>
+        <FillIn>Where is the cow?&lt;br&gt;Look!&lt;br&gt;The cow is ____ the fence.^&lt;br&gt;Where is the horse?&lt;br&gt;Over there!&lt;br&gt;The horse is ____ the trees.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <Content>Where is the goat?&lt;br&gt;I see him!&lt;br&gt;The goat is &lt;b&gt;next&lt;/b&gt; to the barn.^&lt;br&gt;Where is the sheep?&lt;br&gt;Right here!&lt;br&gt;The sheep is &lt;b&gt;in&lt;/b&gt; the bushes.^&lt;br&gt;Where is the pig?&lt;br&gt;I see her tail!&lt;br&gt;The pig is &lt;b&gt;under&lt;/b&gt; the pile of hay.</Content>
+        <Image>GLD-1-2-4-4.jpg</Image>
+        <Sound>GLD-1-2-4-4-1.mp3^GLD-1-2-4-4-2.mp3^GLD-1-2-4-4-3.mp3</Sound>
+        <FillIn>Where is the goat?&lt;br&gt;I see him!&lt;br&gt;The goat is ____ the barn.^&lt;br&gt;Where is the sheep?&lt;br&gt;Right here!&lt;br&gt;The sheep is ____ the bushes.^&lt;br&gt;Where is the pig?&lt;br&gt;I see her tail!&lt;br&gt;The pig is ____ the pile of hay.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <Content>“What fun!” says the cow.&lt;br&gt;“I like this game,” says the horse.&lt;br&gt;“It is fun to hide,” says the goat.&lt;br&gt;“Let’s play again,” says the sheep.^&lt;br&gt;“I can count this time,” says the pig.&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” says the pig.</Content>
+        <Image>GLD-1-2-4-5.jpg</Image>
+        <Sound>GLD-1-2-4-5-1.mp3^GLD-1-2-4-5-2.mp3</Sound>
+        <FillIn>“What fun!” says the cow.&lt;br&gt;“I like this game,” says the horse.&lt;br&gt;“It is fun to hide,” says the goat.&lt;br&gt;“Let’s play again,” says the sheep.^&lt;br&gt;“I can count this time,” says the pig.&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” says the pig.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <Content>Where are all the animals?&lt;br&gt;Can you find them?</Content>
+        <Image>GLD-1-2-4-6.jpg</Image>
+        <Sound>GLD-1-2-4-6-1.mp3^GLD-1-2-4-all.mp3</Sound>
+        <FillIn>Where are all the animals?&lt;br&gt;Can you find them?</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+    </section>
+    <section skin="" image="UNITS/icon_sightword.png" swf="GLD/HTML/sightword.html" name="Sight Words">
+      <item>
+        <Sequence>1</Sequence>
+        <image>GLD-1-2-4-1.jpg</image>
+        <sound>GLD-1-2-4-1-1.mp3</sound>
+        <Sentence1>It is a sunny afternoon on the farm.&lt;br&gt;The duck gathers all of his friends in front of him and says, “Let’s play a game called hide and seek.”</Sentence1>
+        <Sentence2>“That’s a wonderful idea,” says the cow.</Sentence2>
+        <Sentence3>“That sounds like fun,” says the horse.</Sentence3>
+        <Sentence4>“I want to play,” says the goat.</Sentence4>
+        <Sentence5>“Me, too,” say the sheep and the pig.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>It is a sunny afternoon on the farm.&lt;br&gt;The duck gathers all of his friends in front of him and says, “Let’s play a game called hide and seek.”&lt;br&gt; “That’s a wonderful idea,” says the cow.&lt;br&gt;“That sounds like fun,” says the horse.&lt;br&gt;“I want to play,” says the goat.&lt;br&gt;“Me, too,” say the sheep and the pig.</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <image>GLD-1-2-4-2.jpg</image>
+        <sound>GLD-1-2-4-2-1.mp3^GLD-1-2-4-2-2.mp3</sound>
+        <Sentence1>“How do you play?” asks the pig.</Sentence1>
+        <Sentence2>“I close my eyes and count to ten.  Everybody finds a place to hide,” says the duck.</Sentence2>
+        <Sentence3>“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.&lt;br&gt;Here I come!” shouts the duck.  </Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>3</SentenceNum>
+        <Answer>123</Answer>
+        <Content>“How do you play?” asks the pig.&lt;br&gt; “I close my eyes and count to ten.  Everybody finds a place to hide,” says the duck.^&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” shouts the duck.</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <image>GLD-1-2-4-3.jpg</image>
+        <sound>GLD-1-2-4-3-1.mp3^GLD-1-2-4-3-2.mp3</sound>
+        <Sentence1>Where is the cow?</Sentence1>
+        <Sentence2>Look!&lt;br&gt;The cow is behind the fence.</Sentence2>
+        <Sentence3>Where is the horse?</Sentence3>
+        <Sentence4>Over there!&lt;br&gt;The horse is between the trees.</Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>4</SentenceNum>
+        <Answer>1234</Answer>
+        <Content>Where is the cow?&lt;br&gt;Look!&lt;br&gt;The cow is behind the fence.^&lt;br&gt;Where is the horse?&lt;br&gt;Over there!&lt;br&gt;The horse is between the trees.</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <image>GLD-1-2-4-4.jpg</image>
+        <sound>GLD-1-2-4-4-1.mp3^GLD-1-2-4-4-2.mp3^GLD-1-2-4-4-3.mp3</sound>
+        <Sentence1>Where is the goat?&lt;br&gt;I see him!&lt;br&gt;The goat is next to the barn.</Sentence1>
+        <Sentence2>Where is the sheep?&lt;br&gt;Right here!&lt;br&gt;The sheep is in the bushes.</Sentence2>
+        <Sentence3>Where is the pig?&lt;br&gt;I see her tail!&lt;br&gt;The pig is under the pile of hay.</Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>3</SentenceNum>
+        <Answer>123</Answer>
+        <Content>Where is the goat?&lt;br&gt;I see him!&lt;br&gt;The goat is next to the barn.^&lt;br&gt;Where is the sheep?&lt;br&gt;Right here!&lt;br&gt;The sheep is in the bushes.^&lt;br&gt;Where is the pig?&lt;br&gt;I see her tail!&lt;br&gt;The pig is under the pile of hay.</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <image>GLD-1-2-4-5.jpg</image>
+        <sound>GLD-1-2-4-5-1.mp3^GLD-1-2-4-5-2.mp3</sound>
+        <Sentence1>“What fun!” says the cow.</Sentence1>
+        <Sentence2>“I like this game,” says the horse.</Sentence2>
+        <Sentence3>“It is fun to hide,” says the goat.</Sentence3>
+        <Sentence4>“Let’s play again,” says the sheep.</Sentence4>
+        <Sentence5>“I can count this time,” says the pig.&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.&lt;br&gt;Here I come!” says the pig.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>“What fun!” says the cow.&lt;br&gt;“I like this game,” says the horse.&lt;br&gt;“It is fun to hide,” says the goat.&lt;br&gt;“Let’s play again,” says the sheep.^&lt;br&gt;“I can count this time,” says the pig.&lt;br&gt;“Ready…1, 2, 3, 4, 5, 6, 7, 8, 9, 10.  Here I come!” says the pig.</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <image>GLD-1-2-4-6.jpg</image>
+        <sound>GLD-1-2-4-6-1.mp3</sound>
+        <Sentence1>Where are all the animals?</Sentence1>
+        <Sentence2>Can you find them?</Sentence2>
+        <Sentence3>
+        </Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>2</SentenceNum>
+        <Answer>12</Answer>
+        <Content>Where are all the animals?&lt;br&gt;Can you find them?</Content>
+        <Part2_SightWord>come^is^it^play^the^to</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>come^is^it^play^the^to</SightWordSound>
+      </item>
+    </section>
+  </lesson>
+  <lesson sid="GLD" bid="1" lid="3">
+    <section skin="" image="UNITS/icon_bigpicture.png" swf="GLD/HTML/story.html" name="Story">
+      <item>
+        <Sequence>1</Sequence>
+        <Content>It is a beautiful spring day.&lt;br&gt;There are many places we want to go today.&lt;br&gt;“Let’s go, Wendy!” calls Mom.</Content>
+        <Image>GLD-1-3-4-1.jpg</Image>
+        <Sound>GLD-1-3-4-1-1.mp3</Sound>
+        <FillIn>It is a beautiful spring day.&lt;br&gt;There are many places we want to go today.&lt;br&gt;“Let’s go, Wendy!” calls Mom.</FillIn>
+        <Question1>Why does Wendy’s mom want to go to the library?</Question1>
+        <Question2>Why does Wendy’s mom want to go to the post office?</Question2>
+        <Question3>When was the last time you went to a supermarket? </Question3>
+        <Question4>What would you like to have for dessert after dinner?</Question4>
+        <Question5>What do you usually do in a park?</Question5>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <Content>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the &lt;b&gt;library&lt;/b&gt;.  I need to return some books,” says Mom.&lt;br&gt;“I can go with you to the library,” I say.^&lt;br&gt;“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the &lt;b&gt;post office&lt;/b&gt;.  I need to mail some letters,” says Mom.&lt;br&gt;“I can go with you to the &lt;br&gt;post office,” I say.</Content>
+        <Image>GLD-1-3-4-2.jpg</Image>
+        <Sound>GLD-1-3-4-2-1.mp3^GLD-1-3-4-2-2.mp3</Sound>
+        <FillIn>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the ____.   I need to return some books,” says Mom.&lt;br&gt;“I can go with you to the library,” I say.^&lt;br&gt; “Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the ____.   I need to mail some letters,” says Mom.&lt;br&gt;“I can go with you to the &lt;br&gt;post office,” I say.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <Content>“What is that building on the right?” &lt;br&gt;I ask Mom.&lt;br&gt;“It is the police station,” says Mom.&lt;br&gt;I wave to the police officers outside as we walk by.^&lt;br&gt;“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the &lt;b&gt;supermarket&lt;/b&gt;.  I need to get something for dinner,” says Mom.&lt;br&gt;“I can go with you to the supermarket,” I say.</Content>
+        <Image>GLD-1-3-4-3.jpg</Image>
+        <Sound>GLD-1-3-4-3-1.mp3^GLD-1-3-4-3-2.mp3</Sound>
+        <FillIn>“What is that building on the right?” &lt;br&gt;I ask Mom.&lt;br&gt;“It is the police station,” says Mom.&lt;br&gt;I wave to the police officers outside as we walk by.^&lt;br&gt; “Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the  ____.  I need to get something for dinner,” says Mom.&lt;br&gt;“I can go with you to the supermarket,” I say.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <Content>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the &lt;b&gt;bakery&lt;/b&gt;.  I need to get something for dessert,” says Mom.&lt;br&gt;“I can go with you to the bakery,” I say.^&lt;br&gt;“What is that building on the left?” I ask Mom.&lt;br&gt;“It is the hospital,” says Mom.&lt;br&gt;There are many doctors inside the hospital.</Content>
+        <Image>GLD-1-3-4-4.jpg</Image>
+        <Sound>GLD-1-3-4-4-1.mp3^GLD-1-3-4-4-2.mp3</Sound>
+        <FillIn>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the ____.  I need to get something for dessert,” says Mom.&lt;br&gt;“I can go with you to the bakery,” I say.^&lt;br&gt;“What is that building on the left?” I ask Mom.&lt;br&gt;“It is the hospital,” says Mom.&lt;br&gt;There are many doctors inside the hospital.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <Content>After our busy day, I think it is time to go home, but Mom turns and asks me, “Where do YOU want to go, Wendy?”</Content>
+        <Image>GLD-1-3-4-5.jpg</Image>
+        <Sound>GLD-1-3-4-5-1.mp3</Sound>
+        <FillIn>After our busy day, I think it is time to go home, but Mom turns and asks me, “Where do YOU want to go, Wendy?”</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <Content>“I want to go to the &lt;b&gt;park&lt;/b&gt;,” I say.&lt;br&gt;“I can go with you to the park.&lt;br&gt;We can have some fun!” says Mom.</Content>
+        <Image>GLD-1-3-4-6.jpg</Image>
+        <Sound>GLD-1-3-4-6-1.mp3^GLD-1-3-4-all.mp3</Sound>
+        <FillIn>“I want to go to the ____,” I say.&lt;br&gt;“I can go with you to the park.&lt;br&gt;We can have some fun!” says Mom.</FillIn>
+        <Question1>
+        </Question1>
+        <Question2>
+        </Question2>
+        <Question3>
+        </Question3>
+        <Question4>
+        </Question4>
+        <Question5>
+        </Question5>
+      </item>
+    </section>
+    <section skin="" image="UNITS/icon_sightword.png" swf="GLD/HTML/sightword.html" name="Sight Words">
+      <item>
+        <Sequence>1</Sequence>
+        <image>GLD-1-3-4-1.jpg</image>
+        <sound>GLD-1-3-4-1-1.mp3</sound>
+        <Sentence1>It is a beautiful spring day.</Sentence1>
+        <Sentence2>There are many places we want to go today.</Sentence2>
+        <Sentence3>“Let’s go, Wendy!” calls Mom.</Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>3</SentenceNum>
+        <Answer>123</Answer>
+        <Content>It is a beautiful spring day.&lt;br&gt;There are many places we want to go today.&lt;br&gt;“Let’s go, Wendy!” calls Mom.</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+      <item>
+        <Sequence>2</Sequence>
+        <image>GLD-1-3-4-2.jpg</image>
+        <sound>GLD-1-3-4-2-1.mp3^GLD-1-3-4-2-2.mp3</sound>
+        <Sentence1>“Where do you want to go?” I ask Mom.</Sentence1>
+        <Sentence2>“I want to go to the library.  I need to return some books,” says Mom.</Sentence2>
+        <Sentence3>“I can go with you to the library,” I say.  “Where do you want to go?” I ask Mom.</Sentence3>
+        <Sentence4>“I want to go to the post office.  I need to mail some letters,” says Mom.</Sentence4>
+        <Sentence5>“I can go with you to the post office,” I say.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the library.  I need to return some books,” says Mom.&lt;br&gt;“I can go with you to the library,” I say.^&lt;br&gt;“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the post office.  I need to mail some letters,” says Mom.&lt;br&gt;“I can go with you to the post office,” I say.</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+      <item>
+        <Sequence>3</Sequence>
+        <image>GLD-1-3-4-3.jpg</image>
+        <sound>GLD-1-3-4-3-1.mp3^GLD-1-3-4-3-2.mp3</sound>
+        <Sentence1>“What is that building on the right?” I ask Mom.</Sentence1>
+        <Sentence2>“It is the police station,” says Mom.&lt;br&gt;I wave to the police officers outside as we walk by.</Sentence2>
+        <Sentence3>“Where do you want to go?” I ask Mom.</Sentence3>
+        <Sentence4>“I want to go to the supermarket.  I need to get something for dinner,” says Mom.</Sentence4>
+        <Sentence5>“I can go with you to the supermarket,” I say.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>“What is that building on the right?” I ask Mom.&lt;br&gt;“It is the police station,” says Mom.&lt;br&gt;I wave to the police officers outside as we walk by.^&lt;br&gt;“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the supermarket.  I need to get something for dinner,” says Mom.&lt;br&gt;“I can go with you to the supermarket,” I say.</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+      <item>
+        <Sequence>4</Sequence>
+        <image>GLD-1-3-4-4.jpg</image>
+        <sound>GLD-1-3-4-4-1.mp3^GLD-1-3-4-4-2.mp3</sound>
+        <Sentence1>“Where do you want to go?” I ask Mom.</Sentence1>
+        <Sentence2>“I want to go to the bakery.  I need to get something for dessert,” says Mom.&lt;br&gt;“I can go with you to the bakery,” I say.</Sentence2>
+        <Sentence3>“What is that building on the left?” I ask Mom.</Sentence3>
+        <Sentence4>“It is the hospital,” says Mom.</Sentence4>
+        <Sentence5>There are many doctors inside the hospital.</Sentence5>
+        <SentenceNum>5</SentenceNum>
+        <Answer>12345</Answer>
+        <Content>“Where do you want to go?” I ask Mom.&lt;br&gt;“I want to go to the bakery.  I need to get something for dessert,” says Mom. &lt;br&gt;“I can go with you to the bakery,” I say.^&lt;br&gt;“What is that building on the left?” I ask Mom.&lt;br&gt;“It is the hospital,” says Mom.&lt;br&gt;There are many doctors inside the hospital.</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+      <item>
+        <Sequence>5</Sequence>
+        <image>GLD-1-3-4-5.jpg</image>
+        <sound>GLD-1-3-4-5-1.mp3</sound>
+        <Sentence1>After our busy day, I think it is time to go home, but Mom turns and asks me, </Sentence1>
+        <Sentence2>“Where do YOU want to go, Wendy?”</Sentence2>
+        <Sentence3>
+        </Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>2</SentenceNum>
+        <Answer>12</Answer>
+        <Content>After our busy day, I think it is time to go home, but Mom turns and asks me, “Where do YOU want to go, Wendy?”</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+      <item>
+        <Sequence>6</Sequence>
+        <image>GLD-1-3-4-6.jpg</image>
+        <sound>GLD-1-3-4-6-1.mp3</sound>
+        <Sentence1>“I want to go to the park,” I say.</Sentence1>
+        <Sentence2>“I can go with you to the park.</Sentence2>
+        <Sentence3>We can have some fun!” says Mom.</Sentence3>
+        <Sentence4>
+        </Sentence4>
+        <Sentence5>
+        </Sentence5>
+        <SentenceNum>3</SentenceNum>
+        <Answer>123</Answer>
+        <Content>“I want to go to the park,” I say.&lt;br&gt;“I can go with you to the park.  We can have some fun!” says Mom.</Content>
+        <Part2_SightWord>are^can^me^say^where^you</Part2_SightWord>
+        <typen>
+        </typen>
+        <SightWordSound>are^can^me^say^where^you</SightWordSound>
+      </item>
+    </section>
+  </lesson>
+  <lesson sid="GLD" bid="1" lid="4">
+    <section skin="" image="UNITS/icon_playscript.png" swf="GLD/HTML/playscript.html" name="Playscript">
+      <item>
+        <Sequence>1</Sequence>
+        <image>GLD-1-4-1-1-1.jpg^GLD-1-4-1-1-2.jpg^GLD-1-4-1-1-3.jpg^GLD-1-4-1-1-4.jpg</image>
+        <sound>
+        </sound>
+      </item>
+    </section>
+  </lesson>
 </root>

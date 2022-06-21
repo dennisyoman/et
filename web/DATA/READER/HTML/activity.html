@@ -301,7 +301,7 @@
     $("#contents")
       .empty()
       .append(
-        `<div class="a2a ${customClass} card2 wow flipInX">${answerSrt}</div>`
+        `<div class="a2a ${customClass} card3 wow flipInX">${answerSrt}</div>`
       );
     shuffle(sightwordArray);
 
@@ -314,23 +314,15 @@
     sw += "</div>";
     $("#contents").append(sw);
     //
-    $("#contents .sw > div")
-      .bind("mousedown", function (ev) {
-        if (!isMobile()) {
-          $(this).addClass("active");
+    $("#contents .sw > div > span")
+      .unbind()
+      .bind("click", function (ev) {
+        if ($(this).find("p").length < 1) {
+          $(this).parent().toggleClass("active");
+        } else {
           rootSoundEffectName(
             `./DATA/READER/sightWords/${$(this).find("p").text()}.mp3`
           );
-        }
-      })
-      .bind("mouseup", function (ev) {
-        if (!isMobile()) {
-          $(this).removeClass("active");
-        }
-      })
-      .bind("click", function (ev) {
-        if (isMobile()) {
-          $(this).toggleClass("active");
         }
       });
   };

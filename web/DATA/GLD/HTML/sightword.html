@@ -302,7 +302,7 @@
 
     $("#contents")
       .empty()
-      .append(`<div class="a2a ${lgmode} card2 wow flipInX">${str}</div>`);
+      .append(`<div class="a2a ${lgmode} card3 wow flipInX">${str}</div>`);
     shuffle(sightwordArray);
     var sw = "<div class='sw'>";
     for (var j = 0; j < sightwordArray.length; j++) {
@@ -313,7 +313,7 @@
     sw += "</div>";
     $("#contents").append(sw);
     //
-    $("#contents .sw > div")
+    /*$("#contents .sw > div")
       .unbind()
       .bind("mousedown", function (ev) {
         if (!isMobile()) {
@@ -331,6 +331,18 @@
       .bind("click", function (ev) {
         if (isMobile()) {
           $(this).toggleClass("active");
+        }
+      });*/
+
+    $("#contents .sw > div > span")
+      .unbind()
+      .bind("click", function (ev) {
+        if ($(this).find("p").length < 1) {
+          $(this).parent().toggleClass("active");
+        } else {
+          rootSoundEffectName(
+            `./DATA/GLD/sightWords/${$(this).find("p").text()}.mp3`
+          );
         }
       });
   };

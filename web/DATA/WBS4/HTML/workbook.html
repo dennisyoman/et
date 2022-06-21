@@ -255,21 +255,26 @@
       .removeClass("selected");
     resetElem($(".contents > div.selected"));
     //show side tool btn
-    if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
-      $(".sideTool > div.eye").fadeIn();
-    }
-    if ($(".contents > div.selected").find("audio.a1").length > 0) {
-      $(".sideTool > div.speaker.a1").fadeIn();
-    }
-    if ($(".contents > div.selected").find("audio.a2").length > 0) {
-      $(".sideTool > div.speaker.a2").fadeIn();
-    }
-    if (
-      $(".contents > div.selected").height() >
-      $("#root").height() * 0.9 - 50
-    ) {
-      $(".sideTool > div.fit").fadeIn();
-    }
+    $(".contents > div.selected")
+      .delay(800)
+      .queue(function () {
+        if ($(".contents > div.selected").find(".ans").find("img").length > 0) {
+          $(".sideTool > div.eye").fadeIn();
+        }
+        if ($(".contents > div.selected").find("audio.a1").length > 0) {
+          $(".sideTool > div.speaker.a1").fadeIn();
+        }
+        if ($(".contents > div.selected").find("audio.a2").length > 0) {
+          $(".sideTool > div.speaker.a2").fadeIn();
+        }
+        if (
+          $(".contents > div.selected").height() >
+          $("#root").height() * 0.9 - 50
+        ) {
+          $(".sideTool > div.fit").fadeIn();
+        }
+        $(this).dequeue();
+      });
   };
 
   var resetElem = function (elem) {
