@@ -356,10 +356,19 @@
             $(this).toggleClass("voced");
             updateVOC($(this));
           } else if ($(ev.target).hasClass("pi")) {
-            $("#contents").append(`<span id="pimg" class="pimg wow flipInX">
+            if ($("." + $(ev.target).attr("pimgID")).length > 0) {
+              $("." + $(ev.target).attr("pimgID")).remove();
+              $(ev.target).removeAttr("pimgID");
+            } else {
+              var uniq = new Date();
+              uniq = uniq.getTime();
+              $(ev.target).attr("pimgID", uniq);
+              $("#contents")
+                .append(`<span id="pimg" class="pimg wow flipInX ${uniq}">
                 <img src="${$(ev.target).attr("path")}"/>
                 </span>`);
-            makeDraggable($("#pimg"));
+              makeDraggable($("#pimg"));
+            }
           } else {
             if (!$(this).hasClass("active")) {
               $(this).addClass("active");

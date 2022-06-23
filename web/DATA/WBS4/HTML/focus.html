@@ -335,7 +335,9 @@
               ) {
                 $(".sideTool > div.fit").fadeIn();
               }
-              $(".sideTool > div.master").fadeIn();
+              if ($(".contents > div.selected .qa > ul > li").length > 0) {
+                $(".sideTool > div.master").fadeIn();
+              }
               if ($(".contents > div.selected .yt").length > 0) {
                 $(".sideTool > div.yourturn").fadeIn();
               }
