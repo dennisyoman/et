@@ -163,6 +163,7 @@ let version = new Date().getDate(); //版本(勿動)
 let sid, bid, lid, uid, sectionID;
 let gpObj = {}; //for inside GP;
 let userID = "-";
+let soundLag = 1300;
 let uName = "-";
 let dueDate = "-";
 let seriesXML;

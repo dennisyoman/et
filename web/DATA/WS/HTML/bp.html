@@ -143,6 +143,7 @@
       if ($elem == null) {
         define$Elem(ev);
       }
+      playQuestion;
       handleDrag(ev);
     });
   };
@@ -184,6 +185,7 @@
   };
 
   var bubbleSoundEffect = function (tar) {
+    console.log("autoplayID:" + autoplayID);
     tar
       .addClass("active animated")
       .siblings(".anim")
@@ -198,7 +200,15 @@
     }
     currentAudio.pause();
     currentAudio.currentTime = 0;
-    currentAudio.play();
+    var curID = parseInt($("#rbg").attr("curID"));
+    if (autoplayID == 999 && curID == 999) {
+      setTimeout(function () {
+        currentAudio.play();
+      }, soundLag);
+    } else {
+      currentAudio.play();
+    }
+
     $(currentAudio)
       .unbind()
       .on("ended", function () {

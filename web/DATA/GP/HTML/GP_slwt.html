@@ -201,7 +201,9 @@
       lowlagSFX();
       activeSFX();
     }
-    rootSoundEffectName(tar.find("audio").attr("src"));
+    setTimeout(function () {
+      rootSoundEffectName(tar.find("audio").attr("src"));
+    }, soundLag);
   };
   var initWB = function () {
     inOrderCard();
