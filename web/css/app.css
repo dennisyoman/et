@@ -6933,6 +6933,8 @@
   padding-left: 20px;
   background: url("../images/common/sentence_speaker.png") no-repeat left top 2px;
   background-size: 15px auto;
+  line-height: 1;
+  margin-bottom: 5px;
 }
 
 .WRYG_wb_wrapper .wb_definition .word {
@@ -7700,6 +7702,8 @@
   padding-left: 20px;
   background: url("../images/common/sentence_speaker.png") no-repeat left top 2px;
   background-size: 15px auto;
+  line-height: 1;
+  margin-bottom: 5px;
 }
 
 .GLD_wb_wrapper .wb_definition .word {
