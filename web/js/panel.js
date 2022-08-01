@@ -575,6 +575,17 @@ var handleZoomDrag = function (ev) {
       "margin-left": "-400px",
     });
 
+    $("textarea").each(function () {
+      var text = $(this).val();
+      text = text.replace(/\r\n|\n|\r/g, "<br/>");
+      console.log(text);
+      $(this)
+        .addClass("ta")
+        .hide()
+        .parent()
+        .append("<div class='textarea'>" + text + "</div>");
+    });
+
     //flipback
     html2canvas(
       $("#root").get(0),
@@ -624,6 +635,7 @@ var handleZoomDrag = function (ev) {
       $(".keepCardFace").removeClass("keepCardFace");
       $(".keepCardback").removeClass("keepCardback");
       $(".bi").show().removeClass("bi");
+      $(".ta").show().siblings(".textarea").remove();
       $("#main").css({
         padding: "0px",
         "margin-top": "0px",

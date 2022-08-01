@@ -1173,7 +1173,8 @@
   height: 90px;
 }
 
-.widget > .largeboard .largeboard_wrapper .keyer textarea {
+.widget > .largeboard .largeboard_wrapper .keyer textarea,
+.widget > .largeboard .largeboard_wrapper .keyer .textarea {
   pointer-events: auto;
   font-size: 15px;
   line-height: 1.3;
@@ -1187,6 +1188,12 @@
   box-shadow: none;
   resize: none;
   text-align: left;
+  padding: 2px;
+}
+
+.widget > .largeboard .largeboard_wrapper .keyer .textarea {
+  word-wrap: break-word;
+  overflow: auto;
 }
 
 .widget > .largeboard .largeboard_wrapper .keyboard {
