@@ -1194,6 +1194,7 @@
 .widget > .largeboard .largeboard_wrapper .keyer .textarea {
   word-wrap: break-word;
   overflow: auto;
+  white-space: pre;
 }
 
 .widget > .largeboard .largeboard_wrapper .keyboard {

@@ -987,6 +987,7 @@
         .textarea {
           word-wrap: break-word;
           overflow: auto;
+          white-space: pre;
         }
       }
       .keyboard {
