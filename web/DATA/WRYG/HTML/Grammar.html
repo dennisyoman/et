@@ -63,6 +63,10 @@
           var grammarType = comboArray[1];
           $("#gt").text(grammarType);
         }
+        //特殊課程
+        if (i == 1 && comboArray[1] == "1-2") {
+          exception = 1;
+        }
         //文法圖片
         let itemHTML = "<div>";
         if (
@@ -264,6 +268,7 @@
   var isDragging = false;
   var $elem = null;
   var masterArray = [];
+  var exception = "";
   //
   var Range, Unit;
   var titleWd = [
@@ -483,6 +488,8 @@
 
   var appendQ = function () {
     var seq = $(".tabs > span.selected").index();
+    seq -= exception;
+    seq = Math.max(0, seq);
 
     var tempHTML = "";
     for (var k = 0; k < QArray[seq].length; k++) {
