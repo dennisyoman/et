@@ -1665,7 +1665,7 @@
     left: 0;
     width: 2560px;
     height: 1280px;
-    z-index: 10;
+    z-index: 99999;
     @include scale(0.25);
     transform-origin: left top;
 

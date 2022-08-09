@@ -1997,7 +1997,7 @@
   left: 0;
   width: 2560px;
   height: 1280px;
-  z-index: 10;
+  z-index: 99999;
   -webkit-transform: scale(0.25);
   transform: scale(0.25);
   -webkit-transform-origin: left top;
