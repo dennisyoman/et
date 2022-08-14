@@ -827,6 +827,7 @@
   height: 60px;
   position: absolute;
   pointer-events: auto;
+  z-index: 9990 !important;
   cursor: pointer;
   top: 50%;
   left: 50%;
@@ -1997,7 +1998,7 @@
   left: 0;
   width: 2560px;
   height: 1280px;
-  z-index: 99999;
+  z-index: 9999;
   -webkit-transform: scale(0.25);
   transform: scale(0.25);
   -webkit-transform-origin: left top;
