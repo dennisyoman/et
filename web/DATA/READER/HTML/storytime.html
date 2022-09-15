@@ -38,13 +38,15 @@
           if (i == 0) {
             coverArray = $(this).text().split("^");
           } else {
-            tempCover += `
+            if (i <= coverArray.length) {
+              tempCover += `
               <li onclick="pasteCover(${i - 1})">
                 <img src="./DATA/${gpObj.sid}/BOOK${gpObj.bid}/IMAGES/${
-              coverArray[i - 1]
-            }" />
+                coverArray[i - 1]
+              }" />
                 <h3 class="card2 wow flipInX">${$(this).text()}</h3>
               </li>`;
+            }
           }
         }
       });
