@@ -230,6 +230,16 @@
     for (let k = 0; k < $SFXNameAr.length; k++) {
       if (tar.find("audio").attr("src") == $SFXNameAr[k]) {
         currentAudio = $SFXAr[k];
+        if (isNaN(currentAudio.duration)) {
+          console.log("Error:no internet or no audio file loaded.");
+          console.log("Process:reload audio");
+          var tempAudio = new Audio($SFXNameAr[k]);
+          $SFXAr[k] = tempAudio;
+          lowLag.load([tempAudio.src], $SFXNameAr[k]);
+          currentAudio = tempAudio;
+        } else {
+          console.log("audio duration:" + currentAudio.duration);
+        }
       }
     }
     currentAudio.pause();
