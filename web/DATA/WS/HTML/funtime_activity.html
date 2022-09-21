@@ -201,7 +201,7 @@
     }
 
     var posX = ev.deltaX / stageRatioReal + lastPosX;
-    var posY = ev.deltaY / Real + lastPosY;
+    var posY = ev.deltaY / stageRatioReal + lastPosY;
 
     if (isDragging && $elem) {
       $elem.style.left = posX + "px";
