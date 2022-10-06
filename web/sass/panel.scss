@@ -1044,6 +1044,19 @@
       .eraseAll {
         visibility: visible;
       }
+      .zoomer_wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 2;
+        .drawer {
+          &.editable {
+            canvas {
+              pointer-events: auto;
+            }
+          }
+        }
+      }
     }
     .edit,
     .erase,
@@ -1146,7 +1159,7 @@
 
         &.editable {
           canvas {
-            pointer-events: auto;
+            //pointer-events: auto;
           }
         }
       }

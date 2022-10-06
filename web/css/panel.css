@@ -1256,6 +1256,17 @@
   visibility: visible;
 }
 
+.widget > .zoomer:hover .zoomer_wrapper, .widget > .zoomer:focus .zoomer_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.widget > .zoomer:hover .zoomer_wrapper .drawer.editable canvas, .widget > .zoomer:focus .zoomer_wrapper .drawer.editable canvas {
+  pointer-events: auto;
+}
+
 .widget > .zoomer .edit,
 .widget > .zoomer .erase,
 .widget > .zoomer .eraseAll {
@@ -1391,10 +1402,6 @@
 .widget > .zoomer .zoomer_wrapper .drawer canvas {
   width: 100% !important;
   height: 100% !important;
-}
-
-.widget > .zoomer .zoomer_wrapper .drawer.editable canvas {
-  pointer-events: auto;
 }
 
 .widget > .zoomer .zoomer_wrapper .canvas {
