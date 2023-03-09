@@ -560,7 +560,9 @@ input {
 .noAni {
   //animation: none !important;
   animation-duration: 0 !important;
+  -webkit-animation-duration: 0 !important;
   animation-direction: reverse !important;
+  -webkit-animation-direction: reverse !important;
 }
 
 .keepCardFace {
@@ -568,9 +570,13 @@ input {
   transform: rotate3d(0, 1, 0, 0deg) !important;
   //animation-direction: reverse !important;
   animation-duration: 0 !important;
+  -webkit-animation-duration: 0 !important;
+
   > div > * {
     opacity: 1 !important;
+    -webkit-opacity: 1 !important;
     animation-duration: 0 !important;
+    -webkit-animation-duration: 0 !important;
   }
 }
 .keepCardback {
@@ -578,9 +584,12 @@ input {
   transform: rotate3d(0, 1, 0, 0deg) !important;
   //animation-direction: normal !important;
   animation-duration: 0 !important;
+  -webkit-animation-duration: 0 !important;
   > div > * {
     opacity: 0 !important;
+    -webkit-opacity: 0 !important;
     animation-duration: 0 !important;
+    -webkit-animation-duration: 0 !important;
   }
 }
 

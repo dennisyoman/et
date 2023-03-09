@@ -5,22 +5,18 @@
   top: 0;
   z-index: 9;
 }
-
 .glock .main-glock {
   position: absolute;
   width: 40px;
   right: 5px;
   top: 0;
 }
-
 .glock .main-glock.active .face {
   display: block;
 }
-
 .glock .main-glock.active .tail {
   display: none;
 }
-
 .glock .main-glock .face {
   position: absolute;
   top: 0;
@@ -30,12 +26,10 @@
   z-index: 1;
   display: none;
 }
-
 .glock .main-glock .face img {
   width: 100%;
   height: auto;
 }
-
 .glock .main-glock .face p {
   position: absolute;
   top: 27px;
@@ -46,11 +40,9 @@
   line-height: 12px;
   text-align: center;
 }
-
 .glock .main-glock .face * {
   pointer-events: none;
 }
-
 .glock .main-glock .tail {
   position: absolute;
   top: -2px;
@@ -59,12 +51,10 @@
   height: auto;
   z-index: 1;
 }
-
 .glock .main-glock .tail img {
   width: 100%;
   height: auto;
 }
-
 .glock .main-glock .tail * {
   pointer-events: none;
 }
