@@ -1650,7 +1650,8 @@
         &.multi {
           line-height: 12px;
           white-space: normal;
-          padding: 0 5px;
+          padding: 5px 5px;
+          @include scale(0.7);
           //word-break: break-word;
         }
       }
@@ -4038,8 +4039,16 @@
                       linear-gradient(-90deg, #ff6600 5%, #ffe384 5%), linear-gradient(0deg, #ff6600 5%, #ffe384 5%),
                       linear-gradient(180deg, #ff6600 5%, #ffe384 5%);
                     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-                    background-size: 400% 2px, 400% 2px, 2px 400%, 2px 400%;
-                    background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
+                    background-size:
+                      400% 2px,
+                      400% 2px,
+                      2px 400%,
+                      2px 400%;
+                    background-position:
+                      0px 0px,
+                      -100% 100%,
+                      0px 0,
+                      100% 300%;
                     z-index: 1;
                     animation: border-dance 6s infinite linear;
 
@@ -4048,10 +4057,18 @@
                   }
                   @keyframes border-dance {
                     0% {
-                      background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
+                      background-position:
+                        0px 0px,
+                        -100% 100%,
+                        0px 0,
+                        100% 300%;
                     }
                     100% {
-                      background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
+                      background-position:
+                        400% 0px,
+                        -500% 100%,
+                        0px -400%,
+                        100% 700%;
                     }
                   }
 
@@ -4553,8 +4570,16 @@
           background: linear-gradient(90deg, #f8b62d 5%, #f5daad 5%), linear-gradient(-90deg, #f8b62d 5%, #f5daad 5%),
             linear-gradient(0deg, #f8b62d 5%, #f5daad 5%), linear-gradient(180deg, #f8b62d 5%, #f5daad 5%);
           background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-          background-size: 400% 2px, 400% 2px, 2px 400%, 2px 400%;
-          background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
+          background-size:
+            400% 2px,
+            400% 2px,
+            2px 400%,
+            2px 400%;
+          background-position:
+            0px 0px,
+            -100% 100%,
+            0px 0,
+            100% 300%;
           z-index: 1;
           animation: border-dance 6s infinite linear;
 
@@ -4562,10 +4587,18 @@
         }
         @keyframes border-dance {
           0% {
-            background-position: 0px 0px, -100% 100%, 0px 0, 100% 300%;
+            background-position:
+              0px 0px,
+              -100% 100%,
+              0px 0,
+              100% 300%;
           }
           100% {
-            background-position: 400% 0px, -500% 100%, 0px -400%, 100% 700%;
+            background-position:
+              400% 0px,
+              -500% 100%,
+              0px -400%,
+              100% 700%;
           }
         }
       }

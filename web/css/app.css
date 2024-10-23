@@ -2062,7 +2062,10 @@
 .WS_wb_wrapper .contents .card p.multi {
   line-height: 12px;
   white-space: normal;
-  padding: 0 5px;
+  padding: 5px 5px;
+  -ms-transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
 }
 
 .WS_apl_wrapper {
@@ -9142,6 +9145,7 @@ body {
   z-index: 1;
 }
 .root .basic-tools span.power {
+  display: none;
   right: 10px;
   bottom: 15px;
   width: 12.5px;

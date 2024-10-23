@@ -535,6 +535,8 @@ let doubleCheckin = function () {
 };
 
 let getSeriesXML = function () {
+  //20230719 update
+  $("#power").show();
   let xpath = "/ws/ws_get.asmx/Series";
   if (testmode) {
     xpath = "./series.xml";
